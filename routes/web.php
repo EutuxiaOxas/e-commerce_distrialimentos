@@ -61,7 +61,7 @@ Route::middleware('landing')->group(function () {
 
 
 	/*--------------- VISTA TIENDA VIRTUAL --------------*/
-
+	Route::get('/cms/tienda', 'Cms\CmsController@tiendaVirtual')->name('tienda.home');
 
 		/*--------------- CATEGORIAS --------------*/
 	Route::get('/cms/tienda/categorias', 'Cms\CategoryController@index')->name('tienda.category.home');
@@ -71,4 +71,17 @@ Route::middleware('landing')->group(function () {
 	Route::post('/cms/tienda/actualizar/categoria/{id}', 'Cms\CategoryController@atualizarCategoria');
 	Route::post('/cms/tienda/eliminar/categoria/{id}', 'Cms\CategoryController@eliminarCategoria');
 
+
+		/*--------------- PRODUCTOS --------------*/
+	Route::get('/cms/tienda/productos', 'Cms\ProductController@index')->name('tienda.product.home');
+
+	Route::get('/cms/tienda/crear/producto', 'Cms\ProductController@crearProducto')->name('tienda.product.create');
+
+	Route::get('/cms/tienda/editar/producto/{id}', 'Cms\ProductController@editarProducto')->name('tienda.product.show');
+
+	Route::post('/cms/tienda/guardar/producto', 'Cms\ProductController@guardarProducto')->name('tienda.product.store');
+
+	Route::post('/cms/tienda/actualizar/producto/{id}', 'Cms\ProductController@actualizarProducto')->name('tienda.product.update');
+
+	Route::post('/cms/tienda/eliminar/producto/{id}', 'Cms\ProductController@eliminarProducto');
 });
