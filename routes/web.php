@@ -58,4 +58,17 @@ Route::middleware('landing')->group(function () {
 	//ocultar/activar banners
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
+
+
+	/*--------------- VISTA TIENDA VIRTUAL --------------*/
+
+
+		/*--------------- CATEGORIAS --------------*/
+	Route::get('/cms/tienda/categorias', 'Cms\CategoryController@index')->name('tienda.category.home');
+
+		//metodos posts
+	Route::post('/cms/tienda/guardar/categoria', 'Cms\CategoryController@guardarCategoria')->name('tienda.category.store');
+	Route::post('/cms/tienda/actualizar/categoria/{id}', 'Cms\CategoryController@atualizarCategoria');
+	Route::post('/cms/tienda/eliminar/categoria/{id}', 'Cms\CategoryController@eliminarCategoria');
+
 });
