@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@lading')->name('home');
 
+Route::get('/productos', 'HomeController@products')->name('productos');
+
 Auth::routes();
 
 /*---------------Login --------------*/
