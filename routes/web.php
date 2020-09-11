@@ -17,6 +17,11 @@ Route::get('/', 'HomeController@lading')->name('home');
 
 Route::get('/productos', 'HomeController@products')->name('productos');
 
+
+Route::get('/cart', 'CartController@getCart');
+
+Route::post('/cart/add', 'CartController@addToCart');
+
 Auth::routes();
 
 /*---------------Login --------------*/

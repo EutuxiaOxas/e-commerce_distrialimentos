@@ -22,7 +22,12 @@
 					    <h5 class="card-title">{{$producto->title}}</h5>
 					    <p class="card-text">{{$producto->description}}</p>
 					    <p><small>{{$producto->price}} $</small></p>
-					    <a href="#" class="btn btn-primary">Ver producto</a>
+					    <div class="d-flex justify-content-between">
+					    	<a href="#" class="btn btn-primary mr-2">Ver producto</a>
+					    	@if(auth()->user())
+					    	<a href="#" id="{{$producto->id}}" class="btn btn-outline-success add_cart">Aregar al carrito</a>
+					    	@endif
+					    </div>
 					  </div>
 					</div>
 				@endforeach
@@ -34,6 +39,34 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', ()=> {
+		let addButton = document.querySelectorAll('.add_cart');
 
+		if(addButton)
+		{
+			addButton.forEach(button => {
+				button.addEventListener('click', e => {
+					e.preventDefault()
+					id = e.target.id
+					addToCart(id)
+				});
+			});
+		}
+	});
+
+
+	function addToCart(id){
+		axios.post(`/cart/add`, {
+			product_id: id,
+		})
+		.then(response => {
+			if(response.status = 200)
+			{
+				getCart(cart_body)
+			}
+		})
+	}
+</script>
 
 @endsection
