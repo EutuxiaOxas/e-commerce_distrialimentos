@@ -12,7 +12,8 @@ class IndexController extends Controller
 {
     public function index()
     {
-    	return view('cms.index');
+        $secName = '';
+    	return view('cms.index', 'secName');
     }
 
     public function adminUsers()
