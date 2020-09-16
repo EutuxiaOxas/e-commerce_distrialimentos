@@ -17,7 +17,8 @@ class LogoBannerController extends Controller
     {
     	$banners = Logo_Banner::where('tipo', 'banner')->get();
     	$logo = Logo_Banner::where('tipo', 'logo')->first();
-    	return view('cms.banner.index')->with(compact('banners', 'logo'));
+        $secName = 'web';
+    	return view('cms.banner.index')->with(compact('banners', 'logo', 'secName'));
     }
 
 
