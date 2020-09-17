@@ -95,7 +95,11 @@
 
 				`
 			});
-
+			errors_container.innerHTML += `
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			`
 			errors_container.appendChild(error_main)
 			errors_container.style.display = 'block';
 		} else {
