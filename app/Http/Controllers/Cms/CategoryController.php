@@ -12,7 +12,8 @@ class CategoryController extends Controller
     public function index()
     {
     	$categorias = Category::all();
-    	return view('cms.productos.category', compact('categorias'));
+        $secName = 'web';
+    	return view('cms.productos.category', compact('categorias', 'secName'));
     }
 
 

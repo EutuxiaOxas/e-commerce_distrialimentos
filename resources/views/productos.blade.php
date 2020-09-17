@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+	Productos
+@endsection
 
 @section('content')
 <div class="container-fluid">
@@ -22,7 +25,7 @@
 					    <h5 class="card-title">{{$producto->title}}</h5>
 					    <p class="card-text">{{$producto->description}}</p>
 					    <p><small>{{$producto->price}} $</small></p>
-					    <a href="#" class="btn btn-primary">Ver producto</a>
+					    <a href="{{route('producto.show', $producto->id)}}" class="btn btn-primary">Ver producto</a>
 					  </div>
 					</div>
 				@endforeach
