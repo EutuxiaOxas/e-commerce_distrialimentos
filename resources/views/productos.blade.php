@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title')
+	Productos
+@endsection
 
 @section('content')
 <div class="container-fluid">
@@ -22,12 +25,7 @@
 					    <h5 class="card-title">{{$producto->title}}</h5>
 					    <p class="card-text">{{$producto->description}}</p>
 					    <p><small>{{$producto->price}} $</small></p>
-					    <div class="d-flex justify-content-between">
-					    	<a href="#" class="btn btn-primary mr-2">Ver producto</a>
-					    	@if(auth()->user())
-					    	<a href="#" id="{{$producto->id}}" class="btn btn-outline-success add_cart">Aregar al carrito</a>
-					    	@endif
-					    </div>
+					    <a href="{{route('producto.show', $producto->id)}}" class="btn btn-primary">Ver producto</a>
 					  </div>
 					</div>
 				@endforeach

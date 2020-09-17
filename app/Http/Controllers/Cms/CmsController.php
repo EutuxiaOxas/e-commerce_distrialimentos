@@ -9,6 +9,7 @@ class CmsController extends Controller
 {
     public function tiendaVirtual()
     {
-    	return view('cms.productos.index');
+    	$secName = 'web';
+    	return view('cms.productos.index', compact('secName'));
     }
 }

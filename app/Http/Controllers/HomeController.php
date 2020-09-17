@@ -30,8 +30,17 @@ class HomeController extends Controller
 
     public function products()
     {
-        $productos = Product::paginate(15);
+        $productos = Product::paginate(25);
         $categorias = Category::all();
-        return view('productos', compact('productos', 'categorias'));
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        return view('productos', compact('productos', 'categorias', 'logo'));
+    }
+
+    public function showProduct($id)
+    {
+        $product = Product::find($id);
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+
+        return view('ver_producto', compact('product', 'logo'));
     }
 }
