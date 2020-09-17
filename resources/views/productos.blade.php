@@ -47,7 +47,7 @@
 				button.addEventListener('click', e => {
 					e.preventDefault()
 					id = e.target.id
-					addToCart(id)
+					//addToCart(id)
 				});
 			});
 		}

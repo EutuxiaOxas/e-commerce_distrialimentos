@@ -46,7 +46,6 @@
                         <li class="nav-item">
                             <a href="{{route('productos')}}" class="nav-link">Productos</a>
                         </li>
-                        @if(auth()->user())
                         <li class="nav-item dropdown" id="cart_main">
                             <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Carrito
@@ -55,7 +54,6 @@
                             <div class="dropdown-menu dropdown-menu-right" id="cart_body" aria-labelledby="carritoDropdown">
                             </div>
                         </li>
-                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -106,7 +104,7 @@
 
             if(cart_main)
             {
-               getCart()
+               //getCart()
             }else {
                 console.log('no existe');
             }
