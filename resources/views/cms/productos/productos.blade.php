@@ -68,6 +68,7 @@
                 <form action="" id="eliminar_form" method="POST">
                     @csrf
                 </form>
+                <p id="modal_message"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
@@ -92,19 +93,25 @@
     {
         eliminarButtons.forEach(button => {
             button.addEventListener('click', (e) => {
-                id = e.target.id
-                console.log(id)
-                modalEliminar(id)
+                let id = e.target.id,
+                    message = e.target.parentNode.parentNode.children[2].textContent;
+                
+                modalEliminar(id, message)
             });
         });
     }
 
 
-    function modalEliminar(id)
+    function modalEliminar(id, text)
     {
-        let formEliminar = document.getElementById('eliminar_form')
+        let formEliminar = document.getElementById('eliminar_form'),
+            message = document.getElementById('modal_message');
 
         formEliminar.action = `/cms/tienda/eliminar/producto/${id}`;
+        message.innerHTML = `
+            Producto: <strong>${text}</strong> </br>
+            ¿Seguro que desea eliminar este producto?
+        `
     }
 </script>
 
