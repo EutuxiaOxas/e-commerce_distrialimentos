@@ -18,10 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 
     @yield('captcha')
 </head>
 <body>
+    @if(isset(auth()->user()->id))
+        <input type="hidden" id="sesion" value="1">
+    @else 
+        <input type="hidden" id="sesion" value="0">
+    @endif
     <div id="app">
         @if(isset($navbar_null))
 
@@ -96,52 +102,6 @@
             @yield('content')
         </main>
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', () => {
-            let cart_main = document.getElementById('cart_main'),
-                cart_body = document.getElementById('cart_body');
-
-            if(cart_main)
-            {
-               //getCart()
-            }else {
-                console.log('no existe');
-            }
-
-        });
-
-        function getCart()
-        {
-            cart_body.innerHTML = ''
-            axios.get('/cart')
-             .then(response => {
-                 updateCart(response.data, cart_body);
-             })
-        }
-
-
-        function updateCart(details, body)
-        {
-            if(details.length > 0)
-            {
-                let contador = 0;
-
-                details.forEach(detail => {
-                    body.innerHTML += `
-                    <div class="text-center p-2">
-                        <h6 >${detail.title}</h6>
-                    </div>
-                `
-                });
-
-
-            }else {
-                body.innerHTML = `
-                    <p>No hay productos </p>
-                `
-            }
-        }
-    </script>
+    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 </html>

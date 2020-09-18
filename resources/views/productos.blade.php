@@ -17,6 +17,7 @@
 		</div>
 		<div class="col-9">
 			<h1 class="my-3">Productos</h1>
+			<div id="add_alert" style="display: none;" class="alert alert-success">Producto Agregado con éxito!</div>
 			<div class="d-flex">
 				@foreach($productos as $producto)
 					<div class="card mr-5" style="width: 18rem;">
@@ -24,8 +25,20 @@
 					  <div class="card-body">
 					    <h5 class="card-title">{{$producto->title}}</h5>
 					    <p class="card-text">{{$producto->description}}</p>
-					    <p><small>{{$producto->price}} $</small></p>
-					    <a href="{{route('producto.show', $producto->id)}}" class="btn btn-primary">Ver producto</a>
+					    <strong>Precio:</strong>
+					    <p>{{$producto->price}} <span>$</span></p>
+
+
+					    <div class="text-center mb-3">
+					    	<a href="{{route('producto.show', $producto->id)}}" class="btn btn-primary">Ver producto</a>
+					    </div>
+					    <div class="text-center">
+					    	@if(auth()->user())
+					    		<button id="{{$producto->id}}" class="btn btn-outline-success to_server">Agregar al carrito</button>
+					    	@else
+					    		<button id="{{$producto->id}}" class="btn btn-outline-success to_storage">Agregar al carrito</button>
+					    	@endif
+					    </div>
 					  </div>
 					</div>
 				@endforeach
@@ -37,34 +50,5 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', ()=> {
-		let addButton = document.querySelectorAll('.add_cart');
-
-		if(addButton)
-		{
-			addButton.forEach(button => {
-				button.addEventListener('click', e => {
-					e.preventDefault()
-					id = e.target.id
-					//addToCart(id)
-				});
-			});
-		}
-	});
-
-
-	function addToCart(id){
-		axios.post(`/cart/add`, {
-			product_id: id,
-		})
-		.then(response => {
-			if(response.status = 200)
-			{
-				getCart(cart_body)
-			}
-		})
-	}
-</script>
 
 @endsection
