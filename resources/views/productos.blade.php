@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+<style type="text/css">
+	.cart_on {
+		color: blue;
+	}
+</style>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class=" col-2">

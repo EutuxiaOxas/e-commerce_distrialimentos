@@ -55,7 +55,7 @@
                         </li>
                         <li class="nav-item dropdown" id="cart_main">
                             <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Carrito
+                                <i class="fas fa-shopping-cart"></i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" id="cart_body" aria-labelledby="carritoDropdown">

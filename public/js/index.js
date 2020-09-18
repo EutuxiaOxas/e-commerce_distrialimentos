@@ -1,4 +1,4 @@
-//Clase para UI
+//----------------- UI cart class --------------
 
 
 class CarritoUI {
@@ -21,6 +21,8 @@ class CarritoUI {
   		this.cart_body.innerHTML+= template;
   	})
 
+  	this.carrito.children[0].children[0].classList.add('cart_on')
+
   }
 
 
@@ -28,14 +30,14 @@ class CarritoUI {
 
 }
 
-//Clase para llamado al servidor
+//----------------- API CALLS class --------------
 
 
 
 
 
 
-// LocalSorage
+//----------------- LocalSorage class --------------
 
 
 class Storage{
