@@ -22,6 +22,7 @@ Route::get('/producto/{id}', 'HomeController@showProduct')->name('producto.show'
 Route::get('/cart', 'CartController@getCart');
 
 Route::post('/cart/add', 'CartController@addToCart');
+Route::post('/cart/storage', 'CartController@addStorageToCart');
 
 Auth::routes();
 

@@ -41,4 +41,26 @@ class CartController extends Controller
     	return response()->json('', 200);
 
     }
+
+
+    public function addStorageToCart(Request $request)
+    {
+
+
+        $user = auth()->user();
+        
+        $cart_id = $user->cartVerify()->id;
+
+        $productos = $request->products;
+
+        foreach ($productos as $producto) {
+            CartDetail::create([
+                'product_id' => $producto['id'],
+                'cart_id' => $cart_id,
+                'cantidad'=> 1, 
+            ]);
+        }
+
+        return response()->json('', 200);
+    }
 }
