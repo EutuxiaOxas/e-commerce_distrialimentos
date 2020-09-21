@@ -108,8 +108,19 @@
                             <li class="acordeon_item">
                               <a href="{{route('banners.home')}}" class="nav-link menu_hover">Home</a>
                             </li>
+                          </ul>
+                        </li>
+                        <li class="nav-item items">
+                          <a class="nav-link menu_hover secciones tienda"  href="#">
+                            <span data-feather="file"></span>
+                            Tienda
+                          </a>
+                          <ul class="acordeon_container">
                             <li class="acordeon_item">
-                              <a href="{{route('tienda.home')}}" class="nav-link">Tienda</a>
+                              <a href="{{route('tienda.category.home')}}" class="nav-link menu_hover">Categorias</a>
+                            </li>
+                            <li class="acordeon_item">
+                              <a href="{{route('tienda.product.home')}}" class="nav-link menu_hover">Productos</a>
                             </li>
                           </ul>
                         </li>

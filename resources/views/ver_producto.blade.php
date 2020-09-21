@@ -9,6 +9,7 @@
 	    <h5 class="card-title">{{$product->title}}</h5>
 	    <p class="card-text">{{$product->description}}.</p>
 	    <p class="card-text"><small class="text-muted">{{$product->price}}$</small></p>
+	    <p>Categoria: {{$product->category->title}}</p>
 	  </div>
 	</div>
 </div>

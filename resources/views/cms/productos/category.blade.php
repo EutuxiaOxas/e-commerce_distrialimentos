@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<h2>Categorias de productos</h2>
+<h2>Categoria de productos</h2>
 <hr>
 <section class="container-fluid">
     @if (session('message'))
@@ -32,7 +32,6 @@
     <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
         @csrf
         <div class="row">
-            <h4 class="col-12">Crear Categoría</h4>
             
             <div class="col-md-4 form-group px-1 mt-3">
                 <h5>Nombre</h5>
@@ -67,8 +66,8 @@
             <td>{{$categoria->title}}</td>
             <td>{{$categoria->description}}</td>
             <td>
-            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-outline-success editar_category">Editar</button>
-            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-outline-danger eliminar_category">Eliminar</button>	
+            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-success editar_category">Editar</button>
+            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_category">Eliminar</button>	
             </td>
           </tr>
           @endforeach
@@ -123,9 +122,10 @@
                 <form action="" id="eliminar_form" method="POST">
                     @csrf
                 </form>
+                <p id="message_eliminar"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Categoria</button>
             </div>
         </div>
@@ -257,7 +257,8 @@
     eliminarButtons.forEach(button => {
       button.addEventListener('click', (e) => {
             id = e.target.id;
-            modalEliminar(id)
+            let message = e.target.parentNode.parentNode.children[1].textContent
+            modalEliminar(id, message)
       });
     });
   }
@@ -273,10 +274,15 @@
     input_description.value = description
   }
 
-  function modalEliminar(id){
-    let form = document.getElementById('eliminar_form');
+  function modalEliminar(id, message){
+    let form = document.getElementById('eliminar_form'),
+        message_eliminar = document.getElementById('message_eliminar');
 
     form.action = `/cms/tienda/eliminar/categoria/${id}`;
+    message_eliminar.innerHTML = `
+      Categoria: <strong>${message}</strong> <br>
+      ¿Seguro que desea eliminar esta categoria?
+    `
   }
 
 </script>

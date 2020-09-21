@@ -40,11 +40,11 @@
                 <img src="{{asset('storage/'. $producto->image)}}" width="30">
             </td>
             <td>{{$producto->title}}</td>
-            <td>{{$producto->description}}</td>
+            <td>{{substr($producto->description,0, 60)}} ...</td>
             <td>{{$producto->category->title}}</td>
             <td>
-            	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-outline-success">Editar</a>
-            	<button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-outline-danger eliminar_product">Eliminar</button>	
+            	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-success">Editar</a>
+            	<button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
             </td>
           </tr>
           @endforeach
@@ -71,7 +71,7 @@
                 <p id="modal_message"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar producto</button>
             </div>
         </div>

@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
     	$categorias = Category::all();
-        $secName = 'web';
+        $secName = 'tienda';
     	return view('cms.productos.category', compact('categorias', 'secName'));
     }
 

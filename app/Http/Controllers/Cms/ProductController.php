@@ -16,14 +16,14 @@ class ProductController extends Controller
     public function index()
     {
     	$productos = Product::all();
-        $secName = 'web';
+        $secName = 'tienda';
     	return view('cms.productos.productos', compact('productos', 'secName'));
     }
 
     public function crearProducto()
     {
     	$categorias = Category::all();
-        $secName = 'web';
+        $secName = 'tienda';
     	return view('cms.productos.crear_producto', compact('categorias', 'secName'));
     }
 
@@ -49,7 +49,7 @@ class ProductController extends Controller
     {
     	$product = Product::find($id);
     	$categorias = Category::all();
-        $secName = 'web';
+        $secName = 'tienda';
     	return view('cms.productos.editar_producto', compact('product', 'categorias', 'secName'));
     }
 
