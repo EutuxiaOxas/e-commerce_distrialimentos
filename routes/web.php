@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@lading')->name('home');
 
 Route::get('/productos', 'HomeController@products')->name('productos');
-Route::get('/producto/{id}', 'HomeController@showProduct')->name('producto.show');
+Route::get('/producto/{slug}', 'HomeController@showProduct')->name('producto.show');
+Route::get('/pc/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
 
 Auth::routes();
 
@@ -68,8 +69,9 @@ Route::middleware('landing')->group(function () {
 
 		/*--------------- CATEGORIAS --------------*/
 	Route::get('/cms/tienda/categorias', 'Cms\CategoryController@index')->name('tienda.category.home');
-
+	Route::get('/cms/tienda/get/category/{id}', 'Cms\CategoryController@getCategory');
 		//metodos posts
+	Route::post('/cms/categoria/verify/{slug}', 'Cms\CategoryController@verifySlug');
 	Route::post('/cms/tienda/guardar/categoria', 'Cms\CategoryController@guardarCategoria')->name('tienda.category.store');
 	Route::post('/cms/tienda/actualizar/categoria/{id}', 'Cms\CategoryController@atualizarCategoria');
 	Route::post('/cms/tienda/eliminar/categoria/{id}', 'Cms\CategoryController@eliminarCategoria');
@@ -81,6 +83,8 @@ Route::middleware('landing')->group(function () {
 	Route::get('/cms/tienda/crear/producto', 'Cms\ProductController@crearProducto')->name('tienda.product.create');
 
 	Route::get('/cms/tienda/editar/producto/{id}', 'Cms\ProductController@editarProducto')->name('tienda.product.show');
+
+	Route::post('/cms/productos/verify/{slug}', 'Cms\ProductController@verifySlug');
 
 	Route::post('/cms/tienda/guardar/producto', 'Cms\ProductController@guardarProducto')->name('tienda.product.store');
 

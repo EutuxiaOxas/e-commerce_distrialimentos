@@ -37,6 +37,11 @@
                 <h5>Nombre</h5>
                 <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
             </div>
+            <div class="form-group px-1 col-md-12">
+              <h5>URL</h5>
+              <input class="form-control" id="slug" type="text" name="slug">
+              <small id="slug_alert"></small>
+            </div>
             <div class="col-md-12 form-group px-1">
                 <h5>Descripción</h5>
                 <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
@@ -93,6 +98,11 @@
                     <div class="form-group">
                         <h5>Nombre</h5>
                         <input id="editar_title" class="form-control" type="text" name="title">
+                    </div>
+                    <div class="form-group">
+                      <h5>URL</h5>
+                      <input class="form-control" id="slug_edit" type="text" name="slug">
+                      <small id="slug_alert_edit"></small>
                     </div>
                     <div class="form-group">
                         <h5>Descripcion</h5>
@@ -179,6 +189,7 @@
 </script>
 
 
+
 <script type="text/javascript">
   let editarButtons = document.querySelectorAll('.editar_category');
   let eliminarButtons = document.querySelectorAll('.eliminar_category');
@@ -247,7 +258,13 @@
             description = e.target.parentNode.parentNode.children[2].textContent,
             id = e.target.id;
 
-            modalEditar(id,title,description);
+            axios.get(`/cms/tienda/get/category/${id}`)
+              .then(res => {
+                let slug = res.data
+                modalEditar(id,title,description, slug);
+              })
+
+            
       });
     });
   }
@@ -264,14 +281,16 @@
   }
 
 
-  function modalEditar(id, title, description){
+  function modalEditar(id, title, description, slug){
     let input_title = document.getElementById('editar_title'),
         input_description = document.getElementById('editar_description'),
+        edit_slug = document.getElementById('slug_edit'),
         form = document.getElementById('editar_form');
 
     form.action = `/cms/tienda/actualizar/categoria/${id}`
     input_title.value = title
     input_description.value = description
+    edit_slug.value = slug
   }
 
   function modalEliminar(id, message){
@@ -285,6 +304,109 @@
     `
   }
 
+</script>
+
+
+<script type="text/javascript">
+  let slug = document.getElementById('slug'),
+      name_category = document.getElementById('create_category_title');
+
+
+  let title_edit = document.getElementById('editar_title'),
+      slug_edit = document.getElementById('slug_edit');
+
+
+
+  title_edit.addEventListener('keyup', (e) =>{
+    let value = string_to_slug(e.target.value)
+    slug_edit.value = value
+
+    if(title_edit.value != ''){
+      verifySlug(value, 'editado');
+    
+    }else {
+      let alert_edit = document.getElementById('slug_alert_edit');
+    }
+  })
+
+
+
+  name_category.addEventListener('keyup', (e) => {  
+
+    let value = string_to_slug(e.target.value)
+    
+    slug.value = value
+    
+    if(name_category.value != ''){
+      verifySlug(value, 'normal');
+    
+    }else {
+      let alert = document.getElementById('slug_alert').textContent = '';
+    }
+  });
+
+  function verifySlug(value, option){
+    axios.post(`/cms/categoria/verify/${value}`)
+      .then(res =>{
+        if(res.data == 'aceptado'){
+          slugAlert('aceptado', option)
+        }else if(res.data == 'ocupado'){
+          slugAlert('ocupado', option)
+        }
+      })
+  }
+
+
+  function slugAlert(value, option){
+    let alert = document.getElementById('slug_alert');
+    let alert_edit = document.getElementById('slug_alert_edit');
+
+    if(option == 'normal'){
+
+      if(value == 'aceptado'){
+        alert.textContent = 'URL permitida para su uso'
+        alert.style.color = 'green';
+      }
+
+      if(value == 'ocupado')
+      {
+        alert.textContent = 'Esta URL ya esta siendo utilizada, escoja un titulo diferente'
+        alert.style.color = 'red';
+      }
+
+
+    }else {
+      if(value == 'aceptado'){
+        alert_edit.textContent = 'URL permitida para su uso'
+        alert_edit.style.color = 'green';
+      }
+
+      if(value == 'ocupado')
+      {
+        alert_edit.textContent = 'Esta URL ya esta siendo utilizada, escoja un titulo diferente'
+        alert_edit.style.color = 'red';
+      }
+    }
+  }
+
+  function string_to_slug (str) {
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
+    
+      // remove accents, swap ñ for n, etc
+      var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+      var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+      for (var i=0, l=from.length ; i<l ; i++) {
+          str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+          .replace(/\s+/g, '-') // collapse whitespace and replace by -
+          .replace(/-+/g, '-'); // collapse dashes
+
+      return str;
+  }
 </script>
 
 @endsection

@@ -42,6 +42,12 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-nav mr-auto col-4">
+                        <form action="/productos" class="d-flex">
+                            <input class="form-control mr-2" type="search" placeholder="Buscar producto" name="search">
+                            <input type="submit" class="btn btn-sm btn-primary" value="buscar">
+                        </form>
+                    </div>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">

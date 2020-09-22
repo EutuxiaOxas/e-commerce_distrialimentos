@@ -33,6 +33,11 @@
 			<input class="form-control" id="price" type="number" value="{{$product->price}}" name="price">
 		</div>
 		<div class="form-group col-12">
+			<h5>URL</h5>
+			<input class="form-control" id="slug" type="text" value="{{$product->slug}}" name="slug">
+			<small></small>
+		</div>
+		<div class="form-group col-12">
 			<h5>Descripción</h5>
 			<textarea class="form-control" id="description" name="description">{{$product->description}}</textarea>
 		</div>
@@ -101,6 +106,33 @@
 		}
 
 	});
+</script>
+
+<script type="text/javascript">
+	let slug = document.getElementById('slug')
+	title.addEventListener('keyup', (e) => {	
+		let value = string_to_slug(e.target.value)
+		slug.value = value
+	});
+
+	function string_to_slug (str) {
+	    str = str.replace(/^\s+|\s+$/g, ''); // trim
+	    str = str.toLowerCase();
+	  
+	    // remove accents, swap ñ for n, etc
+	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+	    var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+	    for (var i=0, l=from.length ; i<l ; i++) {
+	        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+	    }
+
+	    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+	        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+	        .replace(/-+/g, '-'); // collapse dashes
+
+	    return str;
+	}
 </script>
 
 @endsection
