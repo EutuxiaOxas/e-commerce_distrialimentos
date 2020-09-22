@@ -12,10 +12,28 @@ class CategoryController extends Controller
     public function index()
     {
     	$categorias = Category::all();
-        $secName = 'web';
+        $secName = 'tienda';
     	return view('cms.productos.category', compact('categorias', 'secName'));
     }
 
+
+    public function verifySlug($slug)
+    {
+        $slug = Category::where('slug', $slug)->first();
+        if(isset($slug))
+        {
+            return 'ocupado';
+        }else
+        {
+            return 'aceptado';
+        }
+    }
+
+    public function getCategory($id)
+    {
+        $category = Category::find($id);
+        return $category->slug;
+    }
 
     public function guardarCategoria(Request $request)
     {

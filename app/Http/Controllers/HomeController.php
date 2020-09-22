@@ -28,19 +28,43 @@ class HomeController extends Controller
     }
 
 
-    public function products()
+    public function products(Request $request)
     {
-        $productos = Product::paginate(25);
+
+        if(isset($request->search))
+        {
+            $productos = Product::where('title', 'LIKE', '%'.$request->search.'%')->paginate(25);
+        }else {
+            $productos = Product::paginate(25);
+        }
+        
         $categorias = Category::all();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
         return view('productos', compact('productos', 'categorias', 'logo'));
     }
 
-    public function showProduct($id)
+    public function showProduct($slug)
     {
-        $product = Product::find($id);
+        $product = Product::where('slug', $slug)->first();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
 
         return view('ver_producto', compact('product', 'logo'));
+    }
+
+    public function showProductsByCategory($slug)
+    {
+        $product_categorie = Category::where('slug', $slug)->first();
+        $categorias = Category::all();
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
+        $productos = $product_categorie->products()->paginate(25);
+
+        return view('productos', compact('productos', 'categorias', 'logo', 'product_categorie'));
+    }
+
+    public function verCarrito()
+    {
+        $cart = auth()->user()->cartVerify();
+        $cart_details = $cart->cartDetails()->with('product')->get();
+        return view('carrito', compact('cart_details'));
     }
 }

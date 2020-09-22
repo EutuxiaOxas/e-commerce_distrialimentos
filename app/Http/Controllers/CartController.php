@@ -15,7 +15,11 @@ class CartController extends Controller
     	$cart = [];
 
     	foreach ($cart_details as $detail) {
-    		$cart[] = $detail->product()->first();
+    		$cart[] = [
+                'producto' => $detail->product()->first(),
+                'imagen' => $detail->product()->first()->image,
+                'cantidad' => $detail->cantidad,
+            ];
     	}
 
     	return $cart;
@@ -30,13 +34,24 @@ class CartController extends Controller
 
     	$cart_id = $user->cartVerify()->id;
 
-    	$detail = new CartDetail;
-    	
-    	$detail->create([
-    		'product_id' => $request->product_id,
-    		'cart_id' => $cart_id,
-    		'cantidad' => 1,
-    	]);
+        $detalle_activo = CartDetail::where('cart_id', $cart_id)
+                                     ->where('product_id', $request->product_id)
+                                     ->first();
+
+    	if(isset($detalle_activo))
+        {
+            $contador = $detalle_activo->cantidad;
+            $detalle_activo->cantidad = $contador + 1;
+            $detalle_activo->save();
+        }else{
+            $detail = new CartDetail;
+
+            $detail->create([
+                'product_id' => $request->product_id,
+                'cart_id' => $cart_id,
+                'cantidad' => 1,
+            ]);
+        }
 
     	return response()->json('', 200);
 

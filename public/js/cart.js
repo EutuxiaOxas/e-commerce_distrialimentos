@@ -14,14 +14,26 @@ class CarritoUI {
   	if(productos.length > 0)
   	{
   		this.cart_body.innerHTML = '';
-
   		productos.forEach(producto => {
   			let template = `
-  				<div>${producto.title}</div>
+  				<div class="d-flex pl-2 mb-2">
+  					<img src='/storage/${producto.imagen}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
+  					<p>	
+  						${producto.producto.title} 
+
+  						<span>(${producto.cantidad})</span>
+  					</p>
+
+  				</div>
   			`;
   			this.cart_body.innerHTML+= template;
+  			
   		})
-
+  		this.cart_body.innerHTML+= `
+  				<div class="text-center">
+  					<a href="/cart/ver" class="btn btn-sm btn-primary">Ver Carrito</a>
+  				</div>
+  			`
   		this.carrito.children[0].children[0].classList.add('cart_on')
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';

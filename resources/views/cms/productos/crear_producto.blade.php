@@ -33,6 +33,11 @@
 			<input class="form-control" id="price" type="number" name="price">
 		</div>
 		<div class="form-group col-12">
+			<h5>URL</h5>
+			<input class="form-control" id="slug" type="text" name="slug">
+			<small id="slug_alert"></small>
+		</div>
+		<div class="form-group col-12">
 			<h5>Descripción</h5>
 			<textarea class="form-control" id="description" name="description"></textarea>
 		</div>
@@ -107,6 +112,66 @@
 		}
 
 	});
+</script>
+
+
+<script type="text/javascript">
+	let slug = document.getElementById('slug')
+	title.addEventListener('keyup', (e) => {	
+		let value = string_to_slug(e.target.value)
+		slug.value = value
+		if(title.value != ''){
+			verifySlug(value);
+		}else {
+			let alert = document.getElementById('slug_alert').textContent = '';
+		}
+	});
+
+	function verifySlug(value){
+		axios.post(`/cms/productos/verify/${value}`)
+			.then(res =>{
+				if(res.data == 'aceptado'){
+					slugAlert('aceptado')
+				}else if(res.data == 'ocupado'){
+					slugAlert('ocupado')
+				}
+			})
+	}
+
+
+	function slugAlert(value){
+		let alert = document.getElementById('slug_alert');
+
+		if(value == 'aceptado'){
+			alert.textContent = 'URL permitida para su uso'
+			alert.style.color = 'green';
+		}
+
+		if(value == 'ocupado')
+		{
+			alert.textContent = 'Esta URL ya esta siendo utilizada, escoja un titulo diferente'
+			alert.style.color = 'red';
+		}
+	}
+
+	function string_to_slug (str) {
+	    str = str.replace(/^\s+|\s+$/g, ''); // trim
+	    str = str.toLowerCase();
+	  
+	    // remove accents, swap ñ for n, etc
+	    var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
+	    var to   = "aaaaaeeeeiiiioooouuuunc------";
+
+	    for (var i=0, l=from.length ; i<l ; i++) {
+	        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+	    }
+
+	    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+	        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+	        .replace(/-+/g, '-'); // collapse dashes
+
+	    return str;
+	}
 </script>
 
 @endsection
