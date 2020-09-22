@@ -26,7 +26,7 @@
 	<div class="row mt-5">
 		<div class="form-group col-6">
 			<h5>Titulo</h5>
-			<input class="form-control" id="title" type="text" maxlength="191" name="title">
+			<input class="form-control" id="title" type="text" maxlength="191" autocomplete="off" name="title">
 		</div>
 		<div class="form-group col-6">
 			<h5>Precio</h5>
@@ -51,8 +51,29 @@
 			</select>
 		</div>
 		<div class="form-group col-6">
-			<h5>Imagen</h5>
+			<h5>Imagen principal</h5>
 			<input id="imagen" type="file" name="image">
+		</div>
+		<div class="form-group col-12">
+			<h5>Imagenes secundarias</h5>
+			<div>
+				<input type="file" name="second_image[]">
+			</div>
+			<div>
+				<input type="file" name="second_image[]">
+			</div>
+			<div>
+				<input type="file" name="second_image[]">
+			</div>
+			<div>
+				<input type="file" name="second_image[]">
+			</div>
+			<div>
+				<input type="file" name="second_image[]">
+			</div>
+			<div>
+				<input type="file" name="second_image[]">
+			</div>
 		</div>
 		<div class="form-group col-12">
 			<input type="submit" id="submitForm" class="btn btn-success" value="Crear producto">

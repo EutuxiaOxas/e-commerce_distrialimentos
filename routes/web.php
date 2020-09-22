@@ -97,4 +97,7 @@ Route::middleware('landing')->group(function () {
 	Route::post('/cms/tienda/actualizar/producto/{id}', 'Cms\ProductController@actualizarProducto')->name('tienda.product.update');
 
 	Route::post('/cms/tienda/eliminar/producto/{id}', 'Cms\ProductController@eliminarProducto');
+
+		/*--------------- PRODUCTOS IMAGENES --------------*/
+	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
 });

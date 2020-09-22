@@ -45,7 +45,7 @@ class HomeController extends Controller
 
     public function showProduct($slug)
     {
-        $product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->with('images')->first();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
 
         return view('ver_producto', compact('product', 'logo'));

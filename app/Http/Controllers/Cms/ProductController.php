@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\ProductImage;
 
 use Storage;
 use Str;
@@ -41,12 +42,13 @@ class ProductController extends Controller
 
     public function guardarProducto(Request $request)
     {
+
     	$path = $request->file('image')->store('public');
     	$file = Str::replaceFirst('public/', '',$path);
 
 		$producto = new Product;
 
-		$producto->create([
+		$guardado = $producto->create([
 	        'title' => $request->title,
 	        'description' =>$request->description,
 	        'price' => $request->price,
@@ -54,7 +56,23 @@ class ProductController extends Controller
             'slug' => $request->slug,
 	        'image' => $file,
 	    ]);
+        
 
+
+        if($request->file('second_image'))
+        {
+            foreach ($request->file('second_image') as $file) {
+                $path_s = $file->store('public');
+                $file_s = Str::replaceFirst('public/', '',$path_s);
+
+                ProductImage::create([
+                    'product_id' => $guardado->id,
+                    'image' => $file_s,
+                ]);
+            }
+        }
+
+        
 	    return back()->with('message', 'Producto creado con éxito');
     }
 
