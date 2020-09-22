@@ -23,7 +23,7 @@
 			@endif
 			<div class="d-flex" style="flex-wrap: wrap;">
 				@foreach($productos as $producto)
-					<div class="card mb-4" style="width: 15rem;">
+					<div class="card mb-4 mr-1" style="width: 15rem;">
 					  <img src="{{asset('storage/'. $producto->image)}}" style="height: 10rem; object-fit: cover;" class="card-img-top" alt="...">
 					  <div class="card-body">
 					    <h5 class="card-title">{{$producto->title}}</h5>

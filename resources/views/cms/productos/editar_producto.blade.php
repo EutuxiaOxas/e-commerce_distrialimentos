@@ -26,7 +26,7 @@
 	<div class="row mt-5">
 		<div class="form-group col-6">
 			<h5>Titulo</h5>
-			<input class="form-control" id="title" type="text" value="{{$product->title}}" maxlength="191" name="title">
+			<input class="form-control" id="title" type="text" value="{{$product->title}}" autocomplete="off" maxlength="191" name="title">
 		</div>
 		<div class="form-group col-6">
 			<h5>Precio</h5>
@@ -51,14 +51,64 @@
 			</select>
 		</div>
 		<div class="form-group col-6">
-			<h5>Imagen</h5>
+			<h5>Imagen principal</h5>
 			<input id="imagen" type="file" name="image">
 		</div>
+
+		<div class="form-group col-12">
+			<h5>Imagenes secundarias</h5>
+			@foreach($product->images as $image)
+			<div class="mb-2">
+				<img src="{{asset('storage/'.$image->image)}}" style="width: 40px;">
+				<button type="button" id="{{$image->id}}" class="btn btn-sm btn-outline-success button_modal" data-toggle="modal" data-target="#modalActualizar">
+					Actualizar imagen
+				</button>
+			</div>
+			@endforeach
+		</div>
+
 		<div class="form-group col-12">
 			<input type="submit" id="submitForm" class="btn btn-success" value="Actualizar producto">
 		</div>
+
 	</div>
 </form>
+
+<div class="modal fade" id="modalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar imagen secundaria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="row">
+                	<div class="col-6 text-center">
+                		<h5>Antes</h5>
+                		<img id="old_image" src="" style="width: 70px">
+                	</div>
+                	<div class="col-6 text-center">
+                		<h5>Nueva</h5>
+                		<img id="new_image" class="mb-2" src="" style="width: 70px">
+                		<div>
+                			<form action="" id="actualizar_modal_form" method="POST" enctype="multipart/form-data">
+                			    @csrf
+                			    <input type="file" id="load_image" name="new_image">
+                			</form>
+                		</div>
+                	</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" id="actualizar_modal" class="btn btn-success">Actualizar imagen</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -69,7 +119,15 @@
 		categoria = document.getElementById('categoria'),
 		form = document.getElementById('formulario_producto'),
 		errors_container = document.getElementById('errors_container'),
+		modal_submit = document.getElementById('actualizar_modal'),
 		submit = document.getElementById('submitForm');
+
+
+	modal_submit.addEventListener('click', e => {
+		let form = document.getElementById('actualizar_modal_form');
+
+		form.submit();
+	});
 
 	submit.addEventListener('click', (e) => {
 		e.preventDefault();
@@ -132,6 +190,46 @@
 	        .replace(/-+/g, '-'); // collapse dashes
 
 	    return str;
+	}
+</script>
+
+<script type="text/javascript">
+	let modalButtons = document.querySelectorAll('.button_modal');
+	let nueva = document.getElementById('load_image'),
+			new_container = document.getElementById('new_image');
+
+
+
+
+	if(modalButtons){
+		modalButtons.forEach(button => {
+			button.addEventListener('click', e => {
+				let id = e.target.id,
+					old_image = e.target.parentNode.firstElementChild.src
+
+				modalImage(id, old_image)
+			})
+		})
+	}
+
+	nueva.onchange = function(e) {
+
+	    let reader = new FileReader();
+	    reader.readAsDataURL(e.target.files[0]);
+
+	    reader.onload = function() {
+	        new_container.src = reader.result;
+	    }
+
+	}
+
+	function modalImage(id, old_image){
+		let old = document.getElementById('old_image'),
+			form = document.getElementById('actualizar_modal_form');
+
+		form.action = `/cms/update/product/image/${id}`
+
+		old.src = old_image;
 	}
 </script>
 
