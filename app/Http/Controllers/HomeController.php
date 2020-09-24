@@ -67,4 +67,10 @@ class HomeController extends Controller
         $cart_details = $cart->cartDetails()->with('product')->get();
         return view('carrito', compact('cart_details'));
     }
+
+    public function dashboard()
+    {
+        $user = auth()->user();
+        return view('home', compact('user'));
+    }
 }
