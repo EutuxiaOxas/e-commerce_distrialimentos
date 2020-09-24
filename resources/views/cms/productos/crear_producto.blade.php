@@ -20,22 +20,19 @@
     </div>
 @endif
 <div id="errors_container" style="display: none;" class="alert alert-danger">
-</div>	
+</div>
+<input type="hidden" id="url_access" name="">	
 <form action="{{route('tienda.product.store')}}" id="formulario_producto" method="POST" enctype="multipart/form-data">
 	@csrf
 	<div class="row mt-5">
 		<div class="form-group col-6">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" type="text" maxlength="191" autocomplete="off" name="title">
+			<small id="slug_alert"></small>
 		</div>
 		<div class="form-group col-6">
 			<h5>Precio</h5>
 			<input class="form-control" id="price" type="number" name="price">
-		</div>
-		<div class="form-group col-12">
-			<h5>URL</h5>
-			<input class="form-control" id="slug" type="text" name="slug">
-			<small id="slug_alert"></small>
 		</div>
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
@@ -79,6 +76,9 @@
 			<input type="submit" id="submitForm" class="btn btn-success" value="Crear producto">
 		</div>
 	</div>
+	<div class="col-12" style="visibility:  hidden;">
+		<input class="form-control" id="slug" type="text" name="slug">
+	</div>
 </form>
 
 
@@ -90,6 +90,7 @@
 		categoria = document.getElementById('categoria'),
 		form = document.getElementById('formulario_producto'),
 		errors_container = document.getElementById('errors_container'),
+		verify_access = document.getElementById('url_access'),
 		submit = document.getElementById('submitForm');
 
 	submit.addEventListener('click', (e) => {
@@ -98,6 +99,7 @@
 		let errors = []
 		errors_container.innerHTML = '';
 		errors_container.style.display = 'none'
+
 
 		if(title.value === ''){
 			errors.push('Debes agregar un titulo')
@@ -109,6 +111,8 @@
 			errors.push('Debes escoger una categoria')
 		}if(imagen.files.length <= 0){
 			errors.push('Debes agregar una imagen')
+		}if(verify_access.value == 0){
+			errors.push('Debes utilizar un titulo permitido')
 		}
 
 
@@ -164,14 +168,16 @@
 		let alert = document.getElementById('slug_alert');
 
 		if(value == 'aceptado'){
-			alert.textContent = 'URL permitida para su uso'
+			alert.textContent = 'Titulo permitido para su uso'
 			alert.style.color = 'green';
+			verify_access.value = 1
 		}
 
 		if(value == 'ocupado')
 		{
-			alert.textContent = 'Esta URL ya esta siendo utilizada, escoja un titulo diferente'
+			alert.textContent = 'Este titulo ya esta siendo utilizado, escoja un titulo diferente'
 			alert.style.color = 'red';
+			verify_access.value = 0
 		}
 	}
 

@@ -40,7 +40,7 @@
                 <img src="{{asset('storage/'. $producto->image)}}" width="30">
             </td>
             <td>{{$producto->title}}</td>
-            <td>{{substr($producto->description,0, 60)}} ...</td>
+            <td>{{substr($producto->description,0, 60)}}</td>
             <td>{{$producto->category->title}}</td>
             <td>
             	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-success">Editar</a>

@@ -21,9 +21,16 @@ class ProductController extends Controller
     	return view('cms.productos.productos', compact('productos', 'secName'));
     }
 
-    public function verifySlug($slug)
+    public function verifySlug(Request $request, $slug)
     {
+
         $slug = Product::where('slug', $slug)->first();
+        $producto = Product::find($request->product_id);
+
+        if(isset($slug) && $slug->id == $producto->id){
+            return 'aceptado';
+        }
+
         if(isset($slug))
         {
             return 'ocupado';
@@ -109,8 +116,6 @@ class ProductController extends Controller
                     'slug' => $request->slug,
     	            'image' => $file,
     	        ]);
-    	        
-    	        return back()->with('message', 'Producto actualizado con éxito');
     	    } else {
     	        return back()->with('message', 'No se pudo actualizar el producto');
     	    }
@@ -122,9 +127,22 @@ class ProductController extends Controller
                 'slug' => $request->slug,
     	        'description' =>$request->description,
     	    ]);
-
-    	    return back()->with('message', 'Producto actualizado con éxito');
     	}
+
+        if($request->file('second_image'))
+        {
+            foreach ($request->file('second_image') as $file) {
+                $path_s = $file->store('public');
+                $file_s = Str::replaceFirst('public/', '',$path_s);
+
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image' => $file_s,
+                ]);
+            }
+        }
+
+        return back()->with('message', 'Producto actualizado con éxito');
     }
 
     public function eliminarProducto($id)

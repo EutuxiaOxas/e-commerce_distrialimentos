@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@lading')->name('home');
 
 Route::get('/productos', 'HomeController@products')->name('productos');
 Route::get('/producto/{slug}', 'HomeController@showProduct')->name('producto.show');
-Route::get('/pc/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
+Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
 
 Auth::routes();
 
