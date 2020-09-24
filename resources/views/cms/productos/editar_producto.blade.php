@@ -20,22 +20,20 @@
     </div>
 @endif
 <div id="errors_container" style="display: none;" class="alert alert-danger">
-</div>	
+</div>
+<input type="hidden" id="url_access" name="">
+<input type="hidden" value="{{$product->id}}" id="product_id">
 <form action="{{route('tienda.product.update', $product->id)}}" id="formulario_producto" method="POST" enctype="multipart/form-data">
 	@csrf
 	<div class="row mt-5">
 		<div class="form-group col-6">
 			<h5>Titulo</h5>
 			<input class="form-control" id="title" type="text" value="{{$product->title}}" autocomplete="off" maxlength="191" name="title">
+			<small id="slug_alert"></small>
 		</div>
 		<div class="form-group col-6">
 			<h5>Precio</h5>
 			<input class="form-control" id="price" type="number" value="{{$product->price}}" name="price">
-		</div>
-		<div class="form-group col-12">
-			<h5>URL</h5>
-			<input class="form-control" id="slug" type="text" value="{{$product->slug}}" name="slug">
-			<small></small>
 		</div>
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
@@ -57,6 +55,7 @@
 
 		<div class="form-group col-12">
 			<h5>Imagenes secundarias</h5>
+			@php $contador = 0 @endphp
 			@foreach($product->images as $image)
 			<div class="mb-2">
 				<img src="{{asset('storage/'.$image->image)}}" style="width: 40px;">
@@ -64,13 +63,27 @@
 					Actualizar imagen
 				</button>
 			</div>
+			@php $contador += 1 @endphp
 			@endforeach
+
+			@if($contador < 6)
+				@while($contador < 6)
+					<div class="mb-2">
+						<img src="" style="width: 40px; height: 40px; object-fit: cover;" alt="imagen">
+						<input type="file" class="secondary_img" name="second_image[]">
+					</div>
+				@php $contador = $contador + 1 @endphp	
+				@endwhile	
+			@endif
+
 		</div>
 
 		<div class="form-group col-12">
 			<input type="submit" id="submitForm" class="btn btn-success" value="Actualizar producto">
 		</div>
-
+		<div class="form-group col-12" style="visibility: hidden;">
+			<input class="form-control" id="slug" type="text" value="{{$product->slug}}" name="slug">
+		</div>
 	</div>
 </form>
 
@@ -120,6 +133,7 @@
 		form = document.getElementById('formulario_producto'),
 		errors_container = document.getElementById('errors_container'),
 		modal_submit = document.getElementById('actualizar_modal'),
+		verify_access = document.getElementById('url_access'),
 		submit = document.getElementById('submitForm');
 
 
@@ -144,6 +158,8 @@
 			errors.push('Debes agregar una descripción')
 		}if(categoria.selectedIndex === 0){
 			errors.push('Debes escoger una categoria')
+		}if(verify_access.value == 0){
+			errors.push('Debes escoger un titulo diferente')
 		}
 
 
@@ -156,6 +172,11 @@
 
 				`
 			});
+			errors_container.innerHTML += `
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+			`
 
 			errors_container.appendChild(error_main)
 			errors_container.style.display = 'block';
@@ -171,7 +192,44 @@
 	title.addEventListener('keyup', (e) => {	
 		let value = string_to_slug(e.target.value)
 		slug.value = value
+		if(title.value != ''){
+			verifySlug(value);
+		}else {
+			let alert = document.getElementById('slug_alert').textContent = '';
+		}
 	});
+
+	function verifySlug(valor){
+		let producto_id = document.getElementById('product_id');
+			axios.post(`/cms/productos/verify/${valor}`, {
+				product_id: producto_id.value,
+			})
+			.then(res =>{
+				if(res.data == 'aceptado'){
+					slugAlert('aceptado')
+				}else if(res.data == 'ocupado'){
+					slugAlert('ocupado')
+				}
+			})
+		}
+
+
+	function slugAlert(value){
+		let alert = document.getElementById('slug_alert');
+
+		if(value == 'aceptado'){
+			alert.textContent = 'Titulo permitido para su uso'
+			alert.style.color = 'green';
+			verify_access.value = 1
+		}
+
+		if(value == 'ocupado')
+		{
+			alert.textContent = 'Este titulo ya esta siendo utilizado, escoja un titulo diferente'
+			alert.style.color = 'red';
+			verify_access.value = 0
+		}
+	}
 
 	function string_to_slug (str) {
 	    str = str.replace(/^\s+|\s+$/g, ''); // trim
@@ -230,6 +288,25 @@
 		form.action = `/cms/update/product/image/${id}`
 
 		old.src = old_image;
+	}
+</script>
+
+<script type="text/javascript">
+	let seconsImg = document.querySelectorAll('.secondary_img');
+
+	if(seconsImg){
+		seconsImg.forEach(second => {
+			second.onchange = function(e) {
+				let image = e.target.parentNode.children[0];
+			    let reader = new FileReader();
+			    reader.readAsDataURL(e.target.files[0]);
+
+			    reader.onload = function() {
+			        image.src = reader.result;
+			    }
+
+			}
+		})
 	}
 </script>
 

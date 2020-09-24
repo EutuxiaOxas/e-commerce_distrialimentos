@@ -31,11 +31,12 @@
 					  <img src="{{asset('storage/'. $producto->image)}}" style="height: 10rem; object-fit: cover;" class="card-img-top" alt="...">
 					  <div class="card-body">
 					    <h5 class="card-title">{{$producto->title}}</h5>
-					    <p class="card-text">{{substr($producto->description, 0, 100)}} ...</p>
-					    <strong>Precio:</strong>
-					    <p>{{$producto->price}} <span>$</span></p>
-
-
+					    @if(strlen($producto->description) > 0 && strlen($producto->description) < 70)
+					    	<p class="card-text">{{substr($producto->description, 0, 70)}} </p>
+					    @elseif(strlen($producto->description) > 70)
+					    	<p class="card-text">{{substr($producto->description, 0, 70)}} ...</p>
+					    @endif
+					    <p><small>{{$producto->price}} $</small></p>
 					    <div class="text-center mb-3">
 					    	<a href="{{route('producto.show', $producto->slug)}}" class="btn btn-primary">Ver producto</a>
 					    </div>

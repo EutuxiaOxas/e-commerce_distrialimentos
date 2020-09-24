@@ -33,7 +33,7 @@
         @csrf
         <div class="row">
             
-            <div class="col-md-4 form-group px-1 mt-3">
+            <div class="col-md-12 form-group px-1 mt-3">
                 <h5>Nombre</h5>
                 <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
             </div>

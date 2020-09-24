@@ -25,6 +25,20 @@ class CartController extends Controller
     	return $cart;
     }
 
+    public function updateCount(Request $request)
+    {
+        $cart = auth()->user()->cartVerify()->id;
+        $detail = CartDetail::find($request->detalle_id);
+
+        if($detail->cart_id == $cart){
+            $detail->cantidad = $request->cantidad;
+            $detail->save();
+
+            return response()->json('Cantidad del producto actualizada con éxito', 200);
+        }
+
+    }
+
 
     public function addToCart(Request $request)
     {
@@ -77,5 +91,31 @@ class CartController extends Controller
         }
 
         return response()->json('', 200);
+    }
+
+    public function eliminarDetalle($id)
+    {
+        $cart = auth()->user()->cartVerify()->id;
+        $detail = CartDetail::find($id);
+
+        if($detail->cart_id == $cart){
+            $detail->delete();
+
+            return back()->with('error', 'Producto eliminado del carrito con éxito');
+        }
+
+
+        return back()->with('error', 'No se pudo eliminar producto del carrito');
+        
+    }
+
+    public function vaciarCarrito(){
+       $cart_details = auth()->user()->cartVerify()->cartDetails;
+
+       foreach ($cart_details as $detail) {
+           $detail->delete();
+       }
+
+       return back()->with('error', 'Carrito vaciado con éxito');
     }
 }
