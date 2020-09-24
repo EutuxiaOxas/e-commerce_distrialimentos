@@ -13,19 +13,32 @@ class CarritoUI {
   	
   	if(productos.length > 0)
   	{
+  		console.log(productos)
   		this.cart_body.innerHTML = '';
   		productos.forEach(producto => {
-  			let template = `
-  				<div class="d-flex pl-2 mb-2">
-  					<img src='/storage/${producto.imagen}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
-  					<p>	
-  						${producto.producto.title} 
+  			let template = ''
+  			if(producto.producto){
+  				template = `
+  					<div class="d-flex pl-2 mb-2">
+  						<img src='/storage/${producto.imagen}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
+  						<p>	
+  							${producto.producto.title} 
 
-  						<span>(${producto.cantidad})</span>
-  					</p>
+  							<span>(${producto.cantidad})</span>
+  						</p>
 
-  				</div>
-  			`;
+  					</div>
+  				`;
+  			}else{
+  				template = `
+  					<div class="d-flex pl-2 mb-2">
+  						<p>	
+  							${producto.title} 
+  						</p>
+
+  					</div>
+  				`;
+  			}
   			this.cart_body.innerHTML+= template;
   			
   		})
