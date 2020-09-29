@@ -110,6 +110,8 @@
                             </li>
                           </ul>
                         </li>
+                        @endif
+                        @if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador')
                         <li class="nav-item items">
                           <a class="nav-link menu_hover secciones tienda"  href="#">
                             <span data-feather="file"></span>
