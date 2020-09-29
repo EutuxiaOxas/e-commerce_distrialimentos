@@ -72,7 +72,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -86,6 +86,7 @@
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
                             </div>
                         </div>
 
@@ -102,4 +103,33 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    let passChange = document.querySelectorAll('.pass_watcher');
+
+    passChange.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            let inputPass = e.target.parentNode.parentNode.children[0];
+            let accion = e.target;
+
+
+            if(accion.classList.contains('inactive'))
+            {
+                inputPass.type = "text"
+                accion.classList.remove('inactive')
+                accion.classList.add('active')
+
+                accion.textContent = 'Ocultar contraseña';
+            } else if(accion.classList.contains('active')) {
+                inputPass.type = "password"
+                accion.classList.remove('active')
+                accion.classList.add('inactive')
+
+                accion.textContent = 'Ver contraseña';
+            }
+        });
+    });
+</script>
+
 @endsection
