@@ -28,7 +28,8 @@
     <div id="errors_container" style="display: none;" class="alert alert-danger" role="alert">
     </div>
 
-
+    <input type="hidden" id="url_access" name=""> 
+    <input type="hidden" id="url_access_modal" value="nada" name=""> 
     <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
         @csrf
         <div class="row">
@@ -36,11 +37,7 @@
             <div class="col-md-12 form-group px-1 mt-3">
                 <h5>Nombre</h5>
                 <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
-            </div>
-            <div class="form-group px-1 col-md-12">
-              <h5>URL</h5>
-              <input class="form-control" id="slug" type="text" name="slug">
-              <small id="slug_alert"></small>
+                <small id="slug_alert"></small>
             </div>
             <div class="col-md-12 form-group px-1">
                 <h5>Descripción</h5>
@@ -50,6 +47,10 @@
         </div>
         <div class="row form-group px-1">
             <input type="submit" id="crear_category_submit" class="btn btn-sm btn-primary px-5" value="Crear">
+        </div>
+        <div class="form-group px-1 col-md-12" style="visibility: hidden;">
+          <h5>URL</h5>
+          <input class="form-control" id="slug" type="text" name="slug">
         </div>
     </form>
 
@@ -97,16 +98,17 @@
                     @csrf
                     <div class="form-group">
                         <h5>Nombre</h5>
-                        <input id="editar_title" class="form-control" type="text" name="title">
+                        <input id="editar_title" class="form-control" type="text" name="title"  autocomplete="off">
+                        <small id="slug_alert_edit"></small>
                     </div>
-                    <div class="form-group">
-                      <h5>URL</h5>
-                      <input class="form-control" id="slug_edit" type="text" name="slug">
-                      <small id="slug_alert_edit"></small>
-                    </div>
+                    
                     <div class="form-group">
                         <h5>Descripcion</h5>
                         <textarea class="form-control" id="editar_description" name="description"></textarea>
+                    </div>
+                    <div class="form-group" style="visibility: hidden;">
+                      <h5>URL</h5>
+                      <input class="form-control" id="slug_edit" type="text" name="slug">
                     </div>
                 </form>
             </div>
@@ -153,6 +155,8 @@
           description = document.getElementById('create_category_description'),
           form = document.getElementById('form_create_category');
 
+    let verify_access = document.getElementById('url_access');
+
     let errors = [];
     errors_container.innerHTML = '';
     errors_container.style.display = 'none';
@@ -162,6 +166,8 @@
       errors.push('Debe agregar un titulo')
     } if(description.value === ''){
       errors.push('Debe agregar una descripción');
+    }if(verify_access.value == 0){
+      errors.push('Debe agregar un titulo valido');
     }
 
 
@@ -174,6 +180,12 @@
           <li>${error}</li>
         `
       });
+
+      errors_container.innerHTML += `
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      `
 
       errors_container.appendChild(error_main)
       errors_container.style.display = 'block';
@@ -210,11 +222,13 @@
         description = document.getElementById('editar_description'),
         errors_modal = document.getElementById('errors_modal');
 
+    let verify_access_modal = document.getElementById('url_access_modal');
+
 
         let errors = []
 
-        errors_modal.innerHTML = ''
-        errors_modal.style.display = 'none'
+        errors_modal.innerHTML = '';
+        errors_modal.style.display = 'none';
 
 
         if(title.value === '')
@@ -222,6 +236,8 @@
           errors.push('Debes colocar un titulo')
         } if (description.value === ''){
           errors.push('Debes colocar una description')
+        }if(verify_access_modal.value == 0){
+          errors.push('Debes colocar un titulo valido');
         }
 
 
@@ -235,6 +251,7 @@
               <li>${error}</li>
             `
           });
+
 
           errors_modal.appendChild(error_main)
           errors_modal.style.display = 'block';
@@ -360,31 +377,37 @@
   function slugAlert(value, option){
     let alert = document.getElementById('slug_alert');
     let alert_edit = document.getElementById('slug_alert_edit');
+    let verify_access = document.getElementById('url_access');
+    let verify_access_modal = document.getElementById('url_access_modal');
 
     if(option == 'normal'){
 
       if(value == 'aceptado'){
-        alert.textContent = 'URL permitida para su uso'
+        alert.textContent = 'Titulo permitido para su uso'
         alert.style.color = 'green';
+        verify_access.value = 1;
       }
 
       if(value == 'ocupado')
       {
-        alert.textContent = 'Esta URL ya esta siendo utilizada, escoja un titulo diferente'
+        alert.textContent = 'Este titulo ya esta siendo utilizado, escoja un titulo diferente'
         alert.style.color = 'red';
+        verify_access.value = 0;
       }
 
 
     }else {
       if(value == 'aceptado'){
-        alert_edit.textContent = 'URL permitida para su uso'
+        alert_edit.textContent = 'Titulo permitido para su uso'
         alert_edit.style.color = 'green';
+        verify_access_modal.value = 1;
       }
 
       if(value == 'ocupado')
       {
-        alert_edit.textContent = 'Esta URL ya esta siendo utilizada, escoja un titulo diferente'
+        alert_edit.textContent = 'Esta titulo ya esta siendo utilizado, escoja un titulo diferente'
         alert_edit.style.color = 'red';
+        verify_access_modal.value = 0;
       }
     }
   }
