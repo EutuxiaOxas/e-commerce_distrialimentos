@@ -64,8 +64,9 @@ class HomeController extends Controller
     public function verCarrito()
     {
         $cart = auth()->user()->cartVerify();
+        $logo = Logo_Banner::where('tipo', 'logo')->first();
         $cart_details = $cart->cartDetails()->with('product')->get();
-        return view('carrito', compact('cart_details'));
+        return view('carrito', compact('cart_details', 'logo'));
     }
 
     public function dashboard()
