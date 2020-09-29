@@ -28,7 +28,7 @@
 							<img src="{{asset('storage/'. $detail->product->image)}}" style="width: 250px; height: 150px">
 						</div>
 						<div class="col-4 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
-							<h5>{{$detail->product->title}}</h5>
+							<h5><a href="{{route('producto.show', $detail->product->slug)}}">{{$detail->product->title}}</a></h5>
 							<p>Costo: <strong>{{$detail->product->price}} $</strong></p>
 							<form action="{{route('cart.detail.destroy', $detail->id)}}" method="POST">
 								@csrf
@@ -38,27 +38,28 @@
 						<div class="col-3 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
 							<h5>Cantidad</h5>
 							<select id="{{$detail->id}}" class="form-control selector_carrito">
-								@if($detail->cantidad == 1 && $detail->cantidad < 5)
-									<option selected>{{$detail->cantidad}}</option>
-									<option>5</option>
-									<option>7</option>
-								@elseif($detail->cantidad == 5)
+								@if($detail->cantidad <= 10)
+									<option <?php if($detail->cantidad == 1) echo "selected";?> >1</option>
+									<option <?php if($detail->cantidad == 2) echo "selected";?> >2</option>
+									<option <?php if($detail->cantidad == 3) echo "selected";?> >3</option>
+									<option <?php if($detail->cantidad == 4) echo "selected";?> >4</option>
+									<option <?php if($detail->cantidad == 5) echo "selected";?> >5</option>
+									<option <?php if($detail->cantidad == 6) echo "selected";?> >6</option>
+									<option <?php if($detail->cantidad == 7) echo "selected";?> >7</option>
+									<option <?php if($detail->cantidad == 8) echo "selected";?> >8</option>
+									<option <?php if($detail->cantidad == 9) echo "selected";?> >9</option>
+									<option <?php if($detail->cantidad == 10) echo "selected";?> >10</option>
+								@elseif($detail->cantidad > 10)
 									<option>1</option>
-									<option selected>{{$detail->cantidad}}</option>
-									<option>7</option>
-								@elseif($detail->cantidad > 5 &&  $detail->cantidad < 7)
-									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
 									<option>5</option>
-									<option selected>{{$detail->cantidad}}</option>
+									<option>6</option>
 									<option>7</option>
-								@elseif($detail->cantidad == 7)
-									<option>1</option>
-									<option>5</option>
-									<option selected>{{$detail->cantidad}}</option>
-								@elseif($detail->cantidad > 7)
-									<option>1</option>
-									<option>5</option>
-									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10</option>
 									<option selected>{{$detail->cantidad}}</option>
 								@endif
 							</select>
