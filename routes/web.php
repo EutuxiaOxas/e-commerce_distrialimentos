@@ -72,7 +72,10 @@ Route::middleware('landing')->group(function () {
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
 
+});
 
+Route::middleware('tienda')->group(function () {
+	
 	/*--------------- VISTA TIENDA VIRTUAL --------------*/
 	Route::get('/cms/tienda', 'Cms\CmsController@tiendaVirtual')->name('tienda.home');
 

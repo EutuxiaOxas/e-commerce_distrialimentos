@@ -111,6 +111,7 @@
                           </ul>
                         </li>
                         @endif
+                        
                         @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
                             <li class="nav-item items">
                               <a class="nav-link menu_hover secciones tienda"  href="#">
