@@ -240,10 +240,11 @@ function events(value, elements)
 					name = padre.children[0].textContent,
 					price = padre.children[2].textContent,
 					image = e.target.parentNode.parentNode.parentNode.children[0].src,
+					slug = padre.children[4].value,
 					alert = document.getElementById('add_alert');
 
-
-				let producto = {title: name, id: id, image: image, price: price, cantidad: 1}
+				console.log(padre)
+				let producto = {title: name, id: id, image: image, price: price, cantidad: 1, link: slug}
 
 				
 				let verify = verifyProduct(producto);
