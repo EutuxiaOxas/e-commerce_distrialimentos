@@ -28,7 +28,7 @@
 	    	@if(auth()->user())
 	    		<button id="{{$product->id}}" class="btn btn-outline-success to_server">Agregar al carrito</button>
 	    	@else
-	    		<button id="{{$product->id}}" class="btn btn-outline-success to_storage">Agregar al carrito</button>
+	    		<button id="{{$product->id}}" class="btn btn-outline-success ver_storage">Agregar al carrito</button>
 	    	@endif
 	    </div>
 	  </div>

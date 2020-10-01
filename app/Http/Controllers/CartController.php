@@ -86,7 +86,7 @@ class CartController extends Controller
             CartDetail::create([
                 'product_id' => $producto['id'],
                 'cart_id' => $cart_id,
-                'cantidad'=> 1, 
+                'cantidad'=> $producto['cantidad'], 
             ]);
         }
 
