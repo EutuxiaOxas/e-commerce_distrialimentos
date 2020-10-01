@@ -21,7 +21,7 @@
 @endif
 <div id="errors_container" style="display: none;" class="alert alert-danger">
 </div>
-<input type="hidden" id="url_access" name="">
+<input type="hidden" id="url_access" value="nada" name="">
 <input type="hidden" value="{{$product->id}}" id="product_id">
 <form action="{{route('tienda.product.update', $product->id)}}" id="formulario_producto" method="POST" enctype="multipart/form-data">
 	@csrf
