@@ -15,6 +15,7 @@
 	    		<p class="card-text">{{$product->description}}.</p>
 	    		<p class="card-text"><small class="text-muted">{{$product->price}}$</small></p>
 	    		<p>Categoria: <strong>{{$product->category->title}}</strong></p>
+	    		<input type="hidden" value="{{$product->slug}}">
 	    	</div>
 	    	<div class="col-6">
 	    		<h5>Imagenes</h5>
