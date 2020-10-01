@@ -13,7 +13,6 @@ class CarritoUI {
   	
   	if(productos.length > 0)
   	{
-  		console.log(productos)
   		this.cart_body.innerHTML = '';
   		productos.forEach(producto => {
   			let template = ''
@@ -32,8 +31,11 @@ class CarritoUI {
   			}else{
   				template = `
   					<div class="d-flex pl-2 mb-2">
+  						<img src='${producto.image}' class="mr-2" style="width: 25px; height: 25px ;object-fit: cover;">
   						<p>	
   							${producto.title} 
+
+  							<span>(${producto.cantidad})</span>
   						</p>
 
   					</div>
@@ -50,6 +52,7 @@ class CarritoUI {
   		this.carrito.children[0].children[0].classList.add('cart_on')
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
+  		this.carrito.children[0].children[0].classList.remove('cart_on')
   	}
 
   }
@@ -154,13 +157,18 @@ let apiCart = new CartApi();
 if(session.value == 0)
 {
 	productos = storage.getStorage();
-	let buttonsStorage = document.querySelectorAll('.to_storage');
+	let buttonsStorage = document.querySelectorAll('.to_storage'),
+		buttonsVerStorage = document.querySelectorAll('.ver_storage');
 	
 	carrito.agregarCarrito(productos);
 	
 	if(buttonsStorage)
 	{
 		events(session.value, buttonsStorage);
+	}
+
+	if(buttonsVerStorage){
+		events(2, buttonsVerStorage);
 	}
 }
 	
@@ -201,10 +209,17 @@ function events(value, elements)
 			element.addEventListener('click', (e) => {
 				let name = e.target.parentNode.parentNode.children[0].textContent,
 					id = e.target.id,
+					price = e.target.parentNode.parentNode.children[2].textContent,
+					image = e.target.parentNode.parentNode.parentNode.children[0].src, 
 					alert = document.getElementById('add_alert');
 
-				let producto = {title: name, id: id}
-				productos.push(producto);
+				let producto = {title: name, id: id, image: image, price: price, cantidad: 1}
+
+				
+				let verify = verifyProduct(producto);
+				if(verify){
+					productos.push(producto);
+				}
 
 
 				storage.addStorage(productos)
@@ -216,6 +231,37 @@ function events(value, elements)
 		});
 	}
 
+	//--------------------Vista producto LocalStorage -----------------
+	if(value == 2){
+		elements.forEach(element => {
+			element.addEventListener('click', (e) => {
+				let id = e.target.id,
+					padre = e.target.parentNode.parentNode.children[0].children[0],
+					name = padre.children[0].textContent,
+					price = padre.children[2].textContent,
+					image = e.target.parentNode.parentNode.parentNode.children[0].src,
+					alert = document.getElementById('add_alert');
+
+
+				let producto = {title: name, id: id, image: image, price: price, cantidad: 1}
+
+				
+				let verify = verifyProduct(producto);
+				if(verify){
+					productos.push(producto);
+				}
+
+
+				storage.addStorage(productos)
+					.then(res => {
+						carrito.agregarCarrito(productos);
+						carrito.addingAlert(alert);
+					})
+			});
+		});
+	}
+
+
 	//-------------------- Servidor -----------------
 
 	if(value == 1){
@@ -224,8 +270,6 @@ function events(value, elements)
 				let id = e.target.id,
 					alert = document.getElementById('add_alert');
 
-
-				//productos.push(producto);
 				
 				apiCart.addToCart(id)
 					.then(res => {
@@ -237,6 +281,31 @@ function events(value, elements)
 			});
 		});
 	}
+}
+
+	//-------------- VERIFICAR PRODUCTO --------
+function verifyProduct(producto){
+	let variable;
+	let encontrado = '';
+	if(productos.length > 0){
+
+		productos.forEach(element => {
+			if(element.id == producto.id){
+				element.cantidad = element.cantidad + 1;
+				variable = false;
+				encontrado = 'encontrado';
+			}
+		});
+
+		if(encontrado.length == 0){
+			variable = true;
+		}
+
+	}else{
+		variable = true;
+	}
+
+	return variable;
 }
 
 //-------------------- Agregar Storage Al servidor -----------------
