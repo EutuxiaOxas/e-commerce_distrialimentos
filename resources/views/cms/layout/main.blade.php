@@ -128,6 +128,17 @@
                               </ul>
                             </li>
                         @endif
+                            <li class="nav-item items">
+                              <a class="nav-link menu_hover secciones ordenes"  href="#">
+                                <span data-feather="file"></span>
+                                Ventas
+                              </a>
+                              <ul class="acordeon_container">
+                                <li class="acordeon_item">
+                                  <a href="{{route('order.home')}}" class="nav-link menu_hover">Ordenes</a>
+                                </li>
+                              </ul>
+                            </li>
                     </ul>
                 </div>
             </nav>

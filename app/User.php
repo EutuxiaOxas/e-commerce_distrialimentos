@@ -45,6 +45,12 @@ class User extends Authenticatable
     }
 
 
+    public function orders()
+    {
+        return $this->hasMany('App\Order', 'user_id');
+    }
+
+
     //verificar que el carrito exista
     public function cartVerify()
     {

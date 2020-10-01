@@ -77,6 +77,7 @@ class HomeController extends Controller
     public function dashboard()
     {
         $user = auth()->user();
-        return view('home', compact('user'));
+        $ordenes = $user->orders;
+        return view('home', compact('user', 'ordenes'));
     }
 }

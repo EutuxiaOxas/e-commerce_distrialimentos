@@ -77,7 +77,7 @@
 				@endif
 			</div>
 			<div class="col-3 offset-1 d-flex justify-content-center" style="align-items: center;">
-				<a href="#" class="btn btn-primary">Contactar</a>
+				<a href="{{route('order.store')}}" class="btn btn-primary">Contactar</a>
 			</div>
 		@else
 			<div class="col-7" id="storage_container" style="border-right: 1px solid #333">

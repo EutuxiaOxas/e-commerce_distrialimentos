@@ -110,4 +110,14 @@ Route::middleware('tienda')->group(function () {
 
 		/*--------------- PRODUCTOS IMAGENES --------------*/
 	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
+
+
+
+	/*--------------- VISTA ORDENES --------------*/
+
+	Route::get('/cms/ventas', 'Cms\OrderController@index')->name('order.home');
+
 });
+
+
+Route::get('/make/order', 'Cms\OrderController@nuevaOrden')->name('order.store');
