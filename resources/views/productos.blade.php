@@ -33,8 +33,10 @@
 					    	<p class="card-text">{{substr($producto->description, 0, 70)}} ...</p>
 					    @endif
 					    <p><small>{{$producto->price}} $</small></p>
+					    <input type="text" value="{{$producto->slug}}" style="visibility: hidden;">
 					    <a href="{{route('producto.show', $producto->slug)}}" class="btn btn-primary">Ver producto</a>
 					  </div>
+
 					</div>
 				@endforeach
 			</div>
