@@ -182,7 +182,7 @@
 									<img src="${producto.image}" style="width: 250px; height: 150px">
 								</div>
 								<div class="col-4 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
-									<h5><a href="#">${producto.title}</a></h5>
+									<h5><a href="/producto/${producto.link}">${producto.title}</a></h5>
 									<p>Costo: <strong>${producto.price}</strong></p>
 									<button id="${producto.id}" class="btn btn-sm btn-outline-primary carrito_eliminar_storage">Eliminar producto</button>
 								</div>
