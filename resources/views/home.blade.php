@@ -36,12 +36,14 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Ordenes realizadas</div>
-                <div class="card-body d-flex justify-content-around align-items-center">
+                <div class="card-body ">
                      @foreach($ordenes as $orden)
-                        <div>
-                            <strong>Orden: #{{$orden->id}} | Estatus: {{$orden->status}} | Total: {{$orden->total_amount}}$</strong>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <strong>Orden: #{{$orden->id}} | Estatus: {{$orden->status}} | Total: {{$orden->total_amount}}$</strong>
+                            </div>
+                            <button class="btn btn-sm btn-primary">Detalles</button>
                         </div>
-                        <button class="btn btn-sm btn-primary">Detalles</button>
                      @endforeach
                 </div>
             </div>
