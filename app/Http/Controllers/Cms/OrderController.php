@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-    	$orders = Order::all();
+    	$orders = Order::orderBy('id', 'DESC')->paginate(10);
     	$secName = 'ordenes';
 
     	return view('cms.ventas.index', compact('orders', 'secName'));
@@ -45,5 +45,34 @@ class OrderController extends Controller
     	}
 
     	return redirect('/home')->with('message', 'Su orden se ha creado correctamente y se encuentra en proceso!');
+    }
+
+    public function getOrderDetail(Request $request, $id)
+    {
+
+    	if($request->wantsJson()){
+
+    		$orden = Order::find($id);
+    		$detalles = $orden->orderProduct;
+
+    		$productos = [];
+
+    		foreach ($detalles as $detalle) {
+
+    			$producto = [
+    				'img' => $detalle->product->image,
+    				'title' => $detalle->product->title,
+    				'cantidad' => $detalle->quantity,
+    				'price' => $detalle->price,
+    			];
+
+    			$productos[] = $producto;
+    		}
+
+    		return $productos;
+    	}
+
+    	return redirect('/');
+    	
     }
 }

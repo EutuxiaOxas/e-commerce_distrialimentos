@@ -119,5 +119,9 @@ Route::middleware('tienda')->group(function () {
 
 });
 
+//-------------- ORDENES -----------
+Route::get('/make/order', 'Cms\OrderController@nuevaOrden')
+	->middleware('auth')
+	->name('order.store');
 
-Route::get('/make/order', 'Cms\OrderController@nuevaOrden')->name('order.store');
+Route::get('/order/Detail/{id}', 'Cms\OrderController@getOrderDetail');
