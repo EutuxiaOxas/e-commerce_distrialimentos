@@ -80,6 +80,9 @@ if(isset($_GET['message'])){
                                         {{ __('¿Olvidaste tu contraseña?') }}
                                     </a>
                                 @endif
+                                <hr>
+                                <h5>¿No tienes cuenta? Registrate aquí</h5>
+                                <a href="/register" class="btn btn-outline-secondary">Registrarse</a>
                             </div>
                         </div>
                     </form>

@@ -95,6 +95,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registrarse') }}
                                 </button>
+
+                                <hr>
+                                <h5>¿Ya tienes una cuenta? Inicia sesión aquí</h4>
+                                <a href="/login" class="btn btn-outline-secondary">Iniciar sesión</a>
                             </div>
                         </div>
                     </form>
