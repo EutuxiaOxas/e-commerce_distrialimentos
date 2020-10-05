@@ -23,6 +23,8 @@
           <tr>
           	<th>#</th>
           	<th>Usuario</th>
+            <th>Correo</th>
+            <th>Telefono</th>
             <th>Total</th>
           	<th>Estatus</th>
             <th>Fecha</th>
@@ -34,6 +36,8 @@
           <tr>
             <td>{{$orden->id}}</td>
             <td>{{$orden->user->name}}</td>
+            <td>{{$orden->user->email}}</td>
+            <td>{{$orden->user->phone}}</td>
             <td>{{$orden->total_amount}} $</td>
             <td>{{$orden->status}}</td>
             <td>{{$orden->created_at}}</td>

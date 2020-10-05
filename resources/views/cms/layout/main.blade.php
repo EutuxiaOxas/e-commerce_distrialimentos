@@ -139,6 +139,13 @@
                                 </li>
                               </ul>
                             </li>
+
+                            <li class="nav-item items">
+                              <a class="nav-link menu_hover secciones compradores"  href="{{route('compradores.home')}}">
+                                <span data-feather="file"></span>
+                                Compradores
+                              </a>
+                            </li>
                     </ul>
                 </div>
             </nav>

@@ -1,11 +1,29 @@
 @extends('layouts.app')
 
+@php
+
+if(isset($_GET['message'])){
+    $mensaje = $_GET['message'];
+    $msg = explode("-", $mensaje);
+    $msg = ucfirst(implode(" ", $msg));
+}
+
+
+@endphp
+
+
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">
+                    @if(isset($mensaje))
+                        {{$msg}}
+                    @else
+                        Iniciar Sesión
+                    @endif
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

@@ -117,6 +117,10 @@ Route::middleware('tienda')->group(function () {
 
 	Route::get('/cms/ventas', 'Cms\OrderController@index')->name('order.home');
 
+	/*--------------- VISTA COMPRADORES --------------*/
+
+	Route::get('/cms/compradores', 'Cms\IndexController@compradores')->name('compradores.home');
+
 });
 
 //-------------- ORDENES -----------
