@@ -5,7 +5,12 @@
 @endsection
 
 @section('content')
-
+<style type="text/css">
+	.outspacing {
+		padding: 0;
+		margin: 0;
+	}
+</style>
 
 <div class="container">
 	<div class="row mt-5">
@@ -76,17 +81,20 @@
 					<h2>No hay productos en el carrito</h2>
 				@endif
 			</div>
-			<div class="col-3 offset-1 d-flex justify-content-center" style="align-items: center;">
 
+			<div class="col-4 offset-1 d-flex" style="flex-direction: column;">
+				<div id="total_container" class="mb-3"></div>
 				<a href="{{route('order.store')}}" class="btn btn-primary">Comprar</a>
-
 			</div>
 		@else
 			<div class="col-7" id="storage_container" style="border-right: 1px solid #333">
 				
 			</div>
-			<div class="col-3 offset-1 d-flex justify-content-center" style="align-items: center;">
-				<a href="/login?message=debes-iniciar-sesion-para-poder-comprar" class="btn btn-primary">Comprar</a>
+
+			<div class="col-4 offset-1 d-flex" style="flex-direction: column;">
+				<div id="total_container" class="mb-3"></div>
+				<a href="/login?cart=true" class="btn btn-primary">Iniciar Sesión para comprar</a>
+
 			</div>
 		@endif
 	</div>
@@ -95,6 +103,7 @@
 
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', () =>{
+		const total_container = document.getElementById('total_container');
 		let cantidadSelect = document.querySelectorAll('.selector_carrito');
 		loadStorage()
 		if(cantidadSelect){
@@ -143,6 +152,7 @@
 
 	function loadStorage(){
 		const container = document.getElementById('storage_container');
+			  
 		if(container){
 
 			container.innerHTML = '';
@@ -203,6 +213,7 @@
 						<a href="#" id="carrito_vaciar_storage" class="btn btn-danger btn-block">Vaciar carrito</a>
 					</div>
 				`
+				loadTotalProducts(productos, 0)
 				eventosStorage();
 			}else {
 				container.innerHTML = '<h2>No hay productos disponibles</h2>';
@@ -247,6 +258,7 @@
 							carrito.agregarCarrito(productos);
 							loadStorage()
 							alertCount('Producto eliminado con éxito', 'danger');
+							loadTotalProducts(productos, 0)
 						})
 				});
 			})
@@ -275,6 +287,7 @@
 			.then(res => {
 				carrito.agregarCarrito(productos);
 				alertCount('Cantidad del producto actualizada con éxito!', 'success');
+				loadTotalProducts(productos, 0)
 			})
 	}
 
@@ -296,6 +309,7 @@
 				carrito.agregarCarrito(productos);
 				loadStorage()
 				alertCount('Carrito vaciado con éxito!', 'danger');
+				loadTotalProducts(productos, 0)
 			})
 	}
 </script>
