@@ -44,7 +44,7 @@ class OrderController extends Controller
     		]);
     	}
 
-    	return redirect('/home')->with('message', 'Su orden se ha creado correctamente y se encuentra en proceso!');
+    	
     }
 
     public function getOrderDetail(Request $request, $id)
