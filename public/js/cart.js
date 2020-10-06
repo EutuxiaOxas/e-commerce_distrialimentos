@@ -67,6 +67,86 @@ class CarritoUI {
   }
 
 
+  totalCart(productos, container, value){
+  	console.log(productos);
+  	let total_amount = 0;
+  	container.innerHTML = '';
+
+  	if(productos.length > 0){
+  		
+  		if(value == 1){
+  			console.log('con sesion');
+  			productos.forEach(producto => {
+  				let precio = producto.producto.price,
+  					precio_total = precio * producto.cantidad;
+
+  				total_amount = total_amount + precio_total 
+  				
+
+  				container.innerHTML += `
+  					<div class="d-flex mb-3">
+  						<div class=" mr-2">
+  							<img src="/storage/${producto.imagen}" style="width: 60px; height: 60px; object-fit: cover;">
+  						</div>
+  						<div class="d-flex" style="justify-content: space-between; flex:1;">
+  							<div>
+  								<h5 class="outspacing">${producto.producto.title}</h5>
+  								<p class="outspacing"><strong>Cantidad: ${producto.cantidad}</strong></p>
+  								<p class="outspacing"><strong>Precio: ${precio}</strong></p>
+  							</div>
+
+  							<div>
+  								<h5 class="outspacing">Total: <small>${precio_total} $</small></h5>
+  							</div>
+  						</div>
+  						
+  					</div>
+  				`
+  			})
+  		}
+
+  		if(value == 0){
+  			console.log('sin sesion')
+
+  			productos.forEach(producto => {
+  				let precio = producto.price;
+
+  				let cadena = precio.split(" ");
+
+  				precio = cadena[0] * producto.cantidad;
+
+  				total_amount = total_amount + precio 
+  				
+
+  				container.innerHTML += `
+  					<div class="d-flex mb-3">
+  						<div class=" mr-2">
+  							<img src="${producto.image}" style="width: 60px; height: 60px; object-fit: cover;">
+  						</div>
+  						<div class="d-flex" style="justify-content: space-between; flex:1;">
+  							<div>
+  								<h5 class="outspacing">${producto.title}</h5>
+  								<p class="outspacing"><strong>Cantidad: ${producto.cantidad}</strong></p>
+  								<p class="outspacing"><strong>Precio: ${producto.price}</strong></p>
+  							</div>
+
+  							<div>
+  								<h5 class="outspacing">Total: <small>${precio} $</small></h5>
+  							</div>
+  						</div>
+  						
+  					</div>
+  				`
+  			})
+  		}
+
+  		container.innerHTML += `
+  			<div>
+  				<h5>Total a pagar: <strong>${total_amount}$</strong></h5>
+  			</div>
+  		`
+  	}
+  }
 
 
 }
@@ -336,9 +416,16 @@ function callingCart(){
 		.then(res => {
 			productos = res.data;
 			carrito.agregarCarrito(productos);
+			loadTotalProducts(productos, 1)
 		})
 }
 
+
+function loadTotalProducts(elements,value){
+	if(total_container){
+		carrito.totalCart(elements, total_container, value)
+	}
+}
 
 
 
