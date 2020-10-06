@@ -129,3 +129,10 @@ Route::get('/make/order', 'Cms\OrderController@nuevaOrden')
 	->name('order.store');
 
 Route::get('/order/Detail/{id}', 'Cms\OrderController@getOrderDetail');
+
+//-------------- FORMULARIO DE ENVIO -----------
+Route::get('/shiping-data', 'ShipingDataController@index');
+
+Route::post('/guardar/shiping-data', 'ShipingDataController@guardarDatosEnvio')
+	->middleware('auth')
+	->name('shiping.store');
