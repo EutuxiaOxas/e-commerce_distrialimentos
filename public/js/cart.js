@@ -68,14 +68,12 @@ class CarritoUI {
 
 
   totalCart(productos, container, value){
-  	console.log(productos);
   	let total_amount = 0;
   	container.innerHTML = '';
 
   	if(productos.length > 0){
   		
   		if(value == 1){
-  			console.log('con sesion');
   			productos.forEach(producto => {
   				let precio = producto.producto.price,
   					precio_total = precio * producto.cantidad;
@@ -216,7 +214,7 @@ class Storage{
 
 
 //-------------------- Declaracion de variables -----------------
-
+const total_container = document.getElementById('total_container');
 let cart_main = document.getElementById('cart_main'),
     cart_body = document.getElementById('cart_body'),
     session = document.getElementById('sesion');
@@ -416,6 +414,7 @@ function callingCart(){
 		.then(res => {
 			productos = res.data;
 			carrito.agregarCarrito(productos);
+			loadProducts(productos);
 			loadTotalProducts(productos, 1)
 		})
 }
@@ -427,5 +426,118 @@ function loadTotalProducts(elements,value){
 	}
 }
 
+
+//-------------------- Llenar productos vista carrito -----------------
+function loadProducts(productos){
+	let container_products = document.getElementById('product_container');
+	if(container_products){
+		let boton_comprar = document.getElementById('boton_comprar');
+		container_products.innerHTML = ''
+		if(productos.length > 0){
+			productos.forEach(producto => {
+				
+				let menorque = `
+				<option ${producto.cantidad == 1 ? 'selected' : ''}>1</option>
+				<option ${producto.cantidad == 2 ? 'selected' : ''}>2</option>
+				<option ${producto.cantidad == 3 ? 'selected' : ''}>3</option>
+				<option ${producto.cantidad == 4 ? 'selected' : ''}>4</option>
+				<option ${producto.cantidad == 5 ? 'selected' : ''}>5</option>
+				<option ${producto.cantidad == 6 ? 'selected' : ''}>6</option>
+				<option ${producto.cantidad == 7 ? 'selected' : ''}>7</option>
+				<option ${producto.cantidad == 8 ? 'selected' : ''}>8</option>
+				<option ${producto.cantidad == 9 ? 'selected' : ''}>9</option>
+				<option ${producto.cantidad == 10 ? 'selected' : ''}>10</option>
+				`;
+
+				let mayorque = `
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option selected>${producto.cantidad}</option>
+				`;
+
+				container_products.innerHTML += `
+					<div class="mb-4">
+						<div class="row">
+							<div class="col-5">
+								<img src="/storage/${producto.imagen}" style="width: 250px; height: 150px">
+							</div>
+							<div class="col-4 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
+								<h5><a href="/producto/${producto.producto.slug}">${producto.producto.title}</a></h5>
+								<p>Costo: <strong>${producto.producto.price}</strong></p>
+								<button id="${producto.producto.id}" class="btn btn-sm btn-outline-primary carrito_eliminar_storage">Eliminar producto</button>
+							</div>
+							<div class="col-3 d-flex" style="flex-direction: column;flex:1; justify-content: center;">
+								<h5>Cantidad</h5>
+								<select id="${producto.producto.id}" class="form-control selector_carrito">
+										${producto.cantidad <= 10 ? menorque : mayorque}
+								</select>
+							</div>
+						</div>
+					</div>
+				`
+			});
+
+			container_products.innerHTML += `
+				<div class="col-12 my-3">
+					<a href="#" id="vaciar_carrito" class="btn btn-danger btn-block">Vaciar carrito</a>
+				</div>
+			`
+			boton_comprar.style.display = 'block';
+			loadEventsCartView()
+		}else{
+			container_products.innerHTML = `
+				<h2>No hay productos en el carrito</h2>
+			`
+			boton_comprar.style.display = 'none';
+		}
+	}
+}
+
+//-------------------- carga de eventos después de cargar productos -----------------
+function loadEventsCartView(){
+	let cantidadSelect = document.querySelectorAll('.selector_carrito'),
+		vaciar_carrito = document.getElementById('vaciar_carrito'),
+		eliminarProduct = document.querySelectorAll('.carrito_eliminar_storage');
+
+
+	//-------------------- Cambiar cantidad del producto -----------------
+
+	if(cantidadSelect){
+		cantidadSelect.forEach(cantidad => {
+			cantidad.addEventListener('change', (e) =>{
+				let id = e.target.id,
+					count = e.target.value;
+
+				changeCount(id, count)
+			});
+		})
+	}
+
+	//-------------------- Eliminar producto del carrito -----------------
+	if(eliminarProduct){
+		eliminarProduct.forEach(button => {
+			button.addEventListener('click', e =>{
+				deleteProduct(e.target.id)
+			})
+		})
+	}
+
+	//-------------------- Vaciar carrito -----------------
+	if(vaciar_carrito){
+		vaciar_carrito.addEventListener('click', () =>{
+			vaciarCarrito()
+		})
+	}
+
+	//-------------------- FUNCIONES DE LOS EVENTOS EN LA VISTA CARRITO.BLADE -----------------
+}
 
 
