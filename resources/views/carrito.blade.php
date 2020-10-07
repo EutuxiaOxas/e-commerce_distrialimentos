@@ -40,12 +40,103 @@
 			@if(auth()->user())
 			<a href="#" id="boton_comprar" class="btn btn-primary">Comprar</a>
 			@else
-			<a href="#" class="btn btn-primary">Iniciar Sesión para comprar</a>
+			<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Iniciar Sesión para comprar</a>
 			@endif
 		</div>
 	</div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div id="modal_option_container">
+        	<button class="btn btn-primary sesion modal_option">Iniciar sesión</button>
+        	<button class="btn btn-outline-primary registro modal_option">Registrarse</button>
+        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="login_modal" class="modal_container">
+        	<form action="" method="POST">
+        		<div id="alert_container">
+        			
+        		</div>
+        		<div class="form-group">
+        			<h5>Correo</h5>
+        			<input id="modal_login_email" class="form-control" type="email" name="email" autocomplete="off">
+        		</div>
+        		<div>
+        			<div class="form-group">
+        			<h5>Contraseña</h5>
+        			<input id="modal_login_password" class="form-control" type="password" name="password" autocomplete="off">
+        		</div>
+        		<input type="submit" id="modal_login_submit" class="btn btn-primary" value="Iniciar sesion">
+        		</div>
+        	</form>
+        </div>
+
+        <div id="register_modal" class="modal_container" style="display: none;">
+        	<form action="{{route('register')}}" method="POST">
+        		<div id="modal_register_token">
+        			@csrf
+        		</div>
+        		<div class="form-group">
+        		    
+        			<h5>Nombre</h5>
+    		        <input id="modal_register_name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        		</div>
+
+        		<div class="form-group">
+        		    
+        			<h5>Apellido</h5>
+    		        <input id="modal_register_apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido" value="{{ old('apellido') }}" required autocomplete="email">    
+        		</div>
+
+        		<div class="form-group">
+        		    
+        			<h5>Correo</h5>
+    		        <input id="modal_register_email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+        		</div>
+
+        		<div class="form-group">
+        		    
+        			<h5>Telefono</h5>
+    		        <input id="modal_register_phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="email">
+        		</div>
+
+        		<div class="form-group">
+        		    
+
+        			<h5>Contraseña</h5>
+    		        <input id="modal_register_password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+    		        <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
+        		</div>
+
+        		<div class="form-group">
+        		    
+        			<h5>Confirmar contraseña</h5>
+    		        <input id="modal_register_confirm_password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+    		        <a href="#"><small class="inactive pass_watcher">Ver contraseña</small></a>
+        		</div>
+        		<div class="form-group ">
+        			<button id="modal_register_submit" type="submit" class="btn btn-primary col-md12">
+        			    {{ __('Registrarse') }}
+        			</button>
+        		</div>	
+        	</form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
 //-------------------- INICIALIZACIÓN Y EVENTOS AJAX -----------------
@@ -265,5 +356,162 @@
 			})
 	}
 </script>
+
+
+
+<script type="text/javascript">
+// ------------------- MODAL INICIAR SESION O REGISTRARSE -----------------------
+	const modal_option_container = document.getElementById('modal_option_container'),
+		  modal_options = document.querySelectorAll('.modal_option');
+
+    // ------------------- Evento botones de opciones -----------------------
+	modal_option_container.addEventListener('click', e => {
+		let elemento = e.target
+
+		if(e.target.classList.contains('sesion')){
+			modal_sesion_option(elemento)
+		}
+
+		if(e.target.classList.contains('registro')){
+			modal_register_option(elemento)
+		}
+	});
+
+	function modal_sesion_option(element){
+		let login_modal = document.getElementById('login_modal');
+		cleanModalOptions()
+
+		element.classList.remove('btn-outline-primary');
+		element.classList.add('btn-primary');
+
+		login_modal.style.display = 'block';
+	}
+
+	function modal_register_option(element){
+		let register_modal = document.getElementById('register_modal');
+		cleanModalOptions()
+		element.classList.remove('btn-outline-primary');
+		element.classList.add('btn-primary');
+		
+		register_modal.style.display = 'block';
+	}
+
+
+	function cleanModalOptions(){
+		const modal_containers = document.querySelectorAll('.modal_container');
+
+		modal_options.forEach(button => {
+			button.classList.remove('btn-primary');
+			button.classList.add('btn-outline-primary');
+		});
+
+		modal_containers.forEach(container => {
+			container.style.display = 'none';
+		});
+	}
+</script>
+
+
+<script type="text/javascript">
+
+	// ------------------- INICIO DE SESION Y REGISTRO -----------------------
+	const modal_login_submit = document.getElementById('modal_login_submit'),
+		  modal_register_submit = document.getElementById('modal_register_submit');
+
+	modal_login_submit.addEventListener('click', e => {
+		e.preventDefault();
+		loadSesion()
+	})
+
+	modal_register_submit.addEventListener('click', e => {
+		e.preventDefault();
+		let name = document.getElementById('modal_register_name'),
+			apellido = document.getElementById('modal_register_apellido'),
+			email = document.getElementById('modal_register_email'),
+			phone = document.getElementById('modal_register_phone'),
+			password = document.getElementById('modal_register_password'),
+			token = document.getElementById('modal_register_token').children[0],
+			confirm_password = document.getElementById('modal_register_confirm_password');
+		
+		loadRegister(name.value, apellido.value, email.value, phone.value, password.value, confirm_password.value, token.value)
+	})
+
+	// ------------------- INICIAR SESION -----------------------
+	function loadSesion(){
+		let correo = document.getElementById('modal_login_email'),
+			contraseña = document.getElementById('modal_login_password'),
+			alert_container = document.getElementById('alert_container');
+
+		axios.post('/login', {
+			email: correo.value,
+			password: contraseña.value,
+		})
+		.then(res => {
+			if(res.status == 204){
+				location.reload();
+			}
+		})
+		.catch(err => {
+			alert_container.innerHTML = `
+				<div class="alert alert-danger col-12" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+				    Usuario o contraseña incorrectos, por favor intentar nuevamente
+
+				</div>
+			`
+		})
+	}
+
+	// ------------------- REGISTRARSE -----------------------
+	function loadRegister(name, apellido, email, phone, password, confirm_password, token){
+
+		axios.post('/register', {
+			name: name,
+			apellido: apellido,
+			email: email,
+			phone: phone,
+			password: password,
+			password_confirmation: confirm_password,
+			_token: token,
+		})
+		.then(res=> {
+			location.reload();
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}
+</script>
+<script type="text/javascript">
+// ------------------- MOSTRAR CONTRASEÑAS -----------------------
+    let passChange = document.querySelectorAll('.pass_watcher');
+
+    passChange.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            let inputPass = e.target.parentNode.parentNode.children[1];
+            let accion = e.target;
+
+
+            if(accion.classList.contains('inactive'))
+            {
+                inputPass.type = "text"
+                accion.classList.remove('inactive')
+                accion.classList.add('active')
+
+                accion.textContent = 'Ocultar contraseña';
+            } else if(accion.classList.contains('active')) {
+                inputPass.type = "password"
+                accion.classList.remove('active')
+                accion.classList.add('inactive')
+
+                accion.textContent = 'Ver contraseña';
+            }
+        });
+    });
+</script>
+
 
 @endsection
