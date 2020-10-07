@@ -27,10 +27,9 @@ class CartController extends Controller
 
     public function updateCount(Request $request)
     {
-        $cart = auth()->user()->cartVerify()->id;
-        $detail = CartDetail::find($request->detalle_id);
-
-        if($detail->cart_id == $cart){
+        $cart = auth()->user()->cartVerify();
+        $detail =CartDetail::where('product_id', $request->detalle_id)->where('cart_id', $cart->id)->first();
+        if($detail->cart_id == $cart->id){
             $detail->cantidad = $request->cantidad;
             $detail->save();
 
@@ -79,15 +78,26 @@ class CartController extends Controller
         $user = auth()->user();
         
         $cart_id = $user->cartVerify()->id;
+        
 
         $productos = $request->products;
 
         foreach ($productos as $producto) {
-            CartDetail::create([
-                'product_id' => $producto['id'],
-                'cart_id' => $cart_id,
-                'cantidad'=> $producto['cantidad'], 
-            ]);
+            $detalle_activo = CartDetail::where('cart_id', $cart_id)
+                                     ->where('product_id', $producto['id'])
+                                     ->first();
+
+            if(isset($detalle_activo)){
+                $detalle_activo->cantidad = $detalle_activo->cantidad + $producto['cantidad'];
+                $detalle_activo->save();
+
+            }else {
+                CartDetail::create([
+                    'product_id' => $producto['id'],
+                    'cart_id' => $cart_id,
+                    'cantidad'=> $producto['cantidad'], 
+                ]);
+            }
         }
 
         return response()->json('', 200);
@@ -95,27 +105,29 @@ class CartController extends Controller
 
     public function eliminarDetalle($id)
     {
-        $cart = auth()->user()->cartVerify()->id;
-        $detail = CartDetail::find($id);
+        $cart = auth()->user()->cartVerify();
 
-        if($detail->cart_id == $cart){
+        $producto = $cart->cartDetails->where('product_id', $id)
+                    ->where('cart_id', $cart->id)
+                    ->first();
+
+        $detail = CartDetail::find($producto->id);
+
+        if($detail->cart_id == $cart->id){
             $detail->delete();
 
-            return back()->with('error', 'Producto eliminado del carrito con éxito');
+            return response()->json('Producto eliminado con éxito', 200);
         }
-
-
-        return back()->with('error', 'No se pudo eliminar producto del carrito');
         
     }
 
-    public function vaciarCarrito(){
+    public function vaciarCarrito(Request $request){
        $cart_details = auth()->user()->cartVerify()->cartDetails;
 
        foreach ($cart_details as $detail) {
            $detail->delete();
        }
 
-       return back()->with('error', 'Carrito vaciado con éxito');
+       return response()->json('Carrito vaciado con éxito', 200);
     }
 }
