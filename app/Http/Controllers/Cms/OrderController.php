@@ -43,7 +43,7 @@ class OrderController extends Controller
     			'price' => $detalle->product->price,
     		]);
     	}
-
+        return redirect('/home')->with('message', 'Orden creada con éxito y en proceso!');
     	
     }
 
