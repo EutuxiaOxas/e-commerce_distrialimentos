@@ -137,3 +137,26 @@ Route::get('/shiping-data', 'ShipingDataController@index');
 Route::post('/guardar/shiping-data', 'ShipingDataController@guardarDatosEnvio')
 	->middleware('auth')
 	->name('shiping.store');
+
+//-------------- BANCOS -----------
+Route::get('/cms/bancos', 'Cms\BankController@index')->name('bank.home');
+
+Route::get('/cms/get/bank/{id}', 'Cms\BankController@getBank');
+
+Route::post('/cms/agregar/banco', 'Cms\BankController@agregarBanco')->name('bank.store');
+Route::post('/cms/update/banco/{id}', 'Cms\BankController@actualizarBanco');
+
+//-------------- CUENTAS DE BANCO -----------
+Route::get('/cms/cuentas', 'Cms\BankUserController@index')->name('bank.user.home');
+Route::get('/cms/crear/cuenta', 'Cms\BankUserController@agregarCuenta')->name('bank.user.create');
+Route::get('/cms/editar/cuenta/{id}', 'Cms\BankUserController@editarCuenta')->name('bank.user.edit');
+
+
+Route::post('/cms/guardar/cuenta', 'Cms\BankUserController@guardarCuenta')->name('bank.user.store');
+Route::post('/cms/actualizar/cuenta/{id}', 'Cms\BankUserController@actualizarCuenta')->name('bank.user.update');
+
+
+//-------------- PAGOS -----------
+Route::get('/cms/pagos', 'PagosController@index')->name('pagos.home');
+Route::get('/pago', 'PagosController@agregarPago');
+Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');

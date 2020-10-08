@@ -146,6 +146,28 @@
                                 Compradores
                               </a>
                             </li>
+
+                            <li class="nav-item items">
+                              <a class="nav-link menu_hover secciones bancos"  href="#">
+                                <span data-feather="file"></span>
+                                Configuraciones
+                              </a>
+                              <ul class="acordeon_container">
+                                <li class="acordeon_item">
+                                  <a href="{{route('bank.home')}}" class="nav-link menu_hover">Bancos</a>
+                                </li>
+                                <li class="acordeon_item">
+                                  <a href="{{route('bank.user.home')}}" class="nav-link menu_hover">Cuentas</a>
+                                </li>
+                              </ul>
+                            </li>
+
+                            <li class="nav-item items">
+                              <a class="nav-link menu_hover secciones pagos"  href="{{route('pagos.home')}}">
+                                <span data-feather="file"></span>
+                                Pagos
+                              </a>
+                            </li>
                     </ul>
                 </div>
             </nav>
