@@ -116,6 +116,7 @@ Route::middleware('tienda')->group(function () {
 	/*--------------- VISTA ORDENES --------------*/
 
 	Route::get('/cms/ventas', 'Cms\OrderController@index')->name('order.home');
+	Route::get('/get/shiping-info/{id}', 'ShipingDataController@getShipingData');
 
 	/*--------------- VISTA COMPRADORES --------------*/
 

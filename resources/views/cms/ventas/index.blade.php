@@ -42,18 +42,17 @@
             <td>{{$orden->status}}</td>
             <td>{{$orden->created_at}}</td>
             <td>
-            	<button id="{{$orden->id}}" data-toggle="modal" data-target="#modalDetalle" class="btn btn-sm btn-primary orden-detalle">Ver Detalles</button>
+            	<button id="{{$orden->id}}" data-toggle="modal" data-target="#modalDetalle" class="btn btn-sm btn-outline-primary orden-detalle">Ver Detalles</button>
+              <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalInfoEnvios" class="btn btn-sm btn-outline-primary orden-envio-info">
+                Datos de envio
+              </button>
             </td>
           </tr>
           @endforeach
         </tbody>
       </table>
     </div>
-</section>
-
-
-
-<div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,9 +83,36 @@
         </div>
     </div>
 </div>
+</section>
+
+<div class="modal fade" id="modalInfoEnvios" tabindex="-1" aria-labelledby="modalInfoEnvios" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalInfoEnvios">Detalles de envio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3 id="detalle_envio_id" class="mb-3"></h3>
+                <div id="modal_info_container">
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <script type="text/javascript">
-    let ordenDetails = document.querySelectorAll('.orden-detalle');
+    let ordenDetails = document.querySelectorAll('.orden-detalle'),
+        ordenEnvios = document.querySelectorAll('.orden-envio-info');
 
     if(ordenDetails){
         ordenDetails.forEach(detalle => {
@@ -97,11 +123,45 @@
         });
     }
 
+    if(ordenEnvios){
+      ordenEnvios.forEach(button => {
+        button.addEventListener('click', e => {
+          let id = e.target.id
+          getOrdenInfo(id)
+        })
+      })
+    }
+
     function getOrdenDetail(id){
         axios.get(`/order/Detail/${id}`)
             .then(res => {
                 modalInfo(res.data, id);
             })
+    }
+
+    function getOrdenInfo(id){
+      axios.get(`/get/shiping-info/${id}`)
+        .then(res => {
+          modalEnvioInfo(res.data)
+        })
+    }
+
+
+    function modalEnvioInfo(info){
+      let container = document.getElementById('modal_info_container'),
+          ordenId = document.getElementById('detalle_envio_id');
+
+      container.innerHTML = '';
+
+      ordenId.innerHTML = `Información de envio, Orden: #${info.orden_id}`
+
+      container.innerHTML += `
+          <div>Identidad: <strong>${info.documento_de_identidad}</strong></div>
+          <div>Dirección 1: <strong>${info.direccion_1}</strong> </div>
+          <div>Dirección 2: <strong>${info.direccion_2}</strong> </div>
+          <div>Telefono: <strong>${info.telefono}</strong> </div>
+          <div>Código postal: <strong>${info.codigo_postal}</strong> </div>
+      `
     }
 
 

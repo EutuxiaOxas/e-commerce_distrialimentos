@@ -17,4 +17,9 @@ class Order extends Model
     {
     	return $this->hasMany('App\OrderProduct', 'order_id');
     }
+
+    public function shiping()
+    {
+    	return $this->hasOne('App\Shiping_data', 'orden_id');
+    }
 }

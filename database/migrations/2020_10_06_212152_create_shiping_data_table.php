@@ -16,6 +16,7 @@ class CreateShipingDataTable extends Migration
         Schema::create('shiping_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('orden_id');
+            $table->foreignId('user_id');
             $table->string('documento_de_identidad');
             $table->text('direccion_1');
             $table->text('direccion_2');
