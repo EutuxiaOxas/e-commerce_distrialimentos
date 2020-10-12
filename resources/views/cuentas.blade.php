@@ -21,9 +21,8 @@
 		  	</div>
 		  @endforeach
 		</div>
-		<div class="text-center">
+		<div class="d-flex justify-content-center">
 			<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
-			<a href="#" class="btn btn-success">Pagar con PayPal</a>
 		</div>
 	</div>
 @endsection
