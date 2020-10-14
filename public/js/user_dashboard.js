@@ -10,6 +10,9 @@ function getOrdenDetail(id){
         })
 }
 
+
+// ---------   FUNCIONES y MODAL PARA INFORMACION DE ENVIOS -------
+
     // ----- OBTENER DETALLE DE ENVIO -----
 
 function getOrdenInfo(id){
@@ -19,7 +22,7 @@ function getOrdenInfo(id){
     })
 }
 
-// ----- GUARDAR DATOS DE ENVIO -----
+    // ----- GUARDAR DATOS DE ENVIO -----
 
 function agregarDatosDeEnvio(d_identidad, dir_1, dir_2, tlfn, c_postal, orden_id){
     axios.post('/guardar/shiping-data', {
@@ -37,7 +40,7 @@ function agregarDatosDeEnvio(d_identidad, dir_1, dir_2, tlfn, c_postal, orden_id
     })
 }
 
-// ----- MODAL DETALLES DE ORDEN -----
+    // ----- MODAL DETALLES DE ORDEN -----
 function modalInfo(detalles, orden){
     let orderId = document.getElementById('detalle_id'),
         container = document.getElementById('modal_container');
@@ -59,7 +62,7 @@ function modalInfo(detalles, orden){
     });
 }
 
-// ----- MODAL DETALLES DE ENVIO -----
+    // ----- MODAL DETALLES DE ENVIO -----
 
 function modalEnvioInfo(info, orden){
   let container = document.getElementById('modal_info_container'),
@@ -88,8 +91,8 @@ function modalEnvioInfo(info, orden){
     })
   }
 }
-
-// ----- AGREGAR FORMULARIO EN MODAL DATOS DE ENVIO PARA GUARDAR LOS DATOS -----
+    
+    // ----- AGREGAR FORMULARIO EN MODAL DATOS DE ENVIO PARA GUARDAR LOS DATOS -----
 
 function modalFormularioDatosEnvio(container, orden_id){
     container.innerHTML = `
@@ -154,11 +157,89 @@ function modalFormularioDatosEnvio(container, orden_id){
 }
 
 
+// ---------   FUNCIONES y MODAL PARA INFORMACION DE PAGOS -------
 
 
+    // ----- FUNCION PARA OBTENER INFORMACION DE LOS PAGOS POR ORDEN -----
+function getPagoInfo(id){
+    axios.get(`/obtener/pago/${id}`)
+        .then(res => {
+            modalPagoInfo(res.data)
+        });
+}
+
+    // ----- FUNCION QUE RELLENA EL MODAL CON LOS DETALLES DE CADA PAGO -----
+function modalPagoInfo(data){
+    const container = document.getElementById('modal_pago_container');
+
+    let container_info = container.children[0],
+        container_detalles = container.children[2];
+
+    container_info.innerHTML = `
+        <div>
+            <h5>Pago total de la orden #${data.orden_id}: ${data.total_pago} $</h5>
+            <p>Restante por pagar: ${data.restante} $</p>
+        </div>
+    `
+
+    container_detalles.innerHTML = '';
+
+    if(data.restante === 0){
+        data.pagos.forEach(({titular, monto, banco_emisor, banco_receptor, referencia, fecha, identidad_titular,numero}) => {
+            container_detalles.innerHTML += `
+                <div class="mr-2 p-2" style="flex: 1 0 50; border: 1px solid #333;">
+                    <h5 class="m-0 mb-1">Transferencia: <strong>#${numero}</strong></h5>
+                    <h6 class="m-0">Titular: <strong>${titular}</strong></h6>
+                    <p class="m-0">Identidad titular: <strong>${identidad_titular}</strong></p>
+                    <p class="m-0">Banco emisor: <strong>${banco_emisor}</strong></p>
+                    <p class="m-0">Banco receptor: <strong>${banco_receptor}</strong></p>
+                    <p class="m-0">Monto: <strong>${monto} $</strong></p>
+                    <p class="m-0">Rereferencia: <strong>${referencia}</strong></p>
+                    <p class="m-0">Fecha: <strong>${fecha}</strong></p>
+                    
+                </div>
+            `
+        });
+    }else if(data.restante > 0){
+
+        if(data.pagos.length > 0){
+            container_detalles.innerHTML += `<h4 style="flex: 1 0 100%;">Completa tu pago para finalizar tu compra.</h4>`;
+            data.pagos.forEach(({titular, monto, banco_emisor, banco_receptor, referencia, fecha, identidad_titular,numero}) => {
+                container_detalles.innerHTML += `
+                    <div class="mr-2 p-2" style="flex: 1 0 50; border: 1px solid #333;">
+                        <h5 class="m-0 mb-1">Transferencia: <strong>#${numero}</strong></h5>
+                        <h6 class="m-0">Titular: <strong>${titular}</strong></h6>
+                        <p class="m-0">Identidad titular: <strong>${identidad_titular}</strong></p>
+                        <p class="m-0">Banco emisor: <strong>${banco_emisor}</strong></p>
+                        <p class="m-0">Banco receptor: <strong>${banco_receptor}</strong></p>
+                        <p class="m-0">Monto: <strong>${monto} $</strong></p>
+                        <p class="m-0">Rereferencia: <strong>${referencia}</strong></p>
+                        <p class="m-0">Fecha: <strong>${fecha}</strong></p>
+                    </div>
+                `
+            });
+            container_detalles.innerHTML += `
+                <div style="flex: 1 0 100%;>
+                    <button type="button" id="modal_pago_agregar" class="btn btn-primary mt-4" ">Agregar nuevo pago</button>
+                </div>
+            `
+
+        }else {
+            container_detalles.innerHTML = `
+                <div style="flex-direction: column;">
+                    <h5>Debe realizar un pago para completar su compra.<h5>
+                    <div>
+                        <a href="/cuentas?orden=${data.orden_id}" class="btn btn-primary">Realizar Pago</a>
+                    </div>
+                </div>
+            `
+        }
+    }
+}
 
 let ordenDetails = document.querySelectorAll('.orden-detalle'),
-    ordenEnvios = document.querySelectorAll('.orden-envio-info');
+    ordenEnvios = document.querySelectorAll('.orden-envio-info'),
+    ordenPagos = document.querySelectorAll('.orden-pago-info');
 
 document.addEventListener('DOMContentLoaded', () => {
     if(ordenDetails){
@@ -171,12 +252,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if(ordenEnvios){
-      ordenEnvios.forEach(button => {
-        button.addEventListener('click', e => {
+      ordenEnvios.forEach(info => {
+        info.addEventListener('click', e => {
           let id = e.target.id;
           getOrdenInfo(id)
         })
       })
+    }
+
+    if(ordenPagos){
+        ordenPagos.forEach(pago => {
+            pago.addEventListener('click', e => {
+                let id = e.target.id;
+                getPagoInfo(id);
+            })
+        })
     }
 })
 

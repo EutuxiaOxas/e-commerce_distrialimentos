@@ -164,3 +164,4 @@ Route::get('/cms/pagos', 'PagosController@index')->name('pagos.home');
 Route::get('/cuentas', 'PagosController@cuentasBancarias');
 Route::get('/pago', 'PagosController@agregarPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
+Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');

@@ -81,4 +81,43 @@ class PagosController extends Controller
         $orden->save();
     	return redirect('/home')->with('message', 'Orden realizada con éxito y en proceso!');
     }
+
+
+    public function obtenerPagos($id)
+    {
+        $orden = Order::find($id);
+
+        $pagos = $orden->pagos;
+        $total_cuenta = $orden->total_amount;
+
+        $pagos_data = [];
+        $contador = 1;
+        
+        foreach ($pagos as $pago) {
+            $total_cuenta -= $pago->monto;
+
+            $pagos_data[] = [
+                'numero' => $contador,
+                'titular' => $pago->titular_cuenta,
+                'monto' => $pago->monto,
+                'banco_emisor' => $pago->emisor->title,
+                'banco_receptor' => $pago->receptor->title,
+                'referencia' => $pago->referencia,
+                'fecha' => $pago->fecha,
+                'identidad_titular' => $pago->documento_identidad_titular, 
+            ];
+            $contador++;
+        }
+
+
+        $data = [
+            'orden_id' => $orden->id,
+            'total_pago' => $orden->total_amount,
+            'restante' => $total_cuenta,
+            'pagos' => $pagos_data,
+        ];
+
+        return response()->json($data, 200);
+
+    }
 }
