@@ -35,7 +35,6 @@ class ShipingDataController extends Controller
     	return redirect('/');
     }
 
-
     public function guardarDatosEnvio(Request $request)
     {
         
@@ -57,9 +56,10 @@ class ShipingDataController extends Controller
 
         Shiping_data::create($request->all());
 
-        return redirect("/cuentas?orden=".$request->orden_id);
 
+        return redirect("/cuentas?orden=".$request->orden_id);
     }
+    
 
 
 

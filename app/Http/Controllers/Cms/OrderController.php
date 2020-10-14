@@ -19,13 +19,13 @@ class OrderController extends Controller
 
     public function nuevaOrden(){
 
-        $user = auth()->user();
+    	$user = auth()->user();
+
 
         $oldOrder = Order::where('status', 'ACTIVO')
                         ->where('user_id', $user->id)
                         ->first();
     	
-
         if(isset($oldOrder))
         {
             $oldOrder->status = 'CANCELADO';
