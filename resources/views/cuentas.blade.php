@@ -23,6 +23,7 @@
 		</div>
 		<div class="d-flex justify-content-center">
 			<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
+			<a href="{{route('orden.cancelar', $orden->id)}}" class="btn btn-outline-danger">Cancelar orden</a>
 		</div>
 	</div>
 @endsection

@@ -30,7 +30,7 @@ class PagosController extends Controller
                 
                 $orden = Order::find($request->orden);
                 
-                if($user->id == $orden->user->id)
+                if($user->id == $orden->user->id && $orden->status === 'ACTIVO')
                 {
                     $user_id = $user->id;
                     return view('cuentas', compact('orden', 'cuentas'));
@@ -56,7 +56,7 @@ class PagosController extends Controller
      				
      				$orden = Order::find($request->orden);
 
-     				if($user->id == $orden->user->id)
+     				if($user->id == $orden->user->id && $orden->status === 'ACTIVO')
      				{
      	                $user_id = $user->id;
      	                $banks = Bank::where('title', '!=', 'Otros')->get();
@@ -74,7 +74,11 @@ class PagosController extends Controller
 
     public function guardarPago(Request $request)
     {
+        $orden = Order::find($request->orden_id);
+
     	Pago::create($request->all());
+        $orden->status = 'REGISTRADO';
+        $orden->save();
     	return redirect('/home')->with('message', 'Orden realizada con éxito y en proceso!');
     }
 }
