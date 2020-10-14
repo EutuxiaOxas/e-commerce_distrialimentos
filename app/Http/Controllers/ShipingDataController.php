@@ -35,14 +35,6 @@ class ShipingDataController extends Controller
     	return redirect('/');
     }
 
-
-    public function guardarDatosEnvio(Request $request)
-    {
-    	Shiping_data::create($request->all());
-
-    	return redirect('/home')->with('message', 'Orden realizada con éxito y en proceso!');
-    }
-
     public function guardarDatosEnvio(Request $request)
     {
         
