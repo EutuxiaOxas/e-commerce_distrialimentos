@@ -42,10 +42,12 @@
                             <div>
                                 <strong>Orden: #{{$orden->id}} | Estatus: {{$orden->status}} | Total: {{$orden->total_amount}} $ | Hace: {{$orden->created_at->diffForHumans()}}</strong>
                             </div>
-                            <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalDetalle" class="btn btn-sm btn-primary orden-detalle">Detalles</button>
-                            <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalInfoEnvios" class="btn btn-sm btn-outline-primary orden-envio-info">
-                              Datos de envio
-                            </button>
+                            <div>
+                                <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalDetalle" class="btn btn-sm btn-primary orden-detalle">Detalles</button>
+                                <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalInfoEnvios" class="btn btn-sm btn-outline-primary orden-envio-info">
+                                  Datos de envio
+                                </button>
+                            </div>
                         </div>
                      @endforeach
                 </div>
