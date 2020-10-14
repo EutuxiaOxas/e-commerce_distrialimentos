@@ -30,7 +30,7 @@ class PagosController extends Controller
                 
                 $orden = Order::find($request->orden);
                 
-                if($user->id == $orden->user->id && $orden->status === 'ACTIVO')
+                if($user->id == $orden->user->id && $orden->status === 'ACTIVO' || $orden->status === 'REGISTRADO')
                 {
                     $user_id = $user->id;
                     return view('cuentas', compact('orden', 'cuentas'));
@@ -69,6 +69,36 @@ class PagosController extends Controller
      		}
 
      		return redirect('/');
+    }
+
+
+    public function agregarNuevoPago(Request $request)
+    {
+            $user = auth()->user();
+
+            
+
+                if($user)
+                {
+
+                    if(isset($request->orden))
+                    {
+                        
+                        $orden = Order::find($request->orden);
+
+                        if($user->id == $orden->user->id && $orden->status === 'REGISTRADO')
+                        {
+                            $user_id = $user->id;
+                            $banks = Bank::where('title', '!=', 'Otros')->get();
+                            $banksUsers = Banks_User::where('title', '!=', 'PayPal')->get();
+                            
+                            return view('pagos', compact('user_id', 'orden', 'banks', 'banksUsers'));
+                        }
+                    }
+
+                }
+
+                return redirect('/');   
     }
 
 

@@ -163,5 +163,6 @@ Route::post('/cms/actualizar/cuenta/{id}', 'Cms\BankUserController@actualizarCue
 Route::get('/cms/pagos', 'PagosController@index')->name('pagos.home');
 Route::get('/cuentas', 'PagosController@cuentasBancarias');
 Route::get('/pago', 'PagosController@agregarPago');
+Route::get('/nuevo/pago', 'PagosController@agregarNuevoPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');

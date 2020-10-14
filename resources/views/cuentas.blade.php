@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@php
+	if(isset($_GET['nuevo_pago']))
+	{
+		$nuevo_pago = $_GET['nuevo_pago'];
+	}
+@endphp
+
+
 @section('title')
 	Cuentas Bancarias
 @endsection
@@ -22,8 +30,12 @@
 		  @endforeach
 		</div>
 		<div class="d-flex justify-content-center">
-			<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
-			<a href="{{route('orden.cancelar', $orden->id)}}" class="btn btn-outline-danger">Cancelar orden</a>
+			@if(isset($nuevo_pago))
+				<a href="/nuevo/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
+			@else
+				<a href="/pago?orden={{$orden->id}}" class="btn btn-primary mr-3">Pagar con transferencia bancaria</a>
+				<a href="{{route('orden.cancelar', $orden->id)}}" class="btn btn-outline-danger">Cancelar orden</a>
+			@endif
 		</div>
 	</div>
 @endsection

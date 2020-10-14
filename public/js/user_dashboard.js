@@ -219,8 +219,8 @@ function modalPagoInfo(data){
                 `
             });
             container_detalles.innerHTML += `
-                <div style="flex: 1 0 100%;>
-                    <button type="button" id="modal_pago_agregar" class="btn btn-primary mt-4" ">Agregar nuevo pago</button>
+                <div style="flex: 1 0 100%;">
+                    <a href="/cuentas?orden=${data.orden_id}&nuevo_pago=true" class="btn btn-primary mt-4">Agregar nuevo pago</a>
                 </div>
             `
 
