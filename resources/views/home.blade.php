@@ -43,10 +43,33 @@
                                 <strong>Orden: #{{$orden->id}} | Estatus: {{$orden->status}} | Total: {{$orden->total_amount}} $ | Hace: {{$orden->created_at->diffForHumans()}}</strong>
                             </div>
                             <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalDetalle" class="btn btn-sm btn-primary orden-detalle">Detalles</button>
+                            <button id="{{$orden->id}}" data-toggle="modal" data-target="#modalInfoEnvios" class="btn btn-sm btn-primary ">Datos de Envio</button>
                         </div>
                      @endforeach
                 </div>
                 {{ $ordenes->links() }}
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalInfoEnvios" tabindex="-1" aria-labelledby="modalInfoEnvios" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalInfoEnvios">Detalles de envio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 id="detalle_envio_id" class="mb-3"></h3>
+                        <div id="modal_info_container">
+                          
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

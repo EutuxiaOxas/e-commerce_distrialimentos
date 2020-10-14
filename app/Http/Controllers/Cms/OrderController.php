@@ -25,7 +25,7 @@ class OrderController extends Controller
     	$order = Order::create([
     		'user_id' => $user->id,
     		'total_amount' => $total,
-    		'status' => 'PROCESS',
+    		'status' => 'ACTIVO',
     	]);
 
     	$id = $order->id;
@@ -74,5 +74,14 @@ class OrderController extends Controller
 
     	return redirect('/');
     	
+    }
+
+    public function cancelarOrden($id)
+    {
+        $orden = Order::find($id);
+        $orden->status = 'CANCELADO';
+        $orden->save();
+
+        return redirect('/home')->with('message', 'Orden cancelada con éxito');
     }
 }
