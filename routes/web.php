@@ -126,7 +126,7 @@ Route::middleware('tienda')->group(function () {
 	Route::get('/cms/compradores', 'Cms\IndexController@compradores')->name('compradores.home');
 
 });
-
+//--------INFORMACION DE ENVIO-----
 Route::get('/get/shiping-info/{id}', 'ShipingDataController@getShipingData');
 
 //-------------- ORDENES -----------
