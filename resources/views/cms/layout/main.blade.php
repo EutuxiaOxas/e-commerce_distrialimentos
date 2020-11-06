@@ -163,113 +163,6 @@
     <a href="{{route('cms.home')}}" class="brand-link">
       <span class="brand-text font-weight-light">Administrador</span>
     </a>
-
-<<<<<<< HEAD
-<body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('cms.home') }}">Dashboard</a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <form action="{{route('login.logout')}}" method="POST" id="form_salir_sesion">
-                    @csrf
-                    <a class="nav-link" onclick="cerrarSesion()" href="#">Sign out</a>
-                </form>
-            </li>
-        </ul>
-    </nav>
-    <div class="container-fluid">
-        <input type="hidden" id="seccion_name" value="{{$secName}}">
-        <div class="row">
-
-            <!-- Navbar movil -->
-            <nav class="navbar navbar-expand-lg navbar-light d-md-none mt-5 bg-light col-12">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('cms.users') }}">
-                        <span data-feather="file"></span>
-                        Usuarios
-                    </a>
-                  </li>
-
-                </ul>
-              </div>
-            </nav>
-
-
-            <!-- Navbar Desktop -->
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        @if(auth()->user()->roles->title == 'administrador')
-                        <li class="nav-item">
-                            <a class="nav-link menu_hover secciones usuarios" href="{{ route('cms.users') }}">
-                                <span data-feather="file"></span>
-                                Usuarios
-                            </a>
-                        </li>
-                        @endif
-
-                        @if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador')
-                        <li class="nav-item items">
-                          <a class="nav-link menu_hover secciones web"  href="#">
-                            <span data-feather="file"></span>
-                            Pagina web
-                          </a>
-                          <ul class="acordeon_container">
-                            <li class="acordeon_item">
-                              <a href="{{route('banners.home')}}" class="nav-link menu_hover">Home</a>
-                            </li>
-                          </ul>
-                        </li>
-                        @endif
-                        
-                        @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
-                            <li class="nav-item items">
-                              <a class="nav-link menu_hover secciones tienda"  href="#">
-                                <span data-feather="file"></span>
-                                Tienda
-                              </a>
-                              <ul class="acordeon_container">
-                                <li class="acordeon_item">
-                                  <a href="{{route('tienda.category.home')}}" class="nav-link menu_hover">Categorias</a>
-                                </li>
-                                <li class="acordeon_item">
-                                  <a href="{{route('tienda.product.home')}}" class="nav-link menu_hover">Productos</a>
-                                </li>
-                              </ul>
-                            </li>
-                        @endif
-                            <li class="nav-item items">
-                              <a class="nav-link menu_hover secciones ordenes"  href="#">
-                                <span data-feather="file"></span>
-                                Ventas
-                              </a>
-                              <ul class="acordeon_container">
-                                <li class="acordeon_item">
-                                  <a href="{{route('order.home')}}" class="nav-link menu_hover">Ordenes</a>
-                                </li>
-                              </ul>
-                            </li>
-
-                            <li class="nav-item items">
-                              <a class="nav-link menu_hover secciones compradores"  href="{{route('compradores.home')}}">
-                                <span data-feather="file"></span>
-                                Compradores
-                              </a>
-                            </li>
-                    </ul>
-                </div>
-            </nav>
-            <section class="col-md-10">
-                <main role="main">
-                    @yield('content')
-                </main>
-            </section>
-=======
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -278,7 +171,6 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">Usuario: {{auth()->user()->name}}</a>
->>>>>>> compradores
         </div>
       </div>
 
@@ -342,6 +234,31 @@
             </ul>
           </li> 
           @endif
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link secciones ordenes">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Ventas
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('order.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ordenes</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="{{route('compradores.home')}}" class="nav-link secciones compradores">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Compradores
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
