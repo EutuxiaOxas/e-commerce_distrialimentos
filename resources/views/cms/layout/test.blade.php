@@ -198,6 +198,7 @@
               </li>
             </ul>
           </li>
+          @if(auth()->user()->roles->title == 'administrador')
           <li class="nav-item ">
             <a href="{{ route('cms.users') }}" class="nav-link secciones usuarios ">
               <i class="nav-icon fas fa-th"></i>
@@ -206,6 +207,9 @@
               </p>
             </a>
           </li>
+          @endif
+
+          @if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador')
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link secciones web">
               <i class="nav-icon fas fa-copy"></i>
@@ -222,7 +226,8 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> 
+          @endi
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
