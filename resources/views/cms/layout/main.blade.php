@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Dashboard 2</title>
+  <title>@yield('title')</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="/AdminLTE/plugins/fontawesome-free/css/all.min.css">
@@ -15,8 +15,25 @@
   <link rel="stylesheet" href="/AdminLTE/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+
+  <!--datables CSS básico-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendor/datatables/datatables.min.css') }}" />
+  <!--datables estilo bootstrap 4 CSS-->
+  <link rel="stylesheet" type="text/css"
+      href="{{ asset('vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css') }}">
+
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+<!-- IDENTIFICADOR SECCIÓN -->
+<input type="hidden" id="seccion_name" value="{{$secName}}">
+
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -143,21 +160,17 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="{{route('cms.home')}}" class="brand-link">
+      <span class="brand-text font-weight-light">Administrador</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/AdminLTE/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Usuario: {{auth()->user()->name}}</a>
         </div>
       </div>
 
@@ -166,45 +179,20 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          @if(auth()->user()->roles->title == 'administrador')
           <li class="nav-item ">
-            <a href="{{ route('cms.users') }}" class="nav-link ">
+            <a href="{{ route('cms.users') }}" class="nav-link secciones usuarios ">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Usuarios
               </p>
             </a>
           </li>
+          @endif
+
+          @if(auth()->user()->roles->title == 'editor' || auth()->user()->roles->title == 'administrador')
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link secciones web">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Página web
@@ -219,9 +207,11 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> 
+          @endif
+          @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link secciones tienda">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Tienda
@@ -242,9 +232,10 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> 
+          @endif
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link secciones ordenes">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Ventas
@@ -261,7 +252,7 @@
             </ul>
           </li>
           <li class="nav-item ">
-            <a href="{{route('compradores.home')}}" class="nav-link ">
+            <a href="{{route('compradores.home')}}" class="nav-link secciones compradores">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Compradores
@@ -313,7 +304,7 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
@@ -330,10 +321,27 @@
 <script src="/AdminLTE/plugins/raphael/raphael.min.js"></script>
 <script src="/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
-<script src="/AdminLTE/plugins/chart.js/Chart.min.js"></script>
 
-<!-- PAGE SCRIPTS -->
-<script src="/AdminLTE/dist/js/pages/dashboard2.js"></script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        let name = document.getElementById('seccion_name'),
+            enlaces =document.querySelectorAll('.secciones');
+
+        changeColor(name.value, enlaces)
+
+    });
+
+    function changeColor(name, enlaces)
+    {
+        enlaces.forEach(enlace => {
+            if(enlace.classList.contains(name))
+            {
+                enlace.classList.add('active');
+            }
+        });
+    }
+</script>
+
 </body>
 </html>
