@@ -301,11 +301,7 @@
 <script src="/AdminLTE/plugins/raphael/raphael.min.js"></script>
 <script src="/AdminLTE/plugins/jquery-mapael/jquery.mapael.min.js"></script>
 <script src="/AdminLTE/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
-<script src="/AdminLTE/plugins/chart.js/Chart.min.js"></script>
 
-<!-- PAGE SCRIPTS -->
-<script src="/AdminLTE/dist/js/pages/dashboard2.js"></script>
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
