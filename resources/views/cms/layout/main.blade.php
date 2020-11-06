@@ -26,12 +26,13 @@
 
   <!-- Axios -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
 <!-- IDENTIFICADOR SECCIÓN -->
 <input type="hidden" id="seccion_name" value="{{$secName}}">
-
 
 <div class="wrapper">
   <!-- Navbar -->
@@ -161,7 +162,7 @@
     <!-- Brand Logo -->
     <a href="{{route('cms.home')}}" class="brand-link">
       <span class="brand-text font-weight-light">Administrador</span>
-
+    </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -207,12 +208,11 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> 
           @endif
-
           @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link secciones tienda">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Tienda
@@ -233,7 +233,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> 
           @endif
         </ul>
       </nav>
@@ -244,6 +244,8 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
     <!-- /.content-header -->
 
     <!-- Main content -->
@@ -278,7 +280,7 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap -->
 <script src="/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
@@ -316,5 +318,6 @@
         });
     }
 </script>
+
 </body>
 </html>
