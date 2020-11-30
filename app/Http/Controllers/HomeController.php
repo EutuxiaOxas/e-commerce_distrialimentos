@@ -73,4 +73,10 @@ class HomeController extends Controller
             return view('carrito', compact('logo'));
         }
     }
+
+    public function dashboard()
+    {
+        $user = auth()->user();
+        return view('home', compact('user'));
+    }
 }

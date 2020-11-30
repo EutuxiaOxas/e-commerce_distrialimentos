@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
+@section('title')
+    Perfil | {{$user->name}}
+@endsection
+
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Perfil') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +18,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Has iniciado sesión') }}
                 </div>
             </div>
         </div>
