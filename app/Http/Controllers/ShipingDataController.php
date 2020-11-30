@@ -56,10 +56,12 @@ class ShipingDataController extends Controller
 
         Shiping_data::create($request->all());
 
-        return redirect("/home")->with('message', 'Orden realizada con éxito!');
 
+        return redirect("/cuentas?orden=".$request->orden_id);
     }
     
+
+
 
     public function getShipingData(Request $request, $id){
 

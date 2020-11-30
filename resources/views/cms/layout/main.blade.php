@@ -265,6 +265,37 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link secciones bancos">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Configuraciones
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('bank.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bancos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('bank.user.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cuentas Bancarias</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item ">
+            <a href="{{route('pagos.home')}}" class="nav-link secciones pagos">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Pagos
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
