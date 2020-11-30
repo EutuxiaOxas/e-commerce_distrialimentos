@@ -38,7 +38,9 @@
 		<div class="col-4 offset-1 d-flex" style="flex-direction: column;">
 			<div id="total_container" class="mb-3"></div>
 			@if(auth()->user())
-			<a href="#" id="boton_comprar" class="btn btn-primary">Contactar</a>
+			
+			<a href="{{route('order.store')}}" id="boton_comprar" class="btn btn-primary">Comprar</a>
+
 			@else
 			
 			<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">Iniciar Sesión para comprar</a>

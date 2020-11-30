@@ -23,4 +23,11 @@ class IndexController extends Controller
     	$usuarios = User::where('cms', '1')->get();
     	return view('cms.usuarios.index', compact('roles', 'usuarios', 'secName'));
     }
+
+    public function compradores()
+    {
+        $users = User::where('cms', '0')->get();
+        $secName = 'compradores';
+        return view('cms.compradores.index', compact('users', 'secName'));
+    }
 }

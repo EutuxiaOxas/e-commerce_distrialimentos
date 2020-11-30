@@ -113,4 +113,33 @@ Route::middleware('tienda')->group(function () {
 
 		/*--------------- PRODUCTOS IMAGENES --------------*/
 	Route::post('/cms/update/product/image/{id}', 'Cms\ProductImageController@editImage');
+
+
+
+	/*--------------- VISTA ORDENES --------------*/
+
+	Route::get('/cms/ventas', 'Cms\OrderController@index')->name('order.home');
+	
+
+	/*--------------- VISTA COMPRADORES --------------*/
+
+	Route::get('/cms/compradores', 'Cms\IndexController@compradores')->name('compradores.home');
+
 });
+//--------INFORMACION DE ENVIO-----
+Route::get('/get/shiping-info/{id}', 'ShipingDataController@getShipingData');
+
+//-------------- ORDENES -----------
+Route::get('/make/order', 'Cms\OrderController@nuevaOrden')
+	->middleware('auth')
+	->name('order.store');
+
+Route::get('/order/Detail/{id}', 'Cms\OrderController@getOrderDetail');
+Route::get('/cancelar/orden/{id}', 'Cms\OrderController@cancelarOrden')->name('orden.cancelar');
+
+//-------------- FORMULARIO DE ENVIO -----------
+Route::get('/shiping-data', 'ShipingDataController@index');
+
+Route::post('/guardar/shiping-data', 'ShipingDataController@guardarDatosEnvio')
+	->middleware('auth')
+	->name('shiping.store');
