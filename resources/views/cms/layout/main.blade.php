@@ -288,8 +288,6 @@
 
     });
 
-
-
     function changeColor(name, enlaces)
     {
         enlaces.forEach(enlace => {
