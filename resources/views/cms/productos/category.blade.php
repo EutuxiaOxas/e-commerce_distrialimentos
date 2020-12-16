@@ -38,6 +38,7 @@
         <thead>
           <tr>
           	<th>#</th>
+            <th>icono</th>
           	<th>Titulo</th>
             <th>Categoria padre</th>
             <th>estatus</th>
@@ -49,6 +50,7 @@
           @foreach($categorias as $categoria)
           <tr>
             <td>{{$categoria->id}}</td>
+            <td><img src="{{asset('storage/'.$categoria->icono)}}" style="width: 50px; height: 50px"></td>
             <td>{{$categoria->title}}</td>
             <td>
 
@@ -85,7 +87,7 @@
 
                 <input type="hidden" id="url_access" name=""> 
                 <input type="hidden" id="url_access_modal" value="nada" name=""> 
-                <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off">
+                <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         
@@ -110,7 +112,10 @@
                             <h5>Descripción</h5>
                             <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
                         </div>
-                
+                        <div class="col-md-12 form-group px-1">
+                            <h5>Icono</h5>
+                            <input type="file" id="icono_category" required name="icono">
+                        </div>
                     </div>
                     <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
                       <h5>URL</h5>
@@ -119,10 +124,10 @@
                 </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="crear_category_submit" class="btn btn-primary">Actualizar Categoria</button>
+                <button type="submit" id="crear_category_submit" class="btn btn-primary">Agregar Categoria</button>
             </div>
         </div>
-    </div>
+    </div>  
   </div>
 </div>
 
@@ -138,7 +143,7 @@
             <div class="modal-body">
                 <div id="errors_modal" style="display: none;" class="alert alert-danger" role="alert">
                 </div>
-                <form action="" id="editar_form" method="POST">
+                <form action="" id="editar_form" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <h5>Nombre</h5>
@@ -157,7 +162,11 @@
                         <h5>Descripcion</h5>
                         <textarea class="form-control" id="editar_description" name="description"></textarea>
                     </div>
-                    <div class="form-group" style="visibility: hidden;">
+                    <div class="col-md-12 form-group px-1">
+                        <h5>Icono</h5>
+                        <input type="file" id="icono_category_editar" required name="icono">
+                    </div>
+                    <div class="form-group" style="visibility: hidden;position: absolute;">
                       <h5>URL</h5>
                       <input class="form-control" id="slug_edit" type="text" name="slug">
                     </div>
@@ -204,6 +213,7 @@
 
     const title = document.getElementById('create_category_title'),
           description = document.getElementById('create_category_description'),
+          icono = document.getElementById('icono_category'),
           form = document.getElementById('form_create_category');
 
     let verify_access = document.getElementById('url_access');
@@ -219,6 +229,8 @@
       errors.push('Debe agregar una descripción');
     }if(verify_access.value == 0){
       errors.push('Debe agregar un titulo valido');
+    }if(icono.files.length <= 0) {
+      errors.push('Debe agregar un icono');
     }
 
 
@@ -322,9 +334,9 @@
   {
     editarButtons.forEach(button => {
       button.addEventListener('click', (e) => {
-        let title = e.target.parentNode.parentNode.children[1].textContent,
-            catPadre = e.target.parentNode.parentNode.children[2].innerText,
-            description = e.target.parentNode.parentNode.children[3].textContent,
+        let title = e.target.parentNode.parentNode.children[2].textContent,
+            catPadre = e.target.parentNode.parentNode.children[3].innerText,
+            description = e.target.parentNode.parentNode.children[5].textContent,
             id = e.target.id;
 
             axios.get(`/cms/tienda/get/category/${id}`)

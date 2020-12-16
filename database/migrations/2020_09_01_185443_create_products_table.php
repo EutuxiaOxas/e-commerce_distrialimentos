@@ -19,6 +19,11 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->integer('price');
+            $table->integer('amount');
+            $table->integer('iva');
+            $table->string('sku');
+            $table->string('unit');
+            $table->string('packed');
             $table->integer('price_reference');
             $table->string('image');
             $table->foreignId('category_id');

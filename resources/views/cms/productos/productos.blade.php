@@ -27,7 +27,12 @@
           	<th>#</th>
             <th>Image</th>
           	<th>Titulo</th>
-          	<th>Descripción</th>
+            <th>Descripción</th>
+            <th>Amount</th>
+            <th>Iva</th>
+            <th>SKU</th>
+            <th>Unit</th>
+          	<th>Packed</th>
             <th>Categoria</th>
           	<th>Acciones</th>
           </tr>
@@ -41,6 +46,11 @@
             </td>
             <td>{{$producto->title}}</td>
             <td>{{substr($producto->description,0, 60)}}</td>
+            <td>{{$producto->amount}}</td>
+            <td>{{$producto->iva}}</td>
+            <td>{{$producto->sku}}</td>
+            <td>{{$producto->unit}}</td>
+            <td>{{$producto->packed}}</td>
             <td>{{$producto->category->title}}</td>
             <td>
             	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>

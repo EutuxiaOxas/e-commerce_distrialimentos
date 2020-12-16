@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 
+use Storage;
+use Str;
 
 class CategoryController extends Controller
 {
@@ -41,8 +43,17 @@ class CategoryController extends Controller
     }
     //--------- GUARDAR -------
     public function guardarCategoria(Request $request)
-    {
-    	Category::create($request->all());
+    {   $path = $request->file('icono')->store('public');
+        $file = Str::replaceFirst('public/', '',$path);
+
+
+    	Category::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'padre_id' => $request->padre_id,
+            'slug' => $request->slug,
+            'icono' => $file,
+        ]);
 
     	return back()->with('message', 'Categoría creada con éxito');
     }
@@ -51,7 +62,34 @@ class CategoryController extends Controller
     {
     	$categoria = Category::find($id);
 
-    	$categoria->update($request->all());
+        if($request->file('icono'))
+        {
+            $deleted = Storage::disk('public')->delete($categoria->icono);
+
+            if(isset($deleted) || $categoria->icono == null)
+            {
+                $path = $request->file('icono')->store('public');
+
+                $file = Str::replaceFirst('public/', '',$path);
+
+                $categoria->update([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'padre_id' => $request->padre_id,
+                    'slug' => $request->slug,
+                    'icono' => $file,
+                ]);
+            } else {
+                return back()->with('message', 'No se pudo actualizar la categoria');
+            }
+        } else {
+            $categoria->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'padre_id' => $request->padre_id,
+                'slug' => $request->slug,
+            ]);
+        }
 
     	return back()->with('message', 'Categoria actualizada con éxito');
     }

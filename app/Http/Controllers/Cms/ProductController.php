@@ -64,6 +64,11 @@ class ProductController extends Controller
 	        'category_id' => $request->category_id,
             'slug' => $request->slug,
 	        'image' => $file,
+            'amount' => $request->amount,
+            'iva' => $request->iva,
+            'sku' => $request->sku,
+            'unit' => $request->unit,
+            'packed' => $request->packed,
 	    ]);
         
 
@@ -118,6 +123,11 @@ class ProductController extends Controller
                     'price_reference' => $request->price_reference,
     	            'category_id' => $request->category_id,
                     'slug' => $request->slug,
+                    'amount' => $request->amount,
+                    'iva' => $request->iva,
+                    'sku' => $request->sku,
+                    'unit' => $request->unit,
+                    'packed' => $request->packed,
     	            'image' => $file,
     	        ]);
     	    } else {
@@ -131,6 +141,11 @@ class ProductController extends Controller
                 'slug' => $request->slug,
                 'price_reference' => $request->price_reference,
     	        'description' =>$request->description,
+                'amount' => $request->amount,
+                'iva' => $request->iva,
+                'sku' => $request->sku,
+                'unit' => $request->unit,
+                'packed' => $request->packed,
     	    ]);
     	}
 

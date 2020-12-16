@@ -40,6 +40,33 @@
 			<h5>Precio referencial</h5>
 			<input class="form-control" id="price_reference" type="number" value="{{$product->price_reference}}" name="price_reference">
 		</div>
+
+		<div class="form-group col-12">
+			<h5>Amount</h5>
+			<input class="form-control" id="amount" type="number" value="{{$product->amount}}" name="amount">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>Iva</h5>
+			<input class="form-control" id="iva" type="number" value="{{$product->iva}}"  name="iva">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>SKU</h5>
+			<input class="form-control" id="sku" type="text" maxlength="191" value="{{$product->sku}}" autocomplete="off" name="sku">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>Unit</h5>
+			<input class="form-control" id="unit" type="text" maxlength="191" value="{{$product->unit}}" autocomplete="off" name="unit">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>Packed</h5>
+			<input class="form-control" id="packed" type="text" maxlength="191" value="{{$product->packed}}" autocomplete="off" name="packed">
+		</div>
+
+
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
 			<textarea class="form-control" id="description" name="description">{{$product->description}}</textarea>
@@ -136,6 +163,11 @@
 		description = document.getElementById('description'),
 		categoria = document.getElementById('categoria'),
 		form = document.getElementById('formulario_producto'),
+		amount = document.getElementById('amount'),
+		iva = document.getElementById('iva'),
+		sku = document.getElementById('sku'),
+		unit = document.getElementById('unit'),
+		packed = document.getElementById('packed'),
 		errors_container = document.getElementById('errors_container'),
 		modal_submit = document.getElementById('actualizar_modal'),
 		verify_access = document.getElementById('url_access'),
@@ -165,6 +197,16 @@
 			errors.push('Debes escoger una categoria')
 		}if(verify_access.value == 0){
 			errors.push('Debes escoger un titulo diferente')
+		}if(iva.value == '' ) {
+			errors.push('Debes agregar un iva')
+		}if(sku.value == '') {
+			errors.push('Debes agregar un sku')
+		}if(amount.value == ''){
+			errors.push('Debes agregar un amount')	
+		}if(unit.value == ''){
+			errors.push('Debes agregar un unit')
+		}if(packed.value == ''){
+			errors.push('Debes agregar un packed')
 		}
 
 
