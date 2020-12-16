@@ -9,16 +9,20 @@ class Product extends Model
     protected $fillable = [
     	'title', 
     	'description', 
-    	'price', 
+    	'unit_price', 
     	'image', 
     	'category_id', 
     	'slug', 
-    	'price_reference' , 
+    	'packaging_price' , 
     	'amount',
     	'iva',
     	'sku',
     	'unit',
     	'packed',
+        'available_stock',
+        'discount',
+        'in_stock',
+        'out_stock',
     ];
 
 

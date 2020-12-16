@@ -32,13 +32,13 @@
 		</div>
 
 		<div class="form-group col-12">
-			<h5>Precio</h5>
-			<input class="form-control" id="price" type="number" name="price">
+			<h5>Unit price</h5>
+			<input class="form-control" id="unit_price" type="number" name="unit_price">
 		</div>
 
 		<div class="form-group col-12">
-			<h5>Precio referencial</h5>
-			<input class="form-control" id="price_reference" type="number" name="price_reference">
+			<h5>Packaging price</h5>
+			<input class="form-control" id="packaging_price" type="number" name="packaging_price">
 		</div>
 
 		<div class="form-group col-12">
@@ -65,6 +65,27 @@
 			<h5>Packed</h5>
 			<input class="form-control" id="packed" type="text" maxlength="191" autocomplete="off" name="packed">
 		</div>
+
+		<div class="form-group col-12">
+			<h5>Discount</h5>
+			<input class="form-control" id="discount" type="number" name="discount">
+		</div>
+		
+		<div class="form-group col-12">
+			<h5>Available stock</h5>
+			<input class="form-control" id="available_stock" type="number" name="available_stock">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>in stock</h5>
+			<input class="form-control" id="in_stock" type="number" name="in_stock">
+		</div>
+
+		<div class="form-group col-12">
+			<h5>out stock</h5>
+			<input class="form-control" id="out_stock" type="number" name="out_stock">
+		</div> 
+
 
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
@@ -116,7 +137,8 @@
 
 <script type="text/javascript">
 	let title = document.getElementById('title'),
-		price = document.getElementById('price'),
+		unitPrice = document.getElementById('unit_price'),
+		packagingPrice = document.getElementById('packaging_price'),
 		imagen = document.getElementById('imagen'),
 		description = document.getElementById('description'),
 		categoria = document.getElementById('categoria'),
@@ -128,6 +150,10 @@
 		packed = document.getElementById('packed'),
 		errors_container = document.getElementById('errors_container'),
 		verify_access = document.getElementById('url_access'),
+		discount = document.getElementById('discount'),
+		availableStock = document.getElementById('available_stock'),
+		inStock = document.getElementById('in_stock'),
+		outStock = document.getElementById('out_stock'),
 		submit = document.getElementById('submitForm');
 
 	submit.addEventListener('click', (e) => {
@@ -140,8 +166,8 @@
 
 		if(title.value === ''){
 			errors.push('Debes agregar un titulo')
-		}if(price.value == ''){
-			errors.push('Debes agregar un precio')
+		}if(unitPrice.value == ''){
+			errors.push('Debes agregar un unit price')
 		}if(description.value == ''){
 			errors.push('Debes agregar una descripción')
 		}if(categoria.selectedIndex === 0){
@@ -160,6 +186,16 @@
 			errors.push('Debes agregar un unit')
 		}if(packed.value == ''){
 			errors.push('Debes agregar un packed')
+		}if(packagingPrice.value == ''){
+			errors.push('Debes agregar un Packaging price')	
+		}if(discount.value == '') {
+			errors.push('Debes agregar un discount')
+		}if(availableStock.value == ''){
+			errors.push('Debes agregar un availableStock')
+		}if(inStock.value == ''){
+			errors.push('Debes agregar un inStock')
+		}if(outStock.value == ''){
+			errors.push('Debes agregar un outStock')
 		}
 
 
