@@ -13,6 +13,60 @@ use App\Banks_User;
 |
 */
 
+// SOLO PARA MAQUETACION 
+
+//home 
+Route::get('/', function () {
+	return view('sketch.home');
+});
+
+//nosotros 
+Route::get('/nosotros', function () {
+	return view('sketch.nosotros');
+});
+
+//vitrina 
+Route::get('/vitrina', function () {
+	return view('sketch.vitrina');
+});
+
+//detalle 
+Route::get('/detalle', function () {
+	return view('sketch.detalle');
+});
+
+//formulario 
+Route::get('/formulario', function () {
+	return view('sketch.formulario');
+});
+
+//perfil - home - datos 
+Route::get('/perfil', function () {
+	return view('sketch.perfil');
+});
+
+//perfil - direcciones 
+Route::get('/perfil/direcciones', function () {
+	return view('sketch.perfil-direcciones');
+});
+
+//perfil - pedidos solicitados
+Route::get('/perfil/pedidos', function () {
+	return view('sketch.pedidos-pedidos');
+});
+
+//perfil - historial de pedidos
+Route::get('/perfil/historial', function () {
+	return view('sketch.pedidos-historial');
+});
+
+//FIN DE SOLO PARA MAQUETACION
+
+
+
+
+
+
 Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.login');
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
@@ -25,6 +79,7 @@ Route::get('/home', 'HomeController@dashboard')
 Route::get('/productos', 'HomeController@products')->name('productos');
 Route::get('/producto/{slug}', 'HomeController@showProduct')->name('producto.show');
 Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
+
 
 
 Route::get('/cart', 'CartController@getCart');
