@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('common.main')
+
 
 @section('content')
-<div class="container">
+@include('common.header')
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-3">
             <div class="card">
-                <div class="card-header">{{ __('Registrarse') }}</div>
+                <!-- <div class="card-header">{{ __('Registrarse') }}</div> -->
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -92,14 +94,14 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary mb-2">
                                     {{ __('Registrarse') }}
                                 </button>
                                 <a href="{{route('google.login')}}" class="btn btn-outline-primary">Registrarse con google</a>
                                 <hr>
                                 <h5>¿Ya tienes una cuenta? Inicia sesión aquí</h4>
                                 <hr>
-                                <a href="/login" class="btn btn-outline-secondary">Iniciar sesión</a>
+                                <a href="/login" class="btn btn-outline-info">Iniciar sesión</a>
                             </div>
                         </div>
                     </form>
