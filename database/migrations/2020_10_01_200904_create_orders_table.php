@@ -18,6 +18,9 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id');
             $table->integer('total_amount');
             $table->string('status');
+            $table->string('comment');
+            $table->integer('discount');
+            $table->integer('n-control');
             $table->timestamps();
         });
     }

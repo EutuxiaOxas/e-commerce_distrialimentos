@@ -296,6 +296,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item ">
+            <a href="{{route('promociones.home')}}" class="nav-link secciones promociones">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Promociones
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -59,11 +59,20 @@ class ProductController extends Controller
 		$guardado = $producto->create([
 	        'title' => $request->title,
 	        'description' =>$request->description,
-	        'price' => $request->price,
-            'price_reference' => $request->price_reference,
+	        'unit_price' => $request->unit_price,
+            'packaging_price' => $request->packaging_price,
 	        'category_id' => $request->category_id,
             'slug' => $request->slug,
 	        'image' => $file,
+            'amount' => $request->amount,
+            'iva' => $request->iva,
+            'sku' => $request->sku,
+            'unit' => $request->unit,
+            'packed' => $request->packed,
+            'discount' => $request->discount,
+            'available_stock' => $request->available_stock,
+            'in_stock' => $request->in_stock,
+            'out_stock' => $request->out_stock,
 	    ]);
         
 
@@ -118,6 +127,15 @@ class ProductController extends Controller
                     'price_reference' => $request->price_reference,
     	            'category_id' => $request->category_id,
                     'slug' => $request->slug,
+                    'amount' => $request->amount,
+                    'iva' => $request->iva,
+                    'sku' => $request->sku,
+                    'unit' => $request->unit,
+                    'packed' => $request->packed,
+                    'discount' => $request->discount,
+                    'available_stock' => $request->available_stock,
+                    'in_stock' => $request->in_stock,
+                    'out_stock' => $request->out_stock,
     	            'image' => $file,
     	        ]);
     	    } else {
@@ -131,6 +149,15 @@ class ProductController extends Controller
                 'slug' => $request->slug,
                 'price_reference' => $request->price_reference,
     	        'description' =>$request->description,
+                'amount' => $request->amount,
+                'iva' => $request->iva,
+                'sku' => $request->sku,
+                'unit' => $request->unit,
+                'discount' => $request->discount,
+                'available_stock' => $request->available_stock,
+                'in_stock' => $request->in_stock,
+                'out_stock' => $request->out_stock,
+                'packed' => $request->packed,
     	    ]);
     	}
 

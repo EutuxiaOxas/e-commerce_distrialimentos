@@ -27,7 +27,18 @@
           	<th>#</th>
             <th>Image</th>
           	<th>Titulo</th>
-          	<th>Descripción</th>
+            <th>Descripción</th>
+            <th>Amount</th>
+            <th>Unit price</th>
+            <th>Packaging price</th>
+            <th>Iva</th>
+            <th>SKU</th>
+            <th>Unit</th>
+          	<th>Packed</th>
+            <th>Discount</th>
+            <th>Available stock</th>
+            <th>In stock</th>
+            <th>Out stock</th>
             <th>Categoria</th>
           	<th>Acciones</th>
           </tr>
@@ -41,6 +52,17 @@
             </td>
             <td>{{$producto->title}}</td>
             <td>{{substr($producto->description,0, 60)}}</td>
+            <td>{{$producto->amount}}</td>
+            <td>{{$producto->unit_price}}</td>
+            <td>{{$producto->packaging_price}}</td>
+            <td>{{$producto->iva}}</td>
+            <td>{{$producto->sku}}</td>
+            <td>{{$producto->unit}}</td>
+            <td>{{$producto->packed}}</td>
+            <td>{{$producto->discount}}</td>
+            <td>{{$producto->available_stock}}</td>
+            <td>{{$producto->in_stock}}</td>
+            <td>{{$producto->out_stock}}</td>
             <td>{{$producto->category->title}}</td>
             <td>
             	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
