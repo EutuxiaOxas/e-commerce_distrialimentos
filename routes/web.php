@@ -70,7 +70,7 @@ Route::get('/perfil/historial', function () {
 Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.login');
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
-Route::get('/', 'HomeController@lading')->name('home');
+//Route::get('/', 'HomeController@lading')->name('home');
 Route::get('/home', 'HomeController@dashboard')
 	->middleware('auth')
 	->name('user.home');
