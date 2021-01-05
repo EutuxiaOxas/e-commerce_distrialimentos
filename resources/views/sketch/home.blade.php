@@ -14,48 +14,160 @@ $color_header='dark';
     @include('common.header')
  
 {{-- cover --}}
-<section class="p-0">
-    <div class="swiper-container text-white swiper-container-fade swiper-container-horizontal skrollable skrollable-between" data-top-top="transform: translateY(0px);" data-top-bottom="transform: translateY(250px);" style="transform: translateY(0px);">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide vh-100 swiper-slide-prev" >
-          <div class="image image-overlay" style="background-image:url({{asset('images/portada/portada2.jpg')}})"></div>
-          <div class="caption">
-            <div class="container">
-              <div class="row justify-content-between vh-100">
-                <div class="col-md-8 align-self-center" data-swiper-parallax-y="-250%" >
-                  <h1 class="display-5 font-weight-bold text-uppercase">Distrialimentos del centro</h1>
-                </div>
-              </div>
+<div class="swiper-container swiper-container-carousel">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide bg-dark">
+        <div class="image image-gradient-horizontal-light" style="background-image:url({{asset('images/portada/portada3.jpg')}})">
+        </div>
+        
+        <div class="caption" data-swiper-parallax-y="-100%">
+          <div class="container">
+            <div class="row align-items-end vh-15">
             </div>
           </div>
-        </div>
-        <div class="swiper-slide vh-100 swiper-slide-active" >
-          <div class="image image-overlay" style="background-image:url({{asset('images/portada/portada3.jpg')}})"></div>
-          <div class="caption">
-            <div class="container">
-              <div class="row vh-100">
-                <div class="col-lg-6 align-self-center" data-swiper-parallax-y="-250%">
-                  <h1 class="display-3">Los <b>Estándares</b> más altos de calidad.</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col text-center">
-                <div class="mouse"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="swiper-pagination swiper-pagination-vertical swiper-pagination-0 swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span></div>
-    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-  </section>
+    </div>
+  </div>
+</div>
+  
   {{-- cover --}}
+
+  <section class="pt-6">
+  <div class="container">
+  <h2>Productos destacados</h2>
+    <div class="owl-carousel" data-items="[5,1]" data-loop="true" data-autoheight="true" data-margin="10" data-dots="true" data-nav="true" data-autoplay="true">
+        <figure class="photo">
+          <img src="{{asset('images/cta/compras.jpg')}}" alt="Image">
+        </figure>
+        <figure class="photo">
+          <img src="{{asset('images/cta/productos.jpg')}}" alt="Image">
+        </figure>
+        <figure class="photo">
+          <img src="{{asset('images/cta/envios.jpg')}}" alt="Image">
+        </figure>
+        <figure class="photo">
+          <img src="{{asset('images/cta/ubicacion.jpg')}}" alt="Image">
+        </figure>
+        <figure class="photo">
+          <img src="{{asset('images/cta/envios.jpg')}}" alt="Image">
+        </figure>
+        <figure class="photo">
+          <img src="{{asset('images/cta/productos.jpg')}}" alt="Image">
+        </figure>
+    </div>
+  </div>
+  </section>
+
+  <!-- categorias -->
+  <section>
+  <div class="container">
+  <h2>Categoria de productos</h2>
+    <div class="row py-0">
+      <div class="col-12 col-md-3">
+        <a href="#">
+          <div class="boxed rising align-self-center text-center mb-2">
+            <i class="center-block">
+              <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+              <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+              </svg>
+            </i>
+            <h4 class="fs-20 font-weight-bold text-blue text-center my-1 pb-2">Viveres</h4>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-md-3">
+        <a href="#">
+          <div class="boxed rising align-self-center text-center">
+            <i class="center-block">
+              <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+              <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+              </svg>
+            </i>
+            <h4 class="fs-20 font-weight-bold text-blue my-1 pb-2 text-center">Viveres</h4>
+          </div>
+       </a>
+      </div>
+      <div class="col-12 col-md-3">
+      <a href="#">
+        <div class="boxed rising align-self-center text-center">
+          <i class="center-block">
+            <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+            <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+            </svg>
+          </i>
+          <h4 class="fs-20 font-weight-bold text-blue my-1 pb-2 text-center">Viveres</h4>
+        </div>
+      </a>
+      </div>
+      <div class="col-12 col-md-3">
+      <a href="#">
+        <div class="boxed rising align-self-center text-center">
+          <i>
+            <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+            <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+            </svg>
+          </i>
+          <h4 class="fs-20 font-weight-bold text-blue my-1 pb-2 text-center">Viveres</h4>
+        </div>
+      </a>
+      </div>           
+    </div>
+    <div class="row py-0">
+      <div class="col-12 col-md-3">
+        <a href="#">
+          <div class="boxed rising align-self-center text-center mb-2">
+            <i class="center-block">
+              <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+              <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+              </svg>
+            </i>
+            <h4 class="fs-20 font-weight-bold text-blue text-center my-1 pb-2">Viveres</h4>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-md-3">
+        <a href="#">
+          <div class="boxed rising align-self-center text-center">
+            <i class="center-block">
+              <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+              <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+              </svg>
+            </i>
+            <h4 class="fs-20 font-weight-bold text-blue my-1 pb-2 text-center">Viveres</h4>
+          </div>
+       </a>
+      </div>
+      <div class="col-12 col-md-3">
+      <a href="#">
+        <div class="boxed rising align-self-center text-center">
+          <i class="center-block">
+            <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+            <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+            </svg>
+          </i>
+          <h4 class="fs-20 font-weight-bold text-blue my-1 pb-2 text-center">Viveres</h4>
+        </div>
+      </a>
+      </div>
+      <div class="col-12 col-md-3">
+      <a href="#">
+        <div class="boxed rising align-self-center text-center">
+          <i>
+            <svg xmlns="http://www.w3.org/2000/svg" max-width="65" height="65" fill="currentColor" class="bi bi-shop mt-2" viewBox="0 0 16 16">
+            <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+            </svg>
+          </i>
+          <h4 class="fs-20 font-weight-bold text-blue my-1 pb-2 text-center">Viveres</h4>
+        </div>
+      </a>
+      </div>           
+    </div>
+  </div>
+
+  </section>
+  
+ 
+
+
 
 
    <!-- cover -->
