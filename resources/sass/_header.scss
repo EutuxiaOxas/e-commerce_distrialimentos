@@ -1,0 +1,196 @@
+@import 'variables';
+
+@font-face {
+  font-family: "Righteous";
+  src: url("/fonts/Righteous-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.ttf");
+}
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.header__main {
+	position: absolute;
+	width: 100%;
+}
+
+
+.header__container{
+	background-color: $header_background;
+}
+
+.header__body{
+	width: 97%;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	padding: 1rem 0;
+}
+
+.header__logo {
+	width: 15%;
+	margin-right: 1rem;
+}
+
+.header__logo-image{
+	max-width: 100%;
+}
+
+.header__search {
+	width: 65%;
+	position: relative;
+	margin-right: 1.3rem;
+}
+
+.header__search-input{
+	font-family: 'Roboto', cursive;
+	width: 100%;
+	padding: 1.5rem 2rem 1.3rem;
+	border-radius: 50px;
+	border: none;
+	-webkit-box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
+	box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
+}
+
+.header__search-input::-webkit-input-placeholder {
+	color: $header_searchInput;
+	font-family: 'Roboto', cursive;
+	font-size: 1rem;
+}
+
+.header__search--icon{
+	position: absolute;
+	top: 14.3%;
+	cursor: pointer;
+	right: 3.5%;
+}
+
+.header__sesion {
+	width: 17%;
+	text-align: center;
+}
+
+.header__sesion a {
+	font-family: 'Righteous', cursive;
+	font-size: 2rem;
+	color: $header_session;
+	text-decoration: none;
+}
+
+
+
+// ------------ NAVBAR --------------
+
+.navbar__container {
+	width: 100%;
+	background-color: $navbar_Background;
+
+}
+
+.navbar__body{
+	display: flex;
+	width: 97%;
+	align-items: center;
+	margin-left: auto;
+	padding-right: 1rem;
+}
+
+
+.navbar__list {
+	width: 80%;
+	padding-right: 2.5rem;
+	justify-content: flex-end;
+	display: flex;
+}
+
+.navbar__list-item {
+	list-style: none;
+	padding: 1.3rem 0;
+}
+
+.navbar__list-item:not(:first-of-type) {
+	margin-left:  4rem;
+}
+
+.navbar__list-item a {
+	font-family: 'Righteous', cursive;
+	text-decoration: none;
+	font-size: 1.4rem;
+	color: #ffff;
+}
+
+.navbar__currency {
+	position: relative;
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 1rem;
+	font-size: 1.2rem;
+}
+
+.navbar__currency--choose{
+	color: #ffff;
+	font-family: 'Righteous', cursive;
+	text-decoration: none;
+}
+
+.navbar__currencyList{
+	position: absolute;
+	top: 195%;
+	right: 0;
+	width: 184px;
+	background-color: pink;
+}
+
+.navbar__currencyList.hide {
+	display: none;
+}
+
+
+.navbar__currencyList--item {
+	font-size: 1rem;
+	padding: .6rem 0 1.2rem;
+	font-family: 'Righteous', cursive;
+	background-color: rgb(255,164,57);
+}
+
+.navbar__currencyList--item:nth-child(2n) {
+	background-color: rgb(255,148,23);
+}
+
+.navbar__currencyList--item a {
+	text-decoration: none;
+	padding-left: 1rem;
+}
+
+.navbar__currencyList--item.title a {
+	font-family: 'Roboto', cursive;
+	color: #EBE7E7;
+	font-size: .7rem;
+}
+
+.navbar__currencyList--item.usd a {
+	color: #2B2B2B;
+	font-family: 'Righteous', cursive;
+}
+
+.navbar__currencyList--item.ves a {
+	color: #ffff;
+}
+
+.navbar__icon{
+	text-align: center;
+	width: 10%;
+}
+.navbar__icon--option{
+	max-width: 40%;
+}

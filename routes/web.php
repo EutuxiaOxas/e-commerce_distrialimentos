@@ -60,6 +60,10 @@ Route::get('/perfil/historial', function () {
 	return view('sketch.pedidos-historial');
 });
 
+Route::get('/header', function () {
+	return view('sketch.header');
+});
+
 //FIN DE SOLO PARA MAQUETACION
 
 
