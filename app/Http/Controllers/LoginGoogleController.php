@@ -32,6 +32,8 @@ class LoginGoogleController extends Controller
     			'email' => $auth_user->email,
     			
     		]);
+
+            Auth::login($user);
     	}
 
     	return redirect('/home');
