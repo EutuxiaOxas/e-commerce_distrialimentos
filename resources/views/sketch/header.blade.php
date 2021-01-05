@@ -26,7 +26,7 @@
 		<div class="navbar__body">
 			<ul class="navbar__list">
 				<li class="navbar__list-item">
-					<a href="#">Categoría</a>
+					<a href="#">Categorias</a>
 				</li>
 				<li class="navbar__list-item">
 					<a href="#">Mas vendidos</a>
