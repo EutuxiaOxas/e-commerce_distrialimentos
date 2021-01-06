@@ -69,14 +69,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Leche Descremada</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Leche descremada mi vaca 1L</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Viveres</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -86,14 +89,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-              <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -103,14 +109,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-              <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -120,14 +129,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-              <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -148,14 +160,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -165,14 +180,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-              <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -182,14 +200,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-              <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
@@ -199,14 +220,17 @@ $color_header='dark';
           <a href="#">
             <div class="card rising">
               <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
-              <div class="card-body">
-              <h5 class="card-title font-weight-bold colorG">Producto</h5>
-                <p class="card-text">(100 Disponibles)</p>
-                <a href="#">Viveres</a>
-                <p>IVA incluido</p>
+              <div class="card-body pt-1 px-1">
+                <p class="text-muted text-right small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                <h5 class="card-title font-weight-bold fs-19 pl-1 mb-0 text-blue">Titulo del producto</h5>
+                <h6 class="pl-1 text-black mb-0 fs-14">Descripcion del producto</h6>
+                <p class="card-text pl-1 small">(100 Disponibles)</p>
+                <a href="#" class="pl-1 small">Categoria</a>
+                <p class="pl-1 small">IVA incluido</p>
                 <div class="card-pricing text-center">
-                  <p class="lead">5.77$</p>
-                  <a href="#" class="btn btn-primary">Agregar</a>
+                  <h4 class="font-weight-bold mb-0">20,00 $</h4>
+                  <p class="small">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5">Agregar</a>
                 </div>
               </div>
             </div>
