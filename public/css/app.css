@@ -14,9 +14,117 @@
   box-sizing: border-box;
 }
 
-.header__main {
-  position: absolute;
+/*------------------------- MOBILE VIEW --------------------- */
+
+.header__mobileMain {
+  background-color: #EBE7E7;
+}
+
+.header__mobileContainer {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0 2rem;
+}
+
+.header__logoMobile {
+  width: 15%;
+  text-align: center;
+}
+
+.header__logoMobile-image {
+  max-width: 75%;
+}
+
+.header__searchMobile {
+  width: 70%;
+  position: relative;
+}
+
+.header__searchMobile-input {
+  font-family: "Roboto", cursive;
+  font-size: 2rem;
   width: 100%;
+  padding: 2rem 2rem 1.7rem;
+  border-radius: 50px;
+  border: none;
+  box-shadow: -1px 4px 11px -6px rgba(0, 0, 0, 0.75);
+  outline: none;
+}
+
+.header__searchMobile-input ::-webkit-input-placeholder {
+  color: #A7A7A7;
+  font-family: "Roboto", cursive;
+  font-size: 2.5rem;
+}
+
+.header__searchMobile-icon {
+  position: absolute;
+  top: 15%;
+  right: 6%;
+}
+
+.header__menuMobile-icon {
+  padding-top: 0.6rem;
+  width: 15%;
+  text-align: center;
+}
+
+.header__navMobile {
+  width: 100%;
+  background-color: #FD6721;
+  padding-left: 2.4rem;
+}
+
+.header__navMain {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  width: 86%;
+}
+
+.header__navList {
+  list-style: none;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4rem;
+}
+
+.header__navList:last-of-type {
+  margin-right: 0;
+}
+
+.header__navList a {
+  text-decoration: none;
+  font-family: "Righteous", cursive;
+  color: #ffffff;
+  font-size: 3rem;
+  margin-left: 1rem;
+}
+
+.camionIcon__mobile {
+  position: fixed;
+  right: 4%;
+  bottom: 5%;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #FD6721;
+  box-shadow: 1px 3.5px 15px -3px rgba(0, 0, 0, 0.75);
+}
+
+/*------------------------- DESKTOP VIEW --------------------- */
+
+.header__main {
+  width: 100%;
+  display: none;
 }
 
 .header__container {
@@ -89,7 +197,7 @@
 
 .navbar__container {
   width: 100%;
-  background-color: #FF9417;
+  background-color: #FD6721;
 }
 
 .navbar__body {
@@ -186,6 +294,26 @@
 .navbar__icon {
   text-align: center;
   width: 10%;
+}
+
+@media (min-width: 300px) {
+  .header__main {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
+  .header__mobileMain {
+    display: none;
+  }
+
+  .header__main {
+    display: block;
+  }
+
+  .camionIcon__mobile {
+    display: none;
+  }
 }
 
 @media (min-width: 1400px) {
