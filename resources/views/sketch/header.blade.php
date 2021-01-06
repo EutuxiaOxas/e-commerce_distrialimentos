@@ -58,12 +58,12 @@
 				</a>
 				<div id="currency_list" class="navbar__currencyList hide">
 					<div class="navbar__currencyList--item title">
-						<a href="#">DIVISAS</a>
+						<p >DIVISAS</p>
 					</div>
-					<div class="navbar__currencyList--item  usd">
+					<div class="navbar__currencyList--item  usd choose">
 						<a class="navbar__currencyList--itemOption" href="#">USD <span>(Dolares)</span></a>
 					</div>
-					<div class="navbar__currencyList--item ves">
+					<div class="navbar__currencyList--item ves choose">
 						<a class="navbar__currencyList--itemOption " href="#">VES <span>(Bolivares)</span></a>
 					</div>
 				</div>
