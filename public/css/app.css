@@ -41,15 +41,15 @@
 }
 
 .header__search {
-  width: 65%;
+  width: 62%;
   position: relative;
-  margin-right: 1.3rem;
+  margin-right: 2rem;
 }
 
 .header__search-input {
   font-family: "Roboto", cursive;
   width: 100%;
-  padding: 1.5rem 2rem 1.3rem;
+  padding: 1.2rem 2rem 1rem;
   border-radius: 50px;
   border: none;
   box-shadow: -1px 4px 11px -6px rgba(0, 0, 0, 0.75);
@@ -63,21 +63,27 @@
 
 .header__search--icon {
   position: absolute;
-  top: 14.3%;
+  top: 23%;
   cursor: pointer;
   right: 3.5%;
 }
 
 .header__sesion {
-  width: 17%;
+  width: 18.5%;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 
-.header__sesion a {
+.header__sesion-option {
   font-family: "Righteous", cursive;
-  font-size: 2rem;
+  font-size: 1.15rem;
   color: #232323;
   text-decoration: none;
+}
+
+.header__sesion-option.login {
+  color: #02528A;
 }
 
 .navbar__container {
@@ -94,7 +100,7 @@
 }
 
 .navbar__list {
-  width: 80%;
+  width: 76%;
   padding-right: 2.5rem;
   justify-content: flex-end;
   display: flex;
@@ -112,7 +118,7 @@
 .navbar__list-item a {
   font-family: "Righteous", cursive;
   text-decoration: none;
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #ffff;
 }
 
@@ -133,9 +139,9 @@
 
 .navbar__currencyList {
   position: absolute;
-  top: 195%;
-  right: 0;
-  width: 184px;
+  top: 178%;
+  right: 5%;
+  width: 172px;
   background-color: pink;
 }
 
@@ -145,23 +151,24 @@
 
 .navbar__currencyList--item {
   font-size: 1rem;
-  padding: 0.6rem 0 1.2rem;
+  padding: 0.6rem 0 0.8rem;
   font-family: "Righteous", cursive;
-  background-color: #ffa439;
+  background-color: #02528A;
 }
 
 .navbar__currencyList--item:nth-child(2n) {
-  background-color: #ff9417;
+  background-color: #0068B1;
 }
 
 .navbar__currencyList--item a {
   text-decoration: none;
+  font-size: 1.2rem;
   padding-left: 1rem;
 }
 
 .navbar__currencyList--item.title a {
   font-family: "Roboto", cursive;
-  color: #EBE7E7;
+  color: #0079CE;
   font-size: 0.7rem;
 }
 
@@ -177,9 +184,5 @@
 .navbar__icon {
   text-align: center;
   width: 10%;
-}
-
-.navbar__icon--option {
-  max-width: 40%;
 }
 
