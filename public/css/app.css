@@ -25,7 +25,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  padding: 0.8rem 0 2rem;
+  padding: 0.8rem 0 1.3rem;
 }
 
 .header__logoMobile {
@@ -44,9 +44,9 @@
 
 .header__searchMobile-input {
   font-family: "Roboto", cursive;
-  font-size: 2rem;
+  font-size: 0.7rem;
   width: 100%;
-  padding: 2rem 2rem 1.7rem;
+  padding: 1rem 1.5rem 1.05rem;
   border-radius: 50px;
   border: none;
   box-shadow: -1px 4px 11px -6px rgba(0, 0, 0, 0.75);
@@ -56,13 +56,13 @@
 .header__searchMobile-input ::-webkit-input-placeholder {
   color: #A7A7A7;
   font-family: "Roboto", cursive;
-  font-size: 2.5rem;
+  font-size: 0.8rem;
 }
 
 .header__searchMobile-icon {
   position: absolute;
-  top: 15%;
-  right: 6%;
+  top: 25%;
+  right: 4%;
 }
 
 .header__menuMobile-icon {
@@ -74,14 +74,14 @@
 .header__navMobile {
   width: 100%;
   background-color: #FD6721;
-  padding-left: 2.4rem;
+  padding-left: 0.2rem;
 }
 
 .header__navMain {
   display: flex;
   padding: 1rem;
   align-items: center;
-  width: 86%;
+  width: 90%;
 }
 
 .header__navList {
@@ -91,7 +91,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 4rem;
+  margin-right: 1.2rem;
 }
 
 .header__navList:last-of-type {
@@ -102,16 +102,16 @@
   text-decoration: none;
   font-family: "Righteous", cursive;
   color: #ffffff;
-  font-size: 3rem;
-  margin-left: 1rem;
+  font-size: 1.2rem;
+  margin-left: 0.7rem;
 }
 
 .camionIcon__mobile {
   position: fixed;
   right: 4%;
   bottom: 5%;
-  width: 160px;
-  height: 160px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -302,6 +302,12 @@
   }
 }
 
+@media (min-width: 411px) {
+  .header__navMobile {
+    padding-left: 1rem;
+  }
+}
+
 @media (min-width: 1000px) {
   .header__mobileMain {
     display: none;
@@ -324,5 +330,183 @@
   .header__sesion-option {
     font-size: 1.3rem;
   }
+}
+
+/*-------------- NAVBAR PERFIL MOBILE ------------- */
+
+.perfilNavbar__mobile {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.perfilNavbar__mobileItem {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.perfilNavbar__mobileItem-icon {
+  margin-right: 1rem;
+}
+
+.perfilNavbar__mobileItem-option {
+  font-size: 1.1rem;
+  font-family: "Righteous", cursive;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 300;
+}
+
+/*----------------------- PERFIL MAIN SECTION ---------------*/
+
+.perfil__container {
+  padding: 0;
+  margin: 0;
+  background-color: #EBE7E7;
+  min-height: 100vh;
+}
+
+.perfil__body {
+  width: 85%;
+  margin: 0 auto;
+  min-height: 100%;
+  padding-bottom: 1rem;
+}
+
+.perfil__body-title {
+  padding: 1.2rem 0;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Righteous", cursive;
+  font-weight: 300;
+}
+
+/*---- PERFIL CARDS ---*/
+
+.perfil__card:not(:last-of-type) {
+  margin-bottom: 3rem;
+}
+
+.perfil__cardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.perfil__card-title {
+  font-family: "Roboto", cursive;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2B2B2B;
+}
+
+.perfil__cardBody {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px -3px rgba(0, 0, 0, 0.75);
+}
+
+.perfil__cardBody.email {
+  text-align: center;
+  width: 100%;
+}
+
+.perfil__cardEmail-title {
+  padding: 2rem 0 1rem;
+  font-size: 1rem;
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+}
+
+.perfil__cardEmail-content {
+  font-size: 0.8rem;
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+  padding-bottom: 2rem;
+  color: #838383;
+}
+
+.perfil__cardListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.perfil__cardListItem-title,
+.perfil__cardListItem-content {
+  font-family: "Roboto", cursive;
+  font-size: 0.9rem;
+}
+
+.perfil__cardListItem-title {
+  color: #000000;
+}
+
+.perfil__cardListItem-content {
+  color: #838383;
+  font-weight: bold;
+}
+
+.perfilCardDirection {
+  background-color: #ffffff;
+  padding: 1rem 1.5rem 1.6rem;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px -3px rgba(0, 0, 0, 0.75);
+}
+
+.perfil__cardBody.direccion {
+  padding: 0.6rem 1rem;
+}
+
+.perfil__cardTitle.direccion {
+  margin-bottom: 0.6rem;
+}
+
+.direccionCard {
+  margin-bottom: 2rem;
+}
+
+.perfil__card-title.direccion {
+  font-size: 1rem;
+}
+
+.perfil__cardDireccion {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.perfil__cardDireccion-title {
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.perfil__cardDireccion-content {
+  font-family: "Roboto", cursive;
+  font-size: 0.7rem;
+  color: #838383;
+  font-weight: bold;
+}
+
+.perfil__agregarDireccion {
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+
+.perfil__agregarDireccion a {
+  font-family: "Roboto", cursive;
+  color: #0068B1;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 

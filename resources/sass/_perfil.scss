@@ -1,0 +1,190 @@
+
+
+/*-------------- NAVBAR PERFIL MOBILE ------------- */
+
+.perfilNavbar__mobile {
+	display: flex;
+	align-items: center;
+	padding: 1rem 1.5rem;
+	justify-content: space-between;
+	width: 95%;
+}
+
+.perfilNavbar__mobileItem {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.perfilNavbar__mobileItem-icon {
+	margin-right: 1rem;
+}
+
+.perfilNavbar__mobileItem-option {
+	font-size: 1.1rem;
+	font-family: $principal_font;
+	text-decoration: none;	
+	color: #ffffff;
+	font-weight: 300;
+}
+
+
+/*----------------------- PERFIL MAIN SECTION ---------------*/
+.perfil__container {
+	padding: 0;
+	margin: 0;
+	background-color: $header_background;
+	min-height: 100vh;
+}
+
+.perfil__body {
+	width: 85%;
+	margin: 0 auto;
+	min-height: 100%;
+	padding-bottom: 1rem;
+}
+
+.perfil__body-title {
+	padding: 1.2rem 0;
+	text-align: center;
+	font-size: 2rem;
+	font-family: $principal_font;
+	font-weight: 300;
+}
+
+/*---- PERFIL CARDS ---*/
+.perfil__card:not(:last-of-type){
+	margin-bottom: 3rem; 	
+}
+
+.perfil__cardTitle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.perfil__card-title {
+	font-family: $secondary_font;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: $perfil_secondary-color;
+}
+
+.perfil__cardBody {
+	background-color: #ffffff;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
+}
+
+.perfil__cardBody.email {
+	text-align: center;
+	width: 100%;
+}
+
+.perfil__cardEmail-title {
+	padding: 2rem 0 1rem;
+	font-size: 1rem;
+	font-family: $secondary_font;
+	font-weight: bold;
+}
+
+.perfil__cardEmail-content {
+	font-size: .8rem;
+	font-family: $secondary_font;
+	font-weight: bold;
+	padding-bottom: 2rem;
+	color: $perfil_third-color;
+}
+
+//CARD LISTS
+
+.perfil__cardList {
+
+}
+
+.perfil__cardListItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 85%;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+
+.perfil__cardListItem-title, .perfil__cardListItem-content {
+	font-family: $secondary_font;
+	font-size: .9rem;
+}
+
+.perfil__cardListItem-title {
+	color: $perfil_principal-color;
+}
+
+.perfil__cardListItem-content {
+	color: $perfil_third-color;
+	font-weight: bold;
+}
+
+
+//CARD DIRECCIONES
+
+.perfilCardDirection {
+	background-color: #ffffff;
+	padding: 1rem 1.5rem 1.6rem;
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
+	box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
+}
+
+.perfil__cardBody.direccion {
+	padding: .6rem 1rem;
+}
+
+.perfil__cardTitle.direccion {
+	margin-bottom: .6rem;
+}
+
+.direccionCard {
+	margin-bottom: 2rem;
+}
+
+.perfil__card-title.direccion {
+	font-size: 1rem;
+} 
+
+.perfil__cardDireccion {
+	width: 85%;
+	margin: 0 auto;
+}
+
+.perfil__cardDireccion-title {
+	font-family: $secondary_font;
+	font-weight: bold;
+	font-size: .8rem;
+	margin-bottom: .6rem;
+}
+
+.perfil__cardDireccion-content {
+	font-family: $secondary_font;
+	font-size: .7rem;
+	color: $perfil_third-color;
+	font-weight: bold;
+}
+
+.perfil__agregarDireccion {
+	text-align: center;
+	margin-bottom: .7rem;
+}
+
+.perfil__agregarDireccion a {
+	font-family: $secondary_font;
+	color: $perfil-cta-color;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: .8rem;
+}

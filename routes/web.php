@@ -64,6 +64,10 @@ Route::get('/header', function () {
 	return view('sketch.header');
 });
 
+Route::get('/perfil', function () {
+	return view('perfil.mis_datos');
+});
+
 //FIN DE SOLO PARA MAQUETACION
 
 

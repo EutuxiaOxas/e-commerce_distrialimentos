@@ -27,7 +27,7 @@
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
-	padding: .8rem 0 2rem;
+	padding: .8rem 0 1.3rem;
 }
 
 .header__logoMobile {
@@ -48,9 +48,9 @@
 
 .header__searchMobile-input {
 	font-family: 'Roboto', cursive;
-	font-size: 2rem;
+	font-size: .7rem;
 	width: 100%;
-	padding: 2rem 2rem 1.7rem;
+	padding: 1rem 1.5rem 1.05rem;
 	border-radius: 50px;
 	border: none;
 	-webkit-box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
@@ -62,13 +62,13 @@
 .header__searchMobile-input ::-webkit-input-placeholder {
 	color: $header_searchInput;
 	font-family: 'Roboto', cursive;
-	font-size: 2.5rem;
+	font-size: .8rem;
 }
 
 .header__searchMobile-icon {
 	position: absolute;
-	top: 15%;
-	right: 6%;
+	top: 25%;
+	right: 4%;
 }
 
 
@@ -83,14 +83,14 @@
 .header__navMobile {
 	width: 100%;
 	background-color: $navbar_Background;
-	padding-left: 2.4rem;
+	padding-left: .2rem;
 }
 
 .header__navMain {
 	display: flex;
 	padding: 1rem;
 	align-items: center;
-	width: 86%;
+	width: 90%;
 }
 
 .header__navList {
@@ -100,7 +100,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-right: 4rem;
+	margin-right: 1.2rem;
 }
 
 .header__navList:last-of-type {
@@ -111,16 +111,16 @@
 	text-decoration: none;
 	font-family: 'Righteous', cursive;
 	color: $white;
-	font-size: 3rem;
-	margin-left: 1rem;
+	font-size: 1.2rem;
+	margin-left: .7rem;
 }
 
 .camionIcon__mobile {
 	position: fixed;
 	right: 4%;
 	bottom: 5%;
-	width: 160px;
-	height: 160px;
+	width: 60px;
+	height: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -322,6 +322,12 @@
 	.header__main {
 		display: none;
 	}
+}
+
+@media (min-width: 411px) {
+	.header__navMobile {
+		padding-left: 1rem;
+	}	
 }
 
 
