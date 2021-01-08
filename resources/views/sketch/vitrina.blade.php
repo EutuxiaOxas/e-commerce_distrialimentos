@@ -104,7 +104,7 @@ $color_header='dark';
               <div class="card-body pt-1 px-1">
                 <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                 <h5 class="card-title font-weight-bold mb-0 text-blue">Titulo del producto</h5>
-                <h6 class="text-black mb-0 smaller-3">Descripcion del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit.</h6>
+                <h6 class="text-black mb-0 smaller-3">Descripcion del producto</h6>
                 <p class="card-text smaller">(100 Disponibles)</p>
                 <a href="#" class="smaller">Categoria</a>
                 <p class="smaller">IVA incluido</p>
