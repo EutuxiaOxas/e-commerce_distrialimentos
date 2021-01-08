@@ -510,3 +510,126 @@
   font-size: 0.8rem;
 }
 
+.perfil__menuDesktop {
+  display: none;
+}
+
+@media (min-width: 950px) {
+  .header__navMobile {
+    display: none;
+  }
+
+  .perfil__container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+
+  .perfil__menuDesktop {
+    display: block;
+  }
+
+  .perfil__body {
+    padding-top: 6rem;
+    margin: 0;
+    width: 80%;
+  }
+
+  .perfil__body-title {
+    text-align: start;
+  }
+
+  .perfil__card-title {
+    font-size: 1rem;
+  }
+
+  .perfil__cardBody.email {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .perfil__cardEmail-title {
+    margin: 0;
+    padding: 0;
+    text-align: start;
+    flex: 1 0 40%;
+    padding-left: 2rem;
+    font-size: 1rem;
+  }
+
+  .perfil__cardEmail-content {
+    padding: 0;
+    flex: 1 0 60%;
+    font-size: 1rem;
+    text-align: start;
+  }
+
+  .perfil__cardListItem {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+  }
+
+  .perfil__cardListItem-title {
+    padding-left: 2rem;
+  }
+
+  .perfil__cardEditar-icon.cardLists {
+    position: relative;
+    right: 2%;
+    top: 3.5rem;
+    cursor: pointer;
+  }
+
+  .perfil__menuDesktop {
+    margin-top: 3rem;
+  }
+
+  .perfil__menuDesktop-container {
+    width: 75%;
+    margin: 0 auto;
+  }
+
+  .perfil__menuDesktop-title,
+  .perfil__menuDesktop-user {
+    font-family: "Righteous", cursive;
+    font-size: 1.8rem;
+    font-weight: 300;
+  }
+
+  .perfil__menuDesktop-user {
+    margin-top: 0.3rem;
+    font-size: 1rem;
+    font-family: "Roboto", cursive;
+    color: #FF9417;
+  }
+
+  .perfil_divisorLine {
+    margin-top: 0.7rem;
+    transform: translateX(-8%);
+    width: 80%;
+    height: 2px;
+    background-color: #d2cece73;
+    margin-bottom: 1.2rem;
+  }
+
+  .perfil_menuOptionsItem {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .perfil_menuOptionsItem span {
+    flex: 1 0 20%;
+  }
+
+  .perfil_menuOptionsItem-option {
+    flex: 1 0 80%;
+    font-family: "Righteous", cursive;
+    color: #000000;
+    font-weight: 300;
+    text-decoration: none;
+  }
+}
+
