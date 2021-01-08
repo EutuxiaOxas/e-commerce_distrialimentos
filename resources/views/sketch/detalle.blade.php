@@ -19,6 +19,12 @@
    .text-card {
     font-size: 67%
    }
+   .padt { 
+     padding-top: 3px;
+   }
+   .mart {
+     margin-top: 6px;
+   }
    </style>
    <!-- Prdoduct -->
     <section>
@@ -83,13 +89,13 @@
                   </div>
                 </div>
               <p class="smaller px-1 m-0 font-weight-bold text-black">2,00 $ / Undidad</p>
-                <div class="row px-1 m-0">
+                <div class="row px-4 my-0 padt">
                   <div class="col-10 p-0 m-0">
-                    <p class="smaller px-1 fs-16 mb-0 mt-1 font-weight-bold text-black text-center">20,00 $</p>
+                    <p class="smaller px-1 fs-18 mb-0 font-weight-bold text-black text-center">20,00 $</p>
                     <p class="text-card text-center">Caja - 30 unidades</p>
                   </div>
                   <div class="col-2 p-0 m-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="font-weight-bold bi bi-plus-circle text-primary" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="mart font-weight-bold bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>          
@@ -119,13 +125,13 @@
                   </div>
                 </div>
               <p class="smaller px-1 m-0 font-weight-bold text-black">2,00 $ / Undidad</p>
-                <div class="row px-1 m-0">
+                <div class="row px-4 my-0 padt">
                   <div class="col-10 p-0 m-0">
-                    <p class="smaller px-1 fs-16 mb-0 mt-1 font-weight-bold text-black text-center">20,00 $</p>
+                    <p class="smaller px-1 fs-18 mb-0 font-weight-bold text-black text-center">20,00 $</p>
                     <p class="text-card text-center">Caja - 30 unidades</p>
                   </div>
                   <div class="col-2 p-0 m-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="font-weight-bold bi bi-plus-circle text-primary" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="mart font-weight-bold bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>          
@@ -137,7 +143,7 @@
         </div>
       </div>
 
-      <div class="row px-2 mt-0">
+      <div class="row px-2 mt-0 mb-1">
         <div class="col p-0">
           <div class="row boxed border shadow p-0">
             <div class="col-5 p-0">
@@ -155,13 +161,13 @@
                   </div>
                 </div>
               <p class="smaller px-1 m-0 font-weight-bold text-black">2,00 $ / Undidad</p>
-                <div class="row px-1 m-0">
+                <div class="row px-4 my-0 padt">
                   <div class="col-10 p-0 m-0">
-                    <p class="smaller px-1 fs-16 mb-0 mt-1 font-weight-bold text-black text-center">20,00 $</p>
+                    <p class="smaller px-1 fs-18 mb-0 font-weight-bold text-black text-center">20,00 $</p>
                     <p class="text-card text-center">Caja - 30 unidades</p>
                   </div>
                   <div class="col-2 p-0 m-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="font-weight-bold bi bi-plus-circle text-primary" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="mart font-weight-bold bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                     </svg>          
@@ -172,7 +178,6 @@
           </div>
         </div>
       </div>
-
     </div>
    </section>
 
