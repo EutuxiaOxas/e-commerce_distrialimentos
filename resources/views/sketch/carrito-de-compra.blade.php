@@ -61,10 +61,18 @@ $color_header='dark';
     .labelfs {
       font-size: 70%
     }
+    .radeus {
+      border-radius: 20px;
+    }
+    .img-border {
+      border-top-left-radius:20px;
+      border-bottom-left-radius:20px;
+    }
   </style>
 
-   <!-- Carrito -->
+   <!-- Carrito 1 -->
 <section>
+
   <div class="container-fluid">
     <div class="row">
         <div class="col text-center">
@@ -76,8 +84,8 @@ $color_header='dark';
                 <div class="modal-content">
                   <div class="modal-header d-block py-2"> <!--  Modal header-->
                     <div class="row">
-                        <div class="col-10">
-                          <h3 class="font-weight-bold py-0 my-0 text-left">Camion de compras</h3>
+                        <div class="col-10 pt-2">
+                          <h3 class="font-weight-bold p-0 my-0 text-left fs-28">Camion de compras</h3>
                           <p class="py-0 my-0 text-left fs-14">Deposita todo en tu camion de compras</p>
                         </div>
                         <div class="col-2">
@@ -104,15 +112,15 @@ $color_header='dark';
                       </div>
                     </div>
 
-                    <h5 class="text-left font-weight-bold">Listado de productos</h5>
+                    <h5 class="text-left font-weight-bold pl-1 pt-1 fs-18">Listado de productos</h5>
                     
                     <!--  modal-body-->
 
                     <div class="row px-1 pt-1 pb-0 mb-0"> 
                       <div class="col">
-                        <div class="row boxed border shadow">
+                        <div class="row boxed border shadow radeus">
                           <div class="col-4 col-md-4 px-0">
-                            <img src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                            <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
                           </div>
 
                           <div class="col-8 col-md-8 px-0">
@@ -153,9 +161,9 @@ $color_header='dark';
 
                     <div class="row px-1 pt-1 pb-0 mb-0"> 
                       <div class="col">
-                        <div class="row boxed border shadow">
+                        <div class="row boxed border shadow radeus">
                           <div class="col-4 col-md-4 px-0">
-                            <img src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                            <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
                           </div>
 
                           <div class="col-8 col-md-8 px-0">
@@ -196,9 +204,9 @@ $color_header='dark';
                     
                     <div class="row px-1 pt-1 pb-0 mb-0"> 
                       <div class="col">
-                        <div class="row boxed border shadow">
+                        <div class="row boxed border shadow radeus">
                           <div class="col-4 col-md-4 px-0">
-                            <img src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                            <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
                           </div>
 
                           <div class="col-8 col-md-8 px-0">
@@ -287,16 +295,215 @@ $color_header='dark';
   </div>
 </section>
 
-                          <div class="col-2 col-md-4 p-0 m-0">
-                            <form>
-                              <div class="form-group">
-                                <label for="cantidad">Cantidad</label>
-                                  <input type="number" class="form-control form-control-sm" id="cantidadProductos" aria-describedby="emailHelp">
-                              </div>
-                            </form>
-                          </div>
+                          
 
    <!-- /Carrito -->
+
+   <!-- Carrito 2 formulario-->
+<section>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col text-center">
+          <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#modalFormulario">
+            Camion de compras formulario
+          </button>
+          <div class="modal fade" id="modalFormulario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header d-block pt-2 pb-1"> <!--  Modal header-->
+                    <div class="row">
+                        <div class="col-10 pt-3">
+                          <h3 class="font-weight-bold p-0 my-0 text-left fs-28">Camion de compras</h3>
+                          <p class="py-0 my-0 text-left">Todo esta en tu camion de compras!</p>
+                        </div>
+                        <div class="col-2">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="icon-x"></span>
+                          </button>
+                        </div> 
+                    </div> 
+                  </div>
+
+                  <div class="container-fluid pt-1">
+
+                    <h5 class="text-left font-weight-bold fs-18 pl-1">Listado de productos</h5>
+                    
+                    <!--  modal-body-->
+
+                    <div class="row px-1 pt-1 pb-0 mb-0"> 
+                      <div class="col">
+                        <div class="row boxed border shadow radeus">
+                          <div class="col-4 col-md-4 px-0">
+                            <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                          </div>
+
+                          <div class="col-8 col-md-8 px-0">
+                            <div class="prod-details p-1">
+                              <div class="row mb-0">
+                                <div class="col-10 my-0 py-0">
+                                  <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
+                                    <span class="p-0" aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                                 
+                                <div class="col-12 my-0 py-0">
+                                  <p class="small text-left">IVA incluido</p>
+                                </div>
+                              </div>
+                              <div class="row my-0 py-0">                   
+                                <div class="col-7 my-0 py-0 pr-0">
+                                  <p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
+                                  <p class="small my-0 py-0">Caja - 30 unidades</p>
+                                </div>
+                                <div class="col-5 pl-0">                         
+                                  <form class="text-left">
+                                    <div class="form-group m-0">
+                                      <label class="labelfs fs-10" for="cantidad">Cantidad</label>
+                                      <input type="number" class="form-control form-control-sm" id="cantidadProductos">
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>        
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row px-1 pt-1 pb-0 mb-0"> 
+                      <div class="col">
+                        <div class="row boxed border shadow radeus">
+                          <div class="col-4 col-md-4 px-0">
+                            <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                          </div>
+
+                          <div class="col-8 col-md-8 px-0">
+                            <div class="prod-details p-1">
+                              <div class="row mb-0">
+                                <div class="col-10 my-0 py-0">
+                                  <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
+                                    <span class="p-0" aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                                 
+                                <div class="col-12 my-0 py-0">
+                                  <p class="small text-left">IVA incluido</p>
+                                </div>
+                              </div>
+                              <div class="row my-0 py-0">                   
+                                <div class="col-7 my-0 py-0 pr-0">
+                                  <p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
+                                  <p class="small my-0 py-0">Caja - 30 unidades</p>
+                                </div>
+                                <div class="col-5 pl-0">                         
+                                  <form class="text-left">
+                                    <div class="form-group m-0">
+                                      <label class="labelfs fs-10" for="cantidad">Cantidad</label>
+                                      <input type="number" class="form-control form-control-sm" id="cantidadProductos">
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>        
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row px-1 pt-1 pb-0 mb-0"> 
+                      <div class="col">
+                        <div class="row boxed border shadow radeus">
+                          <div class="col-4 col-md-4 px-0">
+                            <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                          </div>
+
+                          <div class="col-8 col-md-8 px-0">
+                            <div class="prod-details p-1">
+                              <div class="row mb-0">
+                                <div class="col-10 my-0 py-0">
+                                  <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
+                                    <span class="p-0" aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                                 
+                                <div class="col-12 my-0 py-0">
+                                  <p class="small text-left">IVA incluido</p>
+                                </div>
+                              </div>
+                              <div class="row my-0 py-0">                   
+                                <div class="col-7 my-0 py-0 pr-0">
+                                  <p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
+                                  <p class="small my-0 py-0">Caja - 30 unidades</p>
+                                </div>
+                                <div class="col-5 pl-0">                         
+                                  <form class="text-left">
+                                    <div class="form-group m-0">
+                                      <label class="labelfs fs-10" for="cantidad">Cantidad</label>
+                                      <input type="number" class="form-control form-control-sm" id="cantidadProductos">
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>        
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <!--  Modal footer-->
+                    <div class="container pt-4">
+                      <div class="row m-0 p-0">
+                        <div class="col-6 text-left mb-0">
+                          <p>Subtotal</p>
+                        </div>
+                        <div class="col-6 text-right mb-0">
+                          <p>59,35 $</p>
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="col-6 text-left mb-1">
+                          <p>IVA</p>
+                        </div>
+                        <div class="col-6 text-right mb-1">
+                          <p>11,65 $</p>
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="col-6 text-left mb-0">
+                          <p class="text-uppercase text-blue fs-16 font-weight-bold">Total</p>
+                        </div>
+                        <div class="col-6 text-right mb-0">
+                          <p class="font-weight-bold text-black fs-24">70,35 $</p>
+                        </div>
+                      </div>
+                      <div class="row m-0 p-0">
+                        <div class="col-5 text-left mb-0">
+                          <p class="text-blue">TOTAL (Bs)</p>
+                        </div>
+                        <div class="col-7 text-right mb-0 pb-6">
+                          <p class="font-weight-bold text-black">89,000,000.00 Bs</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
    
 
  
