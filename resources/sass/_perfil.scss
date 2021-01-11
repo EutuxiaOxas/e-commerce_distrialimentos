@@ -195,6 +195,112 @@
 }
 
 
+//------------------------------  VISTA MIS COMPRAS -----------------
+
+.perfil__cardBody.compras {
+	margin-bottom: 2rem;
+	padding: 1rem 1.5rem 0;
+}
+
+.perfil__cardBody.compras:last-of-type {
+	margin-bottom: 0;
+}
+
+.perfil__comprasInfo {
+	margin-bottom: 1.5rem;
+}
+
+.perfil__comprasInfo-title {
+	font-family: $secondary_font;
+	font-size: 1.2rem;
+	color: $perfil-four-color;
+	margin-bottom: .2rem;
+}
+
+
+.perfil__comprasInfo-title.pendiente {
+	color: $perfil-pendiente-color;
+}
+
+.perfil__comprasInfo-title.completed {
+	color: $perfil_completed-color;
+}
+
+.perfil__comprasInfo-alert {
+	font-size: .9rem;
+	color: $perfil_third-color;
+	font-family: $secondary_font;
+	font-weight: 300;
+	margin-bottom: .4rem;
+}
+
+.perfil__comprasInfoDetails {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.perfil__comprasInfoDetails-info {
+	font-size: .8rem;
+	color: $perfil_third-color;
+	font-family: $secondary_font;
+	font-weight: 300;
+}
+
+.perfil__comprasMount {
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.perfil__comprasMount-title, .perfil__comprasMount-mount{
+	font-family: $secondary_font;
+}
+
+.perfil__comprasMount-title {
+	font-size: 1rem;
+}
+
+.perfil__comprasMount-mount {
+	font-size: .9rem;
+	font-weight: 300;
+	color: $perfil_third-color;
+}
+
+
+.perfil__comprasActions {
+
+	display: flex;
+	justify-content: space-between;
+	width: 80%;
+	margin: 0 auto;
+	padding-bottom: 2rem;
+
+	a {
+		text-decoration: none;
+		font-family: $secondary_font;
+		font-weight: bold;
+		font-size: .9rem;
+	}
+}
+
+.perfil__comprasActions.completed {
+	justify-content: flex-end;
+}
+
+.perfil__comprasActions-cancelar {
+	color: $perfil_third-color;
+}
+
+
+.perfil__comprasActions-detalle {
+	color: $perfil_cta-color;
+}
+
+.perfil__cardMasCompras {
+	display: none;
+}
+
+
 @media (min-width: 950px) {
 
 	.header__navMobile{
@@ -214,6 +320,11 @@
 		padding-top: 6rem;
 		margin: 0;
 		width: 80%;
+	}
+
+	.perfil__body.compras{
+		width: 90%;
+		margin-bottom: 1rem;
 	}
 
 	.perfil__body-title {
@@ -315,6 +426,54 @@
 		font-family: $principal_font;
 		color: #000000;
 		font-weight: 300;
+		text-decoration: none;
+	}
+
+	//COMPRAS VISTA
+	.perfil__cardBody.compras {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		padding: 1rem 0rem 1rem 1.6rem;
+	}
+
+	.perfil__cardBody.compras > div {
+		flex: 1;
+		margin-bottom: 0;
+	}
+
+	.perfil__comprasInfo {
+		width: 40%;
+	}
+
+	.perfil__comprasInfoDetails {
+		display: block;
+	}
+
+	.perfil__comprasInfoDetails-info {
+		display: inline-block;
+	}
+
+	.perfil__comprasActions {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 0;
+		a:first-of-type {
+			order: 2
+		}
+	}
+
+	.perfil__cardMasCompras {
+		display: block;
+		text-align: center;
+	}
+
+	.perfil__cardMasCompras-option {
+		color: $perfil_cta-color;
+		font-family: $secondary_font;
+		font-weight: bold;
 		text-decoration: none;
 	}
 }

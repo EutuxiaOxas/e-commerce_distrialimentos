@@ -66,7 +66,11 @@ Route::get('/header', function () {
 
 Route::get('/perfil', function () {
 	return view('perfil.mis_datos');
-});
+})->name('perfil');
+
+Route::get('/perfil/compras', function () {
+	return view('perfil.compras');
+})->name('perfil.compras');
 
 //FIN DE SOLO PARA MAQUETACION
 
