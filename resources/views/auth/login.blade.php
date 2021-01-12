@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('common.main')
 
 @php
 
@@ -13,16 +13,17 @@ if(isset($_GET['message'])){
 
 
 @section('content')
+@include('common.header')
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    @if(isset($mensaje))
+                    {{--@if(isset($mensaje))
                         {{$msg}}
                     @else
                         Iniciar Sesión
-                    @endif
+                    @endif --}}
                 </div>
 
                 <div class="card-body">
@@ -84,7 +85,7 @@ if(isset($_GET['message'])){
                                 <a href="{{route('google.login')}}" class="btn btn-outline-primary">Iniciar sesion con google</a>
                                 <hr>
                                 <h5>¿No tienes cuenta? Registrate aquí</h5>
-                                <a href="/register" class="btn btn-outline-secondary">Registrarse</a>
+                                <a href="/register" class="btn btn-outline-info">Registrarse</a>
                             </div>
                         </div>
                     </form>
