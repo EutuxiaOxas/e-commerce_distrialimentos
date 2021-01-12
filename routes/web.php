@@ -60,6 +60,13 @@ Route::get('/perfil/historial', function () {
 	return view('sketch.pedidos-historial');
 });
 
+
+//carrito de compras
+Route::get('/carrito-de-compra', function () {
+	return view('sketch.carrito-de-compra');
+});
+
+
 Route::get('/header', function () {
 	return view('sketch.header');
 });
