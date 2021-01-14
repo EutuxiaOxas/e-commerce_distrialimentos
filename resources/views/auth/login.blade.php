@@ -1,4 +1,4 @@
-@extends('common.main')
+@extends('layouts.main')
 
 @php
 
@@ -13,8 +13,7 @@ if(isset($_GET['message'])){
 
 
 @section('content')
-@include('common.header')
-<div class="container mt-5">
+<div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

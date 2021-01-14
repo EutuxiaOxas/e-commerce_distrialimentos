@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Documento</title>
-	<link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+@extends('layouts.main')
 
+
+@section('content')
 	@include('perfil.perfil_navMobile')
 
 	<section class="perfil__container">
@@ -118,5 +113,4 @@
 			</div>
 		</div>
 	</section>
-</body>
-</html>
+@endsection

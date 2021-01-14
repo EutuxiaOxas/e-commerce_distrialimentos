@@ -1,7 +1,7 @@
 <div class="perfil__menuDesktop">
     <div class="perfil__menuDesktop-container">
         <h2 class="perfil__menuDesktop-title">Mi cuenta</h2>
-        <h5 class="perfil__menuDesktop-user">Hola, Administrador</h5>
+        <h5 class="perfil__menuDesktop-user">Hola, {{auth()->user()->name}}</h5>
         <div class="perfil_divisorLine">
         </div>
         <ul class="perfil__menuDesktop-options">
@@ -12,7 +12,7 @@
                 <path d="M17.1973 7.7864C16.0039 6.59308 14.3333 5.84726 12.5135 5.84726C10.6937 5.84726 9.02302 6.59308 7.82971 7.7864C6.63639 8.97972 5.89056 10.6504 5.89056 12.4702C5.89056 14.29 6.63639 15.9606 7.82971 17.1539C9.02302 18.3473 10.6937 19.0931 12.5135 19.0931C14.3333 19.0931 16.0039 18.3473 17.1973 17.1539C18.3906 15.9606 19.1364 14.29 19.1364 12.4702C19.1364 10.6504 18.3906 8.97972 17.1973 7.7864ZM16.1233 16.08C15.1984 17.0048 13.9156 17.5716 12.5135 17.5716C11.1113 17.5716 9.82851 17.0048 8.90369 16.08C7.97887 15.1551 7.41204 13.8723 7.41204 12.4702C7.41204 11.068 7.97887 9.78521 8.90369 8.86039C9.82851 7.93557 11.1113 7.36874 12.5135 7.36874C13.9156 7.36874 15.1984 7.93557 16.1233 8.86039C17.0481 9.78521 17.6149 11.068 17.6149 12.4702C17.6149 13.8723 17.0481 15.1551 16.1233 16.08Z" fill="black"/>
                 </svg>
                 </span>
-                <a class="perfil_menuOptionsItem-option" href="{{route('perfil')}}">Mis datos</a>
+                <a class="perfil_menuOptionsItem-option" href="{{route('perfil.home')}}">Mis datos</a>
             </li>
             <li class="perfil_menuOptionsItem">
                 <span>
