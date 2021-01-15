@@ -1,7 +1,7 @@
-@extends('common.main')
+@extends('layouts.main')
 
 @section('title')
-    <title>Nosotros</title>
+    <title>Almacen</title>
 @endsection
 
 @php
@@ -11,41 +11,8 @@ $color_header='dark';
 
 @section('content')
     {{-- header principal --}}
-    @include('common.header')
+    @include('perfil.perfil_navMobile')
  
-{{-- cover --}}
-<section class="p-0">
-    <div class="swiper-container text-white swiper-container-fade swiper-container-horizontal skrollable skrollable-between" data-top-top="transform: translateY(0px);" data-top-bottom="transform: translateY(250px);" style="transform: translateY(0px);">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide vh-15 swiper-slide-prev" >
-          <div class="image image-overlay" style="background-image:url({{asset('images/portada/portada2.jpg')}})"></div>
-          <div class="caption">
-            <div class="container">
-              <div class="row justify-content-between vh-15">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide vh-15 swiper-slide-active" >
-          <div class="image image-overlay" style="background-image:url({{asset('images/portada/portada3.jpg')}})"></div>
-        
-        </div>
-        <div class="swiper-footer">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col text-center">
-                <div class="mouse"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="swiper-pagination swiper-pagination-vertical swiper-pagination-0 swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 2"></span></div>
-    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-</section>
-  {{-- cover --}}
-
   <style>
   .colorG {
     color: #999;
@@ -65,9 +32,9 @@ $color_header='dark';
   </style>
 
 
-   <!-- vitrina-->
+   <!-- Almacen-->
    <section>
-    <div class="container-fluid">
+    <div class="container-fluid pt-5">
       <div class="row my-1 px-2 py-0">
         <div class="col mb-2">
           <h3 class="mb-0 font-weight-bold text-primary">Pastas, harinas y azucares</h3>
@@ -84,16 +51,16 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12">
+                      <div class="col-12 pb-1">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                       </div>
                       <div class="col-12">
-                        <h5 class="card-title font-weight-bold mb-0 text-blue fs-18">Leche Descremada mi Vaca 1L</h5>
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
                       </div>
                       <div class="col-12">
-                        <h6 class="text-black mb-0 smaller-3">Leche descremada mi Vaca 1L</h6>
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Leche descremada mi Vaca 1L</h6>
                       </div>
                       <div class="col-12">
                         <p class="card-text smaller">(100 Disponibles)</p>
@@ -123,16 +90,16 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12">
+                      <div class="col-12 pb-1">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                       </div>
                       <div class="col-12">
-                        <h5 class="card-title font-weight-bold mb-0 text-blue fs-18">Titulo del producto</h5>
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
                       </div>
                       <div class="col-12">
-                        <h6 class="text-black mb-0 smaller-3">Descricion del producto</h6>
+                        <h6 class="text-black mb-0 smaller-3 p-1">Descricion del producto</h6>
                       </div>
                       <div class="col-12">
                         <p class="card-text smaller">(100 Disponibles)</p>
@@ -162,16 +129,16 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12">
+                      <div class="col-12 pb-1">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                       </div>
                       <div class="col-12">
-                        <h5 class="card-title font-weight-bold mb-0 text-blue fs-18">Titulo del producto</h5>
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
                       </div>
                       <div class="col-12">
-                        <h6 class="text-black mb-0 smaller-3">Descricion del producto</h6>
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
                       </div>
                       <div class="col-12">
                         <p class="card-text smaller">(100 Disponibles)</p>
@@ -201,16 +168,16 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12">
+                      <div class="col-12 pb-1">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                       </div>
                       <div class="col-12">
-                        <h5 class="card-title font-weight-bold mb-0 text-blue fs-18">Titulo del producto</h5>
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
                       </div>
                       <div class="col-12">
-                        <h6 class="text-black mb-0 smaller-3">Descricion del producto</h6>
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
                       </div>
                       <div class="col-12">
                         <p class="card-text smaller">(100 Disponibles)</p>
@@ -240,16 +207,16 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12">
+                      <div class="col-12 pb-1">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                       </div>
                       <div class="col-12">
-                        <h5 class="card-title font-weight-bold mb-0 text-blue fs-18">Avena</h5>
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Avena</h6>
                       </div>
                       <div class="col-12">
-                        <h6 class="text-black mb-0 smaller-3">Descricion del producto</h6>
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
                       </div>
                       <div class="col-12">
                         <p class="card-text smaller">(100 Disponibles)</p>
@@ -279,16 +246,16 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12">
+                      <div class="col-12 pb-1">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
                       </div>
                       <div class="col-12">
-                        <h5 class="card-title font-weight-bold mb-0 text-blue fs-18">Titulo del producto</h5>
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
                       </div>
                       <div class="col-12">
-                        <h6 class="text-black mb-0 smaller-3">Descricion del producto</h6>
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
                       </div>
                       <div class="col-12">
                         <p class="card-text smaller">(100 Disponibles)</p>
@@ -311,24 +278,8 @@ $color_header='dark';
             </div>
         </div>
     </div>
-        
-
    </section>
-  <!-- / cover -->
- 
- 
-    
-<section class="pb-2 bg-blue text-white">
-    <div class="container">
-      <div class="row justify-content-center">
-        
-        <div class="col-md-10 text-center">
-          <h1>Solicita nuestro <b>Catálogo de productos</b></h1>
-          <a href="https://api.whatsapp.com/send?phone=584244010776&text=Hola,%20Estoy%20interesado%20en%20tener%20el%20catalogo%20de%20sus%20productos.%20Gracias%20" class="btn btn-lg btn-primary btn-rounded mt-2 py-2 px-7">Solicitar catalogo</a>
-        </div>
-       
-      </div>
-    </div>
-  </section>
+  <!-- / Almacen -->
+
 
 @endsection
