@@ -71,14 +71,6 @@ Route::get('/header', function () {
 	return view('sketch.header');
 });
 
-Route::get('/perfil', function () {
-	return view('perfil.mis_datos');
-})->name('perfil');
-
-Route::get('/perfil/compras', function () {
-	return view('perfil.compras');
-})->name('perfil.compras');
-
 //FIN DE SOLO PARA MAQUETACION
 
 
@@ -90,10 +82,16 @@ Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
 //Route::get('/', 'HomeController@lading')->name('home');
-Route::get('/home', 'HomeController@dashboard')
-	->middleware('auth')
-	->name('user.home');
 
+Route::middleware('auth')->group(function () {
+
+	Route::get('/perfil', 'HomeController@dashboard')
+	->name('perfil.home');
+
+	Route::get('/perfil/compras', function () {
+		return view('perfil.compras');
+	})->name('perfil.compras');
+});
 
 Route::get('/productos', 'HomeController@products')->name('productos');
 Route::get('/producto/{slug}', 'HomeController@showProduct')->name('producto.show');

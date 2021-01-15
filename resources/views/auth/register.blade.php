@@ -1,9 +1,7 @@
-@extends('common.main')
-
+@extends('layouts.main')
 
 @section('content')
-@include('common.header')
-<div class="container mt-5">
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-3">
             <div class="card">

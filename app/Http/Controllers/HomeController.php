@@ -78,6 +78,6 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $ordenes = $user->orders()->where('status', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
-        return view('home', compact('user', 'ordenes'));
+        return view('perfil.mis_datos', compact('user', 'ordenes'));
     }
 }

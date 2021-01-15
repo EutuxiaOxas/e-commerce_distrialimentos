@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Documento</title>
-	<link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+@extends('layouts.main')
 
+
+@section('content')
 	@include('perfil.perfil_navMobile')
 
 	<section class="perfil__container">
@@ -19,7 +14,7 @@
 				</div>
 				<div class="perfil__cardBody email">
 					<h3 class="perfil__cardEmail-title">Correo</h3>
-					<p class="perfil__cardEmail-content ">admin@distrialimentosdelcentro.com</p>
+					<p class="perfil__cardEmail-content ">{{$user->email}}</p>
 				</div>
 			</div>
 
@@ -33,19 +28,22 @@
 					<ul class="perfil__cardList">
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Nombre y apellido</h3>
-							<p class="perfil__cardListItem-content">Juan perez</p>
+							<p class="perfil__cardListItem-content">
+								{{$user->name}}
+								{{$user->apellido}}
+							</p>
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Documento</h3>
-							<p class="perfil__cardListItem-content">C.I. 20.100.202</p>
+							<p class="perfil__cardListItem-content">C.I {{ $user->documento_identidad ?? 'no definida' }}</p>
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Telefono</h3>
-							<p class="perfil__cardListItem-content">+58 414 568 5268</p>
+							<p class="perfil__cardListItem-content">{{$user->phone}}</p>
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Telefono alternativo</h3>
-							<p class="perfil__cardListItem-content">+58 414 568 5268</p>
+							<p class="perfil__cardListItem-content">{{$user->phone_alternative ?? 'no definido'}}</p>
 						</li>
 					</ul>
 				</div>
@@ -118,5 +116,4 @@
 			</div>
 		</div>
 	</section>
-</body>
-</html>
+@endsection

@@ -1,9 +1,18 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+*, *::before, *::after, a, li, h1,h2,h4,h5,h6, p, ul, nav{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 // Variables
 @import 'variables';
 
 // Variables
 @import 'header';
 @import 'perfil';
+
