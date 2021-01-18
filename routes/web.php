@@ -25,9 +25,9 @@ Route::get('/nosotros', function () {
 	return view('sketch.nosotros');
 });
 
-//vitrina 
-Route::get('/vitrina', function () {
-	return view('sketch.vitrina');
+//Almacen
+Route::get('/almacen', function () {
+	return view('sketch.almacen');
 });
 
 //detalle 

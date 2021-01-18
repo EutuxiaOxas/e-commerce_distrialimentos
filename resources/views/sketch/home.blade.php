@@ -1,7 +1,7 @@
-@extends('common.main')
+@extends('layouts.main')
 
 @section('title')
-    <title>Distrialimentos</title>
+    <title>Home</title>
 @endsection
 
 @php
@@ -11,9 +11,8 @@ $color_header='dark';
 
 @section('content')
     {{-- header principal --}}
-    @include('common.header')
- 
-{{-- cover --}}
+    @include('perfil.perfil_navMobile')
+
 <style>
 .categoria {
   border: 1px solid rgba(0, 0, 0, .24)
@@ -39,7 +38,7 @@ $color_header='dark';
 
 
 <!-- productos destacados -->
-  <section class="pt-6">
+  <!-- <section class="pt-6">
     <div class="container">
      <h2>Productos destacados</h2>
       <div class="owl-carousel" data-items="[5,1]" data-loop="true" data-autoheight="true" data-margin="10" data-dots="true" data-nav="true" data-autoplay="true">
@@ -63,10 +62,10 @@ $color_header='dark';
         </figure>
       </div>
     </div>
-  </section>
+  </section> -->
 <!-- //productos destacados -->
   <!-- categorias -->
-  <section>
+  <section class="pt-4">
     <div class="container">
     <h2>Categoria de productos</h2>
       <div class="row mb-0 py-0">
@@ -175,154 +174,5 @@ $color_header='dark';
   <!-- /categorias -->
  
 
-
-
-
-   <!-- cover -->
-   <section class="pb-2">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-10 text-center p-5">
-          <h1 data-swiper-parallax="-100%" class="display-3"><b>Distribución</b> de productos de consumo masivo.</h1>
-          <a href="/productos" class="btn btn-blue btn-rounded px-5">Nuestros Productos</a>
-        </div>
-      </div>
-      <div class="row" data-aos="fade-up" data-aos-delay="250">
-        <div class="col">
-          <div class="owl-carousel visible gallery align-bottom" data-items="[3,2,2]" data-margin="20" data-loop="true" data-autoplay="true">
-            @for ($i = 2 ; $i < 7; $i++)
-            <figure class="photo equal">
-              <a href="{{asset('images/promo/promo'.$i.'.jpg')}}" 
-                style="background-image: url({{asset('images/promo/promo'.$i.'.jpg')}});">
-              </a>
-            </figure>
-           @endfor
-           @for ($i = 8 ; $i < 9; $i++)
-            <figure class="photo equal" >
-              <a href="{{asset('images/promo/promo'.$i.'.jpg')}}" 
-                style="background-image: url({{asset('images/promo/promo'.$i.'.jpg')}});">
-              </a>
-            </figure>
-           @endfor
-           @for ($i = 10 ; $i < 11; $i++)
-            <figure class="photo equal" >
-              <a href="{{asset('images/promo/promo'.$i.'.jpg')}}" 
-                style="background-image: url({{asset('images/promo/promo'.$i.'.jpg')}});">
-              </a>
-            </figure>
-           @endfor
-           
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- / cover -->
- 
-
- 
- <!-- blog -->
- <section class="bg-light">
-   <div class="container">
-     <div class="row justify-content-center">
-       <div class="col-lg-6 text-center">
-         <h2>Algunas de nuestras <b>Lineas de productos.</b></h2>
-       </div>
-     </div>
-     <div class="row mb-1">
-       <div class="col">
-         <ul class="masonry row gutter-1">
-           <li class="col-md-4" data-aos="fade-up">
-             <article class="tile">
-               <div class="tile-image" style="background-image: url({{asset('images/lineas/linea-enlatados.jpg')}})"></div>
-               <a href="" class="tile-content">
-                 <div class="tile-footer">
-                   <span class="eyebrow mb-1">Enlatados</span>
-                   <h3>Completa recetas con nuestros productos enlatados.</h3>
-                 </div>
-               </a>
-             </article>
-           </li>
-           <li class="col-md-4" data-aos="fade-up">
-             <article class="tile tile-long">
-               <div class="tile-image" style="background-image: url({{asset('images/lineas/linea-snacks.jpg')}})"></div>
-               <a href="" class="tile-content">
-                 <div class="tile-footer">
-                   <span class="eyebrow mb-1">Snack</span>
-                   <h3>Ideal para compartir con familiares y amigos.</h3>
-                 </div>
-               </a>
-             </article>
-           </li>
-           <li class="col-md-4" data-aos="fade-up">
-             <article class="tile">
-               <div class="tile-image" style="background-image: url({{asset('images/lineas/linea-pasta.jpg')}})"></div>
-               <a href="" class="tile-content">
-                 <div class="tile-footer">
-                   <span class="eyebrow mb-1">Pastas, harinas y azucares</span>
-                   <h3>Los mejores pasta y harinas para tus almuerzos.</h3>
-                 </div>
-               </a>
-             </article>
-           </li>
-           <li class="col-md-4" data-aos="fade-up">
-             <article class="tile tile-long">
-               <div class="tile-image" style="background-image: url({{asset('images/lineas/linea-lacteos.jpg')}})"></div>
-               <a href="" class="tile-content">
-                 <div class="tile-footer">
-                   <span class="eyebrow mb-1">Lacteos</span>
-                   <h3>Bebidas lácteas para toda la familia.</h3>
-                 </div>
-               </a>
-             </article>
-           </li>
-           <li class="col-md-4" data-aos="fade-up">
-             <article class="tile tile-long">
-               <div class="tile-image" style="background-image: url({{asset('images/lineas/linea-galletas.jpg')}})"></div>
-               <a href="" class="tile-content">
-                 <div class="tile-footer">
-                   <span class="eyebrow mb-1">Galletas, tortas y ponqués</span>
-                   <h3>Para consentir a los más pequeños y a la familia.</h3>
-                 </div>
-               </a>
-             </article>
-           </li>
-           <li class="col-md-4" data-aos="fade-up">
-             <article class="tile">
-               <div class="tile-image" style="background-image: url({{asset('images/lineas/linea-viveres.jpg')}})"></div>
-               <a href="" class="tile-content">
-                 <div class="tile-footer">
-                   <span class="eyebrow mb-1">Viveres</span>
-                   <h3>Para Refrescar y compartir.</h3>
-                 </div>
-               </a>
-             </article>
-           </li>
-         </ul>
-         
-       </div>
-     </div>
-     <div class="row" data-aos="fade-up">
-       <div class="col text-center">
-         <a href="/productos" class="btn btn-block btn-lg btn-blue">Ver los Productos</a>
-       </div>
-     </div>
-   </div>
- </section>
- <!-- / blog -->
- 
-    
-<section class="pb-2 bg-blue text-white">
-    <div class="container">
-      <div class="row justify-content-center">
-        
-        <div class="col-md-10 text-center">
-          <h1>Solicita nuestro <b>Catálogo de productos</b></h1>
-          <a href="https://api.whatsapp.com/send?phone=584244010776&text=Hola,%20Estoy%20interesado%20en%20tener%20el%20catalogo%20de%20sus%20productos.%20Gracias%20" class="btn btn-lg btn-primary btn-rounded mt-2 py-2 px-7">Solicitar catalogo</a>
-        </div>
-       
-      </div>
-    </div>
-  </section>
 
 @endsection
