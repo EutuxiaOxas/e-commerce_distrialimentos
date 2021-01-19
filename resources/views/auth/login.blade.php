@@ -13,6 +13,9 @@ if(isset($_GET['message'])){
 
 
 @section('content')
+
+@include('common.header.nav_header_mobile')
+
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
