@@ -10989,6 +10989,103 @@ nav {
   text-align: center;
 }
 
+.header__menuMobile-icon_container {
+  display: none;
+}
+
+.header__menuMobile-icon_container.active {
+  display: block;
+}
+
+.header__mobileMenuNav_container {
+  overflow: hidden;
+  transition: 0.6s ease;
+  height: 0px;
+}
+
+.header__mobileMenuNav_container.logged.active {
+  height: 322px;
+}
+
+.header__mobileMenuNav_container.guest.active {
+  height: 348px;
+}
+
+.header__mobileMenuBody {
+  padding-top: 1rem;
+  width: 77%;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.userSection__mobileMenu-title {
+  font-family: "Roboto", cursive;
+  color: #0068B1;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.userSection__mobileMenu-subtitle {
+  font-family: "Roboto", cursive;
+  font-size: 0.8rem;
+  color: #838383;
+  margin-bottom: 0.7rem;
+}
+
+.userSection__mobileMenu_guest-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userSection__mobileMenu_guest-actions a {
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid #FD6721;
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+  color: #FD6721;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.userSection__mobileMenu_guest-actions a:first-child {
+  color: #ffff;
+  background-color: #FD6721;
+}
+
+.userSection__mobileMenu_logged {
+  display: flex;
+  align-items: center;
+}
+
+.userSection__mobileMenu_logged-icon {
+  width: 88px;
+  height: 88px;
+  margin-right: 0.6rem;
+}
+
+.navSection__mobileMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.navSection__mobileMenu a {
+  display: block;
+}
+
+.navSection__mobileMenu-container {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.navSection__mobileMenu-container a {
+  font-family: "Roboto", cursive;
+  color: #000000;
+  text-decoration: none;
+}
+
 .header__navMobile {
   width: 100%;
   background-color: #FD6721;
@@ -11237,6 +11334,14 @@ nav {
 
   .header__navMobile.main {
     padding-left: 0.5rem;
+  }
+
+  .header__mobileMenuNav_container.guest.active {
+    height: 357px;
+  }
+
+  .userSection__mobileMenu_guest-actions a {
+    padding: 1rem 2.1rem;
   }
 }
 

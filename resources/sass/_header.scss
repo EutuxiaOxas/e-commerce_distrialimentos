@@ -72,6 +72,105 @@
 	text-align: center;
 }
 
+.header__menuMobile-icon_container {
+	display: none;
+}
+
+.header__menuMobile-icon_container.active {
+	display: block;
+}
+
+
+.header__mobileMenuNav_container {
+	overflow: hidden;
+	transition: .6s ease;
+	height: 0px;
+}
+
+.header__mobileMenuNav_container.logged.active {
+	height: 322px;
+}
+
+.header__mobileMenuNav_container.guest.active {
+	height: 348px;
+}
+
+.header__mobileMenuBody {
+	padding-top: 1rem;
+	width: 77%;
+	margin: 0 auto;
+	margin-bottom: 1rem;
+}
+
+.userSection__mobileMenu-title {
+	font-family: $secondary_font;
+	color: $currencyList_secondary;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.userSection__mobileMenu-subtitle {
+	font-family: $secondary_font;
+	font-size: .8rem;
+	color: $perfil_third-color;
+	margin-bottom: .7rem;
+}
+
+
+.userSection__mobileMenu_guest-actions {
+	display: flex;
+	justify-content: space-between;
+}
+
+.userSection__mobileMenu_guest-actions a {
+	text-decoration: none;
+	padding: .8rem 1.5rem;
+	border: 1px solid $navbar_Background;
+	font-family: $secondary_font;
+	font-weight: bold;
+	color: $navbar_Background;
+	border-radius: 5px;
+	font-size: .9rem;
+}
+
+.userSection__mobileMenu_guest-actions a:first-child {
+	color: #ffff;
+	background-color: $navbar_Background;
+}
+
+.userSection__mobileMenu_logged {
+	display: flex;
+	align-items: center;
+}
+
+.userSection__mobileMenu_logged-icon {
+	width: 88px;
+	height: 88px;
+	margin-right: .6rem;
+}
+
+.navSection__mobileMenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #ffffff;
+}
+
+.navSection__mobileMenu a{
+	display: block;
+}
+
+
+.navSection__mobileMenu-container{
+	text-align: center;
+	padding: .5rem 0;
+}
+
+.navSection__mobileMenu-container a {
+	font-family: $secondary_font;
+	color: $perfil_principal-color;
+	text-decoration: none;
+}
 
 
 .header__navMobile {
@@ -335,6 +434,14 @@
 
 	.header__navMobile.main {
 		padding-left: 0.5rem;
+	}
+
+	.header__mobileMenuNav_container.guest.active {
+		height: 357px;
+	}
+
+	.userSection__mobileMenu_guest-actions a {
+		padding: 1rem 2.1rem;
 	}
 }
 

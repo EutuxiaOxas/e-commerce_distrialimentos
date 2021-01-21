@@ -16,13 +16,72 @@
 
 			</div>
 		</div>
-		<div class="header__menuMobile-icon">
-			<svg width=30 height=30 viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M36 0H0V36H36V0Z" fill="white" fill-opacity="0.01"/>
-			<path d="M5.96234 8.9624H29.9624" stroke="#838383" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-			<path d="M5.96234 17.9624H29.9624" stroke="#838383" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-			<path d="M5.96234 26.9624H29.9624" stroke="#838383" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
+		<div class="header__menuMobile-icon" id="header_menuIcon" style="position: relative; top: -4px;">
+			<span class="header__menuMobile-icon_container active"  id="header_menuMobile_open" >
+				<svg width=30 height=30 viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M36 0H0V36H36V0Z" fill="white" fill-opacity="0.01"/>
+					<path d="M5.96234 8.9624H29.9624" stroke="#838383" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M5.96234 17.9624H29.9624" stroke="#838383" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M5.96234 26.9624H29.9624" stroke="#838383" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</span>
+			<span id="header_menuMobile_close" class="header__menuMobile-icon_container">
+				<svg width="22" height="22" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M15.2535 12.4992L24.6006 3.15163C24.8577 2.89431 24.9996 2.55102 25 2.18496C25 1.8187 24.8581 1.475 24.6006 1.21809L23.7815 0.399187C23.524 0.14126 23.1807 0 22.8142 0C22.4484 0 22.1051 0.14126 21.8476 0.399187L12.5004 9.74614L3.15285 0.399187C2.89573 0.14126 2.55224 0 2.18598 0C1.82012 0 1.47663 0.14126 1.21951 0.399187L0.4 1.21809C-0.133333 1.75142 -0.133333 2.6189 0.4 3.15163L9.74736 12.4992L0.4 21.8463C0.142683 22.1041 0.00101626 22.4474 0.00101626 22.8134C0.00101626 23.1795 0.142683 23.5228 0.4 23.7803L1.21931 24.5992C1.47642 24.8569 1.82012 24.9984 2.18577 24.9984C2.55203 24.9984 2.89553 24.8569 3.15264 24.5992L12.5002 15.252L21.8474 24.5992C22.1049 24.8569 22.4482 24.9984 22.814 24.9984H22.8144C23.1805 24.9984 23.5238 24.8569 23.7813 24.5992L24.6004 23.7803C24.8575 23.523 24.9994 23.1795 24.9994 22.8134C24.9994 22.4474 24.8575 22.1041 24.6004 21.8465L15.2535 12.4992Z" fill="#838383"/>
+				</svg>					
+			</span>
+		</div>
+	</div>
+	<div class="header__mobileMenuNav_container {{auth()->user() ? 'logged' : 'guest'}}" id="header_mobileMenuNav">
+		<div class="header__mobileMenuBody">
+			<div class="userSection__mobileMenu">
+				@guest
+					<div class="userSection__mobileMenu_guest">
+						<h5 class="userSection__mobileMenu-title">Bienvenido</h5>
+						<p class="userSection__mobileMenu-subtitle">Ingresa tu cuenta o registrate para disfrutar la experiencia</p>
+						<div class="userSection__mobileMenu_guest-actions">
+							<a href="#">Iniciar sesión</a>
+							<a href="#">Registrarse</a>
+						</div>
+					</div>
+				@else
+					<div class="userSection__mobileMenu_logged">
+						<img class="userSection__mobileMenu_logged-icon" src="{{asset('icons/icon-logged.png')}}">
+						<div>
+							<h5 class="userSection__mobileMenu-title">
+								Hola, {{auth()->user()->name}}
+							</h5>
+							<p class="userSection__mobileMenu-subtitle">
+								{{auth()->user()->email}}
+							</p>
+						</div>
+					</div>
+				@endguest
+			</div>
+		</div>
+		<div class="navSection__mobileMenu">
+			<div class="navSection__mobileMenu-container">
+				<a href="#">Inicio</a>
+			</div>
+			<div class="navSection__mobileMenu-container">
+				<a href="#">Mi cuenta</a>
+			</div>
+			<div class="navSection__mobileMenu-container">
+				<a href="#">Nosotros</a>
+			</div>
+			<div class="navSection__mobileMenu-container">
+				<a href="#">Ayuda</a>
+			</div>
+			<div class="navSection__mobileMenu-container">
+				@guest
+				<a href="/login">Iniciar sesión</a>
+				@else
+					<form action="/logout" method="POST" id="form_logout_headerNavMobile">
+						@csrf
+					</form>
+					<a href="#" onclick="document.getElementById('form_logout_headerNavMobile').submit()">Cerrar Sesión</a>
+				@endguest
+			</div>
 		</div>
 	</div>
 </header>
@@ -35,6 +94,29 @@
 	<path d="M11.9986 32.1413C12.472 32.1413 12.8557 31.8215 12.8557 31.4271C12.8557 31.0327 12.472 30.7129 11.9986 30.7129C11.5253 30.7129 11.1416 31.0327 11.1416 31.4271C11.1416 31.8215 11.5253 32.1413 11.9986 32.1413Z" fill="white"/>
 	<path d="M37.71 32.1413C38.1834 32.1413 38.5671 31.8215 38.5671 31.4271C38.5671 31.0327 38.1834 30.7129 37.71 30.7129C37.2367 30.7129 36.853 31.0327 36.853 31.4271C36.853 31.8215 37.2367 32.1413 37.71 32.1413Z" fill="white"/>
 	</svg>
-
-
 </div>
+
+
+<script>
+	const headerInit = () => {
+		const menuHeaderMobile = document.getElementById('header_mobileMenuNav'),
+			  headerMenuIcon   = document.getElementById('header_menuIcon'),
+			  headerOpenIcon   = document.getElementById('header_menuMobile_open'), 
+			  headerCloseIcon   = document.getElementById('header_menuMobile_close') ;
+		
+		headerOpenIcon.addEventListener('click', e => {
+			menuHeaderMobile.classList.toggle('active')
+			headerOpenIcon.classList.toggle('active')
+			headerCloseIcon.classList.toggle('active')
+		})
+
+		headerCloseIcon.addEventListener('click', e => {
+			menuHeaderMobile.classList.toggle('active')
+			headerCloseIcon.classList.toggle('active')
+			headerOpenIcon.classList.toggle('active')
+		})
+
+	}
+
+	headerInit();
+</script>
