@@ -387,7 +387,60 @@ $color_header='dark';
             </div>
             <div class="row">
               <div class="col-12 text-center">
-                <a href="#" class="small font-weight-bold">Editar datos de comprador</a>
+                <a href="#" class="small font-weight-bold" data-toggle="modal" data-target="#moda-user-edit">Editar datos de comprador</a>
+              </div>
+              <div class="modal fade" id="moda-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                  <div class="modal-header p-2">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-10 mb-0">
+                          <h5 class="modal-title text-blue font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
+                          <p class="small">Agregue los datos solicitados</p>
+                        </div>
+                        <div class="col-2">
+                        <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-body px-2 pt-1 pb-2">
+                  <div class="form-title container">
+                    <div class="row">
+                      <div class="col text-center">
+                        <p class="text-black font-weight-bold">Datos de usuario</p>
+                      </div>
+                    </div>
+                  </div>
+                  <form>
+                    <div class="form">
+                      <div class="col">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Nombre completo">
+                      </div>
+                      <div class="col">
+                        <input type="number" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Cedula [ej: v-23432578]">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono [ej: 0241-8524234]">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Alt. [ej: 0241-8524234]">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer pt-2">
+                  <div class="container">
+                    <div class="row mb-0">
+                      <button type="button" class="btn btn-primary btn-block">Continuar</button>
+                    </div>
+                  <div class="row">
+                    <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -668,7 +721,7 @@ $color_header='dark';
       </section>
     <!-- /Carrito formulario-->
 
-  <!-- datos de empresa-->
+     <!-- datos de empresa-->
 
     <section class="py-1">
 
@@ -689,7 +742,7 @@ $color_header='dark';
           </div>
         </div>
       </div>
-  <!-- /datos de empresa-->
+    <!-- /datos de empresa-->
 
         <!-- trj datos de empresa-->
         <div class="container mt-1">
@@ -729,7 +782,63 @@ $color_header='dark';
               </div>
               <div class="row">
                 <div class="col-12 text-center">
-                  <a href="#" class="small font-weight-bold">Editar datos de empresa</a>
+                  <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="small font-weight-bold">Editar datos de empresa</a>
+                </div>
+                <div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header p-2">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-10 mb-0">
+                              <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+                              <p class="small">Agregue los datos solicitados</p>
+                            </div>
+                            <div class="col-2">
+                              <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>        
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-body px-2 pt-1 pb-2">
+                        <div class="form-title container">
+                          <div class="row">
+                            <div class="col text-center">
+                              <p class="text-black font-weight-bold">Datos de empresa</p>
+                            </div>
+                          </div>
+                        </div>
+                        <form>
+                          <div class="form">
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Nombre de empresa">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="RIF [ej: j-20180578-4]">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="SADA">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Horario de atención">
+                            </div>
+                          </div>
+                        </form>                                      
+                      </div>
+                      <div class="modal-footer pt-2">
+                        <div class="container">
+                          <div class="row mb-0">
+                              <button type="button" class="btn btn-primary btn-block">Continuar</button>
+                          </div>
+                          <div class="row">
+                            <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -748,7 +857,69 @@ $color_header='dark';
                   <p class="small px-3 my-0 py-0 pb-2">Juan Perez +58 414 543 4563</p>
                   <div class="row">
                     <div class="col-12 text-center">
-                      <a href="#" class="small font-weight-bold">Editar dirección Jurídica</a>
+                      <a href="#" data-toggle="modal" data-target="#modal-direction" class="small font-weight-bold">Editar dirección Jurídica</a>
+                    </div>
+                    <div class="modal fade" id="modal-direction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header p-2">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-10 mb-0">
+                                  <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+                                  <p class="small">Agregue los datos solicitados</p>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>        
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-body px-2 pt-1 pb-2">                   
+                            <div class="form-title container">
+                              <div class="row">
+                                <div class="col text-center">
+                                  <p class="text-black font-weight-bold">Direccion Juridica</p>
+                                </div>
+                              </div>
+                            </div>
+                            <form>
+                              <div class="form">
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Estado">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Ciudad">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Codigo postel">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Dirección">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Responsable">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Oficina">
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="container">
+                              <div class="row mb-0">
+                                  <button type="button" class="btn btn-primary btn-block">Continuar</button>
+                              </div>
+                              <div class="row">
+                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1077,7 +1248,83 @@ $color_header='dark';
                   </div>
                   <div class="row">
                     <div class="col-12 text-center">
-                      <a href="#" class="small font-weight-bold">Cambiar dirección de envío</a>
+                      <a href="#"data-toggle="modal" data-target="#modal-envio_edit" class="small font-weight-bold">Cambiar dirección de envío</a>
+                    </div>
+                    <div class="modal fade" id="modal-envio_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header px-2 pb-1">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-10 mb-0">
+                                  <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de envío</h4>
+                                  <p class="small">Agregue los datos solicitados</p>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>        
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-body px-2 pt-1 pb-2">
+                            <div class="form-title container">
+                              <div class="row">
+                                <div class="col text-center">
+                                  <p class="text-black font-weight-bold">Dirección de envío</p>
+                                </div>
+                              </div>
+                            </div>
+                            <form>
+                              <div class="form">
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Estado">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Ciudad">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Codigo postal">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Dirección">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Responsable">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Oficina">
+                                </div>
+                              </div>
+                            </form>
+                            <div class="form-title container pt-4">
+                              <div class="row">
+                                <div class="col text-center">
+                                  <p class="text-black font-weight-bold">Hora de entrega sugerida</p>
+                                </div>
+                              </div>
+                            </div>
+                            <form>
+                              <div class="form">
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Horario de atención">
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer pt-2">
+                            <div class="container">
+                              <div class="row mb-0">
+                                  <button type="button" class="btn btn-primary btn-block">Aceptar</button>
+                              </div>
+                              <div class="row">
+                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

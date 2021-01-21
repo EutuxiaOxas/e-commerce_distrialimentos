@@ -71,6 +71,10 @@ Route::get('/header', function () {
 	return view('sketch.header');
 });
 
+Route::get('/formulario-nuevo', function () {
+	return view('sketch.formulario-nuevo');
+});
+
 //FIN DE SOLO PARA MAQUETACION
 
 
