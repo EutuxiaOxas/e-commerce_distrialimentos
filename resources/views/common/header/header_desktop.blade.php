@@ -46,7 +46,10 @@
 	<nav class="navbar__container">
 		<div class="navbar__body">
 			<ul class="navbar__list">
-				<li class="navbar__list-item">
+				<li class="navbar__list-item" id="categoriesIcon_desktop">
+					<span class="navbar__list-item-icon">
+						<img class="navbar__list-item-iconImage" src="{{asset('icons/icon-categorias.png')}}" alt="">
+					</span>
 					<a href="#">Categorias</a>
 				</li>
 				<li class="navbar__list-item">
@@ -98,3 +101,19 @@
 		</div>
 	</nav>
 </header>
+
+<script>
+(() => {
+	document.addEventListener('DOMContentLoaded', () => {
+		const categoriesMenu_mobile     =     document.getElementById('categoriesMenu_mobile'),
+		  categoriesIcon_desktop 	=	  document.getElementById('categoriesIcon_desktop'),
+		  botonClose_categorieMenu_mobile   =     document.getElementById('botonClose_categorieMenu_mobile')
+
+		if(categoriesIcon_desktop) {
+			categoriesIcon_desktop.addEventListener('click', () => {
+				categoriesMenu_mobile.classList.toggle('active')
+			})
+		}
+	})
+})()
+</script>

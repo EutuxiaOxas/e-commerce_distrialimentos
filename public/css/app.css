@@ -11227,7 +11227,7 @@ nav {
 
 .navbar__body {
   display: flex;
-  width: 97%;
+  width: 98%;
   align-items: center;
   margin-left: auto;
   padding-right: 1rem;
@@ -11236,8 +11236,11 @@ nav {
 .navbar__list {
   width: 76%;
   padding-right: 2.5rem;
-  justify-content: flex-end;
   display: flex;
+}
+
+.navbar__list-item:first-child {
+  width: 25%;
 }
 
 .navbar__list-item {
@@ -11247,6 +11250,13 @@ nav {
 
 .navbar__list-item:not(:first-of-type) {
   margin-left: 4rem;
+}
+
+.navbar__list-item-icon {
+  position: relative;
+  top: -2px;
+  margin-right: 1rem;
+  cursor: pointer;
 }
 
 .navbar__list-item a {
@@ -11890,7 +11900,16 @@ nav {
 
 @media (min-width: 768px) {
   .categorie__mobileSelection {
-    display: none;
+    position: absolute;
+    width: 25%;
+    top: 26%;
+    left: -100%;
+    transition: left 0.5s ease;
+  }
+
+  .categorie__mobileSelection.active {
+    transform: translateY(0%);
+    left: 0;
   }
 }
 
