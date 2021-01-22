@@ -82,7 +82,10 @@ $color_header='dark';
     
     </style>
 
-  <section id=formulario1 class="p-0 m-0 show">
+
+
+
+<section id=formulario1 class="p-0 m-0 show">
     <!-- usuario -->
       <section class="pb-0 pt-2">
         <div class="container">
@@ -435,7 +438,7 @@ $color_header='dark';
                 <div class="modal-footer pt-2">
                   <div class="container">
                     <div class="row mb-0">
-                      <button type="button" class="btn btn-primary btn-block">Continuar</button>
+                      <button type="button" class="btn btn-primary btn-block">Editar</button>
                     </div>
                   <div class="row">
                     <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
@@ -466,8 +469,6 @@ $color_header='dark';
     <!-- /Buttoms-->
   
 </section>
-
-
 
 <!-------------------------- Formulario II ----------------------------->
 <section id="formulario2" class="p-0 m-0 hide show">
@@ -721,10 +722,8 @@ $color_header='dark';
       </section>
     <!-- /Carrito formulario-->
 
-     <!-- datos de empresa-->
-
+       <!-- datos de empresa-->
     <section class="py-1">
-
       <div class="container">
         <div class="row p-1">
           <div class="col-2 my-0 pr-0 d-block d-md-none">
@@ -742,10 +741,10 @@ $color_header='dark';
           </div>
         </div>
       </div>
-    <!-- /datos de empresa-->
+      <!-- /datos de empresa-->
 
-        <!-- trj datos de empresa-->
-        <div class="container mt-1">
+      <!-- trj datos de empresa-->
+      <div class="container mt-1">
           <div class="boxed border shadow">
             <div class="info-container p-2">
               <div class="row mb-3">
@@ -830,7 +829,7 @@ $color_header='dark';
                       <div class="modal-footer pt-2">
                         <div class="container">
                           <div class="row mb-0">
-                              <button type="button" class="btn btn-primary btn-block">Continuar</button>
+                              <button type="button" class="btn btn-primary btn-block">Editar</button>
                           </div>
                           <div class="row">
                             <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
@@ -843,9 +842,9 @@ $color_header='dark';
               </div>
             </div>
           </div>
-        </div>
-        <!-- trj extra datos de empresa-->  
-        <div class="container mt-1 pt-0">
+      </div>
+      <!-- trj extra datos de empresa-->  
+      <div class="container mt-1 pt-0">
           <div class="row">
             <div class="col">
               <div class="boxed border shadow">
@@ -911,7 +910,7 @@ $color_header='dark';
                           <div class="modal-footer">
                             <div class="container">
                               <div class="row mb-0">
-                                  <button type="button" class="btn btn-primary btn-block">Continuar</button>
+                                  <button type="button" class="btn btn-primary btn-block">Editar</button>
                               </div>
                               <div class="row">
                                 <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
@@ -926,9 +925,9 @@ $color_header='dark';
               </div>
             </div>
           </div>
-        </div>
+      </div>
     </section>
-    <!-- /datos de usuario-->
+    <!-- /datos de empresa-->
 
     <!-- Buttoms-->
       <section class="my-0 py-1">
@@ -976,8 +975,8 @@ $color_header='dark';
       </section>
     <!-- / usuario -->
     
-      <!-- Carrito formulario-->
-      <section class="p-0 d-block d-md-none">
+    <!-- Carrito formulario-->
+    <section class="p-0 d-block d-md-none">
       
 
         <div class="container">
@@ -1197,14 +1196,14 @@ $color_header='dark';
               </div>
           </div>
         </div>
-      </section>
-     <!-- /Carrito formulario-->
+    </section>
+    <!-- /Carrito formulario-->
 
     <!-- datos de usuario-->
 
-      <section class="py-1">
+    <section class="py-1">
 
-        <div class="container">
+      <div class="container">
           <div class="row p-1">
             <div class="col-2 my-0 pr-0 d-block d-md-none">
               <button id=btn_clr1 class="rounded-circle btn-steps bg-blue border-0">
@@ -1225,10 +1224,10 @@ $color_header='dark';
               <p class="font-weight-bold m-0 small text-black">Datos de envío</p>
             </div>
           </div>
-        </div>
+      </div>
     
-          <!-- trj datos de envio-->
-        <div class="container mt-1">
+      <!-- trj datos de envio-->
+      <div class="container mt-1">
           <div class="row">
             <div class="col">
               <div class="boxed border shadow">
@@ -1316,7 +1315,7 @@ $color_header='dark';
                           <div class="modal-footer pt-2">
                             <div class="container">
                               <div class="row mb-0">
-                                  <button type="button" class="btn btn-primary btn-block">Aceptar</button>
+                                  <button type="button" class="btn btn-primary btn-block">Editar</button>
                               </div>
                               <div class="row">
                                 <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
@@ -1331,9 +1330,9 @@ $color_header='dark';
               </div>
             </div>
           </div>
-        </div>
+      </div>
 
-      </section>
+    </section>
 
     <!-- /datos de usuario-->
 
@@ -1357,20 +1356,18 @@ $color_header='dark';
 
   <section id="formulario4" class="p-0 m-0 hide show">
 
-
-        <section class="pb-1 pt-2">
-
-          <div class="container">
-            <div class="row p-1">
-              <div class="col-2 my-0 pr-0 col-md-1">
-                <button class="rounded-circle btn-steps bg-blue border-0" disabled>
-                  <p class="text-white small">1</p>
-                </button>
-              </div>
-              <div class="col-2 my-0 pr-0 col-md-1">
-                <button class="rounded-circle btn-steps bg-blue border-0" disabled>
-                  <p class="text-white small">2</p>
-                </button>
+    <section id=sell-steps class="pb-1 pt-2">
+      <div class="container">
+        <div class="row p-1">
+          <div class="col-2 my-0 pr-0 col-md-1">
+            <button class="rounded-circle btn-steps bg-blue border-0" disabled>
+              <p class="text-white small">1</p>
+            </button>
+          </div>
+          <div class="col-2 my-0 pr-0 col-md-1">
+            <button class="rounded-circle btn-steps bg-blue border-0" disabled>
+              <p class="text-white small">2</p>
+            </button>
               </div>
               <div class="col-2 my-0 pr-0 col-md-1">
                 <button class="rounded-circle btn-steps bg-blue border-0" disabled>
@@ -1382,31 +1379,26 @@ $color_header='dark';
               </div>
             </div>
           </div>
-      
             <!-- trj compra-->
-            <div class="container mt-1">
+          <div class="box-contain container mt-1">
             <div class="boxed border shadow">
               <div class="box-body p-2">
                 <figure class="text-center pb-2">
                   <img src="{{asset('images/imgs/logistic.svg')}}" alt="imag">  
                 </figure>
                 <h4 class="font-weight-bold text-center text-primary pb-1 m-0">Gracias por su compra</h4>
-                <div class="col text-info pt-1 pb-2 px-1 col-md-6 offset-md-3 ">
+                <div class="col text-info pt-1 pb-2 px-1 col-md-6 offset-md-3">
                   <p class="fs-14">Eutuxia Group CA</p>
                   <p class="small text-muted">Para coordinar tu pedido uno de nuestros asesores comerciales se pondra en contacto a la brevedad</p>
                 </div>
               </div>
             </div>
             <div class="boxed border shadow">
-
-            </div>
-
-        </section>
-
-      <!-- /datos de usuario-->
-
-      <!-- Buttoms-->
-      <section class="my-0 py-1">
+          </div>
+    </section>
+   
+    <!-- Buttoms-->
+    <section class="my-0 py-1">
         <div class="container">
           <div class="row">
             <div class="col-5 pr-0">
@@ -1417,8 +1409,8 @@ $color_header='dark';
             </div>
           </div>
         </div>
-      </section>
-      <!-- /Buttoms-->
+    </section>
+    <!-- /Buttoms-->
 
   </section>
 <!-------------------------- Formulario V ----------------------------->
@@ -1588,8 +1580,7 @@ $color_header='dark';
                                               <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
                                                 <span class="p-0" aria-hidden="true">&times;</span>
                                               </button>
-                                            </div>
-                                                            
+                                            </div>                                                           
                                             <div class="col-12 my-0 py-0">
                                               <p class="small text-left">IVA incluido</p>
                                             </div>
@@ -1659,7 +1650,7 @@ $color_header='dark';
   
   
                                 <!--  Modal footer-->
-                                <div class="container pt-4">
+                                <div class="modal-footer container pt-4">
                                   <div class="row m-0 p-0">
                                     <div class="col-6 text-left mb-0">
                                       <p>Subtotal</p>
