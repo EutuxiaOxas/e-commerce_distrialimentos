@@ -82,7 +82,10 @@ $color_header='dark';
     
     </style>
 
-  <section id=formulario1 class="p-0 m-0 show">
+
+
+
+<section id=formulario1 class="p-0 m-0 show">
     <!-- usuario -->
       <section class="pb-0 pt-2">
         <div class="container">
@@ -387,7 +390,60 @@ $color_header='dark';
             </div>
             <div class="row">
               <div class="col-12 text-center">
-                <a href="#" class="small font-weight-bold">Editar datos de comprador</a>
+                <a href="#" class="small font-weight-bold" data-toggle="modal" data-target="#moda-user-edit">Editar datos de comprador</a>
+              </div>
+              <div class="modal fade" id="moda-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                  <div class="modal-header p-2">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-10 mb-0">
+                          <h5 class="modal-title text-blue font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
+                          <p class="small">Agregue los datos solicitados</p>
+                        </div>
+                        <div class="col-2">
+                        <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-body px-2 pt-1 pb-2">
+                  <div class="form-title container">
+                    <div class="row">
+                      <div class="col text-center">
+                        <p class="text-black font-weight-bold">Datos de usuario</p>
+                      </div>
+                    </div>
+                  </div>
+                  <form>
+                    <div class="form">
+                      <div class="col">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Nombre completo">
+                      </div>
+                      <div class="col">
+                        <input type="number" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Cedula [ej: v-23432578]">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono [ej: 0241-8524234]">
+                      </div>
+                      <div class="col">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Alt. [ej: 0241-8524234]">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer pt-2">
+                  <div class="container">
+                    <div class="row mb-0">
+                      <button type="button" class="btn btn-primary btn-block">Editar</button>
+                    </div>
+                  <div class="row">
+                    <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -413,8 +469,6 @@ $color_header='dark';
     <!-- /Buttoms-->
   
 </section>
-
-
 
 <!-------------------------- Formulario II ----------------------------->
 <section id="formulario2" class="p-0 m-0 hide show">
@@ -668,10 +722,8 @@ $color_header='dark';
       </section>
     <!-- /Carrito formulario-->
 
-  <!-- datos de empresa-->
-
+       <!-- datos de empresa-->
     <section class="py-1">
-
       <div class="container">
         <div class="row p-1">
           <div class="col-2 my-0 pr-0 d-block d-md-none">
@@ -689,10 +741,10 @@ $color_header='dark';
           </div>
         </div>
       </div>
-  <!-- /datos de empresa-->
+      <!-- /datos de empresa-->
 
-        <!-- trj datos de empresa-->
-        <div class="container mt-1">
+      <!-- trj datos de empresa-->
+      <div class="container mt-1">
           <div class="boxed border shadow">
             <div class="info-container p-2">
               <div class="row mb-3">
@@ -729,14 +781,70 @@ $color_header='dark';
               </div>
               <div class="row">
                 <div class="col-12 text-center">
-                  <a href="#" class="small font-weight-bold">Editar datos de empresa</a>
+                  <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="small font-weight-bold">Editar datos de empresa</a>
+                </div>
+                <div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header p-2">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-10 mb-0">
+                              <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+                              <p class="small">Agregue los datos solicitados</p>
+                            </div>
+                            <div class="col-2">
+                              <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>        
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-body px-2 pt-1 pb-2">
+                        <div class="form-title container">
+                          <div class="row">
+                            <div class="col text-center">
+                              <p class="text-black font-weight-bold">Datos de empresa</p>
+                            </div>
+                          </div>
+                        </div>
+                        <form>
+                          <div class="form">
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Nombre de empresa">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="RIF [ej: j-20180578-4]">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="SADA">
+                            </div>
+                            <div class="col">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Horario de atención">
+                            </div>
+                          </div>
+                        </form>                                      
+                      </div>
+                      <div class="modal-footer pt-2">
+                        <div class="container">
+                          <div class="row mb-0">
+                              <button type="button" class="btn btn-primary btn-block">Editar</button>
+                          </div>
+                          <div class="row">
+                            <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- trj extra datos de empresa-->  
-        <div class="container mt-1 pt-0">
+      </div>
+      <!-- trj extra datos de empresa-->  
+      <div class="container mt-1 pt-0">
           <div class="row">
             <div class="col">
               <div class="boxed border shadow">
@@ -748,16 +856,78 @@ $color_header='dark';
                   <p class="small px-3 my-0 py-0 pb-2">Juan Perez +58 414 543 4563</p>
                   <div class="row">
                     <div class="col-12 text-center">
-                      <a href="#" class="small font-weight-bold">Editar dirección Jurídica</a>
+                      <a href="#" data-toggle="modal" data-target="#modal-direction" class="small font-weight-bold">Editar dirección Jurídica</a>
+                    </div>
+                    <div class="modal fade" id="modal-direction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header p-2">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-10 mb-0">
+                                  <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+                                  <p class="small">Agregue los datos solicitados</p>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>        
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-body px-2 pt-1 pb-2">                   
+                            <div class="form-title container">
+                              <div class="row">
+                                <div class="col text-center">
+                                  <p class="text-black font-weight-bold">Direccion Juridica</p>
+                                </div>
+                              </div>
+                            </div>
+                            <form>
+                              <div class="form">
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Estado">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Ciudad">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Codigo postel">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Dirección">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Responsable">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Oficina">
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <div class="container">
+                              <div class="row mb-0">
+                                  <button type="button" class="btn btn-primary btn-block">Editar</button>
+                              </div>
+                              <div class="row">
+                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
     </section>
-    <!-- /datos de usuario-->
+    <!-- /datos de empresa-->
 
     <!-- Buttoms-->
       <section class="my-0 py-1">
@@ -805,8 +975,8 @@ $color_header='dark';
       </section>
     <!-- / usuario -->
     
-      <!-- Carrito formulario-->
-      <section class="p-0 d-block d-md-none">
+    <!-- Carrito formulario-->
+    <section class="p-0 d-block d-md-none">
       
 
         <div class="container">
@@ -1026,14 +1196,14 @@ $color_header='dark';
               </div>
           </div>
         </div>
-      </section>
-     <!-- /Carrito formulario-->
+    </section>
+    <!-- /Carrito formulario-->
 
     <!-- datos de usuario-->
 
-      <section class="py-1">
+    <section class="py-1">
 
-        <div class="container">
+      <div class="container">
           <div class="row p-1">
             <div class="col-2 my-0 pr-0 d-block d-md-none">
               <button id=btn_clr1 class="rounded-circle btn-steps bg-blue border-0">
@@ -1054,10 +1224,10 @@ $color_header='dark';
               <p class="font-weight-bold m-0 small text-black">Datos de envío</p>
             </div>
           </div>
-        </div>
+      </div>
     
-          <!-- trj datos de envio-->
-        <div class="container mt-1">
+      <!-- trj datos de envio-->
+      <div class="container mt-1">
           <div class="row">
             <div class="col">
               <div class="boxed border shadow">
@@ -1077,16 +1247,92 @@ $color_header='dark';
                   </div>
                   <div class="row">
                     <div class="col-12 text-center">
-                      <a href="#" class="small font-weight-bold">Cambiar dirección de envío</a>
+                      <a href="#"data-toggle="modal" data-target="#modal-envio_edit" class="small font-weight-bold">Cambiar dirección de envío</a>
+                    </div>
+                    <div class="modal fade" id="modal-envio_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header px-2 pb-1">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-10 mb-0">
+                                  <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de envío</h4>
+                                  <p class="small">Agregue los datos solicitados</p>
+                                </div>
+                                <div class="col-2">
+                                  <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>        
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-body px-2 pt-1 pb-2">
+                            <div class="form-title container">
+                              <div class="row">
+                                <div class="col text-center">
+                                  <p class="text-black font-weight-bold">Dirección de envío</p>
+                                </div>
+                              </div>
+                            </div>
+                            <form>
+                              <div class="form">
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Estado">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Ciudad">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Codigo postal">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Dirección">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Responsable">
+                                </div>
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Oficina">
+                                </div>
+                              </div>
+                            </form>
+                            <div class="form-title container pt-4">
+                              <div class="row">
+                                <div class="col text-center">
+                                  <p class="text-black font-weight-bold">Hora de entrega sugerida</p>
+                                </div>
+                              </div>
+                            </div>
+                            <form>
+                              <div class="form">
+                                <div class="col">
+                                  <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Horario de atención">
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer pt-2">
+                            <div class="container">
+                              <div class="row mb-0">
+                                  <button type="button" class="btn btn-primary btn-block">Editar</button>
+                              </div>
+                              <div class="row">
+                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
 
-      </section>
+    </section>
 
     <!-- /datos de usuario-->
 
@@ -1110,20 +1356,18 @@ $color_header='dark';
 
   <section id="formulario4" class="p-0 m-0 hide show">
 
-
-        <section class="pb-1 pt-2">
-
-          <div class="container">
-            <div class="row p-1">
-              <div class="col-2 my-0 pr-0 col-md-1">
-                <button class="rounded-circle btn-steps bg-blue border-0" disabled>
-                  <p class="text-white small">1</p>
-                </button>
-              </div>
-              <div class="col-2 my-0 pr-0 col-md-1">
-                <button class="rounded-circle btn-steps bg-blue border-0" disabled>
-                  <p class="text-white small">2</p>
-                </button>
+    <section id=sell-steps class="pb-1 pt-2">
+      <div class="container">
+        <div class="row p-1">
+          <div class="col-2 my-0 pr-0 col-md-1">
+            <button class="rounded-circle btn-steps bg-blue border-0" disabled>
+              <p class="text-white small">1</p>
+            </button>
+          </div>
+          <div class="col-2 my-0 pr-0 col-md-1">
+            <button class="rounded-circle btn-steps bg-blue border-0" disabled>
+              <p class="text-white small">2</p>
+            </button>
               </div>
               <div class="col-2 my-0 pr-0 col-md-1">
                 <button class="rounded-circle btn-steps bg-blue border-0" disabled>
@@ -1135,31 +1379,26 @@ $color_header='dark';
               </div>
             </div>
           </div>
-      
             <!-- trj compra-->
-            <div class="container mt-1">
+          <div class="box-contain container mt-1">
             <div class="boxed border shadow">
               <div class="box-body p-2">
                 <figure class="text-center pb-2">
                   <img src="{{asset('images/imgs/logistic.svg')}}" alt="imag">  
                 </figure>
                 <h4 class="font-weight-bold text-center text-primary pb-1 m-0">Gracias por su compra</h4>
-                <div class="col text-info pt-1 pb-2 px-1 col-md-6 offset-md-3 ">
+                <div class="col text-info pt-1 pb-2 px-1 col-md-6 offset-md-3">
                   <p class="fs-14">Eutuxia Group CA</p>
                   <p class="small text-muted">Para coordinar tu pedido uno de nuestros asesores comerciales se pondra en contacto a la brevedad</p>
                 </div>
               </div>
             </div>
             <div class="boxed border shadow">
-
-            </div>
-
-        </section>
-
-      <!-- /datos de usuario-->
-
-      <!-- Buttoms-->
-      <section class="my-0 py-1">
+          </div>
+    </section>
+   
+    <!-- Buttoms-->
+    <section class="my-0 py-1">
         <div class="container">
           <div class="row">
             <div class="col-5 pr-0">
@@ -1170,8 +1409,8 @@ $color_header='dark';
             </div>
           </div>
         </div>
-      </section>
-      <!-- /Buttoms-->
+    </section>
+    <!-- /Buttoms-->
 
   </section>
 <!-------------------------- Formulario V ----------------------------->
@@ -1341,8 +1580,7 @@ $color_header='dark';
                                               <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
                                                 <span class="p-0" aria-hidden="true">&times;</span>
                                               </button>
-                                            </div>
-                                                            
+                                            </div>                                                           
                                             <div class="col-12 my-0 py-0">
                                               <p class="small text-left">IVA incluido</p>
                                             </div>
@@ -1412,7 +1650,7 @@ $color_header='dark';
   
   
                                 <!--  Modal footer-->
-                                <div class="container pt-4">
+                                <div class="modal-footer container pt-4">
                                   <div class="row m-0 p-0">
                                     <div class="col-6 text-left mb-0">
                                       <p>Subtotal</p>
