@@ -297,19 +297,17 @@ $color_header='dark';
    <!-- /Carrito -->
 
    <!-- Carrito 2 formulario-->
-<section id="carrito">
-  <div class=" carrito container-fluid">
-    <div class="carrito row">
+<section>
+  <div class="container-fluid">
+    <div class="row">
         <div class="col text-center">
           <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#modalFormulario">
             Camion de compras formulario
           </button>
-
           <div class="modal fade" id="modalFormulario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                  <!-------------  Modal header------------>
-                  <div class="modal-header d-block pt-2 pb-1"> 
+                  <div class="modal-header d-block pt-2 pb-1"> <!--  Modal header-->
                     <div class="row">
                         <div class="col-10 pt-3">
                           <h3 class="font-weight-bold p-0 my-0 text-left fs-28">Camion de compras</h3>
@@ -322,26 +320,27 @@ $color_header='dark';
                         </div> 
                     </div> 
                   </div>
-                  <!------------- // Modal header------------>
-                  
-                  <!------------   Modal-body --------------->
-                  <div class="Modal-body container-fluid pt-1">
+
+                  <div class="container-fluid pt-1">
 
                     <h5 class="text-left font-weight-bold fs-18 pl-1">Listado de productos</h5>
+                    
+                    <!--  modal-body-->
+
                     <div class="row px-1 pt-1 pb-0 mb-0"> 
                       <div class="col">
-                        <div class="Modal-body-card row boxed border shadow radeus">
-                          <div class="Modal-body_img col-4 col-md-4 px-0">
+                        <div class="row boxed border shadow radeus">
+                          <div class="col-4 col-md-4 px-0">
                             <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
                           </div>
 
-                          <div class="Modal-body_info col-8 col-md-8 px-0">
+                          <div class="col-8 col-md-8 px-0">
                             <div class="prod-details p-1">
                               <div class="row mb-0">
-                                <div class="prod-details_title col-10 my-0 py-0">
+                                <div class="col-10 my-0 py-0">
                                   <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
                                 </div>
-                                <div class="prod-details_delete col-2">
+                                <div class="col-2">
                                   <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
                                     <span class="p-0" aria-hidden="true">&times;</span>
                                   </button>

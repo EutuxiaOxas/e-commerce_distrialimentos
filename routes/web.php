@@ -25,9 +25,9 @@ Route::get('/nosotros', function () {
 	return view('sketch.nosotros');
 });
 
-//vitrina 
-Route::get('/vitrina', function () {
-	return view('sketch.vitrina');
+//Almacen
+Route::get('/almacen', function () {
+	return view('sketch.almacen');
 });
 
 //detalle 
@@ -69,6 +69,10 @@ Route::get('/carrito-de-compra', function () {
 
 Route::get('/header', function () {
 	return view('sketch.header');
+});
+
+Route::get('/formulario-nuevo', function () {
+	return view('sketch.formulario-nuevo');
 });
 
 //FIN DE SOLO PARA MAQUETACION
