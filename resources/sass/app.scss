@@ -10,10 +10,11 @@
 	box-sizing: border-box;
 }
 // Variables
-@import 'variables';
+@import './variables';
 
 // Variables
-@import 'header';
-@import 'perfil';
+@import './header';
+@import './perfil';
+@import './LoginAndRegister';
 @import './componentes/_categorieMenu_mobile';
 
