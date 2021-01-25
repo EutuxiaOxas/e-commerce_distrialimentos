@@ -11162,6 +11162,7 @@ nav {
   display: flex;
   align-items: center;
   padding: 1rem 0;
+  height: 100px;
 }
 
 .header__logo {
@@ -11222,6 +11223,7 @@ nav {
 
 .navbar__container {
   width: 100%;
+  height: 60px;
   background-color: #FD6721;
 }
 
@@ -11245,7 +11247,7 @@ nav {
 
 .navbar__list-item {
   list-style: none;
-  padding: 1.3rem 0;
+  padding: 1.1rem 0;
 }
 
 .navbar__list-item:not(:first-of-type) {
@@ -11269,7 +11271,6 @@ nav {
 .navbar__currency {
   position: relative;
   flex: 1;
-  display: flex;
   justify-content: flex-end;
   padding-right: 1rem;
   font-size: 1.2rem;
@@ -11281,10 +11282,16 @@ nav {
   text-decoration: none;
 }
 
+.navbar__currency--subtitle {
+  color: #FFB78D;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
 .navbar__currencyList {
   position: absolute;
-  top: 178%;
-  right: 5%;
+  top: 113%;
+  right: -57%;
   width: 172px;
   background-color: pink;
 }
@@ -11326,9 +11333,45 @@ nav {
   color: #ffff;
 }
 
+.navbar__location {
+  flex: 1;
+  padding-top: 0.2rem;
+  position: relative;
+}
+
+.navbar__location-img {
+  position: absolute;
+  top: -0.1rem;
+  left: -1.3rem;
+}
+
+.navbar__location-img img {
+  max-width: 14px;
+}
+
+.navbar__locationBody-title {
+  font-family: "Roboto", cursive;
+  color: #ffff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar__locationBody-subtitle {
+  color: #FFB78D;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
 .navbar__icon {
   text-align: center;
   width: 10%;
+}
+
+.navbar__icon-subtitle {
+  display: block;
+  color: #FFB78D;
+  font-size: 0.75rem;
+  font-weight: 300;
 }
 
 @media (min-width: 300px) {
@@ -12103,7 +12146,7 @@ nav {
   .categorie__mobileSelection {
     position: absolute;
     width: 25%;
-    top: 26%;
+    top: 21%;
     left: -100%;
     transition: left 0.5s ease;
   }
