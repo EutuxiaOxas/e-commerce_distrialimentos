@@ -1,59 +1,62 @@
 @extends('layouts.main')
 
 @section('content')
+@include('common.header.nav_header_mobile')
 
-<div class="login__container">
-    <h1 class="login__container-title">Crear cuenta</h1>
-    <p class="login__container-subtitle">Para continuar, por favor ingresa los datos</p>
-    <form action="{{ route('register') }}" method="POST" class="login__form">
-        @csrf
-
-        <div class="login__inputContainer">
-            <input type="text" class="login__inputContainer-input" name="name" id="name" placeholder="Nombre y Apellido" autocomplete="off">
-        </div>
-
-        <div class="login__inputContainer">
-            <input type="email" class="login__inputContainer-input" name="email" id="email" placeholder="Correo" autocomplete="off">
-        </div>
-
-        <div class="login__inputContainer">
-            <input id="password" type="password" class="login__inputContainer-input" name="password" placeholder="Contraseña">
-        </div>
-
-        <div class="login__inputContainer last">
-            <input id="password_confirmation" type="password" class="login__inputContainer-input" name="password_confirmation" placeholder="Confirmar contraseña">
-        </div>
-
-        <div class="register__messageContainer">
-            <p class="register__messageContainer-message">Al registrarse, confirma que ha leído y aceptado nuestras Condiciones del Servicio y nuestra Política de Privacidad.</p>
-        </div>
-
-        <div class="login__submitContainer">
-            <button class="login__submitContainer-submit" type="submit">Registrarse</button>
-        </div>
-    </form>
+<div class="login__viewBody">
+    <div class="login__container">
+        <h1 class="login__container-title">Crear cuenta</h1>
+        <p class="login__container-subtitle">Para continuar, por favor ingresa los datos</p>
+        <form action="{{ route('register') }}" method="POST" class="login__form">
+            @csrf
     
-    <div class="login__separadorContainer">
-        <p class="login__separadorContainer-item">O</p>
+            <div class="login__inputContainer">
+                <input type="text" class="login__inputContainer-input" name="name" id="name" placeholder="Nombre y Apellido" autocomplete="off">
+            </div>
+    
+            <div class="login__inputContainer">
+                <input type="email" class="login__inputContainer-input" name="email" id="email" placeholder="Correo" autocomplete="off">
+            </div>
+    
+            <div class="login__inputContainer">
+                <input id="password" type="password" class="login__inputContainer-input" name="password" placeholder="Contraseña">
+            </div>
+    
+            <div class="login__inputContainer last">
+                <input id="password_confirmation" type="password" class="login__inputContainer-input" name="password_confirmation" placeholder="Confirmar contraseña">
+            </div>
+    
+            <div class="register__messageContainer">
+                <p class="register__messageContainer-message">Al registrarse, confirma que ha leído y aceptado nuestras Condiciones del Servicio y nuestra Política de Privacidad.</p>
+            </div>
+    
+            <div class="login__submitContainer">
+                <button class="login__submitContainer-submit" type="submit">Registrarse</button>
+            </div>
+        </form>
+        
+        <div class="login__separadorContainer">
+            <p class="login__separadorContainer-item">O</p>
+        </div>
+    
+        <div class="login__googleContainer">
+            <a href="{{route('google.login')}}" class="login__googleContainer-button">
+                iniciar con Gmail
+                <spans class="login__googleContainer-icon">
+                    <img src="{{asset('icons/login-google-icon.png')}}" alt="">
+                </span>
+            </a>
+        </div>
+    
+        <hr class="login__separador">
+    
+        <div class="login__actionContainer register">
+            <a href="/login" class="login__actionContainer-option">¿Ya tienes una cuenta? Inicia sesión</a>
+        </div>
+    
     </div>
-
-    <div class="login__googleContainer">
-        <a href="{{route('google.login')}}" class="login__googleContainer-button">
-            iniciar con Gmail
-            <spans class="login__googleContainer-icon">
-                <img src="{{asset('icons/login-google-icon.png')}}" alt="">
-            </span>
-        </a>
-    </div>
-
-    <hr class="login__separador">
-
-    <div class="login__actionContainer">
-        <a href="/login" class="login__actionContainer-option">¿Ya tienes una cuenta? Inicia sesión</a>
-    </div>
-
+    
 </div>
-
 {{-- <!-- <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-3">

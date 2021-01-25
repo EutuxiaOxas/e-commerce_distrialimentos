@@ -1,10 +1,16 @@
 @import './variables';
 
+.login__viewBody {
+    padding: 4rem 0;
+    background-color: #f5f5f5;
+}
+
 // -------------- LOGIN VERSIÓN MOBILE --------------
 
 .login__container {
+    background-color: #ffffff;
     width: 85%;
-    margin: 4rem auto;
+    margin: 0 auto;
     // margin-top: 4rem;
     padding: 1.3rem 2rem;
     -webkit-box-shadow: 0px 3px 10px -3px rgba(0,0,0,0.75);
@@ -175,4 +181,50 @@
     font-size: .8rem;
     color: $header_searchInput;
     font-weight: lighter;
+}
+
+
+
+// -------------- LOGIN VERSIÓN DESKTOP --------------
+
+
+@media (min-width: 1000px){
+    .login__container {
+        width: 53%;
+        padding: 3.3rem 4rem;
+    }
+           // ---- FORM SECTION ----
+    .login__inputContainer {
+        width: 90%;
+        margin: 0 auto .4rem;
+    }
+
+    .login__inputContainer-input {
+        border-bottom: 2px solid $navbar_Background;
+    }
+
+    .register__messageContainer {
+        width: 90%;
+        margin: 0 auto 3rem;
+    }
+
+    .login__submitContainer {
+        width: 56%;
+        margin: 0 auto;
+    }
+    
+    .login__googleContainer{
+        width: 56%;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+
+    .login__separador {
+        width: 40%;
+        margin: 0 auto 2rem;
+    }
+
+    .login__actionContainer.register {
+        margin-bottom: 0;
+    }
 }
