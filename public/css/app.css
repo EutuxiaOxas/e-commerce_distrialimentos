@@ -11976,6 +11976,17 @@ nav {
   color: #02528A;
 }
 
+.register__messageContainer {
+  margin-bottom: 2rem;
+}
+
+.register__messageContainer-message {
+  font-family: "Roboto", cursive;
+  font-size: 0.8rem;
+  color: #A7A7A7;
+  font-weight: lighter;
+}
+
 .categorie__mobileSelection {
   position: fixed;
   top: -100%;

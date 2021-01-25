@@ -1,7 +1,7 @@
 <header class="header__mobileMain">
 	<div class="header__mobileContainer">
 		<div class="header__logoMobile">
-			<a href="#">
+			<a href="/">
 				<img class="header__logoMobile-image" src="{{asset('images/logo-mobile.svg')}}">
 			</a>
 		</div>
@@ -40,8 +40,8 @@
 						<h5 class="userSection__mobileMenu-title">Bienvenido</h5>
 						<p class="userSection__mobileMenu-subtitle">Ingresa tu cuenta o registrate para disfrutar la experiencia</p>
 						<div class="userSection__mobileMenu_guest-actions">
-							<a href="#">Iniciar sesión</a>
-							<a href="#">Registrarse</a>
+							<a href="/login">Iniciar sesión</a>
+							<a href="/register">Registrarse</a>
 						</div>
 					</div>
 				@else

@@ -163,3 +163,16 @@
     color: $currencyList_main;
 
 }
+
+            // ---- REGISTER VIEW MESSAGE ----
+
+.register__messageContainer {
+    margin-bottom: 2rem;
+}
+
+.register__messageContainer-message {
+    font-family: $secondary_font;
+    font-size: .8rem;
+    color: $header_searchInput;
+    font-weight: lighter;
+}
