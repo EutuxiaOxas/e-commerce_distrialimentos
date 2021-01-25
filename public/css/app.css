@@ -12146,7 +12146,7 @@ nav {
   .categorie__mobileSelection {
     position: absolute;
     width: 25%;
-    top: 21%;
+    top: 160px;
     left: -100%;
     transition: left 0.5s ease;
   }
