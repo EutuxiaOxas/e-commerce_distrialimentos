@@ -26,9 +26,7 @@ Route::get('/nosotros', function () {
 });
 
 //Almacen
-Route::get('/almacen', function () {
-	return view('sketch.almacen');
-});
+Route::get('/almacen', 'AlmacenController@getAllProducts')->name('almacen.all');
 
 //detalle 
 Route::get('/detalle', function () {
