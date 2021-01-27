@@ -1,0 +1,83 @@
+@import 'variables';
+
+.categorie__mobileSelection{
+   position: fixed;
+   top: -100%;
+   height: 100vh;
+   width: 100vw;
+   background-color: $navbar_Background;
+   z-index: 999;
+   padding: 0 1.3rem;
+   transition: transform .3s ease;
+}
+
+.categorie__mobileSelection.active {
+    transform: translateY(100%);
+}
+
+.categorie__mobileHead {
+    position: relative;
+    padding-top: 3.5rem;
+    margin-bottom: 2.2rem;
+}
+
+.categorie__mobileHead-close {
+    position: absolute;
+    color: #333;
+    font-size: 1.5rem;
+    top: 0;
+    right: 0;
+}
+
+.categorie__mobileHead-title{
+    font-family: $secondary_font;
+    font-size: 1.3rem;
+    color: #F5F5F5;
+    letter-spacing: .7px;
+}
+
+.categorie__mobileBody {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: .8rem;
+    grid-row-gap: 2rem;
+}
+
+.categorie__mobileBody-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    font-family: $secondary_font;
+    font-size: .8rem;
+    width: 100px;
+    height: 100px;
+}
+
+.categorie__mobileBody-iconActive {
+    display: none;
+}
+
+.categorie__mobileBody-item.active {
+    background-color: $currencyList_main;
+    color: #ffffff;
+}
+
+
+
+@media (min-width: 768px) {
+    .categorie__mobileSelection {
+        position: absolute;
+        width: 25%;
+        top: 26%;
+        left: -100%;
+        transition: left .5s ease;
+    }
+
+    .categorie__mobileSelection.active {
+        transform: translateY(0%);
+        left: 0;
+    }
+}
