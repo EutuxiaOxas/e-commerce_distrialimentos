@@ -17,8 +17,8 @@ $color_header='dark';
     .style-img{
       max-width: 100%;
     }
-    .text-small-card {
-      font-size: 75%;
+    .text-small {
+      font-size: 0.75rem;
     }
     .card-shadow {
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -26,42 +26,79 @@ $color_header='dark';
     .radius {
       border-radius: 6px;
     }
-    .card-body:hover {
+    .card-body-hover:hover {
       background-color: #02528A;
       color:white;
+    }
+
+    @media(min-width: 700px)
+    {
+      .main_img {
+        max-height: 35vh;
+        object-fit: cover;
+      }
+    }
+
+    @media(min-width: 700px)
+    {
+      .main_i {
+        max-height: 100px;
+        object-fit: cover;
+      }
+    }
+
+    .col-width {
+        flex: 0 0 20%;
+        max-width: 20%;
+        position: relative;
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+        display: flex;
+      }
+
+    .btn-registro {
+      padding: 0.6rem 5rem;
+    }
+    .padding-card {
+      padding: 3rem 0; 
+    }
+
+    .col-width-card {
+      padding: 0.2rem 0.3rem;
     }
 
 </style>
   {{-- cover --}}
   
-  <section id=portada>
+  <section class="main_img">
     <div id="carousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active h-75">
-          <img src="{{asset('images/cta/compras.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item h-75">
-        <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item h-75">
-        <img src="{{asset('images/cta/vendedor.jpg')}}" class="d-block w-100" alt="...">
+      <div class="carousel-inner">
+        <div class="carousel-item active h-75">
+            <img src="{{asset('images/cta/compras.jpg')}}" class="d-block w-100 main_img" alt="...">
+        </div>
+        <div class="carousel-item h-75">
+          <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100 img_main" alt="...">
+        </div>
+        <div class="carousel-item h-75">
+          <img src="{{asset('images/cta/vendedor.jpg')}}" class="d-block w-100 img_main" alt="...">
+        </div>
       </div>
     </div>
-  </div>
   </section>
 
  <!-- banners -->
-  <section id="Banners" class="p-3">
+  <section id="Banners" class="pt-5 pb-3">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100 h-100" src="{{asset('images/cta/banner.svg')}}" alt="First slide">
+            <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}" alt="img-product">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+            <img class="d-block w-100 main_img" src="{{asset('images/cta/banner.svg')}}" alt=img-product">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+            <img class="d-block w-100 main_img" src="{{asset('images/cta/banner.svg')}}" alt="img-product">
           </div>
         </div>
     </div>
@@ -69,7 +106,7 @@ $color_header='dark';
 
 
   <!-- Productos destacados -->
-  <section id="products_top" class="px-3">
+  <section id="products_top" class="px-3 d-block d-sm-none">
     <div class="tittle-section container">
       <div class="product_top-tittle row">
         <div class="product_top-details pb-2">
@@ -87,23 +124,23 @@ $color_header='dark';
           <div class="cards_body-datails container">
             <div class="card_tittle-info row">
               <h6 class="text-black font-weight-bold text-blue">Titulo del producto</h6>
-              <p class="text-small-card">Descripcion del producto</p>
+              <p class="text-small">Descripcion del producto</p>
             </div>
             <div class="product_info row">
               <div class="col-7 p-0">
-                <p class="text-small-card text-muted">(100 disponibles)</p>
+                <p class="text-small text-muted">(100 disponibles)</p>
               </div>
               <div class="col-5 p-0">
-                <p class="text-small-card text-muted">IVA incluido</p>
+                <p class="text-small text-muted">IVA incluido</p>
               </div>
             </div>
             <div class="product_price-unidad row">
-              <p class="text-small-card text-black font-weight-bold">2,00 $ / Undidad</p>
+              <p class="text-small text-black font-weight-bold">2,00 $ / Undidad</p>
             </div>
             <div class="product_price-final row">
                 <div class="col-9 product_price-final p-0 text-center">
                   <p class="text-black font-weight-bold">20,00 $</p>
-                  <p class="text-small-card text-muted">Caja - 30 unidades</p>
+                  <p class="text-small text-muted">Caja - 30 unidades</p>
                 </div>
                 <div class="product_price-plus col-3 p-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
@@ -118,10 +155,202 @@ $color_header='dark';
     </div>
   </section>
 
+  <section class="px-3 d-none d-md-block">
+    <div class="container-fluid">
+    <div class="row my-1 py-4">
+        <div class="col">
+          <h5 class="mb-0 font-weight-bold text-primary">Productos destacados</h5>
+          <h6 class="font-weight-bold text-muted">Las mejores marcas nacionales e importadas</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-width">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-width">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-width">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-width">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-width">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- categorias -->
-    <section id="categories" class="bg-light py-3">
+    <section id="categories" class="bg-light py-3 d-block d-md-none">
       <div class="categories container px-4">
         <div class="categoria_tittle">
           <h6 class="text-primary">Categoria en almacen</h6>
@@ -129,9 +358,9 @@ $color_header='dark';
         </div>
         <div class="categories row py-2">
           <div class="col-4 px-1">
-            <a href="#" class="">
+            <a href="#" class="s">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +378,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -167,7 +396,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +416,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -205,7 +434,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +452,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -243,7 +472,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -261,7 +490,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +508,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -302,10 +531,132 @@ $color_header='dark';
         </div>
       </div>
     </section>
+
+    <section class="px-3 d-none d-md-block py-2 my-2 bg-light">
+      <div class="container-fluid">
+        <div class="row my-1 py-4">
+          <div class="col">
+            <h5 class="mb-0 font-weight-bold text-primary">Conoce algunas de nuestras categorias</h5>
+            <h6 class="font-weight-bold text-muted">Ingresa a las categorias de nuestros almacenes</h6>            
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 col-width-card">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i>
+                        <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M38.1076 14.5245L31.7188 6.49469V2.92967C31.7188 1.31425 30.4045 0 28.7891 0H12.2262C10.6108 0 9.29653 1.31425 9.29653 2.92967V6.49479L2.9076 14.5247C1.20507 16.6645 0 18.4666 0 22.1847V46.1612C0 48.2779 1.64716 50 3.67185 50H37.3433C39.3679 50 41.0152 48.2779 41.0152 46.1612V22.1847C41.0152 18.4666 39.81 16.6646 38.1076 14.5245ZM39.0621 23.1613V42.1873H20.5462V23.1613H39.0621ZM39.0268 21.2082H20.516C20.3206 18.1332 19.1847 16.4681 17.6385 14.5246L12.2981 7.81245H30.2712L36.5792 15.7406C37.9516 17.4656 38.8445 18.7662 39.0268 21.2082ZM11.2496 2.92967C11.2496 2.3912 11.6877 1.95311 12.2262 1.95311H28.789C29.3275 1.95311 29.7655 2.3912 29.7655 2.92967V5.85934H11.2496V2.92967ZM4.43601 15.7407L10.2731 8.40444L16.1101 15.7407C17.4825 17.4656 18.3754 18.7662 18.5577 21.2082H14.88C14.3407 21.2082 13.9034 21.6455 13.9034 22.1847C13.9034 22.724 14.3407 23.1613 14.88 23.1613H18.593V42.1873H1.95311V23.1613H6.09108C6.63033 23.1613 7.06763 22.724 7.06763 22.1847C7.06763 21.6455 6.63033 21.2082 6.09108 21.2082H1.98837C2.17069 18.7662 3.06356 17.4656 4.43601 15.7407ZM1.95311 46.1611V44.1404H18.5931V48.0468H3.67185C2.7241 48.0468 1.95311 47.2009 1.95311 46.1611ZM37.3433 48.0468H20.5462V44.1404H39.0621V46.1611C39.0621 47.2009 38.291 48.0468 37.3433 48.0468Z"/>
+                          <path d="M29.8041 37.6358C32.5396 37.6358 34.7651 35.4103 34.7651 32.6748C34.7651 29.9394 32.5396 27.7139 29.8041 27.7139C27.0687 27.7139 24.8432 29.9394 24.8432 32.6748C24.8432 35.4103 27.0688 37.6358 29.8041 37.6358ZM29.8041 29.667C31.4626 29.667 32.8119 31.0162 32.8119 32.6748C32.8119 34.3334 31.4627 35.6827 29.8041 35.6827C28.1455 35.6827 26.7963 34.3334 26.7963 32.6748C26.7963 31.0162 28.1456 29.667 29.8041 29.667Z"/>
+                          <path d="M10.4859 23.1621C11.0252 23.1621 11.4625 22.7248 11.4625 22.1855C11.4625 21.6463 11.0252 21.209 10.4859 21.209H10.4851C9.94589 21.209 9.50897 21.6463 9.50897 22.1855C9.50897 22.7248 9.94657 23.1621 10.4859 23.1621Z"/>
+                        </svg>
+                      </i>
+                    </div>
+                    <p class="text-center small">Lacteos</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+          <div class="col-2 col-width-card">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i>
+                        <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M38.1076 14.5245L31.7188 6.49469V2.92967C31.7188 1.31425 30.4045 0 28.7891 0H12.2262C10.6108 0 9.29653 1.31425 9.29653 2.92967V6.49479L2.9076 14.5247C1.20507 16.6645 0 18.4666 0 22.1847V46.1612C0 48.2779 1.64716 50 3.67185 50H37.3433C39.3679 50 41.0152 48.2779 41.0152 46.1612V22.1847C41.0152 18.4666 39.81 16.6646 38.1076 14.5245ZM39.0621 23.1613V42.1873H20.5462V23.1613H39.0621ZM39.0268 21.2082H20.516C20.3206 18.1332 19.1847 16.4681 17.6385 14.5246L12.2981 7.81245H30.2712L36.5792 15.7406C37.9516 17.4656 38.8445 18.7662 39.0268 21.2082ZM11.2496 2.92967C11.2496 2.3912 11.6877 1.95311 12.2262 1.95311H28.789C29.3275 1.95311 29.7655 2.3912 29.7655 2.92967V5.85934H11.2496V2.92967ZM4.43601 15.7407L10.2731 8.40444L16.1101 15.7407C17.4825 17.4656 18.3754 18.7662 18.5577 21.2082H14.88C14.3407 21.2082 13.9034 21.6455 13.9034 22.1847C13.9034 22.724 14.3407 23.1613 14.88 23.1613H18.593V42.1873H1.95311V23.1613H6.09108C6.63033 23.1613 7.06763 22.724 7.06763 22.1847C7.06763 21.6455 6.63033 21.2082 6.09108 21.2082H1.98837C2.17069 18.7662 3.06356 17.4656 4.43601 15.7407ZM1.95311 46.1611V44.1404H18.5931V48.0468H3.67185C2.7241 48.0468 1.95311 47.2009 1.95311 46.1611ZM37.3433 48.0468H20.5462V44.1404H39.0621V46.1611C39.0621 47.2009 38.291 48.0468 37.3433 48.0468Z"/>
+                          <path d="M29.8041 37.6358C32.5396 37.6358 34.7651 35.4103 34.7651 32.6748C34.7651 29.9394 32.5396 27.7139 29.8041 27.7139C27.0687 27.7139 24.8432 29.9394 24.8432 32.6748C24.8432 35.4103 27.0688 37.6358 29.8041 37.6358ZM29.8041 29.667C31.4626 29.667 32.8119 31.0162 32.8119 32.6748C32.8119 34.3334 31.4627 35.6827 29.8041 35.6827C28.1455 35.6827 26.7963 34.3334 26.7963 32.6748C26.7963 31.0162 28.1456 29.667 29.8041 29.667Z"/>
+                          <path d="M10.4859 23.1621C11.0252 23.1621 11.4625 22.7248 11.4625 22.1855C11.4625 21.6463 11.0252 21.209 10.4859 21.209H10.4851C9.94589 21.209 9.50897 21.6463 9.50897 22.1855C9.50897 22.7248 9.94657 23.1621 10.4859 23.1621Z"/>
+                        </svg>
+                      </i>
+                    </div>
+                    <p class="text-center small">Lacteos</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+          <div class="col-2 col-width-card">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i>
+                        <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M38.1076 14.5245L31.7188 6.49469V2.92967C31.7188 1.31425 30.4045 0 28.7891 0H12.2262C10.6108 0 9.29653 1.31425 9.29653 2.92967V6.49479L2.9076 14.5247C1.20507 16.6645 0 18.4666 0 22.1847V46.1612C0 48.2779 1.64716 50 3.67185 50H37.3433C39.3679 50 41.0152 48.2779 41.0152 46.1612V22.1847C41.0152 18.4666 39.81 16.6646 38.1076 14.5245ZM39.0621 23.1613V42.1873H20.5462V23.1613H39.0621ZM39.0268 21.2082H20.516C20.3206 18.1332 19.1847 16.4681 17.6385 14.5246L12.2981 7.81245H30.2712L36.5792 15.7406C37.9516 17.4656 38.8445 18.7662 39.0268 21.2082ZM11.2496 2.92967C11.2496 2.3912 11.6877 1.95311 12.2262 1.95311H28.789C29.3275 1.95311 29.7655 2.3912 29.7655 2.92967V5.85934H11.2496V2.92967ZM4.43601 15.7407L10.2731 8.40444L16.1101 15.7407C17.4825 17.4656 18.3754 18.7662 18.5577 21.2082H14.88C14.3407 21.2082 13.9034 21.6455 13.9034 22.1847C13.9034 22.724 14.3407 23.1613 14.88 23.1613H18.593V42.1873H1.95311V23.1613H6.09108C6.63033 23.1613 7.06763 22.724 7.06763 22.1847C7.06763 21.6455 6.63033 21.2082 6.09108 21.2082H1.98837C2.17069 18.7662 3.06356 17.4656 4.43601 15.7407ZM1.95311 46.1611V44.1404H18.5931V48.0468H3.67185C2.7241 48.0468 1.95311 47.2009 1.95311 46.1611ZM37.3433 48.0468H20.5462V44.1404H39.0621V46.1611C39.0621 47.2009 38.291 48.0468 37.3433 48.0468Z"/>
+                          <path d="M29.8041 37.6358C32.5396 37.6358 34.7651 35.4103 34.7651 32.6748C34.7651 29.9394 32.5396 27.7139 29.8041 27.7139C27.0687 27.7139 24.8432 29.9394 24.8432 32.6748C24.8432 35.4103 27.0688 37.6358 29.8041 37.6358ZM29.8041 29.667C31.4626 29.667 32.8119 31.0162 32.8119 32.6748C32.8119 34.3334 31.4627 35.6827 29.8041 35.6827C28.1455 35.6827 26.7963 34.3334 26.7963 32.6748C26.7963 31.0162 28.1456 29.667 29.8041 29.667Z"/>
+                          <path d="M10.4859 23.1621C11.0252 23.1621 11.4625 22.7248 11.4625 22.1855C11.4625 21.6463 11.0252 21.209 10.4859 21.209H10.4851C9.94589 21.209 9.50897 21.6463 9.50897 22.1855C9.50897 22.7248 9.94657 23.1621 10.4859 23.1621Z"/>
+                        </svg>
+                      </i>
+                    </div>
+                    <p class="text-center small">Lacteos</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+          <div class="col-2 col-width-card">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i>
+                        <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M38.1076 14.5245L31.7188 6.49469V2.92967C31.7188 1.31425 30.4045 0 28.7891 0H12.2262C10.6108 0 9.29653 1.31425 9.29653 2.92967V6.49479L2.9076 14.5247C1.20507 16.6645 0 18.4666 0 22.1847V46.1612C0 48.2779 1.64716 50 3.67185 50H37.3433C39.3679 50 41.0152 48.2779 41.0152 46.1612V22.1847C41.0152 18.4666 39.81 16.6646 38.1076 14.5245ZM39.0621 23.1613V42.1873H20.5462V23.1613H39.0621ZM39.0268 21.2082H20.516C20.3206 18.1332 19.1847 16.4681 17.6385 14.5246L12.2981 7.81245H30.2712L36.5792 15.7406C37.9516 17.4656 38.8445 18.7662 39.0268 21.2082ZM11.2496 2.92967C11.2496 2.3912 11.6877 1.95311 12.2262 1.95311H28.789C29.3275 1.95311 29.7655 2.3912 29.7655 2.92967V5.85934H11.2496V2.92967ZM4.43601 15.7407L10.2731 8.40444L16.1101 15.7407C17.4825 17.4656 18.3754 18.7662 18.5577 21.2082H14.88C14.3407 21.2082 13.9034 21.6455 13.9034 22.1847C13.9034 22.724 14.3407 23.1613 14.88 23.1613H18.593V42.1873H1.95311V23.1613H6.09108C6.63033 23.1613 7.06763 22.724 7.06763 22.1847C7.06763 21.6455 6.63033 21.2082 6.09108 21.2082H1.98837C2.17069 18.7662 3.06356 17.4656 4.43601 15.7407ZM1.95311 46.1611V44.1404H18.5931V48.0468H3.67185C2.7241 48.0468 1.95311 47.2009 1.95311 46.1611ZM37.3433 48.0468H20.5462V44.1404H39.0621V46.1611C39.0621 47.2009 38.291 48.0468 37.3433 48.0468Z"/>
+                          <path d="M29.8041 37.6358C32.5396 37.6358 34.7651 35.4103 34.7651 32.6748C34.7651 29.9394 32.5396 27.7139 29.8041 27.7139C27.0687 27.7139 24.8432 29.9394 24.8432 32.6748C24.8432 35.4103 27.0688 37.6358 29.8041 37.6358ZM29.8041 29.667C31.4626 29.667 32.8119 31.0162 32.8119 32.6748C32.8119 34.3334 31.4627 35.6827 29.8041 35.6827C28.1455 35.6827 26.7963 34.3334 26.7963 32.6748C26.7963 31.0162 28.1456 29.667 29.8041 29.667Z"/>
+                          <path d="M10.4859 23.1621C11.0252 23.1621 11.4625 22.7248 11.4625 22.1855C11.4625 21.6463 11.0252 21.209 10.4859 21.209H10.4851C9.94589 21.209 9.50897 21.6463 9.50897 22.1855C9.50897 22.7248 9.94657 23.1621 10.4859 23.1621Z"/>
+                        </svg>
+                      </i>
+                    </div>
+                    <p class="text-center small">Lacteos</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+          <div class="col-2 col-width-card">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i>
+                        <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M38.1076 14.5245L31.7188 6.49469V2.92967C31.7188 1.31425 30.4045 0 28.7891 0H12.2262C10.6108 0 9.29653 1.31425 9.29653 2.92967V6.49479L2.9076 14.5247C1.20507 16.6645 0 18.4666 0 22.1847V46.1612C0 48.2779 1.64716 50 3.67185 50H37.3433C39.3679 50 41.0152 48.2779 41.0152 46.1612V22.1847C41.0152 18.4666 39.81 16.6646 38.1076 14.5245ZM39.0621 23.1613V42.1873H20.5462V23.1613H39.0621ZM39.0268 21.2082H20.516C20.3206 18.1332 19.1847 16.4681 17.6385 14.5246L12.2981 7.81245H30.2712L36.5792 15.7406C37.9516 17.4656 38.8445 18.7662 39.0268 21.2082ZM11.2496 2.92967C11.2496 2.3912 11.6877 1.95311 12.2262 1.95311H28.789C29.3275 1.95311 29.7655 2.3912 29.7655 2.92967V5.85934H11.2496V2.92967ZM4.43601 15.7407L10.2731 8.40444L16.1101 15.7407C17.4825 17.4656 18.3754 18.7662 18.5577 21.2082H14.88C14.3407 21.2082 13.9034 21.6455 13.9034 22.1847C13.9034 22.724 14.3407 23.1613 14.88 23.1613H18.593V42.1873H1.95311V23.1613H6.09108C6.63033 23.1613 7.06763 22.724 7.06763 22.1847C7.06763 21.6455 6.63033 21.2082 6.09108 21.2082H1.98837C2.17069 18.7662 3.06356 17.4656 4.43601 15.7407ZM1.95311 46.1611V44.1404H18.5931V48.0468H3.67185C2.7241 48.0468 1.95311 47.2009 1.95311 46.1611ZM37.3433 48.0468H20.5462V44.1404H39.0621V46.1611C39.0621 47.2009 38.291 48.0468 37.3433 48.0468Z"/>
+                          <path d="M29.8041 37.6358C32.5396 37.6358 34.7651 35.4103 34.7651 32.6748C34.7651 29.9394 32.5396 27.7139 29.8041 27.7139C27.0687 27.7139 24.8432 29.9394 24.8432 32.6748C24.8432 35.4103 27.0688 37.6358 29.8041 37.6358ZM29.8041 29.667C31.4626 29.667 32.8119 31.0162 32.8119 32.6748C32.8119 34.3334 31.4627 35.6827 29.8041 35.6827C28.1455 35.6827 26.7963 34.3334 26.7963 32.6748C26.7963 31.0162 28.1456 29.667 29.8041 29.667Z"/>
+                          <path d="M10.4859 23.1621C11.0252 23.1621 11.4625 22.7248 11.4625 22.1855C11.4625 21.6463 11.0252 21.209 10.4859 21.209H10.4851C9.94589 21.209 9.50897 21.6463 9.50897 22.1855C9.50897 22.7248 9.94657 23.1621 10.4859 23.1621Z"/>
+                        </svg>
+                      </i>
+                    </div>
+                    <p class="text-center small">Lacteos</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+          <div class="col-2 col-width-card">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i>
+                        <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M38.1076 14.5245L31.7188 6.49469V2.92967C31.7188 1.31425 30.4045 0 28.7891 0H12.2262C10.6108 0 9.29653 1.31425 9.29653 2.92967V6.49479L2.9076 14.5247C1.20507 16.6645 0 18.4666 0 22.1847V46.1612C0 48.2779 1.64716 50 3.67185 50H37.3433C39.3679 50 41.0152 48.2779 41.0152 46.1612V22.1847C41.0152 18.4666 39.81 16.6646 38.1076 14.5245ZM39.0621 23.1613V42.1873H20.5462V23.1613H39.0621ZM39.0268 21.2082H20.516C20.3206 18.1332 19.1847 16.4681 17.6385 14.5246L12.2981 7.81245H30.2712L36.5792 15.7406C37.9516 17.4656 38.8445 18.7662 39.0268 21.2082ZM11.2496 2.92967C11.2496 2.3912 11.6877 1.95311 12.2262 1.95311H28.789C29.3275 1.95311 29.7655 2.3912 29.7655 2.92967V5.85934H11.2496V2.92967ZM4.43601 15.7407L10.2731 8.40444L16.1101 15.7407C17.4825 17.4656 18.3754 18.7662 18.5577 21.2082H14.88C14.3407 21.2082 13.9034 21.6455 13.9034 22.1847C13.9034 22.724 14.3407 23.1613 14.88 23.1613H18.593V42.1873H1.95311V23.1613H6.09108C6.63033 23.1613 7.06763 22.724 7.06763 22.1847C7.06763 21.6455 6.63033 21.2082 6.09108 21.2082H1.98837C2.17069 18.7662 3.06356 17.4656 4.43601 15.7407ZM1.95311 46.1611V44.1404H18.5931V48.0468H3.67185C2.7241 48.0468 1.95311 47.2009 1.95311 46.1611ZM37.3433 48.0468H20.5462V44.1404H39.0621V46.1611C39.0621 47.2009 38.291 48.0468 37.3433 48.0468Z"/>
+                          <path d="M29.8041 37.6358C32.5396 37.6358 34.7651 35.4103 34.7651 32.6748C34.7651 29.9394 32.5396 27.7139 29.8041 27.7139C27.0687 27.7139 24.8432 29.9394 24.8432 32.6748C24.8432 35.4103 27.0688 37.6358 29.8041 37.6358ZM29.8041 29.667C31.4626 29.667 32.8119 31.0162 32.8119 32.6748C32.8119 34.3334 31.4627 35.6827 29.8041 35.6827C28.1455 35.6827 26.7963 34.3334 26.7963 32.6748C26.7963 31.0162 28.1456 29.667 29.8041 29.667Z"/>
+                          <path d="M10.4859 23.1621C11.0252 23.1621 11.4625 22.7248 11.4625 22.1855C11.4625 21.6463 11.0252 21.209 10.4859 21.209H10.4851C9.94589 21.209 9.50897 21.6463 9.50897 22.1855C9.50897 22.7248 9.94657 23.1621 10.4859 23.1621Z"/>
+                        </svg>
+                      </i>
+                    </div>
+                    <p class="text-center small">Lacteos</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
   <!-- /categorias -->
 
 
-  <section id="best_seller" class="px-3">
+  <section id="best_seller" class="px-3 d-block d-sm-none">
     <div class="tittle-section container">
       <div class="product_top-tittle row">
         <div class="product_top-details pb-2">
@@ -323,23 +674,23 @@ $color_header='dark';
           <div class="cards_body-datails container">
             <div class="card_tittle-info row">
               <h6 class="text-black font-weight-bold text-blue">Titulo del producto</h6>
-              <p class="text-small-card">Descripcion del producto</p>
+              <p class="text-small">Descripcion del producto</p>
             </div>
             <div class="product_info row">
               <div class="col-7 p-0">
-                <p class="text-small-card text-muted">(100 disponibles)</p>
+                <p class="text-small text-muted">(100 disponibles)</p>
               </div>
               <div class="col-5 p-0">
-                <p class="text-small-card text-muted">IVA incluido</p>
+                <p class="text-small text-muted">IVA incluido</p>
               </div>
             </div>
             <div class="product_price-unidad row">
-              <p class="text-small-card text-black font-weight-bold">2,00 $ / Undidad</p>
+              <p class="text-small text-black font-weight-bold">2,00 $ / Undidad</p>
             </div>
             <div class="product_price-final row">
               <div class="col-9 product_price-final p-0 text-center">
                 <p class="text-black font-weight-bold">20,00 $</p>
-                <p class="text-small-card text-muted">Caja - 30 unidades</p>
+                <p class="text-small text-muted">Caja - 30 unidades</p>
               </div>
               <div class="product_price-plus col-3 p-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
@@ -354,7 +705,202 @@ $color_header='dark';
     </div>
 </section>
 
-<section id="user">
+<section class="px-3 d-none d-md-block">
+  <div class="container-fluid">
+  <div class="row my-1 py-4">
+      <div class="col">
+        <h5 class="mb-0 font-weight-bold text-primary">Productos mas vendidos</h5>
+        <h6 class="font-weight-bold text-muted">Las mejores marcas nacionales e importadas</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-width">
+        <div class="card rising border">
+          <a href="#">
+            <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+          </a>
+          <div class="card-body pt-1 px-1 flex-fill">
+            <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+              <div class="row mb-0">
+                  <div class="col-12 pb-1">
+                    <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">(100 Disponibles)</p>
+                  </div>
+                  <div class="col-12">
+                    <a href="#" class="text-small">Categoria</a>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">IVA incluido</p>
+                  </div>
+              </div>
+              <div class="card-pricing text-center align-self-end">
+                <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                <p class="text-small pb-2">Caja de 20 unidades</p>
+                <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+      <div class="col-width">
+        <div class="card rising border">
+          <a href="#">
+            <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
+          </a>
+          <div class="card-body pt-1 px-1 flex-fill">
+            <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+              <div class="row mb-0">
+                  <div class="col-12 pb-1">
+                    <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">(100 Disponibles)</p>
+                  </div>
+                  <div class="col-12">
+                    <a href="#" class="text-small">Categoria</a>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">IVA incluido</p>
+                  </div>
+              </div>
+              <div class="card-pricing text-center align-self-end">
+                <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                <p class="text-small pb-2">Caja de 20 unidades</p>
+                <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+      <div class="col-width">
+        <div class="card rising border">
+          <a href="#">
+            <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
+          </a>
+          <div class="card-body pt-1 px-1 flex-fill">
+            <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+              <div class="row mb-0">
+                  <div class="col-12 pb-1">
+                    <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">(100 Disponibles)</p>
+                  </div>
+                  <div class="col-12">
+                    <a href="#" class="text-small">Categoria</a>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">IVA incluido</p>
+                  </div>
+              </div>
+              <div class="card-pricing text-center align-self-end">
+                <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                <p class="text-small pb-2">Caja de 20 unidades</p>
+                <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+      <div class="col-width">
+        <div class="card rising border">
+          <a href="#">
+            <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
+          </a>
+          <div class="card-body pt-1 px-1 flex-fill">
+            <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+              <div class="row mb-0">
+                  <div class="col-12 pb-1">
+                    <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">(100 Disponibles)</p>
+                  </div>
+                  <div class="col-12">
+                    <a href="#" class="text-small">Categoria</a>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">IVA incluido</p>
+                  </div>
+              </div>
+              <div class="card-pricing text-center align-self-end">
+                <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                <p class="text-small pb-2">Caja de 20 unidades</p>
+                <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+      <div class="col-width">
+        <div class="card rising border">
+          <a href="#">
+            <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+          </a>
+          <div class="card-body pt-1 px-1 flex-fill">
+            <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+              <div class="row mb-0">
+                  <div class="col-12 pb-1">
+                    <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                  </div>
+                  <div class="col-12">
+                    <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">(100 Disponibles)</p>
+                  </div>
+                  <div class="col-12">
+                    <a href="#" class="text-small">Categoria</a>
+                  </div>
+                  <div class="col-12">
+                    <p class="text-small">IVA incluido</p>
+                  </div>
+              </div>
+              <div class="card-pricing text-center align-self-end">
+                <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                <p class="text-small pb-2">Caja de 20 unidades</p>
+                <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+<section id="user" class="d-block d-md-none">
   <div class="container pt-3">
     <div class="row text-center">
       <div class="col-12 text-center">
@@ -372,9 +918,33 @@ $color_header='dark';
   </div>
 </section>
 
-<section class="mt-5">
-  <div class="footer py-6">
-  <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100" alt="...">
+<section class="d-none d-md-block py-5 my-5">
+  <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-center flex-column">
+          <div class="row text-center">
+            <div class="col">
+              <h4 class="text-primary py-1">Tus pedidos a un click de distancia</h4>
+              <p class="py-2 text-muted">Registrate y compra de forma online las <br> mejores marcar nacionales e importadas!</p>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-12 pb-3 pt-4">
+              <button class="btn btn-primary btn-registro">Registrate</button>
+            </div>
+            <div class="col">
+              <p class="small text-muted">Ya tengo una cuenta, <a href="#">Iniciar sesión</a></p>
+            </div>
+          </div>
+         
+          
+        </div>
+        <div class="col-6 text-center">
+          <figure>
+            <img src="{{asset('images/imgs/registro.svg')}}" alt="">
+          </figure>
+        </div>
+      </div>
   </div>
 </section>
 
