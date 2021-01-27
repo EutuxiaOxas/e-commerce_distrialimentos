@@ -87,6 +87,6 @@ $color_header='dark';
     </div>
    </section>
   <!-- / Almacen -->
-
+  @include('common.carrito-compras')
 
 @endsection

@@ -12,9 +12,12 @@
 // Variables
 @import './variables';
 
-// Variables
+// vistas
 @import './header';
 @import './perfil';
 @import './LoginAndRegister';
-@import './componentes/_categorieMenu_mobile';
 
+
+// componentes
+@import './componentes/_categorieMenu_mobile';
+@import './componentes/carritoComprasModal';

@@ -57,5 +57,7 @@
                 currencyList.classList.toggle('hide');
             })
         </script>
+
+        <script src="{{asset('js/main.js')}}"></script>
     </body>
 </html>
