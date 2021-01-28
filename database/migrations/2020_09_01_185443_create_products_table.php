@@ -29,6 +29,8 @@ class CreateProductsTable extends Migration
             $table->double('discount');
             $table->integer('in_stock');
             $table->integer('out_stock');
+            $table->integer('price_gran_mayor')->nullable();
+            $table->integer('bar_code')->nullable();
             $table->string('image');
             $table->foreignId('category_id');
             $table->timestamps();

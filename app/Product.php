@@ -22,7 +22,9 @@ class Product extends Model
         'available_stock',
         'discount',
         'in_stock',
-        'out_stock',
+		'out_stock',
+		'price_gran_mayor',
+		'bar_code',
     ];
 
 

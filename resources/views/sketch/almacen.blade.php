@@ -75,7 +75,7 @@ $color_header='dark';
                   <div class="card-pricing text-center align-self-end">
                     <h4 class="font-weight-bold mb-0 mt-3">{{$producto->unit_price}} $</h4>
                     <p class="smaller">Caja de 20 unidades</p>
-                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                    <a href="#" id="{{$producto->id}}" class="btn btn-primary px-3 py-1 {{auth()->user() ? 'to_server' : 'to_storage'}}">Agregar</a>
                   </div>
                 </div>
               </div>

@@ -103,15 +103,33 @@ class CartController extends Controller
         return response()->json('', 200);
     }
 
+
+    public function aumentarCantidad(Request $request, $id)
+    {
+        $cart = auth()->user()->cartVerify();
+
+        $detail = $cart->cartDetails
+                    ->where('product_id', $id)
+                    ->where('cart_id', $cart->id)
+                    ->first();
+        
+        if($detail->cart_id == $cart->id){
+            $detail->cantidad = $request->cantidad;
+            $detail->save();
+
+            return response()->json('Cantidad aumentada con éxito', 200);
+        }
+
+    }
+
     public function eliminarDetalle($id)
     {
         $cart = auth()->user()->cartVerify();
 
-        $producto = $cart->cartDetails->where('product_id', $id)
+        $detail = $cart->cartDetails
+                    ->where('product_id', $id)
                     ->where('cart_id', $cart->id)
                     ->first();
-
-        $detail = CartDetail::find($producto->id);
 
         if($detail->cart_id == $cart->id){
             $detail->delete();
