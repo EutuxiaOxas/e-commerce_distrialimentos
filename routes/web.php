@@ -20,7 +20,7 @@ use App\Logo_Banner;
 Route::get('/', function () {
 	return view('sketch.home');
 	$banner = Logo_Banner::all();
-	return compact('banner');
+	return view('sketch.home', compact('banner'));
 });
 
 //nosotros 
