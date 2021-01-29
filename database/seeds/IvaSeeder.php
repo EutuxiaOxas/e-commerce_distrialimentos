@@ -13,13 +13,13 @@ class IvaSeeder extends Seeder
     {
         //excepto de iva
         DB::table('ivas')->insert([
-            'id' => 0,
-        	'msg' => 'Excento IVA'
+            'msg' => 'Excento IVA',
+            'value' => false,
             ]);
         //No excepto de iva
         DB::table('ivas')->insert([
-        	'id' => 1,
-        	'msg' => 'IVA Incluido'
+            'msg' => 'IVA Incluido',
+            'value' => true,
         ]);
     }
 }

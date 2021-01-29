@@ -13,15 +13,51 @@ class Cart extends Model
     	return $this->hasMany('App\CartDetail', 'cart_id');
     }
 
-    public function cartAmount()
+    //Total carrito
+    public function cartAmount($iva)
     {
-    	$detalles = $this->cartDetails;
-    	$total = 0;
 
+    	$detalles = $this->cartDetails;
+    	$totalCart = 0;
+
+        //detalles Carrito
     	foreach ($detalles as $detalle) {
-    		$total = $total + ($detalle->product->price * $detalle->cantidad);
+
+            //producto
+            $producto = $detalle->product;
+
+            //Cantidad del producto en el carrito
+            $cantidadProducto = $detalle->cantidad;
+
+            //Precios del producto y minimo para vender a gran mayor
+            $granMayorMinimo = $producto->amount_min_big_wholesale;
+            $granMayorPrice = $producto->big_wholesale_price;
+            $alMayorPrice = $producto->wholesale_price;
+
+            
+            if($cantidadProducto >= $granMayorMinimo) {
+
+                //Verificar si el producto cuenta con IVA
+                if($producto->iva->value) 
+                {
+                    $totalCart = $totalCart + (($granMayorPrice * $cantidadProducto) + $iva->value);
+                }else 
+                {
+                    $totalCart = $totalCart + ($granMayorPrice * $cantidadProducto);
+                }
+
+            }else {
+
+                if($producto->iva->value) 
+                {
+                    $totalCart = $totalCart + (($alMayorPrice * $cantidadProducto) + $iva->value);
+                }else 
+                {
+                    $totalCart = $totalCart + ($alMayorPrice * $cantidadProducto);
+                }
+            }
     	}
 
-    	return $total;
+    	return $totalCart;
     }
 }

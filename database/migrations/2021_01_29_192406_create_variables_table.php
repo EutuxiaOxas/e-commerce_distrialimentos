@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIvasTable extends Migration
+class CreateVariablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateIvasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ivas', function (Blueprint $table) {
+        Schema::create('variables', function (Blueprint $table) {
             $table->id();
-            $table->string('msg'); //mensaje del tipo de Iva, Excento o No excepto.
-            $table->boolean('value'); //valor booleano si cuenta con iva o no
+            $table->string('name');
+            $table->double('value');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateIvasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ivas');
+        Schema::dropIfExists('variables');
     }
 }

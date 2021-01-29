@@ -7,24 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-    	'title', 
-    	'description', 
-    	'unit_price', 
-    	'image', 
-    	'category_id', 
-    	'slug', 
-    	'packaging_price' , 
-    	'amount',
-    	'iva',
-    	'sku',
-    	'unit',
-    	'packed',
-        'available_stock',
-        'discount',
-        'in_stock',
-		'out_stock',
-		'price_gran_mayor',
+		'title',
+		'slug',
+		'description',
+		'sku',
+		'image',
 		'bar_code',
+		'available_stock',
+		'iva_id',
+		'category_id',
+		'detail_price',
+		'wholesale_price',
+		'big_wholesale_price',
+		'amount_min_big_wholesale',
+		'packaging_id',
+		'units_packaging',
+		'discount',
+		
     ];
 
 
@@ -36,5 +35,15 @@ class Product extends Model
     public function images()
     {
     	return $this->hasMany('App\ProductImage', 'product_id');
-    }
+	}
+	
+	public function iva()
+	{
+		return $this->belongsTo('App\Iva', 'iva_id');
+	}
+
+	public function packaging()
+	{
+		return $this->belongsTo('App\Packaging', 'packaging_id');
+	}
 }

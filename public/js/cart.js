@@ -22,14 +22,14 @@ class CarritoUI {
 					<div class="col">
 						<div class="row boxed border shadow radeus">
 						<div class="col-4 col-md-4 px-0">
-							<img class="img-border" src="/images/lineas/linea-viveres.jpg" alt="Product-related">
+							<img class="img-border" src="/storage/${producto.imagen}" alt="Product-related">
 						</div>
 
 						<div class="col-8 col-md-8 px-0">
 							<div class="prod-details p-1">
 							<div class="row mb-0">
 								<div class="col-10 my-0 py-0">
-								<h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+								<h5 class="text-blue font-weight-bold my-0 pb-0 text-left">${producto.producto.title}</h5>
 								</div>
 								<div class="col-2">
 								<button type="button"  class="close py-0 text-right "  aria-label="Close">
@@ -38,13 +38,13 @@ class CarritoUI {
 								</div>
 												
 								<div class="col-12 my-0 py-0">
-								<p class="small text-left">IVA incluido</p>
+								<p class="small text-left">${producto.iva}</p>
 								</div>
 							</div>
 							<div class="row my-0 py-0">                   
 								<div class="col-7 my-0 py-0 pr-0">
-								<p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.producto.unit_price} $</p>
-								<p class="small my-0 py-0">Caja - 30 unidades</p>
+								<p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.producto.wholesale_price} $</p>
+								<p class="small my-0 py-0">${producto.empaque} - ${producto.producto.units_packaging} unidades</p>
 								</div>
 								<div class="col-5 pl-0">                         
 								<form class="text-center">

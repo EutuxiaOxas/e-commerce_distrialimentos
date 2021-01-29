@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StateSeeder::class);
         $this->call(IvaSeeder::class);
         $this->call(PackagingSeeder::class);
+        $this->call(VariableSeeder::class);
         
     }
 }

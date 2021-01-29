@@ -109,6 +109,7 @@ Route::post('/cart/storage', 'CartController@addStorageToCart');
 Route::post('/cart/item/delete/{id}', 'CartController@eliminarDetalle')->name('cart.detail.destroy');
 Route::get('/cart/delete', 'CartController@vaciarCarrito')->name('cart.destroy');
 Route::post('/cart/change/count', 'CartController@updateCount');
+Route::get('/cart/amount', 'CartController@getCartTotalAmount');
 
 Auth::routes();
 

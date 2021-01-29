@@ -11,18 +11,15 @@ class PackagingSeeder extends Seeder
      */
     public function run()
     {
-       DB::table('ivas')->insert([
-        'id' => 0,
+       DB::table('packagings')->insert([
         'packaging' => 'Bulto'
         ]);
         
-        DB::table('ivas')->insert([
-            'id' => 1,
+        DB::table('packagings')->insert([
             'packaging' => 'Caja'
         ]);
 
-        DB::table('ivas')->insert([
-            'id' => 2,
+        DB::table('packagings')->insert([
             'packaging' => 'Docena'
             ]);
             

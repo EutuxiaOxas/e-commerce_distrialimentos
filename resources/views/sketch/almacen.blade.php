@@ -63,18 +63,18 @@ $color_header='dark';
                         <h6 class="text-black mb-0 smaller-3 pb-1">{{$producto->description}}</h6>
                       </div>
                       <div class="col-12">
-                        <p class="card-text smaller">({{$producto->in_stock}})</p>
+                        <p class="card-text smaller">({{$producto->available_stock}}) Disponibles</p>
                       </div>
                       <div class="col-12">
                       <a href="#" class="smaller">{{$producto->category->title}}</a>
                       </div>
                       <div class="col-12">
-                        <p class="smaller">IVA incluido</p>
+                        <p class="smaller">{{$producto->iva->msg}}</p>
                       </div>
                   </div>
                   <div class="card-pricing text-center align-self-end">
-                    <h4 class="font-weight-bold mb-0 mt-3">{{$producto->unit_price}} $</h4>
-                    <p class="smaller">Caja de 20 unidades</p>
+                    <h4 class="font-weight-bold mb-0 mt-3">{{$producto->wholesale_price}} $</h4>
+                    <p class="smaller">{{$producto->packaging->packaging}} de {{$producto->units_packaging}} unidades</p>
                     <a href="#" id="{{$producto->id}}" class="btn btn-primary px-3 py-1 {{auth()->user() ? 'to_server' : 'to_storage'}}">Agregar</a>
                   </div>
                 </div>

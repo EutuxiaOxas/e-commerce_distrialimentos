@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\ProductImage;
-
+use App\Iva;
+use App\Packaging;
 use Storage;
 use Str;
 
@@ -43,9 +44,11 @@ class ProductController extends Controller
 
     public function crearProducto()
     {
+        $ivas = Iva::all();
+        $packagings = Packaging::all();
     	$categorias = Category::all();
         $secName = 'tienda';
-    	return view('cms.productos.crear_producto', compact('categorias', 'secName'));
+    	return view('cms.productos.crear_producto', compact('categorias', 'secName', 'packagings', 'ivas'));
     }
     //--------- GUARDAR PRODUCTO -------
     public function guardarProducto(Request $request)
@@ -53,27 +56,29 @@ class ProductController extends Controller
 
     	$path = $request->file('image')->store('public');
     	$file = Str::replaceFirst('public/', '',$path);
-
-		$producto = new Product;
+        $producto = new Product;
+        
+        $precioAlMayor = $request->wholesale_price;
+        $unidadesEmpaquetado = $request->units_packaging;
 
 		$guardado = $producto->create([
 	        'title' => $request->title,
 	        'description' =>$request->description,
-	        'unit_price' => $request->unit_price,
-            'packaging_price' => $request->packaging_price,
 	        'category_id' => $request->category_id,
             'slug' => $request->slug,
 	        'image' => $file,
-            'amount' => $request->amount,
-            'iva' => $request->iva,
             'sku' => $request->sku,
-            'unit' => $request->unit,
-            'packed' => $request->packed,
             'discount' => $request->discount,
             'available_stock' => $request->available_stock,
-            'in_stock' => $request->in_stock,
-            'out_stock' => $request->out_stock,
-	    ]);
+            'bar_code' => $request->bar_code,
+            'iva_id' => $request->iva_id,
+            'detail_price' => $precioAlMayor / $unidadesEmpaquetado,
+            'wholesale_price' => $request->wholesale_price, 
+            'big_wholesale_price' => $request->big_wholesale_price,
+            'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
+            'packaging_id'  => $request->packaging_id,
+            'units_packaging' =>  $request->units_packaging,
+        ]);
         
 
         //--------- GUARDAR IMAGENES SECUNDARIOS EN CASO DE EXISTIR -------
@@ -96,10 +101,12 @@ class ProductController extends Controller
 
     public function editarProducto($id)
     {
-    	$product = Product::find($id);
+        $product = Product::find($id);
+        $ivas = Iva::all();
+        $packagings = Packaging::all();
     	$categorias = Category::all();
         $secName = 'tienda';
-    	return view('cms.productos.editar_producto', compact('product', 'categorias', 'secName'));
+    	return view('cms.productos.editar_producto', compact('product', 'categorias', 'secName', 'ivas', 'packagings'));
     }
 
 
@@ -107,13 +114,16 @@ class ProductController extends Controller
     {
 
 
-    	$product = Product::find($id);
+        $product = Product::find($id);
+        
+        $precioAlMayor = $request->wholesale_price;
+        $unidadesEmpaquetado = $request->units_packaging;
 
         //--------- ACTUALIZAR DATOS Y IMAGEN PRINCIPAL DEL PRODUCTO -------
     	if($request->file('image'))
     	{
     	    $deleted = Storage::disk('public')->delete($product->image);
-
+            
     	    if(isset($deleted) || $product->image == null)
     	    {
     	        $path = $request->file('image')->store('public');
@@ -122,21 +132,21 @@ class ProductController extends Controller
 
     	        $product->update([
     	            'title' => $request->title,
-    	            'description' =>$request->description,
-    	            'price' => $request->price,
-                    'price_reference' => $request->price_reference,
-    	            'category_id' => $request->category_id,
+                    'description' =>$request->description,
+                    'category_id' => $request->category_id,
                     'slug' => $request->slug,
-                    'amount' => $request->amount,
-                    'iva' => $request->iva,
+                    'image' => $file,
                     'sku' => $request->sku,
-                    'unit' => $request->unit,
-                    'packed' => $request->packed,
                     'discount' => $request->discount,
                     'available_stock' => $request->available_stock,
-                    'in_stock' => $request->in_stock,
-                    'out_stock' => $request->out_stock,
-    	            'image' => $file,
+                    'bar_code' => $request->bar_code,
+                    'iva_id' => $request->iva_id,
+                    'detail_price' => $precioAlMayor / $unidadesEmpaquetado,
+                    'wholesale_price' => $request->wholesale_price, 
+                    'big_wholesale_price' => $request->big_wholesale_price,
+                    'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
+                    'packaging_id'  => $request->packaging_id,
+                    'units_packaging' =>  $request->units_packaging,
     	        ]);
     	    } else {
     	        return back()->with('message', 'No se pudo actualizar el producto');
@@ -144,20 +154,20 @@ class ProductController extends Controller
     	} else {
     	    $product->update([
     	        'title' => $request->title,
-    	        'price' => $request->price,
-    	        'category_id' => $request->category_id,
+                'description' =>$request->description,
+                'category_id' => $request->category_id,
                 'slug' => $request->slug,
-                'price_reference' => $request->price_reference,
-    	        'description' =>$request->description,
-                'amount' => $request->amount,
-                'iva' => $request->iva,
                 'sku' => $request->sku,
-                'unit' => $request->unit,
                 'discount' => $request->discount,
                 'available_stock' => $request->available_stock,
-                'in_stock' => $request->in_stock,
-                'out_stock' => $request->out_stock,
-                'packed' => $request->packed,
+                'bar_code' => $request->bar_code,
+                'iva_id' => $request->iva_id,
+                'detail_price' => $precioAlMayor / $unidadesEmpaquetado,
+                'wholesale_price' => $request->wholesale_price, 
+                'big_wholesale_price' => $request->big_wholesale_price,
+                'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
+                'packaging_id'  => $request->packaging_id,
+                'units_packaging' =>  $request->units_packaging,
     	    ]);
     	}
 
