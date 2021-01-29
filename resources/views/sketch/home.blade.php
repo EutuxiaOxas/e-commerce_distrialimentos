@@ -74,7 +74,7 @@ $color_header='dark';
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active h-75">
-            <img src="{{asset('images/cta/compras.jpg')}}" class="d-block w-100 main_img" alt="...">
+            <img src="{{asset('storage/'.$product->imagen)}}" class="d-block w-100 main_img" alt="...">
         </div>
         <div class="carousel-item h-75">
           <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100 img_main" alt="...">
@@ -85,6 +85,7 @@ $color_header='dark';
       </div>
     </div>
   </section>
+  
 
  <!-- banners -->
   <section id="Banners" class="pt-5 pb-3">
