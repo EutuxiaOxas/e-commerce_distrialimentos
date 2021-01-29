@@ -42,7 +42,7 @@ $color_header='dark';
     @media(min-width: 700px)
     {
       .main_i {
-        max-width: 30%;
+        max-width: 100%;
         object-fit: cover;
       }
     }
@@ -67,18 +67,22 @@ $color_header='dark';
       padding: 0 0.3rem;
     }
 
+    .banner-trasition {
+      transition:10s ease-in-out;
+      transition-property: transform;
+      transition-delay:0s;
+    }
+
 </style>
   {{-- cover --}}
     <section class="">
     
       <div id="carousel-main" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-      @foreach($banners as $banner)
-
+        @foreach($banners as $banner)
         <div class="carousel-item active">
           <img class="d-block w-100 main_img" src="{{asset('storage/'.$banner->image)}}" alt="First slide">
         </div>
-
       @endforeach
         <div class="carousel-item">
           <img class="d-block w-100 main_img" src="{{asset('images/cta/envios.jpg')}}" alt="Second slide">
@@ -101,21 +105,88 @@ $color_header='dark';
   
 
  <!-- banners -->
-  <section id="Banners" class="pt-5 pb-3">
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}" alt="img-product">
-          </div>
-          <div class="carousel-item active">
-            <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}" alt=img-product">
-          </div>
-          <div class="carousel-item active">
-            <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}" alt="img-product">
+ <section class="pt-5 pb-3 d-block d-md-none">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</section>
+
+  <section id="Banners" class="pt-5 pb-3 d-none d-md-block">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active banner-trasition">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+              </div>
+              <div class="col-4">
+                <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+              </div>
+              <div class="col-4">
+                <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+              </div>
+            </div>
           </div>
         </div>
+          
+        <div class="carousel-item banner-trasition">             
+          <div class="row">
+              <div class="col-4">
+                <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+              </div>
+              <div class="col-4">
+                <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+              </div>
+              <div class="col-4">
+                <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+              </div>
+            </div>        
+        </div>
+          
+        <div class="carousel-item banner-trasition">
+          <div class="row">
+            <div class="col-4">
+              <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+            </div>
+            <div class="col-4">
+              <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+            </div>
+            <div class="col-4">
+              <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100 main_i" alt="...">
+            </div>
+          </div>    
+        </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    </section>
+  </section>
+    
+    
 
 
   <!-- Productos destacados -->
@@ -827,6 +898,13 @@ $color_header='dark';
     </div>
 </section>
 
+
+
+
+
+
+ <!-- productos -->
+
 <section class="px-3 d-none d-md-block">
   <div class="container-fluid">
   <div class="row my-1 py-4">
@@ -1106,6 +1184,7 @@ $color_header='dark';
       </div>
   </div>
 </section>
+
 
 
 @endsection
