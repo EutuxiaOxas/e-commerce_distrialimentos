@@ -69,22 +69,35 @@ $color_header='dark';
 
 </style>
   {{-- cover --}}
-  
-  <section class="main_img">
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <section class="">
+    
+      <div id="carousel-main" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active h-75">
-            <img src="{{asset('storage/'.$product->imagen)}}" class="d-block w-100 main_img" alt="...">
+      @foreach($banners as $banner)
+
+        <div class="carousel-item active">
+          <img class="d-block w-100 main_img" src="{{asset('storage/'.$banner->image)}}" alt="First slide">
         </div>
-        <div class="carousel-item h-75">
-          <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100 img_main" alt="...">
+
+      @endforeach
+        <div class="carousel-item">
+          <img class="d-block w-100 main_img" src="{{asset('images/cta/envios.jpg')}}" alt="Second slide">
         </div>
-        <div class="carousel-item h-75">
-          <img src="{{asset('images/cta/vendedor.jpg')}}" class="d-block w-100 img_main" alt="...">
+        <div class="carousel-item">
+          <img class="d-block w-100 main_img" src="{{asset('images/cta/vendedor.jpg')}}" alt="Third slide">
         </div>
       </div>
+      <a class="carousel-control-prev" href="#carousel-main" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-main" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-  </section>
+    </section>
+
   
 
  <!-- banners -->
