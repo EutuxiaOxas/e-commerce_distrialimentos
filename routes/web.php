@@ -18,9 +18,9 @@ use App\Logo_Banner;
 
 //home 
 Route::get('/', function () {
-	return view('sketch.home');
-	$banner = Logo_Banner::all();
-	return view('sketch.home', compact('banner'));
+	// return view('sketch.home');
+	$banners = Logo_Banner::all();
+	return view('sketch.home', compact('banners'));
 });
 
 //nosotros 
