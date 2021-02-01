@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->string('icono');
+            $table->string('image_main');
             $table->integer('padre_id')->default(0);
             $table->string('status')->default('active');
             $table->timestamps();

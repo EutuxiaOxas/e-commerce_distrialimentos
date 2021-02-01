@@ -43,8 +43,10 @@ class CategoryController extends Controller
     }
     //--------- GUARDAR -------
     public function guardarCategoria(Request $request)
-    {   $path = $request->file('icono')->store('public');
-        $file = Str::replaceFirst('public/', '',$path);
+    {   $path1 = $request->file('icono')->store('public');
+        $path2 = $request->file('image_main')->store('public');
+        $file1 = Str::replaceFirst('public/', '',$path1);
+        $file2 = Str::replaceFirst('public/', '',$path2);
 
 
     	Category::create([
@@ -52,7 +54,8 @@ class CategoryController extends Controller
             'description' => $request->description,
             'padre_id' => $request->padre_id,
             'slug' => $request->slug,
-            'icono' => $file,
+            'icono' => $file1,
+            'image_main' => $file2,
         ]);
 
     	return back()->with('message', 'Categoría creada con éxito');

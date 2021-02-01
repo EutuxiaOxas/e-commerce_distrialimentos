@@ -39,6 +39,7 @@
           <tr>
           	<th>#</th>
             <th>icono</th>
+            <th>Imagen main</th>
           	<th>Titulo</th>
             <th>Categoria padre</th>
             <th>estatus</th>
@@ -51,6 +52,7 @@
           <tr>
             <td>{{$categoria->id}}</td>
             <td><img src="{{asset('storage/'.$categoria->icono)}}" style="width: 50px; height: 50px"></td>
+            <td><img src="{{asset('storage/'.$categoria->image_main)}}" style="width: 50px; height: 50px"></td>
             <td>{{$categoria->title}}</td>
             <td>
 
