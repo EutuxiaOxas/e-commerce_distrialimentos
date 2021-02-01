@@ -23,7 +23,9 @@ class Product extends Model
 		'packaging_id',
 		'units_packaging',
 		'discount',
-		
+		'vip_price',
+		'amount_min_wholesale',
+		'amount_min_vip',
     ];
 
 

@@ -71,8 +71,23 @@
 		</div>
 
 		<div class="form-group col-12"> 
+			<h5>Precio VIP</h5>
+			<input type="number" class="form-control" name="vip_price" min="1" id="vip_price">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Cantidad minima para vender al mayor</h5>
+			<input type="number" class="form-control" name="amount_min_wholesale" min="1" id="amount_min_wholesale">
+		</div>
+
+		<div class="form-group col-12"> 
 			<h5>Cantidad minima para vender al gran mayor</h5>
 			<input type="number" class="form-control" name="amount_min_big_wholesale" min="1" id="amount_min_big_wholesale">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Cantidad minima para vender a precio VIP</h5>
+			<input type="number" class="form-control" name="amount_min_vip" min="1" id="amount_min_vip">
 		</div>
 
 		<div class="form-group col-12"> 

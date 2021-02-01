@@ -27,7 +27,10 @@ class CreateProductsTable extends Migration
             $table->double('detail_price'); // precio al detal
             $table->double('wholesale_price')->nullable(); // precio al mayor 
             $table->double('big_wholesale_price')->nullable(); // precio al gran mayor//
-            $table->integer('amount_min_big_wholesale'); //cantidad minima para vender al precio al gran mayor
+            $table->double('vip_price'); // precio vip
+            $table->integer('amount_min_wholesale'); //cantidad minima para vender al precio al gran mayor
+            $table->integer('amount_min_big_wholesale'); //cantidad minima para vender al precio al mayor
+            $table->integer('amount_min_vip'); //cantidad minima para vender al precio VIP
             $table->foreignId('packaging_id'); //empaquetado
             $table->string('units_packaging'); // unidades que trae el empaquetado. 
             $table->double('discount');

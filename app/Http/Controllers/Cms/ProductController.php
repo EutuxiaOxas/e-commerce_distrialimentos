@@ -78,6 +78,9 @@ class ProductController extends Controller
             'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
             'packaging_id'  => $request->packaging_id,
             'units_packaging' =>  $request->units_packaging,
+            'vip_price' => $request->vip_price,
+            'amount_min_wholesale' => $request->amount_min_wholesale,
+            'amount_min_vip' => $request->amount_min_vip
         ]);
         
 
@@ -147,6 +150,9 @@ class ProductController extends Controller
                     'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
                     'packaging_id'  => $request->packaging_id,
                     'units_packaging' =>  $request->units_packaging,
+                    'vip_price' => $request->vip_price,
+                    'amount_min_wholesale' => $request->amount_min_wholesale,
+                    'amount_min_vip' => $request->amount_min_vip
     	        ]);
     	    } else {
     	        return back()->with('message', 'No se pudo actualizar el producto');
@@ -168,6 +174,9 @@ class ProductController extends Controller
                 'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
                 'packaging_id'  => $request->packaging_id,
                 'units_packaging' =>  $request->units_packaging,
+                'vip_price' => $request->vip_price,
+                'amount_min_wholesale' => $request->amount_min_wholesale,
+                'amount_min_vip' => $request->amount_min_vip
     	    ]);
     	}
 

@@ -29,25 +29,37 @@ class Cart extends Model
             //Cantidad del producto en el carrito
             $cantidadProducto = $detalle->cantidad;
 
-            //Precios del producto y minimo para vender a gran mayor
+            //minimos para vender al mayor/granMayor/Vip
             $granMayorMinimo = $producto->amount_min_big_wholesale;
+            $alMayorMinimo   = $producto->amount_min_wholesale;
+            $precioVipMin    = $producto->amount_min_vip;  
+
+            //precios
             $granMayorPrice = $producto->big_wholesale_price;
             $alMayorPrice = $producto->wholesale_price;
+            $vipPrice  = $producto->vip_price;
+            $detalPrice = $producto->detail_price;
 
-            
-            if($cantidadProducto >= $granMayorMinimo) {
+
+            // PRECIO AL DETAL
+            if($cantidadProducto < $alMayorMinimo) 
+            {
 
                 //Verificar si el producto cuenta con IVA
                 if($producto->iva->value) 
                 {
-                    $totalCart = $totalCart + (($granMayorPrice * $cantidadProducto) + $iva->value);
+                    $totalCart = $totalCart + (($detalPrice * $cantidadProducto) + $iva->value);
                 }else 
                 {
-                    $totalCart = $totalCart + ($granMayorPrice * $cantidadProducto);
+                    $totalCart = $totalCart + ($detalPrice * $cantidadProducto);
                 }
 
-            }else {
+            }
 
+
+            //PRECIO AL  MAYOR
+            if($cantidadProducto >= $alMayorMinimo && $cantidadProducto < $granMayorMinimo)
+            {
                 if($producto->iva->value) 
                 {
                     $totalCart = $totalCart + (($alMayorPrice * $cantidadProducto) + $iva->value);
@@ -56,6 +68,37 @@ class Cart extends Model
                     $totalCart = $totalCart + ($alMayorPrice * $cantidadProducto);
                 }
             }
+
+
+            //PRECIO AL GRAN MAYOR
+            if($cantidadProducto >= $granMayorMinimo && $cantidadProducto < $precioVipMin) 
+            {
+
+                if($producto->iva->value) 
+                {
+                    $totalCart = $totalCart + (($granMayorPrice * $cantidadProducto) + $iva->value);
+                }else 
+                {
+                    $totalCart = $totalCart + ($granMayorPrice * $cantidadProducto);
+                }
+
+            }
+
+
+            // PRECIO VIP
+            if($cantidadProducto >= $precioVipMin) 
+            {
+
+                if($producto->iva->value) 
+                {
+                    $totalCart = $totalCart + (($vipPrice * $cantidadProducto) + $iva->value);
+                }else 
+                {
+                    $totalCart = $totalCart + ($vipPrice * $cantidadProducto);
+                }
+
+            }
+            
     	}
 
     	return $totalCart;
