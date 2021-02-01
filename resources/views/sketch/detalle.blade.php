@@ -1,4 +1,4 @@
-@extends('common.main')
+@extends('layouts.main')
 
 @section('title')
     <title>Productos</title>
@@ -6,8 +6,8 @@
 
 
 @section('content')
-    {{-- header principal --}}
-    @include('common.header')
+    {{-- header principal
+    @include('common.header') --}}
  
    <style>
    .marb {  /* margen entre palabras vista movil */
