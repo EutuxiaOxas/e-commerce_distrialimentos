@@ -45,13 +45,22 @@
     <section class="pb-3">
       <div class="container px-3">
         <div class="row">
-          <div class="col-12 col-md-6 my-0">
+          <div class="col-12 col-md-6 p-5">
             <figure>
               <img class="img-fluid" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Detalle-product">
             </figure>
           </div>
-         <div class="col-12 col-md-6">
+         <div class="col-12 col-md-6 p-5">
+          <div class="row">
+            <div class="col-12 text-right">
+              <p class="small text-muted marb">Dimensiones(LxWxH): 200 x 500 x 800 cm</p>
+              <p class="small text-muted marb">Codigo de Barra: 564561144545</p>
+              <p class="small text-muted marb">SKU: 00005644545</p>
+              <hr>
+            </div>
+          </div>  
           <div class="product-details p-2">
+
               <p class="text-muted text-right smaller mb-0 d-sm-block d-md-none"><strong class="text-muted">SKU:</strong>00005644545</p>
               <h4 class="card-title font-weight-bold text-blue mb-0 marb">Titulo del producto</h4>
               <p class="small text-muted marb">Descripcion del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, vero.</p>
