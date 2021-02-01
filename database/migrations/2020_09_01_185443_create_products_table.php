@@ -34,7 +34,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('packaging_id'); //empaquetado
             $table->string('units_packaging'); // unidades que trae el empaquetado. 
             $table->double('discount');
-            
+            $table->double('unit_price');
             $table->timestamps();
         });
     }

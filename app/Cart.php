@@ -22,7 +22,7 @@ class Cart extends Model
 
         //detalles Carrito
     	foreach ($detalles as $detalle) {
-
+            
             //producto
             $producto = $detalle->product;
 
@@ -42,23 +42,23 @@ class Cart extends Model
 
 
             // PRECIO AL DETAL
-            if($cantidadProducto < $alMayorMinimo) 
-            {
+            // if($cantidadProducto < $alMayorMinimo) 
+            // {
 
-                //Verificar si el producto cuenta con IVA
-                if($producto->iva->value) 
-                {
-                    $totalCart = $totalCart + (($detalPrice * $cantidadProducto) + $iva->value);
-                }else 
-                {
-                    $totalCart = $totalCart + ($detalPrice * $cantidadProducto);
-                }
+            //     //Verificar si el producto cuenta con IVA
+            //     if($producto->iva->value) 
+            //     {
+            //         $totalCart = $totalCart + (($detalPrice * $cantidadProducto) + $iva->value);
+            //     }else 
+            //     {
+            //         $totalCart = $totalCart + ($detalPrice * $cantidadProducto);
+            //     }
 
-            }
+            // }
 
 
             //PRECIO AL  MAYOR
-            if($cantidadProducto >= $alMayorMinimo && $cantidadProducto < $granMayorMinimo)
+            if($cantidadProducto < $granMayorMinimo)
             {
                 if($producto->iva->value) 
                 {

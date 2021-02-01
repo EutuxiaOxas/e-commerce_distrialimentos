@@ -62,6 +62,11 @@
 		</div>
 
 		<div class="form-group col-12"> 
+			<h5>Precio al detal</h5>
+			<input type="number" class="form-control" name="detail_price"  min="1" id="detail_price"  value="{{$product->detail_price}}">
+		</div>
+
+		<div class="form-group col-12"> 
 			<h5>Precio al mayor</h5>
 			<input type="number" class="form-control" name="wholesale_price" value="{{$product->wholesale_price}}" min="1" id="wholesale_price">
 		</div>

@@ -72,7 +72,7 @@ class ProductController extends Controller
             'available_stock' => $request->available_stock,
             'bar_code' => $request->bar_code,
             'iva_id' => $request->iva_id,
-            'detail_price' => $precioAlMayor / $unidadesEmpaquetado,
+            'unit_price' => $precioAlMayor / $unidadesEmpaquetado,
             'wholesale_price' => $request->wholesale_price, 
             'big_wholesale_price' => $request->big_wholesale_price,
             'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
@@ -80,7 +80,8 @@ class ProductController extends Controller
             'units_packaging' =>  $request->units_packaging,
             'vip_price' => $request->vip_price,
             'amount_min_wholesale' => $request->amount_min_wholesale,
-            'amount_min_vip' => $request->amount_min_vip
+            'amount_min_vip' => $request->amount_min_vip,
+            'detail_price' => $request->detail_price
         ]);
         
 
@@ -168,7 +169,7 @@ class ProductController extends Controller
                 'available_stock' => $request->available_stock,
                 'bar_code' => $request->bar_code,
                 'iva_id' => $request->iva_id,
-                'detail_price' => $precioAlMayor / $unidadesEmpaquetado,
+                'unit_price' => $precioAlMayor / $unidadesEmpaquetado,
                 'wholesale_price' => $request->wholesale_price, 
                 'big_wholesale_price' => $request->big_wholesale_price,
                 'amount_min_big_wholesale' => $request->amount_min_big_wholesale,
@@ -176,7 +177,8 @@ class ProductController extends Controller
                 'units_packaging' =>  $request->units_packaging,
                 'vip_price' => $request->vip_price,
                 'amount_min_wholesale' => $request->amount_min_wholesale,
-                'amount_min_vip' => $request->amount_min_vip
+                'amount_min_vip' => $request->amount_min_vip,
+                'detail_price'  => $request->detail_price
     	    ]);
     	}
 
