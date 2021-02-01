@@ -30,6 +30,7 @@
         </style>
     </head>
     <body>
+        <input id="verifyLogin" type="hidden" value="{{auth()->user() ? '1' : '0'}}">
         @include('common.header.header_desktop')
 
         @include('common.header.header_mobile')
@@ -57,5 +58,8 @@
                 currencyList.classList.toggle('hide');
             })
         </script>
+
+        <script src="{{asset('js/main.js')}}"></script>
+        <script src="{{asset('js/cart.js')}}"></script>
     </body>
 </html>

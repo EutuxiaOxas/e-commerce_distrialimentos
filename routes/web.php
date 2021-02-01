@@ -26,9 +26,7 @@ Route::get('/nosotros', function () {
 });
 
 //Almacen
-Route::get('/almacen', function () {
-	return view('sketch.almacen');
-});
+Route::get('/almacen', 'AlmacenController@getAllProducts')->name('almacen.all');
 
 //detalle 
 Route::get('/detalle', function () {
@@ -106,10 +104,12 @@ Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory
 Route::get('/cart', 'CartController@getCart');
 Route::get('/cart/ver', 'HomeController@verCarrito');
 Route::post('/cart/add', 'CartController@addToCart');
+Route::post('/cart/quantity/{id}', 'CartController@aumentarCantidad');
 Route::post('/cart/storage', 'CartController@addStorageToCart');
 Route::post('/cart/item/delete/{id}', 'CartController@eliminarDetalle')->name('cart.detail.destroy');
 Route::get('/cart/delete', 'CartController@vaciarCarrito')->name('cart.destroy');
 Route::post('/cart/change/count', 'CartController@updateCount');
+Route::get('/cart/amount', 'CartController@getCartTotalAmount');
 
 Auth::routes();
 
