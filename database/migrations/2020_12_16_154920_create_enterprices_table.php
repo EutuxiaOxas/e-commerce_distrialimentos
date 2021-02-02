@@ -23,6 +23,9 @@ class CreateEnterpricesTable extends Migration
             $table->foreignId('city_id');
             $table->string('legal_address');
             $table->string('hours_of_operation');
+            $table->string('postal_code');
+            $table->string('opening_time');
+            $table->string('closing_time');
             $table->timestamps();
         });
     }
