@@ -39,6 +39,7 @@
           <tr>
           	<th>#</th>
             <th>icono</th>
+            <th>Imagen main</th>
           	<th>Titulo</th>
             <th>Categoria padre</th>
             <th>estatus</th>
@@ -51,6 +52,7 @@
           <tr>
             <td>{{$categoria->id}}</td>
             <td><img src="{{asset('storage/'.$categoria->icono)}}" style="width: 50px; height: 50px"></td>
+            <td><img src="{{asset('storage/'.$categoria->image_main)}}" style="width: 50px; height: 50px"></td>
             <td>{{$categoria->title}}</td>
             <td>
 
@@ -116,6 +118,11 @@
                             <h5>Icono</h5>
                             <input type="file" id="icono_category" required name="icono">
                         </div>
+                        <div class="col-md-12 form-group px-1">
+                          <h5>Imagen Principal</h5>
+                          <input type="file" id="image_main_category" required name="image_main">
+                      </div>
+
                     </div>
                     <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
                       <h5>URL</h5>
@@ -214,6 +221,7 @@
     const title = document.getElementById('create_category_title'),
           description = document.getElementById('create_category_description'),
           icono = document.getElementById('icono_category'),
+          image_main = document.getElementById('image_main_category'),
           form = document.getElementById('form_create_category');
 
     let verify_access = document.getElementById('url_access');

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Banks_User;
+use App\Logo_Banner;
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +19,10 @@ use App\Banks_User;
 
 //home 
 Route::get('/', function () {
-	return view('sketch.home');
+	// return view('sketch.home');
+	$banners = Logo_Banner::all();
+	$categories = Category::all();
+	return view('sketch.home', compact('banners', 'categories'));
 });
 
 //nosotros 

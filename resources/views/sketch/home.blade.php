@@ -17,8 +17,8 @@ $color_header='dark';
     .style-img{
       max-width: 100%;
     }
-    .text-small-card {
-      font-size: 75%;
+    .text-small {
+      font-size: 0.75rem;
     }
     .card-shadow {
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -26,50 +26,176 @@ $color_header='dark';
     .radius {
       border-radius: 6px;
     }
-    .card-body:hover {
+    .card-body-hover:hover {
       background-color: #02528A;
       color:white;
     }
 
+    @media(min-width: 700px)
+    {
+      .main_img {
+        max-height: 40vh;
+        object-fit: cover;
+      }
+    }
+
+    @media(min-width: 700px)
+    {
+      .main_i {
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .btn-registro {
+      padding: 0.6rem 5rem;
+    }
+    .padding-card {
+      padding: 2rem 0; 
+    }
+
+    .col-width {
+      flex: 0 0 10%;
+      max-width: 10%;
+      position: relative;
+      width: 100%;
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    .spaces {
+      padding: 0 0.3rem;
+    }
+
+    .banner-trasition {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transition: transform 15s ease-in-out;
+      transition-property: transform;
+      transition-duration: 15s;
+      transition-timing-function: ease-in-out;
+      transition-delay: 0s;
+    }
+
 </style>
   {{-- cover --}}
-  
-  <section id=portada>
-    <div id="carousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active h-75">
-          <img src="{{asset('images/cta/compras.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item h-75">
-        <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item h-75">
-        <img src="{{asset('images/cta/vendedor.jpg')}}" class="d-block w-100" alt="...">
-      </div>
-    </div>
-  </div>
-  </section>
-
- <!-- banners -->
-  <section id="Banners" class="p-3">
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <section class="main_banner">
+      <div id="carousel-main" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100 h-100" src="{{asset('images/cta/banner.svg')}}" alt="First slide">
+           <img class="d-block w-100 main_img" src="{{asset('images/cta/vendedor.jpg')}}" alt="First slide">
           </div>
+          @foreach($banners as $banner)
           <div class="carousel-item">
-            <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+            <img class="d-block w-100 main_img" src="{{asset('storage/'.$banner->image)}}" alt="Third slide">
           </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+          @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carousel-main" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-main" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </section>
+
+  
+
+ <!-- banners -->
+ <section class="banner_movil pt-5 pb-3 d-block d-md-none">
+  <div id="carousel_banner-movil" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carousel_banner-movil" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel_banner-movil" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</section>
+
+<section class="banner_desktop pt-5 pb-3 d-none d-md-block position-relative">
+  <div id="carousel-banner" class="carousel slide" data-ride="carousel" data-interval="4500">
+    <div class="carousel-inner">
+      <div class="carousel-item active banner-trasition">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-4">
+              <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+            </div>
+            <div class="col-4">
+              <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+            </div>
+            <div class="col-4">
+              <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+            </div>
           </div>
         </div>
-    </div>
-  </section>
+      </div>
+      <div class="carousel-item banner-trasition">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+              </div>
+              <div class="col-4">
+                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+              </div>
+              <div class="col-4">
+                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item banner-trasition">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+              </div>
+              <div class="col-4">
+                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+              </div>
+              <div class="col-4">
+                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carousel-banner" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-banner" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
+</section>
+<!-- banners -->
 
-
+    
+    
   <!-- Productos destacados -->
-  <section id="products_top" class="px-3">
+
+  <section id="products_top" class="px-3 d-block d-sm-none">
     <div class="tittle-section container">
       <div class="product_top-tittle row">
         <div class="product_top-details pb-2">
@@ -87,23 +213,23 @@ $color_header='dark';
           <div class="cards_body-datails container">
             <div class="card_tittle-info row">
               <h6 class="text-black font-weight-bold text-blue">Titulo del producto</h6>
-              <p class="text-small-card">Descripcion del producto</p>
+              <p class="text-small">Descripcion del producto</p>
             </div>
             <div class="product_info row">
               <div class="col-7 p-0">
-                <p class="text-small-card text-muted">(100 disponibles)</p>
+                <p class="text-small text-muted">(100 disponibles)</p>
               </div>
               <div class="col-5 p-0">
-                <p class="text-small-card text-muted">IVA incluido</p>
+                <p class="text-small text-muted">IVA incluido</p>
               </div>
             </div>
             <div class="product_price-unidad row">
-              <p class="text-small-card text-black font-weight-bold">2,00 $ / Undidad</p>
+              <p class="text-small text-black font-weight-bold">2,00 $ / Undidad</p>
             </div>
             <div class="product_price-final row">
                 <div class="col-9 product_price-final p-0 text-center">
                   <p class="text-black font-weight-bold">20,00 $</p>
-                  <p class="text-small-card text-muted">Caja - 30 unidades</p>
+                  <p class="text-small text-muted">Caja - 30 unidades</p>
                 </div>
                 <div class="product_price-plus col-3 p-0">
                   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
@@ -118,10 +244,238 @@ $color_header='dark';
     </div>
   </section>
 
+  <section class="px-3 d-none d-md-block">
+    <div class="container-fluid">
+    <div class="row my-1 py-4">
+        <div class="col">
+          <h5 class="mb-0 font-weight-bold text-primary">Productos destacados</h5>
+          <h6 class="font-weight-bold text-muted">Las mejores marcas nacionales e importadas</h6>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- categorias -->
-    <section id="categories" class="bg-light py-3">
+    <section id="categories-movil" class="bg-light py-3 d-block d-md-none">
       <div class="categories container px-4">
         <div class="categoria_tittle">
           <h6 class="text-primary">Categoria en almacen</h6>
@@ -129,9 +483,9 @@ $color_header='dark';
         </div>
         <div class="categories row py-2">
           <div class="col-4 px-1">
-            <a href="#" class="">
+            <a href="#" class="s">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +503,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -167,7 +521,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +541,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -205,7 +559,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +577,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -243,7 +597,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -261,7 +615,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +633,7 @@ $color_header='dark';
           <div class="col-4 px-1">
             <a href="#" class="">
               <div class="card radius">
-                <div class="card-body px-0 py-3 card-shadow radius">
+                <div class="card-body px-0 py-3 card-shadow radius card-body-hover">
                   <div class="icon text-center">
                     <i>
                       <svg width="42" height="50" viewBox="0 0 42 50" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -302,10 +656,40 @@ $color_header='dark';
         </div>
       </div>
     </section>
+
+    <section id="categories-destop" class="px-3 d-none d-md-block py-2 my-2 bg-light">
+      <div class="container-fluid">
+        <div class="row my-1 py-4">
+          <div class="col">
+            <h5 class="mb-0 font-weight-bold text-primary">Conoce algunas de nuestras categorias</h5>
+            <h6 class="font-weight-bold text-muted">Ingresa a las categorias de nuestros almacenes</h6>            
+          </div>
+        </div>
+        <div class="row">
+        @foreach($categories as $category)
+          <div class="col-width">
+            <a href="#">
+                <div class="card ">
+                  <div class="card-body card-shadow card-body-hover padding-card">
+                    <div class="icon text-center">
+                      <i class="text-primary">
+                        <img src="{{asset('storage/'.$category->icono)}}" alt="">
+                      </i>
+                    </div>
+                    <p class="text-center small">{{$category->title}}</p>
+                  </div>
+                </div>
+              </a>
+          </div>
+          @endforeach
+        </div>
+        
+      </div>
+    </section>
   <!-- /categorias -->
 
 
-  <section id="best_seller" class="px-3">
+  <section id="best_seller" class="px-3 d-block d-sm-none">
     <div class="tittle-section container">
       <div class="product_top-tittle row">
         <div class="product_top-details pb-2">
@@ -323,23 +707,23 @@ $color_header='dark';
           <div class="cards_body-datails container">
             <div class="card_tittle-info row">
               <h6 class="text-black font-weight-bold text-blue">Titulo del producto</h6>
-              <p class="text-small-card">Descripcion del producto</p>
+              <p class="text-small">Descripcion del producto</p>
             </div>
             <div class="product_info row">
               <div class="col-7 p-0">
-                <p class="text-small-card text-muted">(100 disponibles)</p>
+                <p class="text-small text-muted">(100 disponibles)</p>
               </div>
               <div class="col-5 p-0">
-                <p class="text-small-card text-muted">IVA incluido</p>
+                <p class="text-small text-muted">IVA incluido</p>
               </div>
             </div>
             <div class="product_price-unidad row">
-              <p class="text-small-card text-black font-weight-bold">2,00 $ / Undidad</p>
+              <p class="text-small text-black font-weight-bold">2,00 $ / Undidad</p>
             </div>
             <div class="product_price-final row">
               <div class="col-9 product_price-final p-0 text-center">
                 <p class="text-black font-weight-bold">20,00 $</p>
-                <p class="text-small-card text-muted">Caja - 30 unidades</p>
+                <p class="text-small text-muted">Caja - 30 unidades</p>
               </div>
               <div class="product_price-plus col-3 p-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-plus-circle text-primary align-center" viewBox="0 0 16 16">
@@ -354,7 +738,245 @@ $color_header='dark';
     </div>
 </section>
 
-<section id="user">
+
+
+
+
+
+ <!-- productos -->
+
+<section class="px-3 d-none d-md-block">
+  <div class="container-fluid">
+  <div class="row my-1 py-4">
+      <div class="col">
+        <h5 class="mb-0 font-weight-bold text-primary">Productos mas vendidos</h5>
+        <h6 class="font-weight-bold text-muted">Las mejores marcas nacionales e importadas</h6>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+        <div class="col-2 spaces">
+          <div class="card rising border">
+            <a href="#">
+              <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+            </a>
+            <div class="card-body pt-1 px-1 flex-fill">
+              <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="row mb-0">
+                    <div class="col-12 pb-1">
+                      <p class="text-muted text-right text-small"><strong class="text-muted">SKU:</strong>00005644545</p>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                    </div>
+                    <div class="col-12">
+                      <h6 class="text-black mb-0 text-small pb-1">Leche descremada mi Vaca 1L</h6>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">(100 Disponibles)</p>
+                    </div>
+                    <div class="col-12">
+                      <a href="#" class="text-small">Categoria</a>
+                    </div>
+                    <div class="col-12">
+                      <p class="text-small">IVA incluido</p>
+                    </div>
+                </div>
+                <div class="card-pricing text-center align-self-end">
+                  <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                  <p class="text-small pb-2">Caja de 20 unidades</p>
+                  <a href="#" class="btn btn-primary px-5 py-2">Agregar</a>
+                </div>
+              </div>
+            </div>   
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+  
+
+<section id="user" class="d-block d-md-none">
   <div class="container pt-3">
     <div class="row text-center">
       <div class="col-12 text-center">
@@ -372,11 +994,37 @@ $color_header='dark';
   </div>
 </section>
 
-<section class="mt-5">
-  <div class="footer py-6">
-  <img src="{{asset('images/cta/envios.jpg')}}" class="d-block w-100" alt="...">
+<section class="d-none d-md-block py-5 my-5">
+  <div class="container">
+      <div class="row">
+        <div class="col-6 d-flex align-items-center justify-content-center flex-column">
+          <div class="row text-center">
+            <div class="col">
+              <h4 class="text-primary py-1">Tus pedidos a un click de distancia</h4>
+              <p class="py-2 text-muted">Registrate y compra de forma online las <br> mejores marcar nacionales e importadas!</p>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-12 pb-3 pt-4">
+              <button class="btn btn-primary btn-registro">Registrate</button>
+            </div>
+            <div class="col">
+              <p class="small text-muted">Ya tengo una cuenta, <a href="#">Iniciar sesión</a></p>
+            </div>
+          </div>
+         
+          
+        </div>
+        <div class="col-6 text-center">
+          <figure>
+            <img src="{{asset('images/imgs/registro.svg')}}" alt="">
+            <p class="small text-muted">Te estamos esperando...</p>
+          </figure>
+        </div>
+      </div>
   </div>
 </section>
+
 
 
 @endsection
