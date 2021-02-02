@@ -10,10 +10,14 @@
 	box-sizing: border-box;
 }
 // Variables
-@import 'variables';
+@import './variables';
 
-// Variables
-@import 'header';
-@import 'perfil';
+// vistas
+@import './header';
+@import './perfil';
+@import './LoginAndRegister';
+
+
+// componentes
 @import './componentes/_categorieMenu_mobile';
-
+@import './componentes/carritoComprasModal';
