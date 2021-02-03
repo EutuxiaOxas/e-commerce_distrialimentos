@@ -1,0 +1,64 @@
+@import './variables';
+
+.style-img{
+    max-width: 100%;
+  }
+  .text-small {
+    font-size: 0.75rem;
+  }
+  .card-shadow {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  .radius {
+    border-radius: 6px;
+  }
+  .card-body-hover:hover {
+    background-color: $secondary;
+    color:$white;
+  }
+
+  @media(min-width: 700px)
+  {
+    .main_img {
+      max-height: 40vh;
+      object-fit: cover;
+    }
+  }
+
+  @media(min-width: 700px)
+  {
+    .main_i {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .btn-registro {
+    padding: 0.6rem 5rem;
+  }
+  .padding-card {
+    padding: 2rem 0; 
+  }
+
+  .col-width {
+    flex: 0 0 10%;
+    max-width: 10%;
+    position: relative;
+    width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .spaces {
+    padding: 0 0.3rem;
+  }
+
+  .banner-trasition {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: transform 15s ease-in-out;
+    transition-property: transform;
+    transition-duration: 15s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+  }

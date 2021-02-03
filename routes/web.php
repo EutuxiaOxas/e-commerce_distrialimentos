@@ -22,7 +22,7 @@ Route::get('/', function () {
 	// return view('sketch.home');
 	$banners = Logo_Banner::all();
 	$categories = Category::all();
-	return view('sketch.home', compact('banners', 'categories'));
+	return view('home', compact('banners', 'categories'));
 });
 
 //nosotros 
