@@ -12197,13 +12197,13 @@ nav {
 }
 
 .productDetail__priceBody-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   margin: 0;
 }
 
 .productDetail__priceBody-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .productDetail__priceDescription.active {
@@ -12211,13 +12211,13 @@ nav {
 }
 
 .productDetail__priceDescription-price {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0;
   font-weight: bold;
 }
 
 .productDetail__priceDescription-unitPrice {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: bold;
 }
 

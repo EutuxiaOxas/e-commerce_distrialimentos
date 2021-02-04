@@ -95,7 +95,7 @@
                 <div class="productDetail__priceCard">
                   <div class="productDetail__priceBody">
                     <h3 class="productDetail__priceBody-title">Al Gran Mayor</h3>
-                    <p class="productDetail__priceBody-subtitle">entre de 50 - 150 cajas </p>
+                    <p class="productDetail__priceBody-subtitle normal">entre de 50 - 150 cajas </p>
                   </div>
                   <div class="productDetail__priceDescription">
                     <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
@@ -106,7 +106,7 @@
                 <div class="productDetail__priceCard">
                   <div class="productDetail__priceBody">
                     <h3 class="productDetail__priceBody-title">Precio VIP</h3>
-                    <p class="productDetail__priceBody-subtitle">Más de 150 cajas </p>
+                    <p class="productDetail__priceBody-subtitle normal">Más de 150 cajas </p>
                   </div>
                   <div class="productDetail__priceDescription">
                     <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
