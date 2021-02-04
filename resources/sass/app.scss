@@ -1,6 +1,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+// Variables
+@import './variables';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -9,11 +12,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-// Variables
-@import 'variables';
 
-// Variables
-@import 'header';
-@import 'perfil';
+
+// vistas
+@import './header';
+@import './home';
+@import './perfil';
+@import './LoginAndRegister';
+
+
+// componentes
 @import './componentes/_categorieMenu_mobile';
-
+@import './componentes/carritoComprasModal';

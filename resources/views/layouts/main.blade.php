@@ -20,6 +20,9 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}">
 
+        {{--owl carrusel --}}
+        <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owlcarousel/owl.theme.default.min.css') }}">
 
         @yield('captcha')
 
@@ -30,6 +33,7 @@
         </style>
     </head>
     <body>
+        <input id="verifyLogin" type="hidden" value="{{auth()->user() ? '1' : '0'}}">
         @include('common.header.header_desktop')
 
         @include('common.header.header_mobile')
@@ -57,7 +61,60 @@
                 currencyList.classList.toggle('hide');
             })
         </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+     
+
+        <script src="{{asset('js/main.js')}}"></script>
+        <script src="{{asset('js/cart.js')}}"></script>
+        <script src="{{asset('js/owlcarousel/owl.carousel.min.js')}}"></script>
+
+        <script>
+            $(document).ready(function(){
+                //carrusel promocional
+              $(".owl-carousel").owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    autoplay:true,
+                    autoplayTimeout:5000,
+                    autoplayHoverPause:false,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false
+                        },
+                        600:{
+                            items:2,
+                            nav:false
+                        },
+                        1000:{
+                            items:3,
+                            nav:false,
+                            loop:false
+                        }
+                    }
+                });
+                //carrusel de productos
+                $(".owl-carousel-productos").owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:true
+                        },
+                        600:{
+                            items:4,
+                            nav:false
+                        },
+                        1000:{
+                            items:6,
+                            nav:true,
+                            loop:false
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cart;
 use App\CartDetail;
 use App\User;
+use App\Variable;
 class CartController extends Controller
 {
     public function getCart()
@@ -15,10 +16,13 @@ class CartController extends Controller
     	$cart = [];
 
     	foreach ($cart_details as $detail) {
+
     		$cart[] = [
                 'producto' => $detail->product()->first(),
+                'iva' => $detail->product()->first()->iva->msg,
                 'imagen' => $detail->product()->first()->image,
                 'cantidad' => $detail->cantidad,
+                'empaque' => $detail->product()->first()->packaging->packaging
             ];
     	}
 
@@ -103,15 +107,33 @@ class CartController extends Controller
         return response()->json('', 200);
     }
 
+
+    public function aumentarCantidad(Request $request, $id)
+    {
+        $cart = auth()->user()->cartVerify();
+
+        $detail = $cart->cartDetails
+                    ->where('product_id', $id)
+                    ->where('cart_id', $cart->id)
+                    ->first();
+        
+        if($detail->cart_id == $cart->id){
+            $detail->cantidad = $request->cantidad;
+            $detail->save();
+
+            return response()->json('Cantidad aumentada con éxito', 200);
+        }
+
+    }
+
     public function eliminarDetalle($id)
     {
         $cart = auth()->user()->cartVerify();
 
-        $producto = $cart->cartDetails->where('product_id', $id)
+        $detail = $cart->cartDetails
+                    ->where('product_id', $id)
                     ->where('cart_id', $cart->id)
                     ->first();
-
-        $detail = CartDetail::find($producto->id);
 
         if($detail->cart_id == $cart->id){
             $detail->delete();
@@ -129,5 +151,27 @@ class CartController extends Controller
        }
 
        return response()->json('Carrito vaciado con éxito', 200);
+    }
+
+
+    public function getCartTotalAmount()
+    {
+
+
+        $user = auth()->user();
+        $cart = $user->cartVerify();
+
+        $iva = Variable::where('name', 'IVA')->first();
+        $dolarPrice = Variable::where('name', 'dolar')->first();
+
+        $total = $cart->cartAmount($iva);
+        $totalBolivares = $total * $dolarPrice->value;
+        
+        return [
+            'total' => $total,
+            'totalBolivar' => $totalBolivares,
+            'iva' => $iva->value,
+        ];
+    
     }
 }

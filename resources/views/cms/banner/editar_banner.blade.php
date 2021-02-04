@@ -1,17 +1,11 @@
 @extends('cms.layout.main')
 @section('title')
-    Editar Banner
+    Admin - Editar Banner
 @endsection
 
 
 @section('content')
     <style type="text/css">
-        .banner_container {
-            position: relative;
-            width: 100%;
-            height: 70vh;
-            background-color: black;
-        }
 
         .banner_imagen {
             width: 100%;
@@ -40,7 +34,7 @@
             top: 0;
             right: 0;
             opacity: 0;
-            height: 50px;
+            display: none;
             cursor: pointer;
         }
 
@@ -126,35 +120,27 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-	@endif
-	<section class="container">
-		<div class="row">
-			<div class="col-auto"><h3>Editar Banner</h3></div>
-			<div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
-		</div>
-	</section>
+    @endif
     
-    <section class="my-3" id="container">
-        <div class="banner_container">
-            <img class="banner_imagen" id="image_fondo" src="{{ asset('storage/' . $banner->image) }}">
-            <form action="{{ route('banners.update', $banner->id) }}" class="inputs" id="form" method="POST"
-                enctype="multipart/form-data">
-                @csrf
-                <div class="d-flex">
-                    <button type="button" class="btn btn-primary button_select px-3">
-                        Agregar Imagen
-                    </button>
-                </div>
-                <input type="file" id="file" name="image" class="input_file">
-                <div class="inputs_body">
-                    <input class="mb-2" style="width: 50%;" id="i_title" type="text" class="mb-5" name="title"
-                        placeholder="Ingresa aquí el titulo" value="{{ $banner->title }}">
-                    <textarea name="description" style="width: 50%;" id="i_description"
-                        placeholder="Ingresa aquí la descripción" rows="3">{{ $banner->description }}</textarea>
-                </div>
-            </form>
-        </div>
+    <div class="row p-2">
+        <div class="col-auto"><h3>Editar Banner</h3></div>
+        <div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
+    </div>
 
+    <section class="my-3" id="container">
+        <form action="{{ route('banners.update', $banner->id) }}" class="" id="form" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="status" value="1">
+            <p class="p-2"><b>Se desea</b> modificar un banner {{$banner->tipo}}. Por favor, <b>Seleccione</b> la nueva imagen del banner</p>
+            <button type="button" class="btn btn-primary button_select px-3" onclick="document.getElementById('file').click()">
+                Agregar Imagen
+            </button>
+            <img class="banner_imagen" id="image_fondo" src="{{ asset('storage/' . $banner->image) }}">
+            <input type="file" id="file" name="image" class="input_file">
+               
+        </form>
+            
         <div class="d-flex justify-content-center my-3 ">
             <button type="button" id="button_submit" class="btn btn-primary mr-5 px-5">Actualizar</button>
             <a href="{{ route('banners.home') }}" class="btn btn-outline-danger">Cancelar</a>
@@ -242,17 +228,6 @@
         {
             let message = '',
                 modal_body = document.getElementById('modal_body');
-
-            if(title.value == '')
-            {
-                message = '¿Seguro que desea crear el banner sin un titulo?'
-            }if(description.value == '')
-            {
-                message = '¿Seguro que desea crear el banner sin una descripción?'
-            }if(title.value == '' &&  description.value == '')
-            {
-                message = '¿Seguro que desea crear el banner sin un titulo y una descripción?'
-            }
 
 
             if(message == '')

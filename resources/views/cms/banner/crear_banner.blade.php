@@ -1,18 +1,12 @@
 @extends('cms.layout.main')
 @section('title')
-    Crear Banner
+   Admin - Crear Banner
 @endsection
 
 
 @section('content')
 
     <style type="text/css">
-        .banner_container {
-            position: relative;
-            width: 100%;
-            height: 70vh;
-            background-color: black;
-        }
 
         .banner_imagen {
             width: 100%;
@@ -41,7 +35,7 @@
             top: 0;
             right: 0;
             opacity: 0;
-            height: 50px;
+            display: none;
             cursor: pointer;
         }
 
@@ -120,7 +114,6 @@
     </style>
 
     <div class="alert alert-danger" style="display: none;" id="errors_main">
-
     </div>
 
     @if (session('message'))
@@ -131,32 +124,33 @@
             </button>
         </div>
     @endif
-    <div class="row">
+
+    <div class="row p-2">
         <h3 class="col-auto">Crear Nuevo Banner</h3>
         <div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
     </div>
-    <section class="my-3" id="container">
-        <div class="banner_container">
+
+    <section class="my-3" id="container">        
+        <form action="{{ route('banners.store') }}" id="form" method="POST"
+        enctype="multipart/form-data">
+        @csrf
+            <p class="pt-2"><b>Seleccione</b> El tipo de Banner</p>
+            <select class="form-control" name="tipo" id="">
+                <option value="principal" selected>Banner Principal</option>
+                <option value="promocional">Banner Promocional</option>
+            </select>
+            <p class="pt-2"><b>Ingrese</b> la URL del Banner</p>
+            <input name="url" type="input" class="form-control" placeholder="Ej: https://distrialimentosdelcentro.com">
+            <input name="status" type="hidden"  value="1">
+            <p class="p-2"><b>Seleccione</b> la imagen del banner</p>
+
+            <button type="button" class="btn btn-primary px-4 m-1" onclick="document.getElementById('file').click()">
+                Agregar Imagen
+            </button>
             <img class="banner_imagen" id="image_fondo" src="">
-            <form action="{{ route('banners.store') }}" class="inputs" id="form" method="POST"
-                enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="tipo" value="banner">
-                <input type="hidden" name="status" value="1">
-                <div class="d-flex">
-                    <button type="button" class="btn btn-primary button_select px-4">
-                        Agregar Imagen
-                    </button>
-                </div>
-                <input type="file" id="file" name="image" class="input_file">
-                <div class="inputs_body">
-                    <input class="mb-2" maxlength="191" style="width: 50%;" id="i_title" type="text"
-                        name="title" placeholder="Ingresa aquí el titulo">
-                    <textarea name="description" style="width: 50%;" id="i_description" rows="3"
-					placeholder="Ingresa aquí la descripción"></textarea>
-                </div>
-            </form>
-        </div>
+            <input type="file" id="file" name="image" class="input_file">
+        </form>
+       
 
         <div class="d-flex justify-content-center my-3 ">
             <button type="button" id="button_submit" class="btn btn-primary mr-5 px-5">Crear</button>
@@ -251,18 +245,6 @@
         {
             let message = '',
                 modal_body = document.getElementById('modal_body');
-
-            if(title.value == '')
-            {
-                message = '¿Seguro que desea crear el banner sin un titulo?'
-            }if(description.value == '')
-            {
-                message = '¿Seguro que desea crear el banner sin una descripción?'
-            }if(title.value == '' &&  description.value == '')
-            {
-                message = '¿Seguro qu desea crear el banner sin un titulo y una descripción?'
-            }
-
 
             if(message == '')
             {

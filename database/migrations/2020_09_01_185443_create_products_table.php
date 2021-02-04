@@ -18,19 +18,23 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
-            $table->double('unit_price');
-            $table->integer('amount');
-            $table->integer('iva');
             $table->string('sku');
-            $table->string('unit');
-            $table->string('packed');
-            $table->double('packaging_price');
-            $table->double('available_stock');
-            $table->double('discount');
-            $table->integer('in_stock');
-            $table->integer('out_stock');
             $table->string('image');
-            $table->foreignId('category_id');
+            $table->string('bar_code')->nullable(); //codigo de barra
+            $table->integer('available_stock'); // stock disponible/
+            $table->foreignId('iva_id'); // 0: excento de iva, 1: Incluir iva
+            $table->foreignId('category_id'); //categoria de precio
+            $table->double('detail_price'); // precio al detal
+            $table->double('wholesale_price')->nullable(); // precio al mayor 
+            $table->double('big_wholesale_price')->nullable(); // precio al gran mayor//
+            $table->double('vip_price'); // precio vip
+            $table->integer('amount_min_wholesale'); //cantidad minima para vender al precio al gran mayor
+            $table->integer('amount_min_big_wholesale'); //cantidad minima para vender al precio al mayor
+            $table->integer('amount_min_vip'); //cantidad minima para vender al precio VIP
+            $table->foreignId('packaging_id'); //empaquetado
+            $table->string('units_packaging'); // unidades que trae el empaquetado. 
+            $table->double('discount');
+            $table->double('unit_price');
             $table->timestamps();
         });
     }

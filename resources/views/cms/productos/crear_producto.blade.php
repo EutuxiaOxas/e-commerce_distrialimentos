@@ -27,70 +27,93 @@
 	<div class="row mt-5">
 		<div class="form-group col-12">
 			<h5>Titulo</h5>
-			<input class="form-control" id="title" type="text" maxlength="191" autocomplete="off" name="title">
+			<input class="form-control" id="title" type="text" maxlength="191" r autocomplete="off" name="title">
 			<small id="slug_alert"></small>
 		</div>
-
-		<div class="form-group col-12">
-			<h5>Unit price</h5>
-			<input class="form-control" id="unit_price" type="number" name="unit_price">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>Packaging price</h5>
-			<input class="form-control" id="packaging_price" type="number" name="packaging_price">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>Amount</h5>
-			<input class="form-control" id="amount" type="number" name="amount">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>Iva</h5>
-			<input class="form-control" id="iva" type="number" name="iva">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>SKU</h5>
-			<input class="form-control" id="sku" type="text" maxlength="191" autocomplete="off" name="sku">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>Unit</h5>
-			<input class="form-control" id="unit" type="text" maxlength="191" autocomplete="off" name="unit">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>Packed</h5>
-			<input class="form-control" id="packed" type="text" maxlength="191" autocomplete="off" name="packed">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>Discount</h5>
-			<input class="form-control" id="discount" type="number" name="discount">
-		</div>
-		
-		<div class="form-group col-12">
-			<h5>Available stock</h5>
-			<input class="form-control" id="available_stock" type="number" name="available_stock">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>in stock</h5>
-			<input class="form-control" id="in_stock" type="number" name="in_stock">
-		</div>
-
-		<div class="form-group col-12">
-			<h5>out stock</h5>
-			<input class="form-control" id="out_stock" type="number" name="out_stock">
-		</div> 
-
 
 		<div class="form-group col-12">
 			<h5>Descripción</h5>
 			<textarea class="form-control" id="description" name="description"></textarea>
 		</div>
+
+		<div class="form-group col-12"> 
+			<h5>SKU</h5>
+			<input type="text" class="form-control" id="sku" name="sku">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Código de barra</h5>
+			<input type="text" class="form-control" name="bar_code" id="bar_code">
+		</div>
+		
+		<div class="form-group col-12"> 
+			<h5>Stock Disponible</h5>
+			<input type="number" class="form-control" name="available_stock" min="0" id="available_stock">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>IVA</h5>
+			<select class="form-control" name="iva_id" id="iva_id">
+				@foreach($ivas as $iva)
+					<option value="{{$iva->id}}">{{$iva->msg}}</option>
+				@endforeach
+			</select>
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Precio al detal</h5>
+			<input type="number" class="form-control" name="detail_price" min="1" id="detail_price">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Precio al mayor</h5>
+			<input type="number" class="form-control" name="wholesale_price" min="1" id="wholesale_price">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Precio al gran mayor</h5>
+			<input type="number" class="form-control" name="big_wholesale_price" min="1" id="big_wholesale_price">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Precio VIP</h5>
+			<input type="number" class="form-control" name="vip_price" min="1" id="vip_price">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Cantidad minima para vender al mayor</h5>
+			<input type="number" class="form-control" name="amount_min_wholesale" min="1" id="amount_min_wholesale">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Cantidad minima para vender al gran mayor</h5>
+			<input type="number" class="form-control" name="amount_min_big_wholesale" min="1" id="amount_min_big_wholesale">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Cantidad minima para vender a precio VIP</h5>
+			<input type="number" class="form-control" name="amount_min_vip" min="1" id="amount_min_vip">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Empaquetado</h5>
+			<select class="form-control" name="packaging_id" id="packaging_id">
+				@foreach($packagings as $packaging)
+					<option value="{{$packaging->id}}">{{$packaging->packaging}}</option>
+				@endforeach
+			</select>
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Unidades que trae el empaquetado</h5>
+			<input type="number" class="form-control" name="units_packaging" min="1" id="units_packaging">
+		</div>
+
+		<div class="form-group col-12"> 
+			<h5>Descuento</h5>
+			<input type="number" class="form-control" name="discount" min="0" id="discount">
+		</div>
+		
 		<div class="form-group col-6">
 			<h5>Categoria</h5>
 			<select id="categoria" class="form-control" name="category_id">
@@ -164,39 +187,39 @@
 		errors_container.style.display = 'none'
 
 
-		if(title.value === ''){
-			errors.push('Debes agregar un titulo')
-		}if(unitPrice.value == ''){
-			errors.push('Debes agregar un unit price')
-		}if(description.value == ''){
-			errors.push('Debes agregar una descripción')
-		}if(categoria.selectedIndex === 0){
-			errors.push('Debes escoger una categoria')
-		}if(imagen.files.length <= 0){
-			errors.push('Debes agregar una imagen')
-		}if(verify_access.value == 0){
-			errors.push('Debes utilizar un titulo permitido')
-		}if(iva.value == '' ) {
-			errors.push('Debes agregar un iva')
-		}if(sku.value == '') {
-			errors.push('Debes agregar un sku')
-		}if(amount.value == ''){
-			errors.push('Debes agregar un amount')	
-		}if(unit.value == ''){
-			errors.push('Debes agregar un unit')
-		}if(packed.value == ''){
-			errors.push('Debes agregar un packed')
-		}if(packagingPrice.value == ''){
-			errors.push('Debes agregar un Packaging price')	
-		}if(discount.value == '') {
-			errors.push('Debes agregar un discount')
-		}if(availableStock.value == ''){
-			errors.push('Debes agregar un availableStock')
-		}if(inStock.value == ''){
-			errors.push('Debes agregar un inStock')
-		}if(outStock.value == ''){
-			errors.push('Debes agregar un outStock')
-		}
+		// if(title.value === ''){
+		// 	errors.push('Debes agregar un titulo')
+		// }if(unitPrice.value == ''){
+		// 	errors.push('Debes agregar un unit price')
+		// }if(description.value == ''){
+		// 	errors.push('Debes agregar una descripción')
+		// }if(categoria.selectedIndex === 0){
+		// 	errors.push('Debes escoger una categoria')
+		// }if(imagen.files.length <= 0){
+		// 	errors.push('Debes agregar una imagen')
+		// }if(verify_access.value == 0){
+		// 	errors.push('Debes utilizar un titulo permitido')
+		// }if(iva.value == '' ) {
+		// 	errors.push('Debes agregar un iva')
+		// }if(sku.value == '') {
+		// 	errors.push('Debes agregar un sku')
+		// }if(amount.value == ''){
+		// 	errors.push('Debes agregar un amount')	
+		// }if(unit.value == ''){
+		// 	errors.push('Debes agregar un unit')
+		// }if(packed.value == ''){
+		// 	errors.push('Debes agregar un packed')
+		// }if(packagingPrice.value == ''){
+		// 	errors.push('Debes agregar un Packaging price')	
+		// }if(discount.value == '') {
+		// 	errors.push('Debes agregar un discount')
+		// }if(availableStock.value == ''){
+		// 	errors.push('Debes agregar un availableStock')
+		// }if(inStock.value == ''){
+		// 	errors.push('Debes agregar un inStock')
+		// }if(outStock.value == ''){
+		// 	errors.push('Debes agregar un outStock')
+		// }
 
 
 		if(errors.length > 0){

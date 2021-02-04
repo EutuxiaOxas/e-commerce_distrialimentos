@@ -15,10 +15,9 @@ class LogoBannerController extends Controller
 {
     public function index()
     {
-    	$banners = Logo_Banner::where('tipo', 'banner')->get();
-    	$logo = Logo_Banner::where('tipo', 'logo')->first();
+    	$banners = Logo_Banner::All();
         $secName = 'web';
-    	return view('cms.banner.index')->with(compact('banners', 'logo', 'secName'));
+    	return view('cms.banner.index')->with(compact('banners', 'secName'));
     }
 
 
@@ -102,11 +101,10 @@ class LogoBannerController extends Controller
     	$banner = new Logo_Banner;
 
     	$banner->create([
-            'title' => $request->title,
-            'description' =>$request->description,
-            'status' => $request->status,
-            'tipo' => $request->tipo,
             'image' => $file,
+            'url' => $request->url,
+            'tipo' => $request->tipo,
+            'status' => $request->status,
         ]);
 
     	return back()->with('message', 'Banner creado con éxito!');
