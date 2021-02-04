@@ -1,0 +1,181 @@
+@import './variables';
+
+
+// PRODUCT DETAIL INFO MAIN CONTAINER
+.productDetail {
+    padding: 0 2rem;
+}
+
+
+// -------------- PRODUCT DETAIL DESCRIPTION ----------------------
+.productDetail__bodySku {
+    font-family: $secondary_font;
+    color: $perfil_third-color;
+    font-weight: 300;
+}
+
+.productDetail__bodyTitle {
+    color: $header_session_login;
+    font-family: $principal_font;
+}
+
+.productDetail__bodyDescription {
+    font-family: $secondary_font;
+    color: $perfil_third-color;
+}
+
+.productDetail__bodyProductUnits {
+    color: $perfil_third-color;
+    font-family: $secondary_font;
+}
+
+.productDetail__body-categories {
+    color: $header_session_login;
+    font-family: $secondary_font;
+}
+
+// --------------  PRICE CARDS -----------
+
+.productDetail__priceCard {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    font-family: $secondary_font;
+    border: 1px solid $product_orange;
+    margin-bottom: .5rem;
+}
+
+.productDetail__priceCard.active {
+    background-color: $product_orange;
+}
+
+.productDetail__priceBody-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    // text-align: center;
+}
+
+.productDetail__priceBody-subtitle {
+    font-size: .9rem;
+}
+
+
+
+.productDetail__priceDescription.active {
+    color: #ffffff;
+}
+
+.productDetail__priceDescription-price {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: bold;
+    
+}
+
+.productDetail__priceDescription-unitPrice {
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.productDetail__priceDescription-unitPrice.normal {
+    color: $header_session_login;
+}
+
+
+//--------------------------- ADD TO CART -----------------------------
+
+.productDetail__addAnnouncement {
+    color: $perfil_third-color;
+    font-family: $secondary_font;
+    font-size: .8rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 1.3rem 0;
+}
+
+//Buttons
+.productDetail__addToCart-less, .productDetail__addToCart-plus {
+    background-color: $header_searchInput;
+    width: 17%;
+    color: #ffffff; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem 0;
+    cursor: pointer;
+}
+
+.productDetail__addToCart-less {
+    border-radius: 5px 0 0 5px;
+}
+
+.productDetail__addToCart-plus {
+    background-color: $navbar_Background;
+    border-radius: 0 5px 5px 0;
+}
+
+
+
+.productDetail__addToCart-less p, .productDetail__addToCart-plus p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+//Amount of product
+
+.productDetail__addToCart-amount {
+    display: flex;
+    align-items: center;
+    border: 1px solid $header_searchInput;
+    flex: 1;
+    justify-content: center;
+    color: $currencyList_secondary;
+    font-weight: bold;
+}
+
+.productDetail__addToCart-amount p{
+    font-size: 1.3rem;
+}
+
+
+
+@media (min-width: 1000px) {
+
+    //PRICE SECTION
+    .productDetail__priceCardsMain {
+        display: flex;
+    }
+    
+    .productDetail__priceCard {
+        display: block;
+        text-align: center;
+        flex: 1;
+        margin-right: .6rem;
+    }
+
+    
+    .productDetail__priceBody-title, .productDetail__priceDescription-price {
+        font-size: 1rem;
+    }
+
+    .productDetail__priceBody-subtitle {
+        font-size: .6rem;
+        margin-bottom: .6rem;
+    }
+
+    .productDetail__priceDescription-unitPrice {
+        font-size: .8rem;
+    }
+
+    // ADD TO CART SECTION
+    .productDetail__addAnnouncement {
+        text-align: start;
+    }
+
+    .productDetail__addToCart{
+        width: 57%;
+        margin: 0 auto;
+    }
+}
