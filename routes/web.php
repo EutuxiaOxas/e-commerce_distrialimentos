@@ -23,7 +23,7 @@ Route::get('/', function () {
 	$banners_promocionales = Logo_Banner::where('tipo','promocional')->get();
 	$categories = Category::all();
 	return view('home', compact('banners_principales','banners_promocionales', 'categories'));
-});
+})->name('home');
 
 //nosotros 
 Route::get('/nosotros', function () {

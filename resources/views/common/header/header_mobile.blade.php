@@ -61,16 +61,25 @@
 		</div>
 		<div class="navSection__mobileMenu">
 			<div class="navSection__mobileMenu-container">
-				<a href="#">Inicio</a>
+				<a href="{{route('home')}}">Inicio</a>
 			</div>
 			<div class="navSection__mobileMenu-container">
-				<a href="#">Mi cuenta</a>
+				<a href="{{route('almacen.all')}}">Almacen</a>
 			</div>
+			@guest
+			<div class="navSection__mobileMenu-container">
+				<a href="{{route('soy-nuevo')}}">Soy nuevo</a>
+			</div>
+			@else
+			<div class="navSection__mobileMenu-container">
+				<a href="{{route('perfil.home')}}">Mi cuenta</a>
+			</div>
+			@endguest
 			<div class="navSection__mobileMenu-container">
 				<a href="#">Nosotros</a>
 			</div>
 			<div class="navSection__mobileMenu-container">
-				<a href="#">Ayuda</a>
+				<a href="{{route('ayuda')}}">Ayuda</a>
 			</div>
 			<div class="navSection__mobileMenu-container">
 				@guest
