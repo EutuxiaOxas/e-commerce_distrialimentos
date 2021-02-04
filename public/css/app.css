@@ -11490,6 +11490,14 @@ nav {
   transition-delay: 0s;
 }
 
+.promocion {
+  padding: 10px;
+}
+
+.promocion > img {
+  border-radius: 10px;
+}
+
 /*-------------- NAVBAR PERFIL MOBILE ------------- */
 
 .perfilNavbar__mobile {

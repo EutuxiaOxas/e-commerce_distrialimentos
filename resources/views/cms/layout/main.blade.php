@@ -209,7 +209,7 @@
               <li class="nav-item">
                 <a href="{{route('banners.home')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Home</p>
+                  <p>Banners</p>
                 </a>
               </li>
             </ul>

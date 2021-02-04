@@ -53,6 +53,9 @@
 					<a href="#">Categorias</a>
 				</li>
 				<li class="navbar__list-item">
+					<a href="/almacen">Almacen</a>
+				</li>
+				<li class="navbar__list-item">
 					<a href="#">Mas vendidos</a>
 				</li>
 				<li class="navbar__list-item">

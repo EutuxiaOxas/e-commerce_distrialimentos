@@ -9,11 +9,12 @@
     {{-- header principal --}}
     @include('perfil.perfil_navMobile')
 
+
   {{-- Banner principal --}}
     <section class="main_banner">
       <div id="carousel-main" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          @foreach($banners as $banner)
+          @foreach($banners_principales as $banner)
             @if($loop->first)
             <div class="carousel-item active">
               <img class="d-block w-100 main_img" src="{{asset('storage/'.$banner->image)}}" alt="first slide">
@@ -36,97 +37,27 @@
       </div>
     </section>
 {{-- Final de banner principal --}}
-  
 
- <!-- banners -->
- <section class="banner_movil pt-5 pb-3 d-block d-md-none">
-  <div id="carousel_banner-movil" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{{asset('images/cta/banner.svg')}}" class="d-block w-100" alt="...">
-      </div>
+
+ <!-- banner de Promociones movil -->
+ 
+ <section class="banner_movil pt-1 pb-3">
+    <div class="owl-carousel">
+      @foreach($banners_promocionales as $banner)
+        @if($loop->first)
+        <div class="promocion">
+          <img src="{{asset('storage/'.$banner->image)}}" class="d-block w-100" alt="...">
+        </div>
+        @else
+        <div class="promocion">
+          <img src="{{asset('storage/'.$banner->image)}}" class="d-block w-100" alt="...">
+        </div>
+        @endif
+      @endforeach
     </div>
-    <a class="carousel-control-prev" href="#carousel_banner-movil" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel_banner-movil" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
 </section>
+ <!-- Fin de banner de Promociones movil  -->
 
-<section class="banner_desktop pt-5 pb-3 d-none d-md-block position-relative">
-  <div id="carousel-banner" class="carousel slide" data-ride="carousel" data-interval="4500">
-    <div class="carousel-inner">
-      <div class="carousel-item active banner-trasition">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-4">
-              <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-            </div>
-            <div class="col-4">
-              <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-            </div>
-            <div class="col-4">
-              <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item banner-trasition">
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-4">
-                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-              </div>
-              <div class="col-4">
-                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-              </div>
-              <div class="col-4">
-                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item banner-trasition">
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-4">
-                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-              </div>
-              <div class="col-4">
-                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-              </div>
-              <div class="col-4">
-                <img class="d-block w-100 main_i" src="{{asset('images/cta/banner.svg')}}"" alt="First slide">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carousel-banner" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carousel-banner" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-  </div>
-</section>
-<!-- banners -->
-
-    
-    
   <!-- Productos destacados -->
 
   <section id="products_top" class="px-3 d-block d-sm-none">
@@ -924,7 +855,6 @@
           <p class="small text-muted">Ya tengo una cuenta, <a href="#">Iniciar sesión</a></p>
         </div>
     </div>
-
   </div>
 </section>
 
@@ -958,6 +888,7 @@
       </div>
   </div>
 </section>
+
 
 
 

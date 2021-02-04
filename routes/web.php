@@ -19,10 +19,10 @@ use App\Category;
 
 //home 
 Route::get('/', function () {
-	// return view('sketch.home');
-	$banners = Logo_Banner::all();
+	$banners_principales = Logo_Banner::where('tipo','principal')->get();
+	$banners_promocionales = Logo_Banner::where('tipo','promocional')->get();
 	$categories = Category::all();
-	return view('home', compact('banners', 'categories'));
+	return view('home', compact('banners_principales','banners_promocionales', 'categories'));
 });
 
 //nosotros 
