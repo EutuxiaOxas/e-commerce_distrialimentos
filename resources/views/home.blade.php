@@ -10,12 +10,7 @@
     @include('perfil.perfil_navMobile')
 
 
-  <style>
-    .padding-card{
-      padding:1rem 0;
-    }
-  </style>
-
+ 
 
   {{-- Banner principal --}}
     <section class="main_banner">
@@ -66,9 +61,18 @@
  <!-- Fin de banner de Promociones movil  -->
 
 
-  <!-- Productos destacados -->
+ <style>
+   @media(min-width:767px){
+     .product_movil {
+       margin:20px;
+     }
+   }
+ </style>
 
-  <section id="products_top" class="px-3 d-block d-sm-none">
+
+  <!----------- Productos destacados ----------------------------->
+
+  <section id="products_top" class="px-3">
     <div class="tittle-section container">
       <div class="product_top-tittle row">
         <div class="product_top-details pb-2">
@@ -79,14 +83,17 @@
     </div>
     <div class="cards_body container">
       <div class="cards_body-row row boxed border shadow radius">
-        <div class="col-5 cards_body-img p-0">
+        <div class="col-5 cards_body-img p-0 d-block d-md-none">
           <img class="style-img" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
         </div>
+          <a href="#" class="d-none d-md-block">
+            <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+          </a>
         <div class="col-7 cards_body-text p-2">
           <div class="cards_body-datails container">
             <div class="card_tittle-info row">
-              <h6 class="text-black font-weight-bold text-blue">Titulo del producto</h6>
-              <p class="text-small">Descripcion del producto</p>
+              <h6 class="col-12 text-black font-weight-bold text-blue">Titulo del producto</h6>
+              <p class="col-12 text-small">Descripcion del producto</p>
             </div>
             <div class="product_info row">
               <div class="col-7 p-0">
@@ -119,7 +126,7 @@
 
   <!-- Productos destacados version desktop -->
 
-  <section class="Productos destacados px-3 d-none d-md-block">
+  <section class="Productos destacados px-3 d-none">
     <div class="Productos_destacados container-fluid">
       <div class="Titulo-seccion row my-1 py-4">
         <div class="col">
