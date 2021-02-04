@@ -53,7 +53,7 @@
 					<a href="#">Categorias</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="/almacen">Almacen</a>
+					<a href="{{route('almacen.all')}}">Almacen</a>
 				</li>
 				<li class="navbar__list-item">
 					<a href="#">Mas vendidos</a>
@@ -62,10 +62,10 @@
 					<a href="#">Productos recientes</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="#">Ayuda</a>
+					<a href="{{route('ayuda')}}">Ayuda</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="#">Soy nuevo</a>
+					<a href="{{route('soy-nuevo')}}">Soy nuevo</a>
 				</li>
 			</ul>
 			<div id="currency_change" class="navbar__currency">

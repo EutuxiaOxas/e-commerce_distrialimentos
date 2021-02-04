@@ -78,6 +78,21 @@ Route::get('/formulario-nuevo', function () {
 	return view('sketch.formulario-nuevo');
 });
 
+//ayuda 
+Route::get('/ayuda', function () {
+	return view('en_desarrollo');
+})->name('ayuda');
+
+//Soy nuevo 
+Route::get('/soy-nuevo', function () {
+	return view('en_desarrollo');
+})->name('soy-nuevo');
+
+//politicas 
+Route::get('/politicas', function () {
+	return view('en_desarrollo');
+})->name('politicas');
+
 //FIN DE SOLO PARA MAQUETACION
 
 
