@@ -27,7 +27,7 @@ $color_header='dark';
       border-radius: 6px;
     }
     .card-body-hover:hover {
-      background-color: #02528A;
+      background: rgba(0, 104, 177, 1);
       color:white;
     }
 
@@ -67,15 +67,6 @@ $color_header='dark';
       padding: 0 0.3rem;
     }
 
-    .banner-trasition {
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      transition: transform 15s ease-in-out;
-      transition-property: transform;
-      transition-duration: 15s;
-      transition-timing-function: ease-in-out;
-      transition-delay: 0s;
-    }
 
 </style>
   {{-- cover --}}
@@ -132,7 +123,7 @@ $color_header='dark';
 <section class="banner_desktop pt-5 pb-3 d-none d-md-block position-relative">
   <div id="carousel-banner" class="carousel slide" data-ride="carousel" data-interval="4500">
     <div class="carousel-inner">
-      <div class="carousel-item active banner-trasition">
+      <div class="carousel-item active">
         <div class="container-fluid">
           <div class="row">
             <div class="col-4">
@@ -147,7 +138,7 @@ $color_header='dark';
           </div>
         </div>
       </div>
-      <div class="carousel-item banner-trasition">
+      <div class="carousel-item">
         <div class="container-fluid">
             <div class="row">
               <div class="col-4">
@@ -163,7 +154,7 @@ $color_header='dark';
           </div>
         </div>
       </div>
-      <div class="carousel-item banner-trasition">
+      <div class="carousel-item">
         <div class="container-fluid">
             <div class="row">
               <div class="col-4">
@@ -1006,10 +997,10 @@ $color_header='dark';
           </div>
           <div class="row text-center">
             <div class="col-12 pb-3 pt-4">
-              <button class="btn btn-primary btn-registro">Registrate</button>
+              <a href="/register" class="btn btn-primary btn-registro">Registrate</a>
             </div>
             <div class="col">
-              <p class="small text-muted">Ya tengo una cuenta, <a href="#">Iniciar sesión</a></p>
+              <p class="small text-muted">Ya tengo una cuenta, <a href="/login">Iniciar sesión</a></p>
             </div>
           </div>
          
