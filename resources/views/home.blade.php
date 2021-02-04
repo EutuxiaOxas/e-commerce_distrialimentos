@@ -10,6 +10,16 @@
     @include('perfil.perfil_navMobile')
 
 
+  <style>
+    .owl-stage {
+      display: flex;
+    }
+  </style>
+
+
+
+
+
   {{-- Banner principal --}}
     <section class="main_banner">
       <div id="carousel-main" class="carousel slide" data-ride="carousel">
@@ -111,14 +121,14 @@
 
   <section class="px-3 d-none d-md-block">
     <div class="container-fluid">
-    <div class="row my-1 py-4">
+      <div class="row my-1 py-4">
         <div class="col">
           <h5 class="mb-0 font-weight-bold text-primary">Productos destacados</h5>
           <h6 class="font-weight-bold text-muted">Las mejores marcas nacionales e importadas</h6>
         </div>
       </div>
-      <div class="row">
-        <div class="col-2 spaces">
+      <div class="row owl-carousel-product">
+        <div class="col spaces item">
           <div class="card rising border">
             <a href="#">
               <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
@@ -154,7 +164,7 @@
             </div>   
           </div>
         </div>
-        <div class="col-2 spaces">
+        <div class="col spaces item">
           <div class="card rising border">
             <a href="#">
               <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
@@ -190,7 +200,7 @@
             </div>   
           </div>
         </div>
-        <div class="col-2 spaces">
+        <div class="col spaces item">
           <div class="card rising border">
             <a href="#">
               <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
@@ -226,7 +236,7 @@
             </div>   
           </div>
         </div>
-        <div class="col-2 spaces">
+        <div class="col spaces item">
           <div class="card rising border">
             <a href="#">
               <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
@@ -262,7 +272,7 @@
             </div>   
           </div>
         </div>
-        <div class="col-2 spaces">
+        <div class="col spaces item">
           <div class="card rising border">
             <a href="#">
               <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
@@ -298,7 +308,7 @@
             </div>   
           </div>
         </div>
-        <div class="col-2 spaces">
+        <div class="col spaces item">
           <div class="card rising border">
             <a href="#">
               <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
@@ -888,6 +898,7 @@
       </div>
   </div>
 </section>
+
 
 
 

@@ -114,6 +114,29 @@
                         }
                     }
                 });
+                //carrusel de productos Home
+                $('.owl-carousel-product').owlCarousel({
+                    margin:10,
+                    items:6,
+                    autoplay:true,
+                    nav:false,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false
+                        },
+                        600:{
+                            items:4,
+                            nav:false
+                        },
+                        1000:{
+                            items:6,
+                            loop:true
+                        }
+                    }
+                });
+
+
             });
         </script>
     </body>
