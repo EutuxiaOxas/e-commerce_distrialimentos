@@ -55,7 +55,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="{{route('productos')}}" class="nav-link">Productos</a>
+                            <a href="#" class="nav-link">Productos</a>
                         </li>
                         <li class="nav-item dropdown" id="cart_main">
                             <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -94,7 +94,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="{{route('productos')}}" class="nav-link">Productos</a>
+                            <a href="#" class="nav-link">Productos</a>
                         </li>
                         <li class="nav-item dropdown" id="cart_main">
                             <a id="carritoDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

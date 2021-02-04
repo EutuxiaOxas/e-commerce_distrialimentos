@@ -13,4 +13,11 @@ class AlmacenController extends Controller
 
         return view('sketch.almacen', compact('productos'));
     }
+
+    public function showProduct($slug)
+    {
+        $product = Product::where('slug', $slug)->with('images')->first();
+
+        return view('sketch.detalle', compact('product'));
+    }
 }

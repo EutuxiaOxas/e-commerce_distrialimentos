@@ -100,8 +100,8 @@ Route::middleware('auth')->group(function () {
 	})->name('perfil.compras');
 });
 
-Route::get('/productos', 'HomeController@products')->name('productos');
-Route::get('/producto/{slug}', 'HomeController@showProduct')->name('producto.show');
+// Route::get('/productos', 'HomeController@products')->name('productos');
+Route::get('/producto/{slug}', 'AlmacenController@showProduct')->name('producto.show');
 Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
 
 

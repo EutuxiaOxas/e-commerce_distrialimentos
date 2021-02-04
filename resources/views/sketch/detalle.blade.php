@@ -47,25 +47,25 @@
         <div class="row">
           <div class="col-12 col-md-6 p-5">
             <figure>
-              <img class="img-fluid" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Detalle-product">
+              <img class="img-fluid" src="{{asset('storage/'.$product->image)}}" alt="Detalle-product">
             </figure>
           </div>
          <div class="col-12 col-md-6 p-2 mt-3">
           <div class="row d-none d-md-block">
               <div class="col-12 text-right">
                 <p class="small text-muted marb">Dimensiones(LxWxH): 200 x 500 x 800 cm</p>
-                <p class="small text-muted marb">Codigo de Barra: 564561144545</p>
-                <p class="small text-muted marb">SKU: 00005644545</p>
+                <p class="small text-muted marb">Codigo de Barra: {{$product->bar_code}}</p>
+                <p class="small text-muted marb">SKU: {{$product->sku}}</p>
                 <hr>
               </div>
           </div> 
           <div class="productDetail">
 
               <p class="text-right productDetail__bodySku  smaller mb-0 d-sm-block d-md-none"><strong>SKU:</strong> 00005644545</p>
-              <h4 class="productDetail__bodyTitle mb-0 marb">Titulo del producto</h4>
-              <p class="productDetail__bodyDescription small text-muted marb">Leche descremada Mi Vaca 1Lt</p>
-              <p class="text-muted smaller mb-0 d-none d-md-block"><strong class="text-muted">SKU:</strong>000056445456</p>
-              <p class="productDetail__bodyProductUnits small marb">(100 Disponibles)</p>
+              <h4 class="productDetail__bodyTitle mb-0 marb">{{$product->title}}</h4>
+              <p class="productDetail__bodyDescription small text-muted marb">{{$product->description}}</p>
+              <p class="text-muted smaller mb-0 d-none d-md-block"><strong class="text-muted">SKU:</strong> {{$product->sku}}</p>
+              <p class="productDetail__bodyProductUnits small marb">({{$product->units_packaging}} Disponibles)</p>
 
               <div class="row mb-3">
                 <div class="col-6 col-md-12">

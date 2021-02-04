@@ -46,7 +46,7 @@ $color_header='dark';
       @foreach($productos as $producto)
         <div class="col-6 col-md-2 espaciado d-flex">
             <div class="card rising border">
-              <a href="#">
+              <a href="{{route('producto.show', $producto->slug)}}">
                 <img class="card-img-top" src="{{asset('storage/'.$producto->image)}}" alt="Card image cap">
               </a>
              <!-- card-body-->
