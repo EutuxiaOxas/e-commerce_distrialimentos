@@ -75,7 +75,22 @@ $color_header='dark';
                   <div class="card-pricing text-center align-self-end">
                     <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
                     <p class="smaller">Caja de 20 unidades</p>
-                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                    {{-- boton de agregar  --}}
+                    <div class="agregar-01">
+                      <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                    </div>
+                    {{-- producto agregado --}}
+                    <div class="agregado-01">
+                      <div class="row">
+                        <div class="col-6">
+                          <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                        </div>
+                        <div class="col-6">
+                          <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
