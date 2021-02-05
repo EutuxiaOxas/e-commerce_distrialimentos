@@ -54,27 +54,31 @@
 					<h2 class="perfil__card-title">Datos de empresa</h2>
 					<img class="perfil__cardEditar-icon cardLists"  src="{{asset('/images/editar-icon.svg')}}">
 				</div>
-				
+				@if($empresa)
 				<div class="perfil__cardBody ">
 					<ul class="perfil__cardList">
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Empresa</h3>
-							<p class="perfil__cardListItem-content">Eutuxia Group C.A.</p>
+							<p class="perfil__cardListItem-content">{{$empresa->name}}</p>
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">R.I.F.</h3>
-							<p class="perfil__cardListItem-content">R.I.F. J - 231237613 - 2</p>
+							<p class="perfil__cardListItem-content">R.I.F. {{$empresa->RIF}}</p>
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">SADA</h3>
-							<p class="perfil__cardListItem-content">723849732894</p>
+							<p class="perfil__cardListItem-content">{{$empresa->SADA}}</p>
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Horario disponible</h3>
-							<p class="perfil__cardListItem-content">8:00 AM - 5:00 PM</p>
+							<p class="perfil__cardListItem-content">{{$empresa->hours_of_operation}}</p>
 						</li>
 					</ul>
 				</div>
+				@else
+				{{-- si no exite la empresa --}}
+
+				@endif
 			</div>
 
 			<div class="perfil__card">
@@ -83,18 +87,21 @@
 				</div>
 				
 				<div class="perfil__cardBody direccion">
+					@if($empresa)
+					{{-- Direccion Juridica --}}
 					<div class="direccionCard">
 						<div class="perfil__cardTitle direccion">
-							<h2 class="perfil__card-title direccion">Dirección juridica</h2>
+							<h2 class="perfil__card-title direccion">Dirección jurídica</h2>
 							<img src="{{asset('/images/editar-icon.svg')}}">
 						</div>
 						<div class="perfil__cardDireccion">
-							<h3 class="perfil__cardDireccion-title">Calle 1 Avenida 10 Local 45</h3>
+							<h3 class="perfil__cardDireccion-title">{{$empresa->legal_address}}</h3>
 							<p class="perfil__cardDireccion-content">Cerca del colegio Moral y luces </p>
-							<p class="perfil__cardDireccion-content">Carabobo, Valencia (2001)</p>
+							<p class="perfil__cardDireccion-content">{{$empresa->state_id}}, Valencia (2001)</p>
 							<p class="perfil__cardDireccion-content">Carlos Maita - +58 414 453 3456</p>
 						</div>
 					</div>
+					@endif
 
 					<div class="direccionCard">
 						<div class="perfil__cardTitle direccion">
