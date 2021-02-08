@@ -11251,7 +11251,7 @@ nav {
 }
 
 .navbar__list-item:not(:first-of-type) {
-  margin-left: 4rem;
+  margin-left: 3rem;
 }
 
 .navbar__list-item-icon {
@@ -11289,8 +11289,9 @@ nav {
 }
 
 .navbar__currencyList {
+  z-index: 200;
   position: absolute;
-  top: 113%;
+  top: 108%;
   right: -57%;
   width: 172px;
   background-color: pink;

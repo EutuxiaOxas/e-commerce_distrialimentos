@@ -11,7 +11,7 @@ $color_header='dark';
 
 @section('content')
     {{-- header principal --}}
-    @include('perfil.perfil_navMobile')
+    @include('common.header.nav_header_mobile')
  
   <style>
   .colorG {
@@ -77,7 +77,7 @@ $color_header='dark';
                     <p class="smaller">{{$producto->packaging->packaging}} de {{$producto->units_packaging}} unidades</p>
                     {{-- boton de agregar  --}}
                     <div class="agregar-01 pt-2">
-                      <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                      <a href="#" id="{{$producto->id}}" class="btn btn-primary px-3 py-1 to_server">Agregar</a>
                     </div>
                     {{-- producto agregado --}}
                     <div class="agregado-01 pt-4">
@@ -117,6 +117,6 @@ $color_header='dark';
     </div>
    </section>
   <!-- / Almacen -->
-  @include('common.carrito-compras')
+  
 
 @endsection

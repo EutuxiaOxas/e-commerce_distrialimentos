@@ -6,8 +6,8 @@
 
 
 @section('content')
-    {{-- header principal
-    @include('common.header') --}}
+    {{-- header nav--}}
+    @include('common.header.nav_header_mobile')
  
    <style>
    .marb {  /* margen entre palabras vista movil */
@@ -117,7 +117,7 @@
 
               <!-- ADD TO CARD -->
               <h4 class="productDetail__addAnnouncement">Seleccione la cantidad de cajas a comprar</h4>
-              <div class="productDetail__addToCart d-none">
+              <div class="productDetail__addToCart">
                 <button type="button" class="productDetail__addToCart-add">Agregar</button>
               </div>
               <div class="productDetail__agregado">
