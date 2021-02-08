@@ -18,6 +18,8 @@ $color_header='dark';
       border-bottom-right-radius: 45px;
       border-bottom-left-radius: 100px;
       font-weight:bold;
+      height: 2.52rem;
+      font-size: 1rem;
     }
     .formularios__btn-left { 
       border-top-right-radius: 100px;
@@ -26,8 +28,13 @@ $color_header='dark';
       background-color: #dad8d8;
       color: #dad8d8;
       font-weight:bold;
+      height: 2.52rem;
+      font-size: 1rem;
     }
-
+    .formularios__sections {
+      margin: auto;
+      padding:0;
+    }
     .formularios__padding-btnCarrito {
       padding: 5px 1.8rem;
     }
@@ -37,12 +44,6 @@ $color_header='dark';
       width: 35px;
       border-radius: 50%;
       border:none;
-    }
-    .show {
-      display: block;
-    }
-    .hide {
-      display: none;
     }
     .formularios__iconUser {
       height: 80px;
@@ -68,12 +69,37 @@ $color_header='dark';
       margin-bottom:0.25rem;
       padding-right: 0;
     }
+    
     .bg-blue {
       background-color: #02528A;
     }
+    .texto-small {
+      font-size: 90%;
+    }
+    .show {
+      display: block;
+    }
+    .hide {
+      display: none;
+    }
+    .formulario__modalBtn 
+    {
+      padding:0.6rem;
+    }
+    @media(max-width:767px)
+    {
+      .formularios__numberWidth {
+        position: relative;
+        width: 100%;
+        padding-left: 15px;
+        flex: 0 0 14.666667%;
+        max-width: 14.666667%;
+      }
+    }
+    
     @media(min-width:768px)
     {
-      .formularios__containerWidth {
+      .container-width {
         max-width: 720px;
       }
       .info-container{
@@ -83,13 +109,14 @@ $color_header='dark';
         padding-top: 2rem;
       }
     }
+    
    
 </style>
 
 
 <!-- / usuario -->
 
-<section id=formulario1 class="p-0 m-0 show formularios__containerWidth m-auto">
+<section id=formulario1 class="formularios__sections show container-width m-auto">
 
   <section class="pb-0 pt-2">
     <div class="container">
@@ -108,7 +135,7 @@ $color_header='dark';
           <div class="user-info">
               <div class="wrapper-info">
                 <h5 class="font-weight-bold">Hola, Eutuxia Group CA</h5>
-                <p class="text-small">Verifica tus datos para completar la compra</p>
+                <p class="texto-small text-muted">Verifica los datos para completar la compra</p>
               </div>
           </div>
         </div>
@@ -350,7 +377,7 @@ $color_header='dark';
             </button>
           </div>
           <div class="col-10 d-flex align-items-center pl-0 col-md-11 col-lg-11">
-            <p class="font-weight-bold m-0 small text-black">Datos del comprador</p>
+            <p class="font-weight-bold texto-small">Datos del comprador</p>
           </div>
         </div>
       </div>
@@ -361,52 +388,53 @@ $color_header='dark';
           <div class="info-container p-3">
             <div class="row mb-3">
               <div class="col-6">
-                <p class="text-black font-weight-bold small">Nombre y apellido</p>
+                <p class="font-weight-bold texto-small">Nombre y apellido</p>
               </div>
               <div class="col-6">
-                <p class="small text-center text-muted">Juan Perez</p>
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-6">
-                <p class="text-black font-weight-bold small">Documento</p>
-              </div>
-              <div class="col-6">
-                <p class="small text-center text-muted">C.I. 20.409.372</p>
+                <p class="texto-small text-muted">Juan Perez</p>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-6">
-                <p class="text-black font-weight-bold small">Telefono</p>
+                <p class="font-weight-bold texto-small">Documento</p>
               </div>
               <div class="col-6">
-                <p class="small text-center text-muted">+58 412 786 9664</p>
+                <p class="texto-small text-muted">C.I. 20.409.372</p>
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-6">
-                <p class="text-black font-weight-bold small">Telefono alternativo</p>
+                <p class="font-weight-bold texto-small">Telefono</p>
               </div>
               <div class="col-6">
-                <p class="small text-center text-muted">+58 412 786 9664</p>
+                <p class="texto-small text-muted">+58 412 786 9664</p>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <p class="font-weight-bold texto-small">Telefono alternativo</p>
+              </div>
+              <div class="col-6">
+                <p class="texto-small text-muted">+58 412 786 9664</p>
               </div>
             </div>
             <div class="row">
               <div class="col-12 text-center pt-3 padding_modal">
-                <a href="#" class="small font-weight-bold text-secondary" data-toggle="modal" data-target="#moda-user-edit">Editar datos de comprador</a>
+                <a href="#" class="texto-small font-weight-bold text-secondary" data-toggle="modal" data-target="#moda-user-edit">Editar datos de comprador</a>
               </div>
+
               <div class="modal fade" id="moda-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                  <div class="modal-header p-2">
+                  <div class="modal-content p-3">
+                  <div class="modal-header p-2 border-bottom-0"> holi
                     <div class="container">
                       <div class="row">
                         <div class="col-10 mb-0">
-                          <h5 class="modal-title text-blue font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
-                          <p class="small">Agregue los datos solicitados</p>
+                          <h5 class="modal-title text-secondary font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
+                          <p class="texto-small text-muted">Agregue los datos solicitados...</p>
                         </div>
                         <div class="col-2">
-                        <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>        
                       </div>
@@ -417,34 +445,34 @@ $color_header='dark';
                   <div class="form-title container">
                     <div class="row">
                       <div class="col text-center">
-                        <p class="text-black font-weight-bold">Datos de usuario</p>
+                        <p class="font-weight-bold">Datos de usuario</p>
                       </div>
                     </div>
                   </div>
                   <form>
                     <div class="form">
                       <div class="col">
-                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Nombre completo">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Nombre completo">
                       </div>
                       <div class="col">
-                        <input type="number" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Cedula [ej: v-23432578]">
+                        <input type="number" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Cedula [ej: v-23432578]">
                       </div>
                       <div class="col">
-                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono [ej: 0241-8524234]">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono [ej: 0241-8524234]">
                       </div>
-                      <div class="col">
-                        <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Alt. [ej: 0241-8524234]">
+                      <div class="col pb-3">
+                        <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono Alt. [ej: 0241-8524234]">
                       </div>
                     </div>
                   </form>
                 </div>
-                <div class="modal-footer pt-2">
+                <div class="modal-footer pt-5 border-0">
                   <div class="container">
-                    <div class="row mb-0">
-                      <button type="button" class="btn btn-primary btn-block">Editar</button>
+                    <div class="row mb-1">
+                      <button type="button" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
                     </div>
                   <div class="row">
-                    <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                    <p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
                   </div>
                 </div>
               </div>
@@ -474,7 +502,7 @@ $color_header='dark';
 </section>
 
 <!-------------------------- Formulario II ----------------------------->
-<section id="formulario2" class="p-0 m-0 hide show formularios__containerWidth m-auto">
+<section id="formulario2" class="formularios__sections hide show container-width">
 
     <!-- usuario -->
       <section class="pb-0 pt-2">
@@ -494,7 +522,7 @@ $color_header='dark';
               <div class="user-info">
                   <div class="wrapper-info">
                     <h5 class="font-weight-bold">Hola, Eutuxia Group CA</h5>
-                    <p class="text-small">Verifica tus datos para completar la compra</p>
+                    <p class="texto-small text-muted">Verifica los datos para completar la compra</p>
                   </div>
               </div>
             </div>
@@ -733,18 +761,18 @@ $color_header='dark';
     <section class="py-1">
       <div class="container">
         <div class="row p-1">
-          <div class="col-2 pt-1 pr-0 d-block d-md-none">
+          <div class="formularios__numberWidth pt-1 pr-0 d-block d-md-none">
             <button id="btn_clr" class="formularios__btnNumber bg-blue">
               <p class="text-white small">1</p>
             </button>
           </div>
-          <div class="col-2 pt-1 pr-0 col-md-1">
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
             <button class="formularios__btnNumber bg-primary">
               <p class="text-white small">2</p>
             </button>
           </div>
-          <div class="col-8 d-flex align-items-center pl-0 col-md-11">
-            <p class="font-weight-bold m-0 small text-black">Datos de facturacion</p>
+          <div class="col-8 d-flex align-items-center pl-3 col-md-11">
+            <p class="font-weight-bold m-0 texto-small text-black">Datos de facturacion</p>
           </div>
         </div>
       </div>
@@ -756,49 +784,49 @@ $color_header='dark';
             <div class="info-container p-3">
               <div class="row mb-3">
                 <div class="col-6">
-                  <p class="text-black font-weight-bold small">Empresa</p>
+                  <p class="text-black font-weight-bold texto-small">Empresa</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center text-muted">Eutuxia Group C.A</p>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="col-6">
-                  <p class="text-black font-weight-bold small">R.I.F</p>
-                </div>
-                <div class="col-6">
-                  <p class="small text-md-center text-muted">R.I.F J- 239872321 - 2</p>
+                  <p class="texto-small text-right text-md-center text-muted">Eutuxia Group C.A</p>
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col-6">
-                  <p class="text-black font-weight-bold small">SADA</p>
+                  <p class="text-black font-weight-bold texto-small">R.I.F</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center text-muted">4127869664432</p>
+                  <p class="texto-small text-right text-md-center text-muted">R.I.F J- 239872321 - 2</p>
                 </div>
               </div>
               <div class="row mb-3">
                 <div class="col-6">
-                  <p class="text-black font-weight-bold small">Horario de atencion</p>
+                  <p class="text-black font-weight-bold texto-small">SADA</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center text-muted">8:00 AM - 11:00 AM</p>
+                  <p class="texto-small text-right text-md-center text-muted">4127869664432</p>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <p class="text-black font-weight-bold texto-small">Horario de atencion</p>
+                </div>
+                <div class="col-6">
+                  <p class="texto-small text-right text-md-center text-muted">8:00 AM - 11:00 AM</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 text-center padding_modal">
-                  <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="small font-weight-bold text-secondary">Editar datos de empresa</a>
+                  <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="texto-small font-weight-bold text-secondary">Editar datos de empresa</a>
                 </div>
                 <div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header p-2">
+                    <div class="modal-content p-3">
+                      <div class="modal-header p-2 border-bottom-0">
                         <div class="container">
                           <div class="row">
                             <div class="col-10 mb-0">
-                              <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
-                              <p class="small">Agregue los datos solicitados</p>
+                              <h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+                              <p class="text-small">Agregue los datos solicitados...</p>
                             </div>
                             <div class="col-2">
                               <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
@@ -819,24 +847,24 @@ $color_header='dark';
                         <form>
                           <div class="form">
                             <div class="col">
-                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Nombre de empresa">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Nombre de empresa">
                             </div>
                             <div class="col">
-                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="RIF [ej: j-20180578-4]">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="RIF [ej: j-20180578-4]">
                             </div>
                             <div class="col">
-                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="SADA">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="SADA">
                             </div>
                             <div class="col">
-                              <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Horario de atención">
+                              <input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Horario de atención">
                             </div>
                           </div>
                         </form>                                      
                       </div>
-                      <div class="modal-footer pt-2">
+                      <div class="modal-footer pt-5 border-0">
                         <div class="container">
-                          <div class="row mb-0">
-                              <button type="button" class="btn btn-primary btn-block">Editar</button>
+                          <div class="row mb-1">
+                            <button type="button" class="btn btn-primary btn-block formulario__modalBtn"">Editar</button>
                           </div>
                           <div class="row">
                             <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
@@ -856,14 +884,14 @@ $color_header='dark';
             <div class="col">
               <div class="border shadow mb-3">
                 <div class="info-container p-3 mb-1">
-                  <p class="font-weight-bold text-black small pl-1">Direccion Juridica</p>
-                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 small">Calle 1 Avenida 10 Local 45 </p>
-                  <p class="small px-3 py-0 text-muted">Cerca de colegio Moral y Luces</p>
-                  <p class="small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
-                  <p class="small px-3 my-0 py-0 pb-3 text-muted">Juan Perez +58 414 543 4563</p>
+                  <p class="font-weight-bold text-black texto-small pl-1">Direccion Juridica</p>
+                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">Calle 1 Avenida 10 Local 45 </p>
+                  <p class="texto-small px-3 py-0 text-muted">Cerca de colegio Moral y Luces</p>
+                  <p class="texto-small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
+                  <p class="texto-small px-3 my-0 py-0 pb-3 text-muted">Juan Perez +58 414 543 4563</p>
                   <div class="row">
                     <div class="col-12 text-center padding_modal">
-                      <a href="#" data-toggle="modal" data-target="#modal-direction" class="small font-weight-bold text-secondary">Editar dirección Jurídica</a>
+                      <a href="#" data-toggle="modal" data-target="#modal-direction" class="texto-small font-weight-bold text-secondary">Editar dirección Jurídica</a>
                     </div>
                     <!-- Modal -->  
                     <div class="modal fade" id="modal-direction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -955,7 +983,7 @@ $color_header='dark';
 
 <!-------------------------- Formulario III ----------------------------->
 
-<section id="formulario3" class="p-0 m-0 hide show formularios__containerWidth m-auto">
+<section id="formulario3" class="formularios__sections hide show container-width">
     <!-- usuario -->
     <section class="pb-0 pt-2">
       <div class="container">
@@ -974,7 +1002,7 @@ $color_header='dark';
             <div class="user-info">
                 <div class="wrapper-info">
                   <h5 class="font-weight-bold">Hola, Eutuxia Group CA</h5>
-                  <p class="text-small">Verifica tus datos para completar la compra</p>
+                  <p class="texto-small text-muted">Verifica los datos para completar la compra</p>
                 </div>
             </div>
           </div>
@@ -1210,23 +1238,23 @@ $color_header='dark';
 
       <div class="container">
           <div class="row p-1">
-            <div class="col-2 pt-1 pr-0 d-block d-md-none">
+            <div class="formularios__numberWidth pt-1 pr-0 d-block d-md-none">
               <button id=btn_clr1 class="formularios__btnNumber bg-blue">
                 <p class="text-white small">1</p>
               </button>
             </div>
-            <div class="col-2 pt-1 pr-0 d-md-none">
+            <div class="formularios__numberWidth pt-1 pr-0 d-md-none">
               <button id=btn_clr2 class="formularios__btnNumber bg-blue">
                 <p class="text-white small">2</p>
               </button>
             </div>
-            <div class="col-2 pt-1 pr-0 col-md-1">
+            <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
               <button class="formularios__btnNumber bg-primary">
                 <p class="text-white small">3</p>
               </button>
             </div>
-            <div class="col-6 d-flex align-items-center pl-1 col-md-11">
-              <p class="font-weight-bold m-0 small text-black">Datos de envío</p>
+            <div class="col-6 d-flex align-items-center pl-3 col-md-11">
+              <p class="font-weight-bold m-0 texto-small text-black">Datos de envío</p>
             </div>
           </div>
       </div>
@@ -1237,22 +1265,22 @@ $color_header='dark';
             <div class="col">
               <div class="border shadow">
                 <div class="info-container p-3 mb-1">
-                  <p class="font-weight-bold text-black small">Direccion de envio</p>
-                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 small">Calle 1 Avenida 10 Local 45 </p>
-                  <p class="small px-3 my-0 py-0 text-muted">Cerca de colegio Moral y Luces</p>
-                  <p class="small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
-                  <p class="small px-3 my-0 py-0 pb-2 text-muted">Juan Perez +58 414 543 4563</p>
+                  <p class="font-weight-bold text-black texto-small">Direccion de envio</p>
+                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">Calle 1 Avenida 10 Local 45 </p>
+                  <p class="texto-small px-3 my-0 py-0 text-muted">Cerca de colegio Moral y Luces</p>
+                  <p class="texto-small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
+                  <p class="texto-small px-3 my-0 py-0 pb-2 text-muted">Juan Perez +58 414 543 4563</p>
                   <div class="row mb-1 py-2">
                     <div class="col-6 pr-0">
-                      <p class="font-weight-bold text-black small">Sugerencia de entrega</p>
+                      <p class="font-weight-bold text-black texto-small">Sugerencia de entrega</p>
                     </div>
                     <div class="col-6 text-md-center">
-                      <p class="small pl-0 text-muted">8:00AM - 11:00AM</p>
+                      <p class="texto-small pl-0 text-muted">8:00AM - 11:00AM</p>
                     </div>
                   </div>
                   <div class="row pt-2 padding-modal">
                     <div class="col-12 text-center">
-                      <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="small font-weight-bold text-secondary">Cambiar dirección de envío</a>
+                      <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="texto-small font-weight-bold text-secondary">Cambiar dirección de envío</a>
                     </div>
                     <div class="modal fade" id="modal-envio_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -1359,28 +1387,28 @@ $color_header='dark';
 
 <!-------------------------- Formulario IV ----------------------------->
 
-  <section id="formulario4" class="p-0 m-0 hide show formularios__containerWidth m-auto">
+  <section id="formulario4" class="formularios__sections hide show container-width">
 
     <section id=sell-steps class="pb-1 pt-2">
       <div class="container">
         <div class="row p-1">
-          <div class="col-2 pt-1 pr-0 col-md-1">
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
             <button class="formularios__btnNumber bg-blue" disabled>
               <p class="text-white small">1</p>
             </button>
           </div>
-          <div class="col-2 pt-1 pr-0 col-md-1">
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
             <button class="formularios__btnNumber bg-blue" disabled>
               <p class="text-white small">2</p>
             </button>
               </div>
-              <div class="col-2 pt-1 pr-0 col-md-1">
+              <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
                 <button class="formularios__btnNumber bg-blue" disabled>
                   <p class="text-white small">3</p>
                 </button>
               </div>
               <div class="col-6 d-flex align-items-center pl-1 col-md-9">
-                <p class="font-weight-bold m-0 small text-black">Fin del proceso</p>
+                <p class="font-weight-bold m-0 texto-small text-black">Fin del proceso</p>
               </div>
             </div>
           </div>
@@ -1394,7 +1422,7 @@ $color_header='dark';
                 <h5 class="font-weight-bold text-center text-primary pb-1 m-0">Gracias por su compra</h5>
                 <div class="col p-2 col-md-6 offset-md-3">
                   <p class="text-muted">Eutuxia Group CA</p>
-                  <p class="small text-muted">Para coordinar tu pedido uno de nuestros asesores comerciales se pondra en contacto contigo...</p>
+                  <p class="texto-small text-muted">Para coordinar tu pedido uno de nuestros asesores comerciales se pondra en contacto contigo...</p>
                 </div>
               </div>
             </div>
@@ -1419,7 +1447,6 @@ $color_header='dark';
 
   </section>
 <!-------------------------- Formulario V ----------------------------->
-
 <section id="formulario5" class="pt-5 m-0 hide show">
   <div class="container">
     <div class="row container">
