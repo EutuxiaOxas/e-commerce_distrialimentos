@@ -21,9 +21,11 @@
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos personales</h2>
+					@if(!($user->documento_identidad && $user->phone))
 					<img class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
+					@endif
 				</div>
-				
+				@if($user->documento_identidad && $user->phone)
 				<div class="perfil__cardBody ">
 					<ul class="perfil__cardList">
 						<li class="perfil__cardListItem">
@@ -47,12 +49,26 @@
 						</li>
 					</ul>
 				</div>
+				@else
+					{{-- Aun falta datos por agregar --}}
+					<div class="perfil__cardBody direccion">
+						<div class="container p-5 text-center">
+							<img src="{{asset('icons/void-01.svg')}}" alt="">
+							<p class="perfil__cardListItem-content" style="">Aun sin datos personales...</p>
+						</div>
+						<div class="perfil__agregarDatos ">
+							<a href="#">Agregar los datos personales</a>
+						</div>
+					</div>
+				@endif
 			</div>
 
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos de empresa</h2>
+					@if(!$empresa)
 					<img class="perfil__cardEditar-icon cardLists"  src="{{asset('/images/editar-icon.svg')}}">
+					@endif
 				</div>
 				@if($empresa)
 				<div class="perfil__cardBody ">
@@ -77,10 +93,13 @@
 				</div>
 				@else
 				{{-- si no exite la empresa --}}
-				<div class="perfil__cardBody ">
+				<div class="perfil__cardBody direccion">
 					<div class="container p-5 text-center">
 						<img src="{{asset('icons/void-02.svg')}}" alt="">
-						<p class="perfil__cardListItem-content">Agrega los datos de facturacion</p>
+						<p class="perfil__cardListItem-content" style="">Aun sin datos de empresa...</p>
+					</div>
+					<div class="perfil__agregarDatos ">
+						<a href="#">Agregar los datos de empresa</a>
 					</div>
 				</div>
 				@endif
@@ -119,11 +138,13 @@
 							<p class="perfil__cardDireccion-content">Carlos Maita - +58 414 453 3456</p>
 						</div>
 					</div>
-					@endif
-
-					<div class="perfil__agregarDireccion">
+					<div class="perfil__agregarDatos">
 						<a href="#">Agregar nueva dirección</a>
 					</div>
+					@else
+
+					@endif
+
 				</div>
 				
 			</div>

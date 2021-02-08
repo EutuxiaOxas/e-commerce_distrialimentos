@@ -126,7 +126,7 @@
 
 .perfil__cardListItem-content {
 	color: $perfil_third-color;
-	font-weight: bold;
+	font-weight: 300;
 }
 
 .perfil__cardListItem-content-light
@@ -180,12 +180,12 @@
 	font-weight: bold;
 }
 
-.perfil__agregarDireccion {
+.perfil__agregarDatos {
 	text-align: center;
 	margin-bottom: .7rem;
 }
 
-.perfil__agregarDireccion a {
+.perfil__agregarDatos a {
 	font-family: $secondary_font;
 	color: $perfil-cta-color;
 	text-decoration: none;
