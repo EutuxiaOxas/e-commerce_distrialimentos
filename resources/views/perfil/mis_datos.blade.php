@@ -71,13 +71,18 @@
 						</li>
 						<li class="perfil__cardListItem">
 							<h3 class="perfil__cardListItem-title">Horario disponible</h3>
-							<p class="perfil__cardListItem-content">{{$empresa->hours_of_operation}}</p>
+							<p class="perfil__cardListItem-content">{{$empresa->getOperationTime()}}</p>
 						</li>
 					</ul>
 				</div>
 				@else
 				{{-- si no exite la empresa --}}
-
+				<div class="perfil__cardBody ">
+					<div class="container p-5 text-center">
+						<img src="{{asset('icons/void-02.svg')}}" alt="">
+						<p class="perfil__cardListItem-content">Agrega los datos de facturacion</p>
+					</div>
+				</div>
 				@endif
 			</div>
 
@@ -96,13 +101,12 @@
 						</div>
 						<div class="perfil__cardDireccion">
 							<h3 class="perfil__cardDireccion-title">{{$empresa->legal_address}}</h3>
-							<p class="perfil__cardDireccion-content">Cerca del colegio Moral y luces </p>
-							<p class="perfil__cardDireccion-content">{{$empresa->state_id}}, Valencia (2001)</p>
-							<p class="perfil__cardDireccion-content">Carlos Maita - +58 414 453 3456</p>
+							<p class="perfil__cardDireccion-content">{{$empresa->state->state}}, {{$empresa->city->city}} ({{$empresa->postal_code}})</p>
 						</div>
 					</div>
 					@endif
 
+					@if($direcciones)
 					<div class="direccionCard">
 						<div class="perfil__cardTitle direccion">
 							<h2 class="perfil__card-title direccion">Dirección de envío</h2>
@@ -115,6 +119,8 @@
 							<p class="perfil__cardDireccion-content">Carlos Maita - +58 414 453 3456</p>
 						</div>
 					</div>
+					@endif
+
 					<div class="perfil__agregarDireccion">
 						<a href="#">Agregar nueva dirección</a>
 					</div>
