@@ -426,7 +426,7 @@ $color_header='dark';
               <div class="modal fade" id="moda-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content p-3">
-                  <div class="modal-header p-2 border-bottom-0"> holi
+                  <div class="modal-header p-2 border-bottom-0">
                     <div class="container">
                       <div class="row">
                         <div class="col-10 mb-0">
