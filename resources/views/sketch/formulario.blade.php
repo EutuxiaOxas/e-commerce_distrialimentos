@@ -53,9 +53,6 @@ $color_header='dark';
       display: flex;
       justify-content: center;
       align-items: center;
-      display: flex;
-      align-items:center;
-      justify-content: center;
     }
 
     .formularios__btn-Precio{
