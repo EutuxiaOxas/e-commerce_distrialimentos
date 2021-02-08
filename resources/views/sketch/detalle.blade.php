@@ -62,6 +62,22 @@
           <div class="productDetail">
 
               <p class="text-right productDetail__bodySku  smaller mb-0 d-sm-block d-md-none"><strong>SKU:</strong> 00005644545</p>
+              <div class="productDetail__agregadoIcon">
+                    <span class="badge rounded-pill bg-primary inCart-icon productDetail__productAdded" id="{{$product->id}}">
+                      <i class="svg-checked">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0)">
+                          <path d="M12.8096 1.91695C12.5558 1.6631 12.1443 1.6631 11.8904 1.91695L4.10299 9.70444L1.10963 6.71109C0.855804 6.45723 0.444273 6.45726 0.190392 6.71109C-0.0634639 6.96492 -0.0634639 7.37645 0.190392 7.6303L3.64336 11.0832C3.89712 11.3371 4.30895 11.3369 4.56261 11.0832L12.8096 2.8362C13.0635 2.58237 13.0635 2.17081 12.8096 1.91695Z" fill="#FF9417"/>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0">
+                          <rect width="13" height="13" fill="white"/>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </i>En camión</i>
+                    </span> 
+                  </div>
               <h4 class="productDetail__bodyTitle mb-0 marb">{{$product->title}}</h4>
               <p class="productDetail__bodyDescription small text-muted marb">{{$product->description}}</p>
               <p class="text-muted smaller mb-0 d-none d-md-block"><strong class="text-muted">SKU:</strong> {{$product->sku}}</p>
@@ -117,35 +133,29 @@
 
               <!-- ADD TO CARD -->
               <h4 class="productDetail__addAnnouncement">Seleccione la cantidad de cajas a comprar</h4>
-              <div class="productDetail__addToCart">
+              <!-- <div class="productDetail__addToCart">
                 <button type="button" class="productDetail__addToCart-add">Agregar</button>
-              </div>
+              </div> -->
               <div class="productDetail__agregado">
-                  <div class="productDetail__agregadoIcon">
-                    <p><i class="svg-checked">
-                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0)">
-                        <path d="M12.8096 1.91695C12.5558 1.6631 12.1443 1.6631 11.8904 1.91695L4.10299 9.70444L1.10963 6.71109C0.855804 6.45723 0.444273 6.45726 0.190392 6.71109C-0.0634639 6.96492 -0.0634639 7.37645 0.190392 7.6303L3.64336 11.0832C3.89712 11.3371 4.30895 11.3369 4.56261 11.0832L12.8096 2.8362C13.0635 2.58237 13.0635 2.17081 12.8096 1.91695Z" fill="#FF9417"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0">
-                        <rect width="13" height="13" fill="white"/>
-                        </clipPath>
-                        </defs>
-                      </svg>
-                    </i>En camión</p>
-                  </div>
                   <div class="productDetail__agregadoSelect ">
-                    <label for="cantidad" class="mb-0 productDetail__agregadoSelect-cantidad">Cantidad</label>
-                    <select name="cantidad" id="cantidad" class="form-control">
-                      <option value="0">0</option>
-                      <option value="1" selected>1</option>
-                      <option value="2">2</option>
-                    </select>
+                    <p class="productDetail__agregarProducto-text">Selecciona una cantidad para agregar al camión </p>
+                    @guest
+                      <select id="{{$product->id}}" class="form-control">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    @else 
+                      <select id="{{$product->id}}" class="form-control to_server">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    @endguest
                   </div>
               </div>
+            </div>
           </div>
-         </div>
         </div>
       </div>
     </section>

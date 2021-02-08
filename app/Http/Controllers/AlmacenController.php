@@ -9,7 +9,7 @@ class AlmacenController extends Controller
 {
     public function getAllProducts()
     {
-        $productos = Product::with(['category'])->orderBy('id', 'DESC')->paginate(20);
+        $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
 
         return view('sketch.almacen', compact('productos'));
     }

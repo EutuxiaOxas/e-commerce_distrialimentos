@@ -12154,8 +12154,40 @@ nav {
   }
 }
 
+.almacen__productAdded {
+  opacity: 0;
+}
+
+.almacen__productAdded.active {
+  opacity: 1;
+}
+
+.almancen__agregarProducto-text {
+  color: #FD6721;
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+}
+
 .productDetail {
   padding: 0 2rem;
+}
+
+.productDetail__productAdded {
+  position: absolute;
+  opacity: 0;
+}
+
+.productDetail__productAdded.active {
+  position: relative;
+  opacity: 1;
+}
+
+.productDetail__agregarProducto-text {
+  color: #FD6721;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
 }
 
 .productDetail__bodySku {

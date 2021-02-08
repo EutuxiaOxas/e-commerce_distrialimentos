@@ -249,9 +249,34 @@ class CarritoUI {
 	  }
   }
 
+  //--------------------- AGREGAR O QUITAR MARCA DE AGREGADO AL PRODUCTO  ---------------------
+
+  addIconOfProductAdded(productos) {
+	  const icons = document.querySelectorAll('.inCart-icon');
+	  if(productos.length > 0) {
+		productos.forEach(producto => {
+			if(producto.producto) {
+				const {id} = producto.producto
+  
+				icons.forEach(icon => {
+					if(icon.id == id){
+						icon.classList.add('active')
+					}else {
+					  icon.classList.remove('active')
+					}
+				})
+			}
+		})
+	  } else {
+		  icons.forEach(icon => {
+			  icon.classList.remove('active')
+		  })
+	  }
+
+  }
 }
 
-//----------------- API CALLS class --------------
+//-------------------------------------------------------- API CALLS class ----------------------------------
 
 class CartApi {
 	async getCart(){
@@ -283,7 +308,7 @@ class CartApi {
 
 
 
-//----------------- LocalSorage class --------------
+//--------------------------------------------------- LocalSorage class ------------------------------------------
 
 
 class Storage{
@@ -461,15 +486,16 @@ function events(value, elements)
 
 	if(value == 1){
 		elements.forEach(element => {
-			element.addEventListener('click', (e) => {
+			element.addEventListener('change', (e) => {
 				const id = e.target.id,
+					  element = e.target,
 					alert = document.getElementById('add_alert');
-				console.log(id)
-				
+
 				apiCart.addToCart(id)
 					.then(res => {
 						if(res.status == 200){
 							callingCart();
+							element.selectedIndex = 0;
 							// carrito.addingAlert(alert)
 						}
 					})
@@ -530,10 +556,15 @@ function callingCart(){
 		.then(res => {
 			productos = res.data;
 			carrito.agregarCarrito(productos);
+			carrito.addIconOfProductAdded(productos);
 			// loadProducts(productos);
 			// loadTotalProducts(productos, 1)
 		})
 }
+
+
+
+
 
 
 // function loadTotalProducts(elements,value){

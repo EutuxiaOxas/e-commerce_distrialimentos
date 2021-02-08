@@ -53,7 +53,21 @@ $color_header='dark';
               <div class="card-body pt-1 px-1 flex-fill">
                 <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12 pb-1">
+                      <div class="col-12 pb-1 d-flex justify-content-between align-items-center">
+                        <span class="badge rounded-pill bg-primary inCart-icon almacen__productAdded" id="{{$producto->id}}">
+                        <i class="svg-checked">
+                              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0)">
+                                <path d="M12.8096 1.91695C12.5558 1.6631 12.1443 1.6631 11.8904 1.91695L4.10299 9.70444L1.10963 6.71109C0.855804 6.45723 0.444273 6.45726 0.190392 6.71109C-0.0634639 6.96492 -0.0634639 7.37645 0.190392 7.6303L3.64336 11.0832C3.89712 11.3371 4.30895 11.3369 4.56261 11.0832L12.8096 2.8362C13.0635 2.58237 13.0635 2.17081 12.8096 1.91695Z" fill="#FF9417"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0">
+                                <rect width="13" height="13" fill="white"/>
+                                </clipPath>
+                                </defs>
+                              </svg>
+                            </i>En camión
+                        </span>
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>{{$producto->sku}}</p>
                       </div>
                       <div class="col-12">
@@ -75,36 +89,15 @@ $color_header='dark';
                   <div class="card-pricing text-center align-self-end">
                     <h4 class="font-weight-bold mb-0 mt-3">{{$producto->wholesale_price}} $</h4>
                     <p class="smaller">{{$producto->packaging->packaging}} de {{$producto->units_packaging}} unidades</p>
-                    {{-- boton de agregar  --}}
-                    <div class="agregar-01 pt-2">
-                      <a href="#" id="{{$producto->id}}" class="btn btn-primary px-3 py-1 to_server">Agregar</a>
-                    </div>
                     {{-- producto agregado --}}
-                    <div class="agregado-01 pt-4">
-                      <div class="row align-item-center">
-                        <div class="col-6 productos__text-agregado m-0 p-0">
-                          <p><i class="svg-checked">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <g clip-path="url(#clip0)">
-                              <path d="M12.8096 1.91695C12.5558 1.6631 12.1443 1.6631 11.8904 1.91695L4.10299 9.70444L1.10963 6.71109C0.855804 6.45723 0.444273 6.45726 0.190392 6.71109C-0.0634639 6.96492 -0.0634639 7.37645 0.190392 7.6303L3.64336 11.0832C3.89712 11.3371 4.30895 11.3369 4.56261 11.0832L12.8096 2.8362C13.0635 2.58237 13.0635 2.17081 12.8096 1.91695Z" fill="#FF9417"/>
-                              </g>
-                              <defs>
-                              <clipPath id="clip0">
-                              <rect width="13" height="13" fill="white"/>
-                              </clipPath>
-                              </defs>
-                              </svg>
-                          </i>En camión</p>
-                        </div>
-                        <div class="col-6 productos__select-agregado ">
-                          <label for="cantidad" class="mb-0">Cantidad</label>
-                          <select name="cantidad" id="cantidad" class="form-control">
-                            <option value="0">0</option>
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                          </select>
-                        </div>
-                      </div>
+                    <div class="almancen__agregarProducto pt-2">
+                        <p class="almancen__agregarProducto-text">Selecciona una cantidad </p>
+                        <select id="{{$producto->id}}" class="form-control to_server">
+                          <option value="0">0</option>
+                          <option value="0">1</option>
+                          <option value="0">2</option>
+                          <option value="0">3</option>
+                        </select>
                     </div>
                   </div>
                 </div>
