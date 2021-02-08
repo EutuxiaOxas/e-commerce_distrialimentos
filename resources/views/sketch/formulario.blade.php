@@ -11,7 +11,74 @@ $color_header='dark';
 
 @section('content')
  
+<style>
+
+.formularios__btn-right {
+      border-top-right-radius: 45px;
+      border-bottom-right-radius: 45px;
+      border-bottom-left-radius: 100px;
+      font-weight:bold;
+    }
+    .formularios__btn-left { 
+      border-top-right-radius: 100px;
+      border-top-left-radius: 45px;
+      border-bottom-left-radius: 45px;
+      background-color: #dad8d8;
+      color: #dad8d8;
+      font-weight:bold;
+    }
+
+    .formularios__padding-btnCarrito {
+      padding: 5px 1.8rem;
+    }
+
+    .formularios__btnNumber {
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      border:none;
+    }
+    .show {
+      display: block;
+    }
+    .hide {
+      display: none;
+    }
+    .formularios__iconUser {
+      height: 80px;
+      width: 80px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      background: #e6e5e5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+    }
+
+    .formularios__btn-Precio{
+      display:flex;
+      padding: 0;
+      align-items:center;
+      color:white;
+      font-weight:bold;
+    }
+    .formularios__containerBtn-Precio {
+      display:flex;
+      justify-content: center;
+      margin-bottom:0.25rem;
+      padding-right: 0;
+    }
+    .bg-blue {
+      background-color: #02528A;
+    }
+</style>
+
+
 <!-- / usuario -->
+
 <section id=formulario1 class="p-0 m-0 show">
 
   <section class="pb-0 pt-2">
@@ -47,10 +114,10 @@ $color_header='dark';
             <div class="col text-center">
               <button type="button" class="btn btn-primary btn-block formularios__padding-btnCarrito" data-toggle="modal" data-target="#modalFormulario">
                 <div class="row">
-                  <div class="formularios__btn-Precio col-5">
+                  <div class="formularios__btn-Precio col-4">
                     <p>2,000.00 $</p>
                   </div>
-                  <div class="col-7 px-0">
+                  <div class="col-8 px-0">
                     <p class="text-white text-right font-weight-bold">Camion de compras
                       <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M29.9882 19.5166V14.8843C29.9882 14.1944 29.7743 13.5044 29.4526 12.9131L26.247 7.88651C25.9256 7.29514 25.1757 6.9009 24.4259 6.9009H19.605C18.8551 6.9009 18.2122 7.49227 18.2122 8.18219V18.7281H17.1409V4.9297C17.1409 3.84554 16.1769 2.9585 14.9983 2.9585H0V20.6993H3.21392C3.74957 19.0238 5.35653 17.7425 7.39188 17.7425C9.4275 17.7425 11.1415 19.0238 11.5701 20.6993H19.3907C19.9264 19.0238 21.5333 17.7425 23.5687 17.7425C25.2829 17.7425 26.6753 18.6296 27.3183 19.9109C27.6397 20.4037 28.1673 20.6993 28.7029 20.6993C29.4526 20.6993 30.0955 20.108 29.9882 19.5166ZM20.3548 13.8001V8.87211H24.6401L27.7467 13.8001H20.3548Z" fill="white"/>
@@ -268,7 +335,7 @@ $color_header='dark';
 
       <div class="container">
         <div class="row p-1">
-          <div class="col-2 my-0 pr-0 col-md-1 col-lg-1">
+          <div class="col-2 pt-1 pr-0 col-md-1 col-lg-1">
             <button class="formularios__btnNumber bg-primary">
               <p class="text-white small">1</p>
             </button>
@@ -288,7 +355,7 @@ $color_header='dark';
                 <p class="text-black font-weight-bold small">Nombre y apellido</p>
               </div>
               <div class="col-6">
-                <p class="small text-center">Juan Perez</p>
+                <p class="small text-center text-muted">Juan Perez</p>
               </div>
             </div>
             <div class="row mb-3">
@@ -296,7 +363,7 @@ $color_header='dark';
                 <p class="text-black font-weight-bold small">Documento</p>
               </div>
               <div class="col-6">
-                <p class="small text-center">C.I. 20.409.372</p>
+                <p class="small text-center text-muted">C.I. 20.409.372</p>
               </div>
             </div>
             <div class="row mb-3">
@@ -304,7 +371,7 @@ $color_header='dark';
                 <p class="text-black font-weight-bold small">Telefono</p>
               </div>
               <div class="col-6">
-                <p class="small text-center">+58 412 786 9664</p>
+                <p class="small text-center text-muted">+58 412 786 9664</p>
               </div>
             </div>
             <div class="row mb-3">
@@ -312,7 +379,7 @@ $color_header='dark';
                 <p class="text-black font-weight-bold small">Telefono alternativo</p>
               </div>
               <div class="col-6">
-                <p class="small text-center">+58 412 786 9664</p>
+                <p class="small text-center text-muted">+58 412 786 9664</p>
               </div>
             </div>
             <div class="row">
@@ -434,10 +501,10 @@ $color_header='dark';
             <div class="col text-center">
               <button type="button" class="btn btn-primary btn-block formularios__padding-btnCarrito" data-toggle="modal" data-target="#modalFormulario">
                 <div class="row">
-                  <div class="formularios__btn-Precio col-5">
+                  <div class="formularios__btn-Precio col-4">
                     <p>2,000.00 $</p>
                   </div>
-                  <div class="col-7 px-0">
+                  <div class="col-8 px-0">
                     <p class="text-white text-right font-weight-bold">Camion de compras
                       <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M29.9882 19.5166V14.8843C29.9882 14.1944 29.7743 13.5044 29.4526 12.9131L26.247 7.88651C25.9256 7.29514 25.1757 6.9009 24.4259 6.9009H19.605C18.8551 6.9009 18.2122 7.49227 18.2122 8.18219V18.7281H17.1409V4.9297C17.1409 3.84554 16.1769 2.9585 14.9983 2.9585H0V20.6993H3.21392C3.74957 19.0238 5.35653 17.7425 7.39188 17.7425C9.4275 17.7425 11.1415 19.0238 11.5701 20.6993H19.3907C19.9264 19.0238 21.5333 17.7425 23.5687 17.7425C25.2829 17.7425 26.6753 18.6296 27.3183 19.9109C27.6397 20.4037 28.1673 20.6993 28.7029 20.6993C29.4526 20.6993 30.0955 20.108 29.9882 19.5166ZM20.3548 13.8001V8.87211H24.6401L27.7467 13.8001H20.3548Z" fill="white"/>
@@ -657,12 +724,12 @@ $color_header='dark';
     <section class="py-1">
       <div class="container">
         <div class="row p-1">
-          <div class="col-2 my-0 pr-0 d-block d-md-none">
+          <div class="col-2 pt-1 pr-0 d-block d-md-none">
             <button id="btn_clr" class="formularios__btnNumber bg-blue">
               <p class="text-white small">1</p>
             </button>
           </div>
-          <div class="col-2 my-0 pr-0 col-md-1">
+          <div class="col-2 pt-1 pr-0 col-md-1">
             <button class="formularios__btnNumber bg-primary">
               <p class="text-white small">2</p>
             </button>
@@ -683,7 +750,7 @@ $color_header='dark';
                   <p class="text-black font-weight-bold small">Empresa</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center">Eutuxia Group C.A</p>
+                  <p class="small text-md-center text-muted">Eutuxia Group C.A</p>
                 </div>
               </div>
               <div class="row mb-3">
@@ -691,7 +758,7 @@ $color_header='dark';
                   <p class="text-black font-weight-bold small">R.I.F</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center">R.I.F J- 239872321 - 2</p>
+                  <p class="small text-md-center text-muted">R.I.F J- 239872321 - 2</p>
                 </div>
               </div>
               <div class="row mb-3">
@@ -699,7 +766,7 @@ $color_header='dark';
                   <p class="text-black font-weight-bold small">SADA</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center">4127869664432</p>
+                  <p class="small text-md-center text-muted">4127869664432</p>
                 </div>
               </div>
               <div class="row mb-3">
@@ -707,12 +774,12 @@ $color_header='dark';
                   <p class="text-black font-weight-bold small">Horario de atencion</p>
                 </div>
                 <div class="col-6">
-                  <p class="small text-md-center">8:00 AM - 11:00 AM</p>
+                  <p class="small text-md-center text-muted">8:00 AM - 11:00 AM</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-12 text-center">
-                  <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="small font-weight-bold">Editar datos de empresa</a>
+                  <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="small font-weight-bold text-secondary">Editar datos de empresa</a>
                 </div>
                 <div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -781,13 +848,13 @@ $color_header='dark';
               <div class="border shadow mb-3">
                 <div class="info p-3 mb-1">
                   <p class="font-weight-bold text-black small pl-1">Direccion Juridica</p>
-                  <p class="font-weight-bold text-black px-3 pb-0 mb-0 small">Calle 1 Avenida 10 Local 45 </p>
-                  <p class="small px-3 my-0 py-0">Cerca de colegio Moral y Luces</p>
-                  <p class="small px-3 my-0 py-0">Carabobo, Valencia (2001)</p>
-                  <p class="small px-3 my-0 py-0 pb-2">Juan Perez +58 414 543 4563</p>
+                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 small">Calle 1 Avenida 10 Local 45 </p>
+                  <p class="small px-3 py-0 text-muted">Cerca de colegio Moral y Luces</p>
+                  <p class="small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
+                  <p class="small px-3 my-0 py-0 pb-3 text-muted">Juan Perez +58 414 543 4563</p>
                   <div class="row">
                     <div class="col-12 text-center">
-                      <a href="#" data-toggle="modal" data-target="#modal-direction" class="small font-weight-bold">Editar dirección Jurídica</a>
+                      <a href="#" data-toggle="modal" data-target="#modal-direction" class="small font-weight-bold text-secondary">Editar dirección Jurídica</a>
                     </div>
                     <!-- Modal -->  
                     <div class="modal fade" id="modal-direction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -914,10 +981,10 @@ $color_header='dark';
               <div class="col text-center">
               <button type="button" class="btn btn-primary btn-block formularios__padding-btnCarrito" data-toggle="modal" data-target="#modalFormulario">
                 <div class="row">
-                  <div class="formularios__btn-Precio col-5">
+                  <div class="formularios__btn-Precio col-4">
                     <p>2,000.00 $</p>
                   </div>
-                  <div class="col-7 px-0">
+                  <div class="col-8 px-0">
                     <p class="text-white text-right font-weight-bold">Camion de compras
                       <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M29.9882 19.5166V14.8843C29.9882 14.1944 29.7743 13.5044 29.4526 12.9131L26.247 7.88651C25.9256 7.29514 25.1757 6.9009 24.4259 6.9009H19.605C18.8551 6.9009 18.2122 7.49227 18.2122 8.18219V18.7281H17.1409V4.9297C17.1409 3.84554 16.1769 2.9585 14.9983 2.9585H0V20.6993H3.21392C3.74957 19.0238 5.35653 17.7425 7.39188 17.7425C9.4275 17.7425 11.1415 19.0238 11.5701 20.6993H19.3907C19.9264 19.0238 21.5333 17.7425 23.5687 17.7425C25.2829 17.7425 26.6753 18.6296 27.3183 19.9109C27.6397 20.4037 28.1673 20.6993 28.7029 20.6993C29.4526 20.6993 30.0955 20.108 29.9882 19.5166ZM20.3548 13.8001V8.87211H24.6401L27.7467 13.8001H20.3548Z" fill="white"/>
@@ -1134,17 +1201,17 @@ $color_header='dark';
 
       <div class="container">
           <div class="row p-1">
-            <div class="col-2 my-0 pr-0 d-block d-md-none">
+            <div class="col-2 pt-1 pr-0 d-block d-md-none">
               <button id=btn_clr1 class="formularios__btnNumber bg-blue">
                 <p class="text-white small">1</p>
               </button>
             </div>
-            <div class="col-2 my-0 pr-0 d-md-none">
+            <div class="col-2 pt-1 pr-0 d-md-none">
               <button id=btn_clr2 class="formularios__btnNumber bg-blue">
                 <p class="text-white small">2</p>
               </button>
             </div>
-            <div class="col-2 my-0 pr-0 col-md-1">
+            <div class="col-2 pt-1 pr-0 col-md-1">
               <button class="formularios__btnNumber bg-primary">
                 <p class="text-white small">3</p>
               </button>
@@ -1159,24 +1226,24 @@ $color_header='dark';
       <div class="container mt-1">
           <div class="row">
             <div class="col">
-              <div class="boxed border shadow">
+              <div class="border shadow">
                 <div class="info p-3 mb-1">
                   <p class="font-weight-bold text-black small">Direccion de envio</p>
-                  <p class="font-weight-bold text-black px-2 pb-0 mb-0 small">Calle 1 Avenida 10 Local 45 </p>
-                  <p class="small px-2 my-0 py-0">Cerca de colegio Moral y Luces</p>
-                  <p class="small px-2 my-0 py-0">Carabobo, Valencia (2001)</p>
-                  <p class="small px-2 my-0 py-0 pb-2">Juan Perez +58 414 543 4563</p>
-                  <div class="row mb-1">
+                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 small">Calle 1 Avenida 10 Local 45 </p>
+                  <p class="small px-3 my-0 py-0 text-muted">Cerca de colegio Moral y Luces</p>
+                  <p class="small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
+                  <p class="small px-3 my-0 py-0 pb-2 text-muted">Juan Perez +58 414 543 4563</p>
+                  <div class="row mb-1 py-2">
                     <div class="col-6 pr-0">
                       <p class="font-weight-bold text-black small">Sugerencia de entrega</p>
                     </div>
                     <div class="col-6 text-md-center">
-                      <p class="small pl-0">8:00AM - 11:00AM</p>
+                      <p class="small pl-0 text-muted">8:00AM - 11:00AM</p>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row pt-2">
                     <div class="col-12 text-center">
-                      <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="small font-weight-bold mt-3">Cambiar dirección de envío</a>
+                      <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="small font-weight-bold text-secondary">Cambiar dirección de envío</a>
                     </div>
                     <div class="modal fade" id="modal-envio_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
@@ -1288,17 +1355,17 @@ $color_header='dark';
     <section id=sell-steps class="pb-1 pt-2">
       <div class="container">
         <div class="row p-1">
-          <div class="col-2 my-0 pr-0 col-md-1">
+          <div class="col-2 pt-1 pr-0 col-md-1">
             <button class="formularios__btnNumber bg-blue" disabled>
               <p class="text-white small">1</p>
             </button>
           </div>
-          <div class="col-2 my-0 pr-0 col-md-1">
+          <div class="col-2 pt-1 pr-0 col-md-1">
             <button class="formularios__btnNumber bg-blue" disabled>
               <p class="text-white small">2</p>
             </button>
               </div>
-              <div class="col-2 my-0 pr-0 col-md-1">
+              <div class="col-2 pt-1 pr-0 col-md-1">
                 <button class="formularios__btnNumber bg-blue" disabled>
                   <p class="text-white small">3</p>
                 </button>
@@ -1311,14 +1378,14 @@ $color_header='dark';
             <!-- trj compra-->
           <div class="box-contain container mt-1">
             <div class="boxed border shadow">
-              <div class="box-body p-2">
+              <div class="box-body p-4">
                 <figure class="text-center pb-2">
-                  <img src="{{asset('images/imgs/logistic.svg')}}" alt="imag">  
+                  <img class="mw-100" src="{{asset('images/imgs/logistic.svg')}}" alt="imag">  
                 </figure>
-                <h4 class="font-weight-bold text-center text-primary pb-1 m-0">Gracias por su compra</h4>
-                <div class="col text-info pt-1 pb-2 px-1 col-md-6 offset-md-3">
-                  <p class="fs-14">Eutuxia Group CA</p>
-                  <p class="small text-muted">Para coordinar tu pedido uno de nuestros asesores comerciales se pondra en contacto a la brevedad</p>
+                <h5 class="font-weight-bold text-center text-primary pb-1 m-0">Gracias por su compra</h5>
+                <div class="col p-2 col-md-6 offset-md-3">
+                  <p class="text-muted">Eutuxia Group CA</p>
+                  <p class="small text-muted">Para coordinar tu pedido uno de nuestros asesores comerciales se pondra en contacto contigo...</p>
                 </div>
               </div>
             </div>
@@ -1327,7 +1394,7 @@ $color_header='dark';
     </section>
    
     <!-- Buttoms-->
-    <section class="my-0 py-1">
+    <section class="my-0 py-3">
         <div class="container">
           <div class="row">
             <div class="col-5 pr-0">
@@ -1413,7 +1480,7 @@ $color_header='dark';
                             <p class="text-white fs-14 text-left font-weight-bold">2,000.00 $</p>
                           </div>
                           <div class="col-8 px-0">
-                            <p class="text-white fs-14 text-right font-weight-bold">Camion de compras
+                            <p class="text-white text-right font-weight-bold">Camion de compras
                               <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M29.9882 19.5166V14.8843C29.9882 14.1944 29.7743 13.5044 29.4526 12.9131L26.247 7.88651C25.9256 7.29514 25.1757 6.9009 24.4259 6.9009H19.605C18.8551 6.9009 18.2122 7.49227 18.2122 8.18219V18.7281H17.1409V4.9297C17.1409 3.84554 16.1769 2.9585 14.9983 2.9585H0V20.6993H3.21392C3.74957 19.0238 5.35653 17.7425 7.39188 17.7425C9.4275 17.7425 11.1415 19.0238 11.5701 20.6993H19.3907C19.9264 19.0238 21.5333 17.7425 23.5687 17.7425C25.2829 17.7425 26.6753 18.6296 27.3183 19.9109C27.6397 20.4037 28.1673 20.6993 28.7029 20.6993C29.4526 20.6993 30.0955 20.108 29.9882 19.5166ZM20.3548 13.8001V8.87211H24.6401L27.7467 13.8001H20.3548Z" fill="white"/>
                                 <path d="M23.5688 18.728C21.7477 18.728 20.3549 20.0093 20.3549 21.6848C20.3549 23.3604 21.7477 24.6416 23.5688 24.6416C25.39 24.6416 26.7828 23.3604 26.7828 21.6848C26.7828 20.0093 25.39 18.728 23.5688 18.728ZM23.5688 23.0647C22.7117 23.0647 22.0691 22.4733 22.0691 21.6848C22.0691 20.8964 22.7118 20.305 23.5688 20.305C24.426 20.305 25.0685 20.8964 25.0685 21.6848C25.0685 22.4733 24.426 23.0647 23.5688 23.0647Z" fill="white"/>
@@ -1422,7 +1489,6 @@ $color_header='dark';
                                 <path d="M23.5688 22.1775C23.8646 22.1775 24.1044 21.9569 24.1044 21.6847C24.1044 21.4125 23.8646 21.1919 23.5688 21.1919C23.273 21.1919 23.0331 21.4125 23.0331 21.6847C23.0331 21.9569 23.273 22.1775 23.5688 22.1775Z" fill="white"/>
                               </svg>             
                             </p>
-  
                           </div>
                         </div>
                       </button>
