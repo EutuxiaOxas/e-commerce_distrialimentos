@@ -78,7 +78,7 @@
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos de empresa</h2>
 					@if($empresa)
-					<img data-toggle="modal" data-target="#modal_FacturationEdit" class="perfil__cardEditar-icon cardLists"  src="{{asset('/images/editar-icon.svg')}}">
+					<img data-toggle="modal" data-target="#modal_FacturationEdit" class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
 					@endif
 				</div>
 				@if($empresa)
