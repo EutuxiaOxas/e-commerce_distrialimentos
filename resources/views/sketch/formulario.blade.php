@@ -416,7 +416,7 @@ $color_header='dark';
       <div class="container">
         <div class="row">
           <div class="col-5 pr-0">
-            <button type="button" class="btn btn-sm btn-block formularios__btn-left" disabled>x</button>
+            <button type="button" class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
           </div>
           <div class="col-7 pl-0">
             <button id=btn_next1 class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
@@ -1217,7 +1217,7 @@ $color_header='dark';
         <div class="container">
           <div class="row">
             <div class="col-5 pr-0">
-              <button class="btn btn-sm btn-block formularios__btn-left" disabled>x</button>
+              <button class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
             </div>
             <div class="col-7 pl-0">
               <button class="btn btn-primary btn-sm btn-block formularios__btn-right">Ver Compras</button>
