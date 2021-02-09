@@ -57,7 +57,7 @@
 							<p class="perfil__cardListItem-content" style="">Aun sin datos personales...</p>
 						</div>
 						<div class="perfil__agregarDatos ">
-							<a href="#">Agregar los datos personales</a>
+							<a href="#" data-toggle="modal" data-target="#modal_userEdit">Agregar los datos personales</a>
 						</div>
 					</div>
 				@endif
@@ -107,7 +107,7 @@
 						<p class="perfil__cardListItem-content" style="">Aun sin datos de empresa...</p>
 					</div>
 					<div class="perfil__agregarDatos ">
-						<a href="#">Agregar los datos de empresa</a>
+						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de empresa</a>
 					</div>
 				</div>
 				@endif
@@ -144,7 +144,7 @@
 								<p class="perfil__cardListItem-content" style="">Aun sin direcciones de envio...</p>
 							</div>
 							<div class="perfil__agregarDatos ">
-								<a href="#">Agregar nueva dirección</a>
+								<a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
 							</div>
 						</div>
 					@endif
@@ -153,4 +153,194 @@
 			</div>
 		</div>
 	</section>
+
+
+<!----------------- Modales --------------->
+
+
+	<!-- Modal datos de usuario -->
+	<div class="modal fade" id="modal_userEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content p-3">
+				<div class="modal-header p-2 border-bottom-0">
+					<div class="container">
+						<div class="row">
+							<div class="col-10 mb-0">
+								<h5 class="modal-title text-secondary font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
+								<p class="texto-small text-muted">Agregue los datos solicitados...</p>
+							</div>
+							<div class="col-2">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>        
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body px-2 pt-1 pb-2">
+					<div class="form-title container">
+						<div class="row">
+							<div class="col text-center">
+								<p class="font-weight-bold">Datos de usuario</p>
+							</div>
+						</div>
+					</div>
+					<form>
+						<div class="form">
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Nombre completo">
+							</div>
+							<div class="col">
+								<input type="number" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Cedula [ej: v-23432578]">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono [ej: 0241-8524234]">
+							</div>
+							<div class="col pb-3">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono Alt. [ej: 0241-8524234]">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer pt-5 border-0">
+					<div class="container">
+						<div class="row mb-1">
+							<button type="button" class="btn btn-primary btn-block formulario__modalBtn">Agregar</button>
+						</div>
+						<div class="row">
+							<p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin Modal datos de usuario -->
+
+	<!-- Modal datos de empresa -->
+	<div class="modal fade" id="modal_FacturationEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content p-3">
+				<div class="modal-header p-2 border-bottom-0">
+					<div class="container">
+						<div class="row">
+						<div class="col-10 mb-0">
+							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h4>
+							<p class="texto-small texto-muted">Agregue los datos solicitados...</p>
+						</div>
+						<div class="col-2">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>        
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body px-2 pt-1 pb-2">
+					<div class="form-title container">
+						<div class="row">
+						<div class="col text-center">
+							<p class="text-black font-weight-bold">Datos de empresa</p>
+						</div>
+						</div>
+					</div>
+					<form>
+						<div class="form">
+						<div class="col">
+							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Nombre de empresa">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="RIF [ej: j-20180578-4]">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="SADA">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Horario de atención">
+						</div>
+						</div>
+					</form>                                      
+				</div>
+				<div class="modal-footer pt-5 border-0">
+					<div class="container">
+						<div class="row mb-1">
+						<button type="button" class="btn btn-primary btn-block formulario__modalBtn"">Agregar</button>
+						</div>
+						<div class="row">
+						<p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin Modal datos de empresa -->
+
+	<!-- Modal datos de Direccio -->
+	<div class="modal fade" id="modal-directionEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content p-3">
+				<div class="modal-header p-2 border-bottom-0">
+					<div class="container">
+						<div class="row">
+						<div class="col-10 mb-0">
+							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+							<p class="texto-small text-muted">Agregue los datos solicitados...</p>
+						</div>
+						<div class="col-2">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>        
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body px-2 pt-1 pb-2">                   
+					<div class="form-title container">
+						<div class="row">
+							<div class="col text-center">
+								<p class="text-black font-weight-bold">Direccion Juridica</p>
+							</div>
+						</div>
+					</div>
+					<form>
+						<div class="form">
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Estado">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Ciudad">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Codigo postal">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Dirección">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Responsable">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono Oficina">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer pt-5 border-0">
+					<div class="container">
+						<div class="row mb-0">
+							<button type="button" class="btn btn-primary btn-block">Editar</button>
+						</div>
+						<div class="row">
+						<p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin Modal datos de Direccio -->
+
+
+
 @endsection
