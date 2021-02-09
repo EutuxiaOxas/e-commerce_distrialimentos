@@ -321,7 +321,7 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Responsable">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono Oficina">
+								<input type="text" class="form-control-plaintext formularios__inputBordersgit" placeholder="Telefono Oficina">
 							</div>
 						</div>
 					</form>
