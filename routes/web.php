@@ -44,9 +44,9 @@ Route::get('/formulario', function () {
 });
 
 //perfil - home - datos 
-Route::get('/perfil', function () {
-	return view('sketch.perfil');
-});
+// Route::get('/perfil', function () {
+// 	return view('perfil');
+// })->name('perfil');
 
 //perfil - direcciones 
 Route::get('/perfil/direcciones', function () {
@@ -99,20 +99,19 @@ Route::get('/politicas', function () {
 
 
 
+//Route::get('/', 'HomeController@lading')->name('home');
 
 Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.login');
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
-//Route::get('/', 'HomeController@lading')->name('home');
 
 Route::middleware('auth')->group(function () {
 
-	Route::get('/perfil', 'HomeController@dashboard')
+	Route::get('/perfil', 'PerfilController@mis_datos')
 	->name('perfil.home');
 
-	Route::get('/perfil/compras', function () {
-		return view('perfil.compras');
-	})->name('perfil.compras');
+	Route::get('/perfil/compras', 'PerfilController@mis_compras')
+	->name('perfil.compras');
 });
 
 Route::get('/productos', 'HomeController@products')->name('productos');

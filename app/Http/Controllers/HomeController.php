@@ -74,10 +74,5 @@ class HomeController extends Controller
         }
     }
 
-    public function dashboard()
-    {
-        $user = auth()->user();
-        $ordenes = $user->orders()->where('status', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
-        return view('perfil.mis_datos', compact('user', 'ordenes'));
-    }
+ 
 }
