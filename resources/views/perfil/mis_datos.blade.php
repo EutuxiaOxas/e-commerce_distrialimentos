@@ -21,7 +21,7 @@
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos personales</h2>
-					@if(!($user->documento_identidad && $user->phone))
+					@if($user->documento_identidad && $user->phone)
 					<img class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
 					@endif
 				</div>
@@ -66,7 +66,7 @@
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos de empresa</h2>
-					@if(!$empresa)
+					@if($empresa)
 					<img class="perfil__cardEditar-icon cardLists"  src="{{asset('/images/editar-icon.svg')}}">
 					@endif
 				</div>
