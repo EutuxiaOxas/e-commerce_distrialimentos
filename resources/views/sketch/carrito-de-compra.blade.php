@@ -252,7 +252,7 @@ $color_header='dark';
                               <p>Subtotal</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p>59,35 $</p>
+                              <p id="modalcartSubTotal">0 $</p>
                             </div>
                           </div>
                           <div class="row m-0 p-0">
@@ -260,7 +260,7 @@ $color_header='dark';
                               <p>IVA</p>
                             </div>
                             <div class="col-6 text-right mb-1">
-                              <p>11,65 $</p>
+                              <p id="modalCartIva">0 $</p>
                             </div>
                           </div>
                           <div class="row m-0 p-0">
@@ -268,7 +268,7 @@ $color_header='dark';
                               <p class="text-uppercase text-blue fs-16 font-weight-bold">Total</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p class="font-weight-bold text-black fs-20">70,35 $</p>
+                              <p class="font-weight-bold text-black fs-20" id="modalCartTotal">0 $</p>
                             </div>
                           </div>
                           <div class="row m-0 p-0">
@@ -276,7 +276,7 @@ $color_header='dark';
                               <p class="text-blue">TOTAL (Bs)</p>
                             </div>
                             <div class="col-7 text-right mb-0">
-                              <p class="font-weight-bold text-black">89,000,000.00 Bs</p>
+                              <p class="font-weight-bold text-black" id="modalCartTotalBolivares">0 Bs</p>
                             </div>
                           </div>
                         </div>
@@ -465,7 +465,7 @@ $color_header='dark';
                           <p>Subtotal</p>
                         </div>
                         <div class="col-6 text-right mb-0">
-                          <p>59,35 $</p>
+                          <p id="modalcartSubTotal">0$</p>
                         </div>
                       </div>
                       <div class="row m-0 p-0">
@@ -473,7 +473,7 @@ $color_header='dark';
                           <p>IVA</p>
                         </div>
                         <div class="col-6 text-right mb-1">
-                          <p>11,65 $</p>
+                          <p id="modalCartIva">0 $</p>
                         </div>
                       </div>
                       <div class="row m-0 p-0">
@@ -481,7 +481,7 @@ $color_header='dark';
                           <p class="text-uppercase text-blue fs-16 font-weight-bold">Total</p>
                         </div>
                         <div class="col-6 text-right mb-0">
-                          <p class="font-weight-bold text-black fs-24">70,35 $</p>
+                          <p class="font-weight-bold text-black fs-24" id="modalCartTotal">0 $</p>
                         </div>
                       </div>
                       <div class="row m-0 p-0">
@@ -489,7 +489,7 @@ $color_header='dark';
                           <p class="text-blue">TOTAL (Bs)</p>
                         </div>
                         <div class="col-7 text-right mb-0 pb-6">
-                          <p class="font-weight-bold text-black">89,000,000.00 Bs</p>
+                          <p class="font-weight-bold text-black" id="modalCartTotalBolivares">0 Bs</p>
                         </div>
                       </div>
                     </div>

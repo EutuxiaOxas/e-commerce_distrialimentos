@@ -1,5 +1,4 @@
 //----------------- UI cart class -------------
-
 class CarritoUI {
   constructor(carrito, cart_body, api) {
     this.cart_body = cart_body;
@@ -112,11 +111,13 @@ class CarritoUI {
   		})
 		  // this.carrito.children[0].children[0].classList.add('cart_on')
 		  this.eventosModal()
+		  this.totalCart();
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
   		// this.carrito.children[0].children[0].classList.remove('cart_on')
+		this.totalCart();
   	}
-
+	
   }
 
   addingAlert(alert){
@@ -129,83 +130,31 @@ class CarritoUI {
   }
 
 
-  totalCart(productos, container, value){
-  	let total_amount = 0;
-  	container.innerHTML = '';
+  totalCart(){
+  	const cartSubTotal 			= document.getElementById('modalcartSubTotal');
+  	const cartIva 	   			= document.getElementById('modalCartIva');
+  	const cartTotal 			= document.getElementById('modalCartTotal');
+  	const cartTotalBolivares 	= document.getElementById('modalCartTotalBolivares');
+	const modalCartFinish		= document.getElementById('modalCartFinish');
 
-  	if(productos.length > 0){
-  		
-  		if(value == 1){
-  			productos.forEach(producto => {
-  				let precio = producto.producto.price,
-  					precio_total = precio * producto.cantidad;
 
-  				total_amount = total_amount + precio_total 
-  				
+	  this.api.getTotalCartAmount()
+	  	.then(res => {
+			  const { total, subTotal, iva, totalBolivar } = res.data;
+			  cartSubTotal.innerText 			= `${subTotal} $`;
+			  cartTotal.innerText				= `${total} $`;
+			  cartIva .innerText				= `${iva} $`;
+			  cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`;
 
-  				container.innerHTML += `
-  					<div class="d-flex mb-3">
-  						<div class=" mr-2">
-  							<img src="/storage/${producto.imagen}" style="width: 60px; height: 60px; object-fit: cover;">
-  						</div>
-  						<div class="d-flex" style="justify-content: space-between; flex:1;">
-  							<div>
-  								<h5 class="outspacing">${producto.producto.title}</h5>
-  								<p class="outspacing"><strong>Cantidad: ${producto.cantidad}</strong></p>
-  								<p class="outspacing"><strong>Precio: ${precio}</strong></p>
-  							</div>
+			  if(total > 0) {
+				modalCartFinish.href = '#'
+			  }
+		  }) 
 
-  							<div>
-  								<h5 class="outspacing">Total: <small>${precio_total} $</small></h5>
-  							</div>
-  						</div>
-  						
-  					</div>
-  				`
-  			})
-  		}
 
-  		if(value == 0){
-  			console.log('sin sesion')
+  	
 
-  			productos.forEach(producto => {
-  				let precio = producto.price;
-
-  				let cadena = precio.split(" ");
-
-  				precio = cadena[0] * producto.cantidad;
-
-  				total_amount = total_amount + precio 
-  				
-
-  				container.innerHTML += `
-  					<div class="d-flex mb-3">
-  						<div class=" mr-2">
-  							<img src="${producto.image}" style="width: 60px; height: 60px; object-fit: cover;">
-  						</div>
-  						<div class="d-flex" style="justify-content: space-between; flex:1;">
-  							<div>
-  								<h5 class="outspacing">${producto.title}</h5>
-  								<p class="outspacing"><strong>Cantidad: ${producto.cantidad}</strong></p>
-  								<p class="outspacing"><strong>Precio: ${producto.price}</strong></p>
-  							</div>
-
-  							<div>
-  								<h5 class="outspacing">Total: <small>${precio} $</small></h5>
-  							</div>
-  						</div>
-  						
-  					</div>
-  				`
-  			})
-  		}
-
-  		container.innerHTML += `
-  			<div>
-  				<h5>Total a pagar: <strong>${total_amount}$</strong></h5>
-  			</div>
-  		`
-  	}
+  	
   }
 
 
@@ -262,7 +211,6 @@ class CarritoUI {
 				let active = false;
 				productos.forEach(producto => {
 					if(producto.producto) {
-						console.log(icon.id)
 						const id = producto.producto.id
 					
 						if(parseInt(icon.id) === id) {
@@ -347,6 +295,13 @@ class CartApi {
 		.catch(err => {
 			console.log(err)
 		})
+	}
+
+	async getTotalCartAmount() {
+		return axios.get('/cart/amount')
+		.catch(err => {
+			console.log(err)
+		}) 
 	}
 }
 

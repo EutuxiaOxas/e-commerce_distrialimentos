@@ -172,11 +172,12 @@ class CartController extends Controller
         $iva = Variable::where('name', 'IVA')->first();
         $dolarPrice = Variable::where('name', 'dolar')->first();
 
-        $total = $cart->cartAmount($iva);
-        $totalBolivares = $total * $dolarPrice->value;
+        $amount = $cart->cartAmount($iva);
+        $totalBolivares = $amount['total'] * $dolarPrice->value;
         
         return [
-            'total' => $total,
+            'total' => $amount['total'],
+            'subTotal' => $amount['subTotal'],
             'totalBolivar' => $totalBolivares,
             'iva' => $iva->value,
         ];

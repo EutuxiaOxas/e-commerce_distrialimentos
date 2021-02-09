@@ -19,6 +19,7 @@ class Cart extends Model
 
     	$detalles = $this->cartDetails;
     	$totalCart = 0;
+        $subTotal = 0;
 
         //detalles Carrito
     	foreach ($detalles as $detalle) {
@@ -63,9 +64,11 @@ class Cart extends Model
                 if($producto->iva->value) 
                 {
                     $totalCart = $totalCart + (($alMayorPrice * $cantidadProducto) + $iva->value);
+                    $subTotal = $subTotal + ($alMayorPrice * $cantidadProducto);
                 }else 
                 {
                     $totalCart = $totalCart + ($alMayorPrice * $cantidadProducto);
+                    $subTotal = $subTotal + ($alMayorPrice * $cantidadProducto);
                 }
             }
 
@@ -77,9 +80,12 @@ class Cart extends Model
                 if($producto->iva->value) 
                 {
                     $totalCart = $totalCart + (($granMayorPrice * $cantidadProducto) + $iva->value);
+
+                    $subTotal = $subTotal + ($granMayorPrice * $cantidadProducto);
                 }else 
                 {
                     $totalCart = $totalCart + ($granMayorPrice * $cantidadProducto);
+                    $subTotal = $subTotal + ($granMayorPrice * $cantidadProducto);
                 }
 
             }
@@ -92,15 +98,20 @@ class Cart extends Model
                 if($producto->iva->value) 
                 {
                     $totalCart = $totalCart + (($vipPrice * $cantidadProducto) + $iva->value);
+                    $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
                 }else 
                 {
                     $totalCart = $totalCart + ($vipPrice * $cantidadProducto);
+                    $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
                 }
 
             }
             
     	}
 
-    	return $totalCart;
+    	return $amount = [
+            'subTotal'  => $subTotal,
+            'total'     => $totalCart
+        ];
     }
 }
