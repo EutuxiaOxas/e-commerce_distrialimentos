@@ -4,6 +4,17 @@
 @section('content')
 	@include('perfil.perfil_navMobile')
 
+	<style>
+		.formularios__inputBorders {
+      border-bottom: 1px solid #FD6721;
+      padding: 1.5rem 0.25rem 0.25rem;
+    }
+
+    .formularios__inputBorders:focus {
+      outline:none;
+    }
+	</style>
+
 	<section class="perfil__container">
 		@include('perfil.perfil_nav')
 		<div class="perfil__body">
