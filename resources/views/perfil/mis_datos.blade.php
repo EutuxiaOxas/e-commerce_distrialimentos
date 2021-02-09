@@ -33,7 +33,7 @@
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos personales</h2>
 					@if($user->documento_identidad && $user->phone)
-					<img class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
+					<img data-toggle="modal" data-target="#modal_userEdit" class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
 					@endif
 				</div>
 				@if($user->documento_identidad && $user->phone)
@@ -78,7 +78,7 @@
 				<div class="perfil__cardTitle">
 					<h2 class="perfil__card-title">Datos de empresa</h2>
 					@if($empresa)
-					<img class="perfil__cardEditar-icon cardLists"  src="{{asset('/images/editar-icon.svg')}}">
+					<img data-toggle="modal" data-target="#modal_FacturationEdit" class="perfil__cardEditar-icon cardLists"  src="{{asset('/images/editar-icon.svg')}}">
 					@endif
 				</div>
 				@if($empresa)
@@ -134,7 +134,7 @@
 					<div class="direccionCard">
 						<div class="perfil__cardTitle direccion">
 							<h2 class="perfil__card-title direccion">Dirección de envío</h2>
-							<img src="{{asset('/images/editar-icon.svg')}}">
+							<img data-toggle="modal" data-target="#modal-directionEdit" src="{{asset('/images/editar-icon.svg')}}">
 						</div>
 						<div class="perfil__cardDireccion">
 							<h3 class="perfil__cardDireccion-title">Calle 1 Avenida 10 Local 45</h3>
@@ -144,7 +144,7 @@
 						</div>
 					</div>
 					<div class="perfil__agregarDatos">
-						<a href="#">Agregar nueva dirección</a>
+						<a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
 					</div>
 				</div>
 					@else
@@ -171,7 +171,7 @@
 
 	<!-- Modal datos de usuario -->
 	<div class="modal fade" id="modal_userEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content p-3">
 				<div class="modal-header p-2 border-bottom-0">
 					<div class="container">
@@ -230,7 +230,7 @@
 
 	<!-- Modal datos de empresa -->
 	<div class="modal fade" id="modal_FacturationEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content p-3">
 				<div class="modal-header p-2 border-bottom-0">
 					<div class="container">
@@ -289,13 +289,13 @@
 
 	<!-- Modal datos de Direccio -->
 	<div class="modal fade" id="modal-directionEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content p-3">
 				<div class="modal-header p-2 border-bottom-0">
 					<div class="container">
 						<div class="row">
 						<div class="col-10 mb-0">
-							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de dirección</h4>
 							<p class="texto-small text-muted">Agregue los datos solicitados...</p>
 						</div>
 						<div class="col-2">
@@ -332,7 +332,7 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Responsable">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBordersgit" placeholder="Telefono Oficina">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono Oficina">
 							</div>
 						</div>
 					</form>

@@ -361,7 +361,7 @@ $color_header='dark';
                 </div>
 
                 <div class="modal fade" id="moda-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content p-3">
                     <div class="modal-header p-2 border-bottom-0">
                       <div class="container">
@@ -674,7 +674,7 @@ $color_header='dark';
                     <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="texto-small font-weight-bold text-secondary">Editar datos de empresa</a>
                   </div>
                   <div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content p-3">
                         <div class="modal-header p-2 border-bottom-0">
                           <div class="container">
@@ -750,7 +750,7 @@ $color_header='dark';
                       </div>
                       <!-- Modal -->  
                       <div class="modal fade" id="modal-direction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content p-3">
                             <div class="modal-header p-2 border-bottom-0">
                               <div class="container">
@@ -1058,7 +1058,7 @@ $color_header='dark';
                         <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="texto-small font-weight-bold text-secondary">Cambiar dirección de envío</a>
                       </div>
                       <div class="modal fade" id="modal-envio_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
                           <div class="modal-content p-3">
 
                           <!-- Modal header-->
