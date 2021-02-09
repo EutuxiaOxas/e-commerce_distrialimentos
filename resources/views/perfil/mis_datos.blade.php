@@ -188,16 +188,16 @@
 					<form>
 						<div class="form">
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Nombre completo">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Nombre completo">
 							</div>
 							<div class="col">
-								<input type="number" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Cedula [ej: v-23432578]">
+								<input type="number" class="form-control-plaintext formularios__inputBorders" placeholder="Cedula [ej: v-23432578]">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono [ej: 0241-8524234]">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono [ej: 0241-8524234]">
 							</div>
 							<div class="col pb-3">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono Alt. [ej: 0241-8524234]">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono Alt. [ej: 0241-8524234]">
 							</div>
 						</div>
 					</form>
@@ -247,16 +247,16 @@
 					<form>
 						<div class="form">
 						<div class="col">
-							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Nombre de empresa">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Nombre de empresa">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="RIF [ej: j-20180578-4]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="RIF [ej: j-20180578-4]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="SADA">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="SADA">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Horario de atención">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Horario de atención">
 						</div>
 						</div>
 					</form>                                      
@@ -306,22 +306,22 @@
 					<form>
 						<div class="form">
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Estado">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Estado">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Ciudad">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Ciudad">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Codigo postal">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Codigo postal">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Dirección">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Dirección">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Responsable">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Responsable">
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext border-bottom pb-1 pt-4 px-1" placeholder="Telefono Oficina">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono Oficina">
 							</div>
 						</div>
 					</form>
