@@ -179,7 +179,7 @@ class CartController extends Controller
             'total' => $amount['total'],
             'subTotal' => $amount['subTotal'],
             'totalBolivar' => $totalBolivares,
-            'iva' => $iva->value,
+            'iva' => $amount['iva'] ? $iva->value : 0,
         ];
     
     }

@@ -20,7 +20,7 @@ class Cart extends Model
     	$detalles = $this->cartDetails;
     	$totalCart = 0;
         $subTotal = 0;
-
+        $useIva = false;
         //detalles Carrito
     	foreach ($detalles as $detalle) {
             
@@ -63,6 +63,7 @@ class Cart extends Model
             {
                 if($producto->iva->value) 
                 {
+                    $useIva = true;
                     $totalCart = $totalCart + (($alMayorPrice * $cantidadProducto) + $iva->value);
                     $subTotal = $subTotal + ($alMayorPrice * $cantidadProducto);
                 }else 
@@ -79,6 +80,7 @@ class Cart extends Model
 
                 if($producto->iva->value) 
                 {
+                    $useIva = true;
                     $totalCart = $totalCart + (($granMayorPrice * $cantidadProducto) + $iva->value);
 
                     $subTotal = $subTotal + ($granMayorPrice * $cantidadProducto);
@@ -97,6 +99,7 @@ class Cart extends Model
 
                 if($producto->iva->value) 
                 {
+                    $useIva = true;
                     $totalCart = $totalCart + (($vipPrice * $cantidadProducto) + $iva->value);
                     $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
                 }else 
@@ -111,7 +114,8 @@ class Cart extends Model
 
     	return $amount = [
             'subTotal'  => $subTotal,
-            'total'     => $totalCart
+            'total'     => $totalCart,
+            'iva'       => $useIva,
         ];
     }
 }
