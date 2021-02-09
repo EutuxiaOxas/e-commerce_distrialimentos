@@ -62,11 +62,6 @@
 
 
  <style>
-   @media(min-width:767px){
-     .product_movil {
-       margin:20px;
-     }
-   }
    .center-elements{
     width: -webkit-fill-available;
    }
