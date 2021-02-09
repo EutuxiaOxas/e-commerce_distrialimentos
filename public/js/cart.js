@@ -253,26 +253,70 @@ class CarritoUI {
 
   addIconOfProductAdded(productos) {
 	  const icons = document.querySelectorAll('.inCart-icon');
-	  if(productos.length > 0) {
-		productos.forEach(producto => {
-			if(producto.producto) {
-				const {id} = producto.producto
-  
-				icons.forEach(icon => {
-					if(icon.id == id){
-						icon.classList.add('active')
-					}else {
-					  icon.classList.remove('active')
+	  
+	  if(icons) {
+		if(productos.length > 0) {
+			// debugger
+			
+			icons.forEach(icon => {
+				let active = false;
+				productos.forEach(producto => {
+					if(producto.producto) {
+						console.log(icon.id)
+						const id = producto.producto.id
+					
+						if(parseInt(icon.id) === id) {
+							active = true;
+							icon.classList.add('active');
+							return;
+						}
 					}
 				})
-			}
-		})
-	  } else {
-		  icons.forEach(icon => {
-			  icon.classList.remove('active')
-		  })
-	  }
+				if(active === false) {
+					icon.classList.remove('active');
+				}
+			})
 
+			
+		}else {
+			icons.forEach(icon => {
+				icon.classList.remove('active');
+			})
+		}
+	  }
+  }
+
+  //--------------------- ESTABLECER CANTIDAD EN EL SELECT O REGRESARLO A CERO  ---------------------
+
+  selectStockOfProduct(productos){
+	  const selectButtons = document.querySelectorAll('.productSelectStock');
+
+	  if(selectButtons) {
+		if(productos.length > 0) {
+			selectButtons.forEach(select => {
+				let active = false;
+				productos.forEach(producto => {
+					if(producto.producto) {
+						const { id } = producto.producto;
+
+						if(parseInt(select.id) == id) {
+							active = true;
+							select.selectedIndex = producto.cantidad;
+							return;
+						}
+					}
+				})
+
+				if(!active) {
+					select.selectedIndex = 0;
+				}
+			})
+		}else {
+			selectButtons.forEach(select => {
+				select.selectedIndex = 0;
+			})
+		}
+	  }
   }
 }
 
@@ -283,10 +327,11 @@ class CartApi {
 		return axios.get('/cart')	 
 	}
 
-	async addToCart(id){
+	async addToCart(id, cantidad){
 
 		return axios.post(`/cart/add`, {
 			product_id: id,
+			cantidad
 		})
 		
 	}
@@ -489,13 +534,13 @@ function events(value, elements)
 			element.addEventListener('change', (e) => {
 				const id = e.target.id,
 					  element = e.target,
+					  value = parseInt(e.target.value)
 					alert = document.getElementById('add_alert');
 
-				apiCart.addToCart(id)
+				apiCart.addToCart(id, value)
 					.then(res => {
 						if(res.status == 200){
 							callingCart();
-							element.selectedIndex = 0;
 							// carrito.addingAlert(alert)
 						}
 					})
@@ -557,6 +602,7 @@ function callingCart(){
 			productos = res.data;
 			carrito.agregarCarrito(productos);
 			carrito.addIconOfProductAdded(productos);
+			carrito.selectStockOfProduct(productos);
 			// loadProducts(productos);
 			// loadTotalProducts(productos, 1)
 		})

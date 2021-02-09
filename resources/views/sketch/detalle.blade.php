@@ -139,17 +139,20 @@
               <div class="productDetail__agregado">
                   <div class="productDetail__agregadoSelect ">
                     <p class="productDetail__agregarProducto-text">Selecciona una cantidad para agregar al camión </p>
+                    @php $disponible = $product->available_stock; @endphp
                     @guest
                       <select id="{{$product->id}}" class="form-control">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                          <option value="0">0</option>
+                          @for($i = 1; $i <= $disponible; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                          @endfor
                       </select>
                     @else 
-                      <select id="{{$product->id}}" class="form-control to_server">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
+                      <select id="{{$product->id}}" class="form-control to_server productSelectStock">
+                          <option value="0">0</option>
+                          @for($i = 1; $i <= $disponible; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                          @endfor>
                       </select>
                     @endguest
                   </div>

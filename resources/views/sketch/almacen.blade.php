@@ -92,11 +92,12 @@ $color_header='dark';
                     {{-- producto agregado --}}
                     <div class="almancen__agregarProducto pt-2">
                         <p class="almancen__agregarProducto-text">Selecciona una cantidad </p>
-                        <select id="{{$producto->id}}" class="form-control to_server">
+                        @php $disponible = $producto->available_stock; @endphp
+                        <select id="{{$producto->id}}" class="form-control to_server productSelectStock">
                           <option value="0">0</option>
-                          <option value="0">1</option>
-                          <option value="0">2</option>
-                          <option value="0">3</option>
+                          @for($i = 1; $i <= $disponible; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                          @endfor
                         </select>
                     </div>
                   </div>

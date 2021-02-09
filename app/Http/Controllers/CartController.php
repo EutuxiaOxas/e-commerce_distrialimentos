@@ -22,7 +22,8 @@ class CartController extends Controller
                 'iva' => $detail->product()->first()->iva->msg,
                 'imagen' => $detail->product()->first()->image,
                 'cantidad' => $detail->cantidad,
-                'empaque' => $detail->product()->first()->packaging->packaging
+                'empaque' => $detail->product()->first()->packaging->packaging,
+                'disponible' => $detail->product()->first()->available_stock
             ];
     	}
 
@@ -46,7 +47,6 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
 
-
     	$user = auth()->user();
 
     	$cart_id = $user->cartVerify()->id;
@@ -58,7 +58,7 @@ class CartController extends Controller
     	if(isset($detalle_activo))
         {
             $contador = $detalle_activo->cantidad;
-            $detalle_activo->cantidad = $contador + 1;
+            $detalle_activo->cantidad = $request->cantidad;
             $detalle_activo->save();
         }else{
             $detail = new CartDetail;
@@ -66,7 +66,7 @@ class CartController extends Controller
             $detail->create([
                 'product_id' => $request->product_id,
                 'cart_id' => $cart_id,
-                'cantidad' => 1,
+                'cantidad' => $request->cantidad,
             ]);
         }
 
