@@ -58,8 +58,16 @@ class CartController extends Controller
     	if(isset($detalle_activo))
         {
             $contador = $detalle_activo->cantidad;
-            $detalle_activo->cantidad = $request->cantidad;
-            $detalle_activo->save();
+            
+            if($request->cantidad > 0) {
+
+                $detalle_activo->cantidad = $request->cantidad;
+                $detalle_activo->save();
+
+            }else {
+                $detalle_activo->delete();
+            }
+
         }else{
             $detail = new CartDetail;
 

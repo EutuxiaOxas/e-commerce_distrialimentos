@@ -50,7 +50,7 @@ class CarritoUI {
 								<form class="text-center">
 									<div class="form-group m-0">
 									<label class="labelfs" for="cantidad">Cantidad</label>
-									<input type="number" value="${producto.cantidad}" min="1" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
+									<input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
 									</div>
 								</form>
 								</div>
