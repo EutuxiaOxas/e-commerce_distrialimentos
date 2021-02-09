@@ -89,6 +89,14 @@
 							<h3 class="perfil__cardListItem-title">Horario disponible</h3>
 							<p class="perfil__cardListItem-content">{{$empresa->getOperationTime()}}</p>
 						</li>
+						<li class="perfil__cardListItem">
+							{{-- Direccion Juridica --}}
+							<h2 class="perfil__cardListItem-title">Dirección jurídica</h2>
+							<div class="perfil__cardListItem-content">
+								<h3 class="perfil__cardDireccion-title">{{$empresa->legal_address}}</h3>
+								<p class="perfil__cardListItem-content">{{$empresa->state->state}}, {{$empresa->city->city}} ({{$empresa->postal_code}})</p>
+							</div>
+						</li>
 					</ul>
 				</div>
 				@else
@@ -110,22 +118,8 @@
 					<h2 class="perfil__card-title">Direcciones</h2>
 				</div>
 				
+				@if($direcciones)
 				<div class="perfil__cardBody direccion">
-					@if($empresa)
-					{{-- Direccion Juridica --}}
-					<div class="direccionCard">
-						<div class="perfil__cardTitle direccion">
-							<h2 class="perfil__card-title direccion">Dirección jurídica</h2>
-							<img src="{{asset('/images/editar-icon.svg')}}">
-						</div>
-						<div class="perfil__cardDireccion">
-							<h3 class="perfil__cardDireccion-title">{{$empresa->legal_address}}</h3>
-							<p class="perfil__cardDireccion-content">{{$empresa->state->state}}, {{$empresa->city->city}} ({{$empresa->postal_code}})</p>
-						</div>
-					</div>
-					@endif
-
-					@if($direcciones)
 					<div class="direccionCard">
 						<div class="perfil__cardTitle direccion">
 							<h2 class="perfil__card-title direccion">Dirección de envío</h2>
@@ -141,11 +135,20 @@
 					<div class="perfil__agregarDatos">
 						<a href="#">Agregar nueva dirección</a>
 					</div>
+				</div>
 					@else
-
+						{{-- si no exiten direcciones --}}
+						<div class="perfil__cardBody direccion">
+							<div class="container p-5 text-center">
+								<img src="{{asset('icons/void-03.svg')}}" alt="">
+								<p class="perfil__cardListItem-content" style="">Aun sin direcciones de envio...</p>
+							</div>
+							<div class="perfil__agregarDatos ">
+								<a href="#">Agregar nueva dirección</a>
+							</div>
+						</div>
 					@endif
 
-				</div>
 				
 			</div>
 		</div>
