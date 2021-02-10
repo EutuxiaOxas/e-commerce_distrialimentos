@@ -7,7 +7,7 @@
 
 @section('content')
     {{-- header principal --}}
-    @include('perfil.perfil_navMobile')
+    @include('common.header.nav_header_mobile')
 
 
  

@@ -6,8 +6,8 @@
 
 
 @section('content')
-    {{-- header principal
-    @include('common.header') --}}
+    {{-- header nav--}}
+    @include('common.header.nav_header_mobile')
  
    <style>
    .marb {  /* margen entre palabras vista movil */
@@ -47,29 +47,45 @@
         <div class="row">
           <div class="col-12 col-md-6 p-5">
             <figure>
-              <img class="img-fluid" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Detalle-product">
+              <img class="img-fluid" src="{{asset('storage/'.$product->image)}}" alt="Detalle-product">
             </figure>
           </div>
-         <div class="col-12 col-md-6 p-5">
-          <div class="row">
-            <div class="col-12 text-right">
-              <p class="small text-muted marb">Dimensiones(LxWxH): 200 x 500 x 800 cm</p>
-              <p class="small text-muted marb">Codigo de Barra: 564561144545</p>
-              <p class="small text-muted marb">SKU: 00005644545</p>
-              <hr>
-            </div>
-          </div>  
-          <div class="product-details p-2">
+         <div class="col-12 col-md-6 p-2 mt-3">
+          <div class="row d-none d-md-block">
+              <div class="col-12 text-right">
+                <p class="small text-muted marb">Dimensiones(LxWxH): 200 x 500 x 800 cm</p>
+                <p class="small text-muted marb">Codigo de Barra: {{$product->bar_code}}</p>
+                <p class="small text-muted marb">SKU: {{$product->sku}}</p>
+                <hr>
+              </div>
+          </div> 
+          <div class="productDetail">
 
-              <p class="text-muted text-right smaller mb-0 d-sm-block d-md-none"><strong class="text-muted">SKU:</strong>00005644545</p>
-              <h4 class="card-title font-weight-bold text-blue mb-0 marb">Titulo del producto</h4>
-              <p class="small text-muted marb">Descripcion del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. In, vero.</p>
-              <p class="text-muted smaller mb-0 d-none d-md-block"><strong class="text-muted">SKU:</strong>00005644545</p>
-              <p class="card-text small marb">(100 Disponibles)</p>
-              <a href="#" class="small marb">Categoria</a>
-              <div class="row mb-0">
+              <p class="text-right productDetail__bodySku  smaller mb-0 d-sm-block d-md-none"><strong>SKU:</strong> 00005644545</p>
+              <div class="productDetail__agregadoIcon">
+                    <span class="badge rounded-pill bg-primary inCart-icon productDetail__productAdded" id="{{$product->id}}">
+                      <i class="svg-checked">
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0)">
+                          <path d="M12.8096 1.91695C12.5558 1.6631 12.1443 1.6631 11.8904 1.91695L4.10299 9.70444L1.10963 6.71109C0.855804 6.45723 0.444273 6.45726 0.190392 6.71109C-0.0634639 6.96492 -0.0634639 7.37645 0.190392 7.6303L3.64336 11.0832C3.89712 11.3371 4.30895 11.3369 4.56261 11.0832L12.8096 2.8362C13.0635 2.58237 13.0635 2.17081 12.8096 1.91695Z" fill="#FF9417"/>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0">
+                          <rect width="13" height="13" fill="white"/>
+                          </clipPath>
+                          </defs>
+                        </svg>
+                      </i>En camión</i>
+                    </span> 
+                  </div>
+              <h4 class="productDetail__bodyTitle mb-0 marb">{{$product->title}}</h4>
+              <p class="productDetail__bodyDescription small text-muted marb">{{$product->description}}</p>
+              <p class="text-muted smaller mb-0 d-none d-md-block"><strong class="text-muted">SKU:</strong> {{$product->sku}}</p>
+              <p class="productDetail__bodyProductUnits small marb">({{$product->units_packaging}} Disponibles)</p>
+
+              <div class="row mb-3">
                 <div class="col-6 col-md-12">
-                  <p class="small text-black font-weight-bold">2,00 $ / Undidad</p>
+                <a href="#" class="small marb productDetail__body-categories">Viveres</a>
                 </div>
                 <div class="col-6 col-md-12 d-md-none d-sm-block">
                   <p class="small text-right">IVA incluido</p>
@@ -79,13 +95,70 @@
                 </div>
                 
               </div>
-                <div class="card-pricing text-center">
-                  <h3 class="font-weight-bold mt-2">20,00 $</h3>
-                  <p class="small">Caja - 20 unidades</p>
-                  <a href="#" class="btn btn-primary px-7">Agregar</a>
+              <!-- PRICE CARDS -->
+              <div class="productDetail__priceCardsMain">
+                <div class="productDetail__priceCard active">
+                  <div class="productDetail__priceBody">
+                    <h3 class="productDetail__priceBody-title">Al mayor</h3>
+                    <p class="productDetail__priceBody-subtitle">menos de 50 cajas </p>
+                  </div>
+                  <div class="productDetail__priceDescription active">
+                    <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
+                    <p class="productDetail__priceDescription-unitPrice">2,00 $ / unidad</p>
+                  </div>
                 </div>
+  
+                <div class="productDetail__priceCard">
+                  <div class="productDetail__priceBody">
+                    <h3 class="productDetail__priceBody-title">Al Gran Mayor</h3>
+                    <p class="productDetail__priceBody-subtitle normal">entre de 50 - 150 cajas </p>
+                  </div>
+                  <div class="productDetail__priceDescription">
+                    <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
+                    <p class="productDetail__priceDescription-unitPrice normal">1,80 $ / unidad</p>
+                  </div>
+                </div>
+  
+                <div class="productDetail__priceCard">
+                  <div class="productDetail__priceBody">
+                    <h3 class="productDetail__priceBody-title">Precio VIP</h3>
+                    <p class="productDetail__priceBody-subtitle normal">Más de 150 cajas </p>
+                  </div>
+                  <div class="productDetail__priceDescription">
+                    <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
+                    <p class="productDetail__priceDescription-unitPrice normal">1,60 $ / unidad</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ADD TO CARD -->
+              <h4 class="productDetail__addAnnouncement">Seleccione la cantidad de cajas a comprar</h4>
+              <!-- <div class="productDetail__addToCart">
+                <button type="button" class="productDetail__addToCart-add">Agregar</button>
+              </div> -->
+              <div class="productDetail__agregado">
+                  <div class="productDetail__agregadoSelect ">
+                    <p class="productDetail__agregarProducto-text">Selecciona una cantidad para agregar al camión </p>
+                    @php $disponible = $product->available_stock; @endphp
+                    @guest
+                      <select id="{{$product->id}}" class="form-control">
+                          <option value="0">0</option>
+                          @for($i = 1; $i <= $disponible; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                          @endfor
+                      </select>
+                    @else 
+                      <select id="{{$product->id}}" class="form-control to_server productSelectStock">
+                          <option value="0">0</option>
+                          @for($i = 1; $i <= $disponible; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                          @endfor>
+                      </select>
+                    @endguest
+                  </div>
+              </div>
+            </div>
           </div>
-         </div>
         </div>
       </div>
     </section>
@@ -93,7 +166,7 @@
 
 
 <!--  Product-relacionados-->
-   <section class="p-0">
+  {{-- <section class="p-0">
     <div class="container">
       <h3 class="text-primary">Productos relacionados</h3>
       <div class="row px-2 mb-1"> <!--  tarjeta-body-->
@@ -249,7 +322,7 @@
     </div>
    </section>
 
-
+--}}
 
 <!-- / Product-relacionados -->
 

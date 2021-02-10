@@ -49,4 +49,9 @@ class Product extends Model
 	{
 		return $this->belongsTo('App\Packaging', 'packaging_id');
 	}
+
+	public function cartDetail()
+	{
+		return $this->hasOne('App\CartDetail', 'product_id');
+	}
 }

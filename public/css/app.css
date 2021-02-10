@@ -11251,7 +11251,7 @@ nav {
 }
 
 .navbar__list-item:not(:first-of-type) {
-  margin-left: 4rem;
+  margin-left: 3rem;
 }
 
 .navbar__list-item-icon {
@@ -11289,8 +11289,9 @@ nav {
 }
 
 .navbar__currencyList {
+  z-index: 200;
   position: absolute;
-  top: 113%;
+  top: 108%;
   right: -57%;
   width: 172px;
   background-color: pink;
@@ -12156,6 +12157,228 @@ nav {
   .login__actionContainer.register {
     margin-bottom: 0;
   }
+}
+
+.almacen__productAdded {
+  opacity: 0;
+}
+
+.almacen__productAdded.active {
+  opacity: 1;
+}
+
+.almancen__agregarProducto-text {
+  color: #FD6721;
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-bottom: 0.7rem;
+}
+
+.productDetail {
+  padding: 0 2rem;
+}
+
+.productDetail__productAdded {
+  position: absolute;
+  opacity: 0;
+}
+
+.productDetail__productAdded.active {
+  position: relative;
+  opacity: 1;
+}
+
+.productDetail__agregarProducto-text {
+  color: #FD6721;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.productDetail__bodySku {
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: 300;
+}
+
+.productDetail__bodyTitle {
+  color: #02528A;
+  font-family: "Righteous", cursive;
+}
+
+.productDetail__bodyDescription {
+  font-family: "Roboto", cursive;
+  color: #838383;
+}
+
+.productDetail__bodyProductUnits {
+  color: #838383;
+  font-family: "Roboto", cursive;
+}
+
+.productDetail__body-categories {
+  color: #02528A;
+  font-family: "Roboto", cursive;
+}
+
+.productDetail__priceCard {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  font-family: "Roboto", cursive;
+  border: 1px solid #FF661B;
+  margin-bottom: 0.5rem;
+}
+
+.productDetail__priceCard.active {
+  background-color: #FF661B;
+}
+
+.productDetail__priceBody-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.productDetail__priceBody-subtitle {
+  font-size: 0.8rem;
+}
+
+.productDetail__priceDescription.active {
+  color: #ffffff;
+}
+
+.productDetail__priceDescription-price {
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.productDetail__priceDescription-unitPrice {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.productDetail__priceDescription-unitPrice.normal {
+  color: #02528A;
+}
+
+.productDetail__addAnnouncement {
+  color: #838383;
+  font-family: "Roboto", cursive;
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: bold;
+  margin: 1.3rem 0;
+}
+
+.productDetail__addToCart-add {
+  border: none;
+  background-color: #FD6721;
+  width: 100%;
+  border-radius: 5px;
+  font-family: "Roboto", cursive;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 0.8rem 0;
+}
+
+.productDetail__agregado {
+  width: 88%;
+  margin: 0 auto;
+}
+
+.productDetail__agregadoSelect {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.productDetail__agregadoIcon {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 1000px) {
+  .productDetail__priceCardsMain {
+    display: flex;
+  }
+
+  .productDetail__priceCard {
+    display: block;
+    text-align: center;
+    flex: 1;
+    margin-right: 0.6rem;
+  }
+
+  .productDetail__priceBody-title,
+  .productDetail__priceDescription-price {
+    font-size: 1rem;
+  }
+
+  .productDetail__priceBody-subtitle {
+    font-size: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .productDetail__priceDescription-unitPrice {
+    font-size: 0.8rem;
+  }
+
+  .productDetail__addAnnouncement {
+    text-align: start;
+  }
+
+  .productDetail__addToCart {
+    width: 57%;
+    margin: 0 auto;
+  }
+
+  .productDetail__agregado {
+    text-align: initial;
+  }
+
+  .productDetail__agregadoIcon {
+    margin-bottom: 1rem;
+  }
+
+  .productDetail__agregadoSelect {
+    width: 100%;
+  }
+}
+
+.productos__text-agregado {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  color: #FF9417;
+}
+
+.productos__select-agregado > label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+  color: #838383;
+}
+
+.productos__select-agregado > select {
+  width: auto;
+  height: 30px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #0068B1;
+}
+
+.align-item-center {
+  align-items: center;
 }
 
 .categorie__mobileSelection {

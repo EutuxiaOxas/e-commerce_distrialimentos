@@ -1,5 +1,4 @@
 //----------------- UI cart class -------------
-
 class CarritoUI {
   constructor(carrito, cart_body, api) {
     this.cart_body = cart_body;
@@ -50,7 +49,7 @@ class CarritoUI {
 								<form class="text-center">
 									<div class="form-group m-0">
 									<label class="labelfs" for="cantidad">Cantidad</label>
-									<input type="number" value="${producto.cantidad}" min="1" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
+									<input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
 									</div>
 								</form>
 								</div>
@@ -112,11 +111,13 @@ class CarritoUI {
   		})
 		  // this.carrito.children[0].children[0].classList.add('cart_on')
 		  this.eventosModal()
+		  this.totalCart();
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
   		// this.carrito.children[0].children[0].classList.remove('cart_on')
+		this.totalCart();
   	}
-
+	
   }
 
   addingAlert(alert){
@@ -129,83 +130,31 @@ class CarritoUI {
   }
 
 
-  totalCart(productos, container, value){
-  	let total_amount = 0;
-  	container.innerHTML = '';
+  totalCart(){
+  	const cartSubTotal 			= document.getElementById('modalcartSubTotal');
+  	const cartIva 	   			= document.getElementById('modalCartIva');
+  	const cartTotal 			= document.getElementById('modalCartTotal');
+  	const cartTotalBolivares 	= document.getElementById('modalCartTotalBolivares');
+	const modalCartFinish		= document.getElementById('modalCartFinish');
 
-  	if(productos.length > 0){
-  		
-  		if(value == 1){
-  			productos.forEach(producto => {
-  				let precio = producto.producto.price,
-  					precio_total = precio * producto.cantidad;
 
-  				total_amount = total_amount + precio_total 
-  				
+	  this.api.getTotalCartAmount()
+	  	.then(res => {
+			  const { total, subTotal, iva, totalBolivar } = res.data;
+			  cartSubTotal.innerText 			= `${subTotal} $`;
+			  cartTotal.innerText				= `${total} $`;
+			  cartIva .innerText				= `${iva} $`;
+			  cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`;
 
-  				container.innerHTML += `
-  					<div class="d-flex mb-3">
-  						<div class=" mr-2">
-  							<img src="/storage/${producto.imagen}" style="width: 60px; height: 60px; object-fit: cover;">
-  						</div>
-  						<div class="d-flex" style="justify-content: space-between; flex:1;">
-  							<div>
-  								<h5 class="outspacing">${producto.producto.title}</h5>
-  								<p class="outspacing"><strong>Cantidad: ${producto.cantidad}</strong></p>
-  								<p class="outspacing"><strong>Precio: ${precio}</strong></p>
-  							</div>
+			  if(total > 0) {
+				modalCartFinish.href = '#'
+			  }
+		  }) 
 
-  							<div>
-  								<h5 class="outspacing">Total: <small>${precio_total} $</small></h5>
-  							</div>
-  						</div>
-  						
-  					</div>
-  				`
-  			})
-  		}
 
-  		if(value == 0){
-  			console.log('sin sesion')
+  	
 
-  			productos.forEach(producto => {
-  				let precio = producto.price;
-
-  				let cadena = precio.split(" ");
-
-  				precio = cadena[0] * producto.cantidad;
-
-  				total_amount = total_amount + precio 
-  				
-
-  				container.innerHTML += `
-  					<div class="d-flex mb-3">
-  						<div class=" mr-2">
-  							<img src="${producto.image}" style="width: 60px; height: 60px; object-fit: cover;">
-  						</div>
-  						<div class="d-flex" style="justify-content: space-between; flex:1;">
-  							<div>
-  								<h5 class="outspacing">${producto.title}</h5>
-  								<p class="outspacing"><strong>Cantidad: ${producto.cantidad}</strong></p>
-  								<p class="outspacing"><strong>Precio: ${producto.price}</strong></p>
-  							</div>
-
-  							<div>
-  								<h5 class="outspacing">Total: <small>${precio} $</small></h5>
-  							</div>
-  						</div>
-  						
-  					</div>
-  				`
-  			})
-  		}
-
-  		container.innerHTML += `
-  			<div>
-  				<h5>Total a pagar: <strong>${total_amount}$</strong></h5>
-  			</div>
-  		`
-  	}
+  	
   }
 
 
@@ -249,19 +198,88 @@ class CarritoUI {
 	  }
   }
 
+  //--------------------- AGREGAR O QUITAR MARCA DE AGREGADO AL PRODUCTO  ---------------------
+
+  addIconOfProductAdded(productos) {
+	  const icons = document.querySelectorAll('.inCart-icon');
+	  
+	  if(icons) {
+		if(productos.length > 0) {
+			// debugger
+			
+			icons.forEach(icon => {
+				let active = false;
+				productos.forEach(producto => {
+					if(producto.producto) {
+						const id = producto.producto.id
+					
+						if(parseInt(icon.id) === id) {
+							active = true;
+							icon.classList.add('active');
+							return;
+						}
+					}
+				})
+				if(active === false) {
+					icon.classList.remove('active');
+				}
+			})
+
+			
+		}else {
+			icons.forEach(icon => {
+				icon.classList.remove('active');
+			})
+		}
+	  }
+  }
+
+  //--------------------- ESTABLECER CANTIDAD EN EL SELECT O REGRESARLO A CERO  ---------------------
+
+  selectStockOfProduct(productos){
+	  const selectButtons = document.querySelectorAll('.productSelectStock');
+
+	  if(selectButtons) {
+		if(productos.length > 0) {
+			selectButtons.forEach(select => {
+				let active = false;
+				productos.forEach(producto => {
+					if(producto.producto) {
+						const { id } = producto.producto;
+
+						if(parseInt(select.id) == id) {
+							active = true;
+							select.selectedIndex = producto.cantidad;
+							return;
+						}
+					}
+				})
+
+				if(!active) {
+					select.selectedIndex = 0;
+				}
+			})
+		}else {
+			selectButtons.forEach(select => {
+				select.selectedIndex = 0;
+			})
+		}
+	  }
+  }
 }
 
-//----------------- API CALLS class --------------
+//-------------------------------------------------------- API CALLS class ----------------------------------
 
 class CartApi {
 	async getCart(){
 		return axios.get('/cart')	 
 	}
 
-	async addToCart(id){
+	async addToCart(id, cantidad){
 
 		return axios.post(`/cart/add`, {
 			product_id: id,
+			cantidad
 		})
 		
 	}
@@ -278,12 +296,19 @@ class CartApi {
 			console.log(err)
 		})
 	}
+
+	async getTotalCartAmount() {
+		return axios.get('/cart/amount')
+		.catch(err => {
+			console.log(err)
+		}) 
+	}
 }
 
 
 
 
-//----------------- LocalSorage class --------------
+//--------------------------------------------------- LocalSorage class ------------------------------------------
 
 
 class Storage{
@@ -461,12 +486,13 @@ function events(value, elements)
 
 	if(value == 1){
 		elements.forEach(element => {
-			element.addEventListener('click', (e) => {
+			element.addEventListener('change', (e) => {
 				const id = e.target.id,
+					  element = e.target,
+					  value = parseInt(e.target.value)
 					alert = document.getElementById('add_alert');
-				console.log(id)
-				
-				apiCart.addToCart(id)
+
+				apiCart.addToCart(id, value)
 					.then(res => {
 						if(res.status == 200){
 							callingCart();
@@ -530,10 +556,16 @@ function callingCart(){
 		.then(res => {
 			productos = res.data;
 			carrito.agregarCarrito(productos);
+			carrito.addIconOfProductAdded(productos);
+			carrito.selectStockOfProduct(productos);
 			// loadProducts(productos);
 			// loadTotalProducts(productos, 1)
 		})
 }
+
+
+
+
 
 
 // function loadTotalProducts(elements,value){

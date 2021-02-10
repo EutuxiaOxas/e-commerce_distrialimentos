@@ -40,7 +40,7 @@
     </ul>
 </nav>
 
-@include('common.header.menuCategories_mobile')
+
 
 <script>
    function init(){

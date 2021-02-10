@@ -1,0 +1,16 @@
+@import './variables';
+
+.almacen__productAdded {
+    opacity: 0;
+}
+
+.almacen__productAdded.active {
+    opacity: 1;
+}
+
+.almancen__agregarProducto-text {
+    color: $navbar_Background;
+    font-size: .7rem;
+    font-weight: bold;
+    margin-bottom: .7rem;
+}

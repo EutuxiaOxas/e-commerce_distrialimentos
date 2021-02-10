@@ -22,7 +22,8 @@ class CartController extends Controller
                 'iva' => $detail->product()->first()->iva->msg,
                 'imagen' => $detail->product()->first()->image,
                 'cantidad' => $detail->cantidad,
-                'empaque' => $detail->product()->first()->packaging->packaging
+                'empaque' => $detail->product()->first()->packaging->packaging,
+                'disponible' => $detail->product()->first()->available_stock
             ];
     	}
 
@@ -46,7 +47,6 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
 
-
     	$user = auth()->user();
 
     	$cart_id = $user->cartVerify()->id;
@@ -58,15 +58,23 @@ class CartController extends Controller
     	if(isset($detalle_activo))
         {
             $contador = $detalle_activo->cantidad;
-            $detalle_activo->cantidad = $contador + 1;
-            $detalle_activo->save();
+            
+            if($request->cantidad > 0) {
+
+                $detalle_activo->cantidad = $request->cantidad;
+                $detalle_activo->save();
+
+            }else {
+                $detalle_activo->delete();
+            }
+
         }else{
             $detail = new CartDetail;
 
             $detail->create([
                 'product_id' => $request->product_id,
                 'cart_id' => $cart_id,
-                'cantidad' => 1,
+                'cantidad' => $request->cantidad,
             ]);
         }
 
@@ -164,13 +172,14 @@ class CartController extends Controller
         $iva = Variable::where('name', 'IVA')->first();
         $dolarPrice = Variable::where('name', 'dolar')->first();
 
-        $total = $cart->cartAmount($iva);
-        $totalBolivares = $total * $dolarPrice->value;
+        $amount = $cart->cartAmount($iva);
+        $totalBolivares = $amount['total'] * $dolarPrice->value;
         
         return [
-            'total' => $total,
+            'total' => $amount['total'],
+            'subTotal' => $amount['subTotal'],
             'totalBolivar' => $totalBolivares,
-            'iva' => $iva->value,
+            'iva' => $amount['iva'] ? $iva->value : 0,
         ];
     
     }
