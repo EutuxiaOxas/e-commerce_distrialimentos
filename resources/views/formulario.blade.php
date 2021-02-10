@@ -160,6 +160,7 @@ $color_header='dark';
               <path d="M37.104 32.522H37.0866C36.6784 32.522 36.3475 32.853 36.3475 33.2611C36.3475 33.6692 36.6784 34.0002 37.0866 34.0002H37.104C37.5123 34.0002 37.8432 33.6692 37.8432 33.2611C37.8432 32.853 37.5123 32.522 37.104 32.522Z" fill="#838383"/>
             </svg>
           </div>
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
         </div>
         <div class="col-9 d-flex align-items-center col-md-10">
           <div class="user-info">
@@ -167,6 +168,15 @@ $color_header='dark';
                 <h5 class="font-weight-bold">Hola, Eutuxia Group CA</h5>
                 <p class="texto-small text-muted">Verifica los datos para completar la compra</p>
               </div>
+=======
+          <div class="col-9 d-flex align-items-center col-md-10">
+            <div class="user-info">
+                <div class="wrapper-info">
+                  <h5 class="font-weight-bold">Hola, {{$user->name}}</h5>
+                  <p class="texto-small text-muted">Verifica los datos para completar la compra</p>
+                </div>
+            </div>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
           </div>
         </div>
       </div>
@@ -348,7 +358,11 @@ $color_header='dark';
                   <p class="font-weight-bold texto-small">Documento</p>
                 </div>
                 <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                   <p class="texto-small text-muted text-md-right">C.I. 20.409.372</p>
+=======
+                  <p class="texto-small text-muted">C.I. {{ $user->documento_identidad ?? 'no definida' }}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                 </div>
               </div>
               <div class="row mb-3">
@@ -356,7 +370,11 @@ $color_header='dark';
                   <p class="font-weight-bold texto-small">Telefono</p>
                 </div>
                 <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                   <p class="texto-small text-muted text-md-right">+58 412 786 9664</p>
+=======
+                  <p class="texto-small text-muted">{{$user->phone}}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                 </div>
               </div>
               <div class="row mb-3">
@@ -364,7 +382,11 @@ $color_header='dark';
                   <p class="font-weight-bold texto-small">Telefono alternativo</p>
                 </div>
                 <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                   <p class="texto-small text-muted text-md-right">+58 412 786 9664</p>
+=======
+                  <p class="texto-small text-muted">{{$user->phone_alternative ?? '  -  '}}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                 </div>
               </div>
               <div class="row">
@@ -629,7 +651,11 @@ $color_header='dark';
                     <p class="text-black font-weight-bold texto-small">Empresa</p>
                   </div>
                   <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                     <p class="texto-small text-right text-muted">Eutuxia Group C.A</p>
+=======
+                    <p class="texto-small text-right text-md-center text-muted">{{$empresa->name}}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -637,7 +663,11 @@ $color_header='dark';
                     <p class="text-black font-weight-bold texto-small">R.I.F</p>
                   </div>
                   <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                     <p class="texto-small text-right text-muted">R.I.F J- 239872321 - 2</p>
+=======
+                    <p class="texto-small text-right text-md-center text-muted">R.I.F {{$empresa->RIF}}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -645,7 +675,11 @@ $color_header='dark';
                     <p class="text-black font-weight-bold texto-small">SADA</p>
                   </div>
                   <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                     <p class="texto-small text-right text-muted">4127869664432</p>
+=======
+                    <p class="texto-small text-right text-md-center text-muted">{{$empresa->SADA}}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                   </div>
                 </div>
                 <div class="row mb-3">
@@ -653,7 +687,11 @@ $color_header='dark';
                     <p class="text-black font-weight-bold texto-small">Horario de atencion</p>
                   </div>
                   <div class="col-6">
+<<<<<<< HEAD:resources/views/sketch/formulario.blade.php
                     <p class="texto-small text-right text-muted">8:00 AM - 11:00 AM</p>
+=======
+                    <p class="texto-small text-right text-md-center text-muted">{{$empresa->getOperationTime()}}</p>
+>>>>>>> 1706e80e217fe17351c141a53a13115a18dadd2a:resources/views/formulario.blade.php
                   </div>
                 </div>
                 <div class="row">
@@ -727,10 +765,8 @@ $color_header='dark';
                 <div class="border shadow mb-3">
                   <div class="info-container p-3 mb-1">
                     <p class="font-weight-bold text-black texto-small pl-1">Direccion Juridica</p>
-                    <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">Calle 1 Avenida 10 Local 45 </p>
-                    <p class="texto-small px-3 py-0 text-muted">Cerca de colegio Moral y Luces</p>
-                    <p class="texto-small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
-                    <p class="texto-small px-3 my-0 py-0 pb-3 text-muted">Juan Perez +58 414 543 4563</p>
+                    <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">{{$empresa->legal_address}}</p>
+                    <p class="texto-small px-3 my-0 py-0 text-muted">{{$empresa->state->state}}, {{$empresa->city->city}} ({{$empresa->postal_code}})</p>
                     <div class="row">
                       <div class="col-12 text-center padding_modal">
                         <a href="#" data-toggle="modal" data-target="#modal-direction" class="texto-small font-weight-bold text-secondary">Editar dirección Jurídica</a>
@@ -1009,10 +1045,10 @@ $color_header='dark';
                     <p class="texto-small px-3 my-0 py-0 pb-2 text-muted">Juan Perez +58 414 543 4563</p>
                     <div class="row mb-1 py-2">
                       <div class="col-6 pr-0">
-                        <p class="font-weight-bold text-black texto-small">Sugerencia de entrega</p>
+                        <p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
                       </div>
                       <div class="col-6 text-md-center">
-                        <p class="texto-small pl-0 text-muted">8:00AM - 11:00AM</p>
+                        <p class="texto-small pl-0 text-muted">Valencia, Lunes 8:00AM - 11:00AM</p>
                       </div>
                     </div>
                     <div class="row pt-2 padding-modal">
@@ -1077,14 +1113,14 @@ $color_header='dark';
                               <div class="form-title container pt-4">
                                 <div class="row">
                                   <div class="col text-center">
-                                    <p class="text-black font-weight-bold">Hora de entrega sugerida</p>
+                                    <p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
                                   </div>
                                 </div>
                               </div>
                               <form>
                                 <div class="form">
                                   <div class="col">
-                                    <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Horario de atención">
+                                    <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Ruta de entrega">
                                   </div>
                                 </div>
                               </form>
