@@ -1,0 +1,43 @@
+.productos__text-agregado{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    
+    color: #FF9417;
+ 
+   
+}
+
+.productos__select-agregado{
+
+}
+.productos__select-agregado > label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    /* identical to box height */
+    
+    color: #838383;
+}
+
+.productos__select-agregado > select{
+    width: auto;
+    height: 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+
+    color: #0068B1;
+}
+
+.align-item-center{
+    align-items: center;
+}
