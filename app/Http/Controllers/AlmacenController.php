@@ -11,15 +11,15 @@ class AlmacenController extends Controller
     public function getAllProducts()
     {
         $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
-        $categorias = Category::all();
+        $categorias = Category::all(); // categorias de productos
         return view('sketch.almacen', compact('productos', 'categorias'));
     }
 
     public function showProduct($slug)
     {
         $product = Product::where('slug', $slug)->with('images')->first();
-
-        return view('sketch.detalle', compact('product'));
+        $categorias = Category::all();
+        return view('sketch.detalle', compact('product', 'categorias'));
     }
 
     public function showProductsByCategory($slug)
