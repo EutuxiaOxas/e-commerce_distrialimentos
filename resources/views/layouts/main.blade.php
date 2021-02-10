@@ -72,7 +72,7 @@
         <script>
             $(document).ready(function(){
                 //carrusel promocional
-              $(".owl-carousel").owlCarousel({
+              $(".owl-carousel#promociones").owlCarousel({
                     loop:true,
                     margin:10,
                     responsiveClass:true,
@@ -96,10 +96,11 @@
                     }
                 });
                 //carrusel de productos
-                $(".owl-carousel-productos").owlCarousel({
+                $(".owl-carousel#productos").owlCarousel({
                     loop:true,
                     margin:10,
                     responsiveClass:true,
+                    autoplay:true,
                     responsive:{
                         0:{
                             items:1,
@@ -112,7 +113,51 @@
                         1000:{
                             items:6,
                             nav:true,
-                            loop:false
+                            loop:true
+                        }
+                    }
+                });
+                //carrusel de productos2
+                $(".owl-carousel#productos2").owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    autoplay:true,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:false
+                        },
+                        600:{
+                            items:4,
+                            nav:false
+                        },
+                        1000:{
+                            items:6,
+                            nav:false,
+                            loop:true
+                        }
+                    }
+                });
+                //carrusel de categorias
+                $(".owl-carousel#categories").owlCarousel({
+                    loop:true,
+                    margin:10,
+                    responsiveClass:true,
+                    autoplay:false,
+                    responsive:{
+                        0:{
+                            items:1,
+                            nav:true
+                        },
+                        600:{
+                            items:4,
+                            nav:false
+                        },
+                        1000:{
+                            items:10,
+                            nav:true,
+                            loop:true
                         }
                     }
                 });

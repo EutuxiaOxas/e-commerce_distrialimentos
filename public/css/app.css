@@ -11465,7 +11465,7 @@ nav {
 }
 
 .padding-card {
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .col-width {
@@ -11619,7 +11619,12 @@ nav {
 
 .perfil__cardListItem-content {
   color: #838383;
-  font-weight: bold;
+  font-weight: 300;
+}
+
+.perfil__cardListItem-content-light {
+  color: #838383;
+  font-weight: 200;
 }
 
 .perfilCardDirection {
@@ -11664,12 +11669,12 @@ nav {
   font-weight: bold;
 }
 
-.perfil__agregarDireccion {
+.perfil__agregarDatos {
   text-align: center;
   margin-bottom: 0.7rem;
 }
 
-.perfil__agregarDireccion a {
+.perfil__agregarDatos a {
   font-family: "Roboto", cursive;
   color: #02528A;
   text-decoration: none;
