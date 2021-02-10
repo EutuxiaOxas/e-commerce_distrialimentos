@@ -17,7 +17,7 @@ class CreateIvasTable extends Migration
             $table->id();
             $table->string('msg'); //mensaje del tipo de Iva, Excento o No excepto.
             $table->boolean('value'); //valor booleano si cuenta con iva o no
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

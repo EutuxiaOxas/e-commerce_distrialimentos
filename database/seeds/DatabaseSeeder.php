@@ -11,15 +11,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RoleSeeders::class);
+        //users
         $this->call(UserSeeder::class);
-        $this->call(IvaSeeder::class);
-        $this->call(PackagingSeeder::class);
-        $this->call(VariableSeeder::class);
-        
+        $this->call(RoleSeeders::class);
+        //Locations
         $this->call(StateSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(TownshipSeeder::class);
-        
+        //delivery routes
+        $this->call(DeliveryRouteSeeder::class);
+        //product variables
+        $this->call(IvaSeeder::class);
+        $this->call(PackagingSeeder::class);
+        //general variables
+        $this->call(VariableSeeder::class);
     }
 }
