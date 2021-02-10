@@ -9,6 +9,19 @@ use Carbon\Carbon;
 class Enterprise extends Model
 {
 
+    protected $fillable = [
+    'user_id', 
+    'name', 
+    'RIF', 
+    'SADA', 
+    'state_id', 
+    'city_id', 
+    'legal_address', 
+    'postal_code', 
+    'opening_time',
+    'closing_time',
+    ];
+
     public function city()
     {
         return $this->belongsTo('App\city');
