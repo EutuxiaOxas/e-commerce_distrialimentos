@@ -976,10 +976,10 @@
             </div>
             <div class="row text-center">
               <div class="col-12 pb-3 pt-4">
-                <button class="btn btn-primary btn-registro">Registrate</button>
+                <a href="/register" class="btn btn-primary btn-registro">Registrate</a>
               </div>
               <div class="col">
-                <p class="small text-muted">Ya tengo una cuenta, <a href="#">Iniciar sesión</a></p>
+                <p class="small text-muted">Ya tengo una cuenta, <a href="/login">Iniciar sesión</a></p>
               </div>
             </div>
           
