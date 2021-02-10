@@ -39,9 +39,7 @@ Route::get('/detalle', function () {
 });
 
 //formulario 
-Route::get('/formulario', function () {
-	return view('sketch.formulario');
-});
+Route::get('/formulario', 'FormController@index')->name('formulario');
 
 //perfil - home - datos 
 // Route::get('/perfil', function () {
