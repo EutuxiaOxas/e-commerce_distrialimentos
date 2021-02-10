@@ -118,7 +118,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/productos', 'HomeController@products')->name('productos');
 Route::get('/producto/{slug}', 'AlmacenController@showProduct')->name('producto.show');
-Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
+Route::get('/categoria-productos/{slug}', 'AlmacenController@showProductsByCategory')->name('product.category.show');
 
 
 
