@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    <title>Formulario</title>
+    Formulario
 @endsection
 
 @php
