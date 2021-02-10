@@ -1097,6 +1097,9 @@ $color_header='dark';
                                     <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Ciudad">
                                   </div>
                                   <div class="col">
+                                    <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Municipio">
+                                  </div>
+                                  <div class="col">
                                     <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Codigo postal">
                                   </div>
                                   <div class="col">
