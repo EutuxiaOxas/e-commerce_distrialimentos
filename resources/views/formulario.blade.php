@@ -136,7 +136,7 @@ $color_header='dark';
       }
       .formularios__Finalizarcompra {
         padding-top: 2rem;
-        margin: 1.2rem 0 0;
+        margin: 3rem 0 0;
       }
     }
     
@@ -1126,12 +1126,12 @@ $color_header='dark';
         </section>
       </div>
 
-      <!-------------------------- Formulario V ----------------------------->
+      <!-------------------------- Formulario Finalizar compra----------------------------->
       <div id="formulario5" class=" col-md-5 formularios__Finalizarcompra noMostrar">
         <section class="pt-4" >
           <div class="container">
-            <div class="row container">
-              <div class="col p-4">
+            <div class="row container m-0">
+              <div class="col p-0">
                 <div class="row Compra mb-0">
                   <div class="col-8">
                     <div class="Compra_text_tittle">
