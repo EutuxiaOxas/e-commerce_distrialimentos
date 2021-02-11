@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->integer('available_stock'); // stock disponible/
             $table->foreignId('iva_id'); // 0: excento de iva, 1: Incluir iva
             $table->foreignId('category_id'); //categoria de precio
+            $table->foreignId('brand_id'); //marcas
             $table->double('detail_price'); // precio al detal
             $table->double('wholesale_price')->nullable(); // precio al mayor 
             $table->double('big_wholesale_price')->nullable(); // precio al gran mayor//

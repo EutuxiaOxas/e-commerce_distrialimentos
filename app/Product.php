@@ -26,7 +26,8 @@ class Product extends Model
 		'vip_price',
 		'amount_min_wholesale',
 		'amount_min_vip',
-		'unit_price'
+		'unit_price',
+		'brand_id'
     ];
 
 

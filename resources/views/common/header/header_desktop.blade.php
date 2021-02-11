@@ -7,7 +7,7 @@
 				</a>
 			</div>
 			<div class="header__search">
-				<form>
+				<form action="{{route('almacen.all')}}">
 					<input class="header__search-input" type="search" name="search" placeholder="Buscar productos, marcas y más...">
 				</form>
 				<div class="header__search--icon">

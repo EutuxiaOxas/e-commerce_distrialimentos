@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Brand;
 use App\ProductImage;
 use App\Iva;
 use App\Packaging;
@@ -47,8 +48,9 @@ class ProductController extends Controller
         $ivas = Iva::all();
         $packagings = Packaging::all();
     	$categorias = Category::all();
+    	$brands = Brand::all();
         $secName = 'tienda';
-    	return view('cms.productos.crear_producto', compact('categorias', 'secName', 'packagings', 'ivas'));
+    	return view('cms.productos.crear_producto', compact('categorias', 'secName', 'packagings', 'ivas', 'brands'));
     }
     //--------- GUARDAR PRODUCTO -------
     public function guardarProducto(Request $request)
@@ -81,7 +83,8 @@ class ProductController extends Controller
             'vip_price' => $request->vip_price,
             'amount_min_wholesale' => $request->amount_min_wholesale,
             'amount_min_vip' => $request->amount_min_vip,
-            'detail_price' => $request->detail_price
+            'detail_price' => $request->detail_price,
+            'brand_id' => $request->brand_id
         ]);
         
 
@@ -109,8 +112,9 @@ class ProductController extends Controller
         $ivas = Iva::all();
         $packagings = Packaging::all();
     	$categorias = Category::all();
+        $brands = Brand::all();
         $secName = 'tienda';
-    	return view('cms.productos.editar_producto', compact('product', 'categorias', 'secName', 'ivas', 'packagings'));
+    	return view('cms.productos.editar_producto', compact('product', 'categorias', 'secName', 'ivas', 'packagings', 'brands'));
     }
 
 
@@ -153,7 +157,8 @@ class ProductController extends Controller
                     'units_packaging' =>  $request->units_packaging,
                     'vip_price' => $request->vip_price,
                     'amount_min_wholesale' => $request->amount_min_wholesale,
-                    'amount_min_vip' => $request->amount_min_vip
+                    'amount_min_vip' => $request->amount_min_vip,
+                    'brand_id' => $request->brand_id
     	        ]);
     	    } else {
     	        return back()->with('message', 'No se pudo actualizar el producto');
@@ -178,7 +183,8 @@ class ProductController extends Controller
                 'vip_price' => $request->vip_price,
                 'amount_min_wholesale' => $request->amount_min_wholesale,
                 'amount_min_vip' => $request->amount_min_vip,
-                'detail_price'  => $request->detail_price
+                'detail_price'  => $request->detail_price,
+                'brand_id' => $request->brand_id
     	    ]);
     	}
 

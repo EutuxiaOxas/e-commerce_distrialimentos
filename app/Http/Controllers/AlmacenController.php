@@ -8,9 +8,13 @@ use App\Category;
 
 class AlmacenController extends Controller
 {
-    public function getAllProducts()
+    public function getAllProducts(Request $request)
     {
-        $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
+        if($request->search){
+            $productos = Product::with(['category', 'cartDetail'])->where('title', 'LIKE', '%'.$request->search.'%')->paginate(25);
+        }else {
+            $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
+        }
         $categorias = Category::all(); // categorias de productos
         return view('sketch.almacen', compact('productos', 'categorias'));
     }
