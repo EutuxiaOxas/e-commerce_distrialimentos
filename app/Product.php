@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Variable;
 
 class Product extends Model
 {
@@ -54,5 +55,21 @@ class Product extends Model
 	public function cartDetail()
 	{
 		return $this->hasOne('App\CartDetail', 'product_id');
+	}
+
+	public function getPrice($type, $price) 
+	{
+
+		$value = '';
+
+		if($type === 'USD') {
+			$value = $price;
+		}elseif($type === 'VES') {
+			$dolarPrice = Variable::where('name', 'dolar')->first();
+			$value = $price * $dolarPrice->value;
+			$value = number_format($value, 0, ',', '.');
+		}
+
+		return $value;
 	}
 }

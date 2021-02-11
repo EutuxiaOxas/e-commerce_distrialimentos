@@ -17,6 +17,27 @@ use App\Category;
 
 // SOLO PARA MAQUETACION 
 
+//CAMBIAR TIPO DE MONEDA
+Route::get('/currency/{type}', function($type) {
+	if($type === 'usd')
+	{
+
+		if(session()->has('currency')) {
+			session()->forget('currency');
+			session(['currency' => 'USD']);
+		}
+
+	}else 
+	{
+		if(session()->has('currency')) {
+			session()->forget('currency');
+			session(['currency' => 'VES']);
+		}
+	}
+
+	return back();
+})->name('active.curency');
+
 //home 
 Route::get('/', function () {
 	$banners_principales = Logo_Banner::where('tipo','principal')->get();

@@ -71,7 +71,7 @@
 			<div id="currency_change" class="navbar__currency">
 				<a  class="navbar__currency--choose" href="#">
 					<span class="navbar__currency--choose-title">
-						USD
+						{{session('currency')}}
 					</span>
 					<span>
 						<svg width="14" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,10 +85,10 @@
 						<p >DIVISAS</p>
 					</div>
 					<div class="navbar__currencyList--item  usd choose">
-						<a class="navbar__currencyList--itemOption" href="#">USD <span>(Dolares)</span></a>
+						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'usd')}}">USD <span>(Dolares)</span></a>
 					</div>
 					<div class="navbar__currencyList--item ves choose">
-						<a class="navbar__currencyList--itemOption " href="#">VES <span>(Bolivares)</span></a>
+						<a class="navbar__currencyList--itemOption " href="{{route('active.curency', 'ves')}}">VES <span>(Bolivares)</span></a>
 					</div>
 				</div>
 			</div>

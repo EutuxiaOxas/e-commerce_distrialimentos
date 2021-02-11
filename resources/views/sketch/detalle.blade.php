@@ -103,7 +103,7 @@
                     <p class="productDetail__priceBody-subtitle">menos de 50 cajas </p>
                   </div>
                   <div class="productDetail__priceDescription active">
-                    <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
+                    <h3 class="productDetail__priceDescription-price">$ {{$product->getPrice(session('currency'), $product->wholesale_price)}} </h3>
                     <p class="productDetail__priceDescription-unitPrice">2,00 $ / unidad</p>
                   </div>
                 </div>
@@ -114,7 +114,7 @@
                     <p class="productDetail__priceBody-subtitle normal">entre de 50 - 150 cajas </p>
                   </div>
                   <div class="productDetail__priceDescription">
-                    <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
+                    <h3 class="productDetail__priceDescription-price">$ {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} </h3>
                     <p class="productDetail__priceDescription-unitPrice normal">1,80 $ / unidad</p>
                   </div>
                 </div>
@@ -125,7 +125,7 @@
                     <p class="productDetail__priceBody-subtitle normal">Más de 150 cajas </p>
                   </div>
                   <div class="productDetail__priceDescription">
-                    <h3 class="productDetail__priceDescription-price">$ 20,00 </h3>
+                    <h3 class="productDetail__priceDescription-price">$ {{$product->getPrice(session('currency'), $product->vip_price)}} </h3>
                     <p class="productDetail__priceDescription-unitPrice normal">1,60 $ / unidad</p>
                   </div>
                 </div>
