@@ -272,7 +272,7 @@
               <div class="info-container p-3 mb-1">
                 <p class="font-weight-bold text-black texto-small pl-1">Direccion Juridica</p>
                 <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">{{$empresa->legal_address}}</p>
-                <p class="texto-small px-3 my-0 py-0 text-muted">{{$empresa->state}}, {{$empresa->city}} ({{$empresa->postal_code}})</p>
+                <p class="texto-small px-3 my-0 py-0 text-muted">{{$empresa->state->state}}, {{$empresa->city->city}} ({{$empresa->postal_code}})</p>
                 <div class="row">
                   <div class="col-12 text-center padding_modal">
                     <a href="#" data-toggle="modal" data-target="#modal-direction" class="texto-small font-weight-bold text-secondary">Editar dirección Jurídica</a>
