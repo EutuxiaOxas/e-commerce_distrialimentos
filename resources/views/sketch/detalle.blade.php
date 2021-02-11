@@ -10,6 +10,24 @@
     @include('common.header.nav_header_mobile')
  
    <style>
+  .productDetail__componenteCamion {
+    height:25px;
+    width: 112px;
+    padding: 0 8px;
+    border-radius: 12px;
+    background: #FF9417;
+    color:white;
+    font-weight:bold;
+    font-size: 13px;
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+    /* padding: 0.5rem; */
+  }
+  .productDetail__componenteCamion img{
+    width: fit-content;
+    padding-top:4px;
+  }
    .marb {  /* margen entre palabras vista movil */
      margin-bottom:3px;
    }
@@ -75,7 +93,10 @@
                           </clipPath>
                           </defs>
                         </svg>
-                      </i>En camión</i>
+                        <div class="productDetail__componenteCamion">
+                          <img src="{{asset('images/imgs/check.svg')}}" alt="Check-Nike">
+                          <p>En camión</p>
+                        </div>
                     </span> 
                   </div>
               <h4 class="productDetail__bodyTitle mb-0 marb">{{$product->title}}</h4>
