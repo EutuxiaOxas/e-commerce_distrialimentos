@@ -14,8 +14,9 @@ class FormController extends Controller
         $user = auth()->user();
         $empresa =  Enterprise::find($user->id); //empresa
         $direcciones = Direction::find($user->id); //direcciones
+        $categorias = Category::all();
         //result
-        return view('formulario', compact('user','empresa','direcciones'));
+        return view('formulario', compact('user','empresa','direcciones', 'categorias'));
     }
 
 }
