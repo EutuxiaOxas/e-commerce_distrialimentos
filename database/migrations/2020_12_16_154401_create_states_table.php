@@ -17,7 +17,7 @@ class CreateStatesTable extends Migration
             $table->id();
             $table->string('state');
             $table->integer('coverage');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

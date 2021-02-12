@@ -39,9 +39,7 @@ Route::get('/detalle', function () {
 });
 
 //formulario 
-Route::get('/formulario', function () {
-	return view('sketch.formulario');
-});
+Route::get('/formulario', 'FormController@index')->name('formulario');
 
 //perfil - home - datos 
 // Route::get('/perfil', function () {
@@ -104,7 +102,7 @@ Route::get('/politicas', function () {
 Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.login');
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
-
+//--------- PERFIL ROUTES ---------
 Route::middleware('auth')->group(function () {
 
 	Route::get('/perfil', 'PerfilController@mis_datos')
@@ -112,6 +110,10 @@ Route::middleware('auth')->group(function () {
 
 	Route::get('/perfil/compras', 'PerfilController@mis_compras')
 	->name('perfil.compras');
+
+	Route::post('/perfil/userInfo', 'PerfilController@agregarDatosPersonales')->name('user.info.update');
+	Route::post('/perfil/userEnterprise/update', 'PerfilController@agregarDatosDeEmpresa')->name('user.enterprise.update');
+	Route::post('/perfil/userShippingAddreses/update', 'PerfilController@agregarDirecciones')->name('user.addreses.update');
 });
 
 // Route::get('/productos', 'HomeController@products')->name('productos');
@@ -277,3 +279,5 @@ Route::get('/pago', 'PagosController@agregarPago');
 Route::get('/nuevo/pago', 'PagosController@agregarNuevoPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');
+
+
