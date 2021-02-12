@@ -105,7 +105,7 @@
 							<h2 class="perfil__cardListItem-title">Dirección jurídica</h2>
 							<div class="perfil__cardListItem-content">
 								<h3 class="perfil__cardDireccion-title">{{$empresa->legal_address}}</h3>
-								<p class="perfil__cardListItem-content">{{$empresa->state}}, {{$empresa->city}} ({{$empresa->postal_code}})</p>
+								<p class="perfil__cardListItem-content">{{$empresa->state->state}}, {{$empresa->city->city}} ({{$empresa->postal_code}})</p>
 							</div>
 						</li>
 					</ul>
