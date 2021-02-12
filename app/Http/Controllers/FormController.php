@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Enterprise;
 use App\Direction;
+use App\Category;
 
 class FormController extends Controller
 {
