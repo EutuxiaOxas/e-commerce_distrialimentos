@@ -63,6 +63,7 @@ Route::get('/detalle', function () {
 
 //formulario 
 Route::get('/formulario', 'FormController@index')->name('formulario');
+Route::get('/gracias-por-su-pedido', 'FormController@thanks')->name('formulario.thanks');
 
 //perfil - home - datos 
 // Route::get('/perfil', function () {

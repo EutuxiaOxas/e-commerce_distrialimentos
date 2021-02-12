@@ -20,4 +20,13 @@ class FormController extends Controller
         return view('formulario', compact('user','empresa','direcciones', 'categorias'));
     }
 
+    //Agradecimiento
+    function thanks() {
+        //vars
+        $user = auth()->user();
+        $categorias = Category::all();
+        //result
+        return view('pedido-completado', compact('user', 'categorias'));
+    }
+
 }

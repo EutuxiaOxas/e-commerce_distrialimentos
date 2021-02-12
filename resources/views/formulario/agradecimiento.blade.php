@@ -1,6 +1,4 @@
-<section id="formulario4" class="formularios__sections hide show formularios__Height">
-
-    <section id=sell-steps class="pb-1 pt-2">
+    <section id=sell-steps class="pb-1 pt-2 formularios__Height formularios__sections">
       <div class="container">
         <div class="row p-1">
           <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
@@ -42,18 +40,16 @@
     </section>
 
     <!-- Buttoms-->
-    <section class="my-0 py-3">
+    <section class="my-0 py-3 formularios__sections">
         <div class="container">
           <div class="row">
             <div class="col-5 pr-0">
               <button class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
             </div>
             <div class="col-7 pl-0">
-              <button class="btn btn-primary btn-sm btn-block formularios__btn-right">Ver Compras</button>
+              <a href="{{route('perfil.compras')}}" class="btn btn-primary btn-sm btn-block formularios__btn-right">Ver Compras</a>
             </div>
           </div>
         </div>
     </section>
     <!-- /Buttoms-->
-
-  </section>
