@@ -87,7 +87,10 @@ $color_header='dark';
                       </div>
                   </div>
                   <div class="card-pricing text-center align-self-end">
-                    <h4 class="font-weight-bold mb-0 mt-3">{{$producto->getPrice(session('currency'), $producto->wholesale_price)}} $</h4>
+                    <h4 class="font-weight-bold mb-0 mt-3">
+                      {{$producto->getPrice(session('currency'), $producto->wholesale_price)}} 
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                    </h4>
                     <p class="smaller">{{$producto->packaging->packaging}} de {{$producto->units_packaging}} unidades</p>
                     {{-- producto agregado --}}
                     <div class="almancen__agregarProducto pt-2">

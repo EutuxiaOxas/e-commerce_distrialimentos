@@ -23,7 +23,16 @@ class AlmacenController extends Controller
     {
         $product = Product::where('slug', $slug)->with('images')->first();
         $categorias = Category::all();
-        return view('sketch.detalle', compact('product', 'categorias'));
+        
+        //PRECIOS POR UNIDAD
+
+        $vipUnitPrice = round($product->vip_price / $product->units_packaging, 2);
+        $alMayorUnitPrice = round($product->wholesale_price / $product->units_packaging, 2);
+        $alGranMayorUnitPrice = round($product->big_wholesale_price / $product->units_packaging, 2);
+
+        // dd($alGranMayorUnitPrice);
+
+        return view('sketch.detalle', compact('product', 'categorias', 'vipUnitPrice', 'alMayorUnitPrice', 'alGranMayorUnitPrice'));
     }
 
     public function showProductsByCategory($slug)

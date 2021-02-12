@@ -100,33 +100,53 @@
                 <div class="productDetail__priceCard active">
                   <div class="productDetail__priceBody">
                     <h3 class="productDetail__priceBody-title">Al mayor</h3>
-                    <p class="productDetail__priceBody-subtitle">menos de 50 cajas </p>
+                    <p class="productDetail__priceBody-subtitle">menos de {{$product->amount_min_big_wholesale}} cajas </p>
                   </div>
                   <div class="productDetail__priceDescription active">
-                    <h3 class="productDetail__priceDescription-price">$ {{$product->getPrice(session('currency'), $product->wholesale_price)}} </h3>
-                    <p class="productDetail__priceDescription-unitPrice">2,00 $ / unidad</p>
+                    <h3 class="productDetail__priceDescription-price">
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}} 
+                      {{$product->getPrice(session('currency'), $product->wholesale_price)}} 
+                    </h3>
+                    <p class="productDetail__priceDescription-unitPrice">
+                      {{$product->getPrice(session('currency'), $alMayorUnitPrice)}}  
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      / unidad
+                    </p>
                   </div>
                 </div>
   
                 <div class="productDetail__priceCard">
                   <div class="productDetail__priceBody">
                     <h3 class="productDetail__priceBody-title">Al Gran Mayor</h3>
-                    <p class="productDetail__priceBody-subtitle normal">entre de 50 - 150 cajas </p>
+                    <p class="productDetail__priceBody-subtitle normal">entre de {{$product->amount_min_big_wholesale}} - {{$product->amount_min_vip}} cajas </p>
                   </div>
                   <div class="productDetail__priceDescription">
-                    <h3 class="productDetail__priceDescription-price">$ {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} </h3>
-                    <p class="productDetail__priceDescription-unitPrice normal">1,80 $ / unidad</p>
+                    <h3 class="productDetail__priceDescription-price">
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} 
+                    </h3>
+                    <p class="productDetail__priceDescription-unitPrice normal">
+                      {{$product->getPrice(session('currency'), $alGranMayorUnitPrice)}}  
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      / unidad
+                    </p>
                   </div>
                 </div>
   
                 <div class="productDetail__priceCard">
                   <div class="productDetail__priceBody">
                     <h3 class="productDetail__priceBody-title">Precio VIP</h3>
-                    <p class="productDetail__priceBody-subtitle normal">Más de 150 cajas </p>
+                    <p class="productDetail__priceBody-subtitle normal">Más de {{$product->amount_min_vip}} cajas </p>
                   </div>
                   <div class="productDetail__priceDescription">
-                    <h3 class="productDetail__priceDescription-price">$ {{$product->getPrice(session('currency'), $product->vip_price)}} </h3>
-                    <p class="productDetail__priceDescription-unitPrice normal">1,60 $ / unidad</p>
+                    <h3 class="productDetail__priceDescription-price">
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{$product->getPrice(session('currency'), (float) $product->vip_price)}} 
+                    </h3>
+                    <p class="productDetail__priceDescription-unitPrice normal">
+                      {{$product->getPrice(session('currency'), $vipUnitPrice)}} 
+                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}} / unidad
+                      </p>
                   </div>
                 </div>
               </div>
