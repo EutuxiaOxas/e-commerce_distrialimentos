@@ -18,7 +18,7 @@ class CreateCitiesTable extends Migration
             $table->foreignId('state_id');
             $table->string('city');
             $table->string('delivery_time');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

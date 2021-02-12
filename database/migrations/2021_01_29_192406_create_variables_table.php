@@ -17,7 +17,7 @@ class CreateVariablesTable extends Migration
             $table->id();
             $table->string('name');
             $table->double('value');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 
