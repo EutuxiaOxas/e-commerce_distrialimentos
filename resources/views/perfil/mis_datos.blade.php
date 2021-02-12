@@ -6,12 +6,12 @@
 
 	<style>
 		.formularios__inputBorders {
-      border-bottom: 1px solid #FD6721;
-      padding: 1.5rem 0.25rem 0.25rem;
-    }
+		border-bottom: 1px solid #FD6721;
+		padding: 1.5rem 0.25rem 0.25rem;
+	}
 
     .formularios__inputBorders:focus {
-      outline:none;
+      	outline:none;
     }
 	</style>
 
@@ -204,7 +204,7 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" name="name" placeholder="Nombre completo" required>
 							</div>
 							<div class="col">
-								<input type="number" class="form-control-plaintext formularios__inputBorders" name="documento_identidad" placeholder="Cedula [ej: v-23432578]" required>
+								<input type="text" class="form-control-plaintext formularios__inputBorders" name="documento_identidad" placeholder="Cedula [ej: v-23432578]" required>
 							</div>
 							<div class="col">
 								<input type="text" class="form-control-plaintext formularios__inputBorders" name="phone" placeholder="Telefono [ej: 0241-8524234]" required>
@@ -214,11 +214,11 @@
 							</div>
 						</div>
 						<div class="container">
-							<div class="row mb-1">
+							<div class="row mb-1 mt-4 pt-4">
 								<button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Agregar</button>
 							</div>
 							<div class="row">
-								<p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+								<p class="text-muted texto-small text-center">Al hacer click en agregar usted confirma que los datos administrados son reales</p>
 							</div>
 						</div>
 					</form>
@@ -236,7 +236,7 @@
 					<div class="container">
 						<div class="row">
 						<div class="col-10 mb-0">
-							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h4>
+							<h3 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h3>
 							<p class="texto-small texto-muted">Agregue los datos solicitados...</p>
 						</div>
 						<div class="col-2">
@@ -270,35 +270,35 @@
 						<div class="col">
 							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="postal_code" placeholder="Código postal [ej: 2002]">
 						</div>
-						<div class="col mb-3">
+						<div class="col">
 							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="SADA" placeholder="SADA">
 						</div>
 						<div class="col mb-3">
-							<select class="form-control-plaintext" required required name="state_id" >
+							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
 								<option value="">Escoge un estado</option>
 								@foreach($estados as $estado)
 									<option value="{{$estado->id}}">{{$estado->state}}</option>
 								@endforeach
 							</select>
-							<select class="form-control-plaintext" required required name="city_id" >
+							<select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
 								<option value="">Escoge una ciudad</option>
 								@foreach($ciudades as $ciudad)
 									<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 								@endforeach
 							</select>
 						</div>
-						<div class="col form-group">
-							<h5 class="">Horario de atención <small>(apertura - cierre)</small></h5>
-							<input type="time" class="form-control-plaintext" required required name="opening_time">
-							<input type="time" class="form-control-plaintext" required required name="closing_time">
+						<div class="col form-group my-4 py-4">
+							<h5 class="mt-2 pt-2 font-weight-bold">Horario de atención <small>(apertura - cierre)</small></h5>
+							<input type="time" class="form-control-plaintext formularios__inputBorders" required required name="opening_time">
+							<input type="time" class="form-control-plaintext formularios__inputBorders" required required name="closing_time">
 						</div>
 						</div>
 						<div class="container">
-							<div class="row mb-1">
+							<div class="row mb-1 mt-4 pt-4">
 								<button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Agregar</button>
 							</div>
 							<div class="row">
-								<p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+								<p class="text-muted texto-small text-center">Al hacer click en agregar usted confirma que los datos administrados son reales</p>
 							</div>
 						</div>
 					</form>                                      
@@ -308,7 +308,7 @@
 	</div>
 	<!-- Fin Modal datos de empresa -->
 
-	<!-- Modal datos de Direccio -->
+	<!-- Modal datos de Direccion -->
 	<div class="modal fade" id="modal-directionEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content p-3">
@@ -339,19 +339,19 @@
 						@csrf
 						<div class="form">
 							<div class="col">
-								<select class="form-control-plaintext" required name="state_id" >
+								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
 										<option value="{{$estado->id}}">{{$estado->state}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext"  required name="city_id" >
+								<select class="form-control-plaintext formularios__inputBorders"  required name="city_id" >
 									<option value="">Escoge una ciudad</option>
 									@foreach($ciudades as $ciudad)
 										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext" required name="township_id" >
+								<select class="form-control-plaintext formularios__inputBorders" required name="township_id" >
 									<option value="">Escoge un municipio</option>
 									@foreach($municipios as $municipio)
 										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
@@ -370,9 +370,9 @@
 							<div class="col">
 								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable_phone" placeholder="Telefono Oficina">
 							</div>
-							<div class="col text-center my-4">
+							<div class="col text-center my-4 py-2">
 								<p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
-								<select class="form-control-plaintext" required name="delivery_route_id" >
+								<select class="form-control-plaintext formularios__inputBorders" required name="delivery_route_id" >
 									<option value="">Escoge una ruta de entrega</option>
 									@foreach($rutaEntregas as $rutaEntrega)
 										<option value="{{$rutaEntrega->id}}">{{$rutaEntrega->name}}</option>
@@ -380,11 +380,11 @@
 								</select>
 							</div>
 							<div class="container">
-								<div class="row mb-0">
-									<button type="submit" class="btn btn-primary btn-block">Editar</button>
+								<div class="row mb-0 mt-4 pt-4">
+									<button type="submit" class="btn btn-primary btn-block">Agregar</button>
 								</div>
 								<div class="row">
-								<p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+								<p class="text-muted texto-small text-center">Al hacer click en agregar usted confirma que los datos administrados son reales</p>
 								</div>
 							</div>
 						</div>
@@ -393,7 +393,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Fin Modal datos de Direccio -->
+	<!-- Fin Modal datos de Direccion -->
 
 
 
