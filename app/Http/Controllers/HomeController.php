@@ -24,7 +24,9 @@ class HomeController extends Controller
     {
         $sliders = Logo_Banner::where('tipo', 'banner')->where('status', 1)->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();
-        return view('landing', compact('sliders', 'logo'));
+        $categorias = Category::all();
+
+        return view('landing', compact('sliders', 'logo','categorias'));
     }
 
 

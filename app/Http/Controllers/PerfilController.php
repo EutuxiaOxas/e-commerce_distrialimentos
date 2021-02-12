@@ -9,6 +9,7 @@ use App\State;
 use App\City;
 use App\Township;
 use App\DeliveryRoute;
+use App\Category;
 
 class PerfilController extends Controller
 {
@@ -23,14 +24,15 @@ class PerfilController extends Controller
         $municipios = Township::all(); //municipios
         $rutaEntregas = DeliveryRoute::all(); //municipios
         $ordenes = $user->orders()->where('status', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
-  
-        return view('perfil.mis_datos', compact('user', 'ordenes','empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas'));
+        $categorias = Category::all();
+        return view('perfil.mis_datos', compact('user', 'ordenes','empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias'));
     }
 
     //dashboard - mis compras
     public function mis_compras()
     {
-        return view('perfil.compras');
+        $categorias = Category::all();
+        return view('perfil.compras', compact('categorias'));
 
     }
 

@@ -4,20 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Category;
 
 class AlmacenController extends Controller
 {
-    public function getAllProducts()
+    public function getAllProducts(Request $request)
     {
-        $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
-
-        return view('sketch.almacen', compact('productos'));
+        if($request->search){
+            $productos = Product::with(['category', 'cartDetail'])->where('title', 'LIKE', '%'.$request->search.'%')->paginate(25);
+        }else {
+            $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
+        }
+        $categorias = Category::all(); // categorias de productos
+        return view('sketch.almacen', compact('productos', 'categorias'));
     }
 
     public function showProduct($slug)
     {
         $product = Product::where('slug', $slug)->with('images')->first();
+        $categorias = Category::all();
+        
+        //PRECIOS POR UNIDAD
 
-        return view('sketch.detalle', compact('product'));
+        $vipUnitPrice = round($product->vip_price / $product->units_packaging, 2);
+        $alMayorUnitPrice = round($product->wholesale_price / $product->units_packaging, 2);
+        $alGranMayorUnitPrice = round($product->big_wholesale_price / $product->units_packaging, 2);
+
+        // dd($alGranMayorUnitPrice);
+
+        return view('sketch.detalle', compact('product', 'categorias', 'vipUnitPrice', 'alMayorUnitPrice', 'alGranMayorUnitPrice'));
+    }
+
+    public function showProductsByCategory($slug)
+    {
+        $product_categorie = Category::where('slug', $slug)->first();
+        $categorias = Category::all();
+        $productos = $product_categorie->products()->paginate(25);
+        return view('sketch.almacen', compact('productos', 'categorias'));
     }
 }

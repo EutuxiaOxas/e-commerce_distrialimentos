@@ -17,12 +17,35 @@ use App\Category;
 
 // SOLO PARA MAQUETACION 
 
+//CAMBIAR TIPO DE MONEDA
+Route::get('/currency/{type}', function($type) {
+	if($type === 'usd')
+	{
+
+		if(session()->has('currency')) {
+			session()->forget('currency');
+			session(['currency' => 'USD']);
+		}
+
+	}else 
+	{
+		if(session()->has('currency')) {
+			session()->forget('currency');
+			session(['currency' => 'VES']);
+		}
+	}
+
+	return back();
+})->name('active.curency');
+
 //home 
 Route::get('/', function () {
 	$banners_principales = Logo_Banner::where('tipo','principal')->get();
 	$banners_promocionales = Logo_Banner::where('tipo','promocional')->get();
 	$categories = Category::all();
-	return view('home', compact('banners_principales','banners_promocionales', 'categories'));
+
+	$categorias = $categories;
+	return view('home', compact('banners_principales','banners_promocionales', 'categories','categorias'));
 })->name('home');
 
 //nosotros 
@@ -118,7 +141,7 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/productos', 'HomeController@products')->name('productos');
 Route::get('/producto/{slug}', 'AlmacenController@showProduct')->name('producto.show');
-Route::get('/categoria-productos/{slug}', 'HomeController@showProductsByCategory')->name('product.category.show');
+Route::get('/categoria-productos/{slug}', 'AlmacenController@showProductsByCategory')->name('product.category.show');
 
 
 

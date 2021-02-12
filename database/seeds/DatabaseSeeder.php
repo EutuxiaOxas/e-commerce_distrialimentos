@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PackagingSeeder::class);
         //general variables
         $this->call(VariableSeeder::class);
+        //Marcas
+        $this->call(BrandSeeder::class);
     }
 }

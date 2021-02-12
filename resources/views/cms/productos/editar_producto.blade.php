@@ -125,6 +125,15 @@
 			</select>
 		</div>
 		<div class="form-group col-6">
+			<h5>Marcas</h5>
+			<select id="marca" class="form-control" name="brand_id">
+				<option value="0">Selecciona una categoria</option>
+				@foreach($brands as $brand)
+					<option value="{{$brand->id}}" {{$product->brand_id == $brand->id ? 'selected' : ''}}>{{$brand->brand}}</option>
+				@endforeach
+			</select>
+		</div>
+		<div class="form-group col-6">
 			<h5>Imagen principal</h5>
 			<input id="imagen" type="file" name="image">
 		</div>
