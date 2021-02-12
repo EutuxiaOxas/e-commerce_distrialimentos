@@ -295,7 +295,7 @@
             <button id=btn_prior2 class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
           </div>
           <div class="col-7 pl-0">
-            <button id=btn_next3 class="btn btn-primary btn-sm btn-block formularios__btn-right">Finalizar Compra</button>
+            <a id="" href="{{route('order.store')}}" class="btn btn-primary btn-sm btn-block formularios__btn-right">Finalizar Compra</a>
           </div>
         </div>
       </div>

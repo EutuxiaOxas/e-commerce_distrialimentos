@@ -147,7 +147,7 @@ class CarritoUI {
 			  cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`;
 
 			  if(total > 0) {
-				modalCartFinish.href = '#'
+				modalCartFinish.href = '/formulario'
 			  }
 		  }) 
 
