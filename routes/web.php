@@ -63,6 +63,7 @@ Route::get('/detalle', function () {
 
 //formulario 
 Route::get('/formulario', 'FormController@index')->name('formulario');
+Route::get('/gracias-por-su-pedido', 'FormController@thanks')->name('formulario.thanks');
 
 //perfil - home - datos 
 // Route::get('/perfil', function () {
@@ -101,17 +102,20 @@ Route::get('/formulario-nuevo', function () {
 
 //ayuda 
 Route::get('/ayuda', function () {
-	return view('en_desarrollo');
+	$categorias = Category::all();
+	return view('en_desarrollo', compact('categorias'));
 })->name('ayuda');
 
 //Soy nuevo 
 Route::get('/soy-nuevo', function () {
-	return view('en_desarrollo');
+	$categorias = Category::all();
+	return view('en_desarrollo', compact('categorias'));
 })->name('soy-nuevo');
 
 //politicas 
 Route::get('/politicas', function () {
-	return view('en_desarrollo');
+	$categorias = Category::all();
+	return view('en_desarrollo', compact('categorias'));
 })->name('politicas');
 
 //FIN DE SOLO PARA MAQUETACION

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Enterprise;
 use App\Direction;
+use App\Category;
 
 class FormController extends Controller
 {
@@ -17,6 +18,15 @@ class FormController extends Controller
         $categorias = Category::all();
         //result
         return view('formulario', compact('user','empresa','direcciones', 'categorias'));
+    }
+
+    //Agradecimiento
+    function thanks() {
+        //vars
+        $user = auth()->user();
+        $categorias = Category::all();
+        //result
+        return view('pedido-completado', compact('user', 'categorias'));
     }
 
 }
