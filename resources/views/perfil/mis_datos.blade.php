@@ -178,7 +178,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-10 mb-0">
-								<h5 class="modal-title text-secondary font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
+								<h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de usuario</h4>
 								<p class="texto-small text-muted">Agregue los datos solicitados...</p>
 							</div>
 							<div class="col-2">
@@ -193,7 +193,7 @@
 					<div class="form-title container">
 						<div class="row">
 							<div class="col text-center">
-								<p class="font-weight-bold">Datos de usuario</p>
+								<h5 class="font-weight-bold">Datos de usuario</h5>
 							</div>
 						</div>
 					</div>
@@ -236,7 +236,7 @@
 					<div class="container">
 						<div class="row">
 						<div class="col-10 mb-0">
-							<h3 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h3>
+							<h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h4>
 							<p class="texto-small texto-muted">Agregue los datos solicitados...</p>
 						</div>
 						<div class="col-2">
@@ -251,7 +251,7 @@
 					<div class="form-title container">
 						<div class="row">
 						<div class="col text-center">
-							<p class="text-black font-weight-bold">Datos de empresa</p>
+							<h5 class="font-weight-bold">Datos de empresa</h5>
 						</div>
 						</div>
 					</div>
@@ -331,7 +331,7 @@
 					<div class="form-title container">
 						<div class="row">
 							<div class="col text-center">
-								<p class="text-black font-weight-bold">Direccion Juridica</p>
+								<h5 class="text-black font-weight-bold">Direccion Juridica</h5>
 							</div>
 						</div>
 					</div>
