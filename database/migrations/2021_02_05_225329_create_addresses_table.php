@@ -23,6 +23,7 @@ class CreateAddressesTable extends Migration
             $table->string('postal_code');
             $table->string('responsable');
             $table->string('responsable_phone')->nullable();
+            $table->foreignId('delivery_route_id'); //Ruta de entrega
             $table->string('type');
             $table->timestamps();
         });
