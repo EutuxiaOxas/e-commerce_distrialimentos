@@ -144,7 +144,7 @@ $color_header='dark';
 </style>
 
 <section class="formularios__sectionColor">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-7 px-0">
 
@@ -153,85 +153,85 @@ $color_header='dark';
 
 
         <!---------------------------------- Formulario I ----------------------------->
-      {{-- datos del comprador --}}
-      @include('formulario.datos-comprador')
+        {{-- datos del comprador --}}
+        @include('formulario.datos-comprador')
 
-      <!-------------------------- Formulario II ----------------------------->
-      {{-- datos de la empresa --}}
-      @include('formulario.datos-empresa')
+        <!-------------------------- Formulario II ----------------------------->
+        {{-- datos de la empresa --}}
+        @include('formulario.datos-empresa')
 
-        <!-------------------------- Formulario III ----------------------------->
-      {{-- datos de la direccion  --}}
-      @include('formulario.datos-direcciones')
+          <!-------------------------- Formulario III ----------------------------->
+        {{-- datos de la direccion  --}}
+        @include('formulario.datos-direcciones')
 
-      <!-------------------------- Seccion de Total del camion ----------------------------->
-      {{-- datos de la direccion  --}}
-      @include('formulario.total-compra')
-
-
-            </div>
-          </div>
-        </div>
+        <!-------------------------- Seccion de Total del camion ----------------------------->
+        {{-- datos de la direccion  --}}
+        @include('formulario.total-compra')
+        
+        
+      </div>
+    </div>
+  </div>
 </section>
 <!-------------------------- Javascript ----------------------------->
 
-    <script>
-    const $form1 = document.getElementById('formulario1');
-    const $form2 = document.getElementById('formulario2');
-    const $form3 = document.getElementById('formulario3');
-    const $form4 = document.getElementById('formulario4');
-    const $form5 = document.getElementById('formulario5');
-    const $saludo = document.getElementById('saludo')
-    const $btn_next1 = document.getElementById('btn_next1');
-    const $btn_next2 = document.getElementById('btn_next2');
-    const $btn_next3 = document.getElementById('btn_next3');
-    const $btn_prior1 = document.getElementById('btn_prior1');
-    const $btn_prior2 = document.getElementById('btn_prior2');
-    const $btn_clr = document.getElementById('btn_clr');
-    const $btn_clr1 = document.getElementById('btn_clr1');
-    const $btn_clr2 = document.getElementById('btn_clr2');
-    const $sell = document.getElementById('sell');
-    const $mq = window.matchMedia("(min-width:768px)")
+<script>
+const $form1 = document.getElementById('formulario1');
+const $form2 = document.getElementById('formulario2');
+const $form3 = document.getElementById('formulario3');
+const $form4 = document.getElementById('formulario4');
+const $form5 = document.getElementById('formulario5');
+const $saludo = document.getElementById('saludo')
+const $btn_next1 = document.getElementById('btn_next1');
+const $btn_next2 = document.getElementById('btn_next2');
+const $btn_next3 = document.getElementById('btn_next3');
+const $btn_prior1 = document.getElementById('btn_prior1');
+const $btn_prior2 = document.getElementById('btn_prior2');
+const $btn_clr = document.getElementById('btn_clr');
+const $btn_clr1 = document.getElementById('btn_clr1');
+const $btn_clr2 = document.getElementById('btn_clr2');
+const $sell = document.getElementById('sell');
+const $mq = window.matchMedia("(min-width:768px)")
 
-    /* next */
-    $btn_next1.addEventListener('click', () => {
-      $form1.classList.toggle('hide')&$form2.classList.toggle('hide');
-    });
+/* next */
+$btn_next1.addEventListener('click', () => {
+$form1.classList.toggle('hide')&$form2.classList.toggle('hide');
+});
 
-    $btn_next2.addEventListener('click', () => {
-      $form2.classList.toggle('hide')&$form3.classList.toggle('hide');
-    });
+$btn_next2.addEventListener('click', () => {
+$form2.classList.toggle('hide')&$form3.classList.toggle('hide');
+});
 
-    $btn_next3.addEventListener('click', () => { 
-        $form3.classList.toggle('hide')&$form4.classList.toggle('hide')&$saludo.classList.toggle('hide')&$form5.classList.toggle('hide');
-    });
+$btn_next3.addEventListener('click', () => { 
+$form3.classList.toggle('hide')&$form4.classList.toggle('hide')&$saludo.classList.toggle('hide')&$form5.classList.toggle('hide');
+});
 
-    $sell.addEventListener('click', () => {
-      $form5.classList.toggle('hide')&$form4.classList.toggle('hide');
-    });
-
-    
-    /* prior */
-    
-   $btn_prior1.addEventListener('click', () => {
-      $form2.classList.toggle('hide')&$form1.classList.toggle('hide');
-    });
-    $btn_clr.addEventListener('click', () => {
-      $form2.classList.toggle('hide')&$form1.classList.toggle('hide');
-    });
-
-    $btn_prior2.addEventListener('click', () => {
-      $form3.classList.toggle('hide')&$form2.classList.toggle('hide');
-    });
-    $btn_clr2.addEventListener('click', () => {
-      $form3.classList.toggle('hide')&$form2.classList.toggle('hide');
-    });
-
-    $btn_clr1.addEventListener('click', () => {
-      $form3.classList.toggle('hide')&$form1.classList.toggle('hide');
-    });
+$sell.addEventListener('click', () => {
+$form5.classList.toggle('hide')&$form4.classList.toggle('hide');
+});
 
 
-    </script>
+/* prior */
+
+$btn_prior1.addEventListener('click', () => {
+$form2.classList.toggle('hide')&$form1.classList.toggle('hide');
+});
+$btn_clr.addEventListener('click', () => {
+$form2.classList.toggle('hide')&$form1.classList.toggle('hide');
+});
+
+$btn_prior2.addEventListener('click', () => {
+$form3.classList.toggle('hide')&$form2.classList.toggle('hide');
+});
+$btn_clr2.addEventListener('click', () => {
+$form3.classList.toggle('hide')&$form2.classList.toggle('hide');
+});
+
+$btn_clr1.addEventListener('click', () => {
+$form3.classList.toggle('hide')&$form1.classList.toggle('hide');
+});
+
+
+</script>
 
 @endsection

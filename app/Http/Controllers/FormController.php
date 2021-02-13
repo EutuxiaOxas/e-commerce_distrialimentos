@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Enterprise;
 use App\Address;
 use App\Category;
+use App\State;
+use App\City;
+use App\Township;
+use App\DeliveryRoute;
 
 class FormController extends Controller
 {
@@ -16,8 +20,12 @@ class FormController extends Controller
         $empresa =  Enterprise::find($user->id); //empresa
         $direcciones = Address::find($user->id); //direcciones
         $categorias = Category::all();
+        $estados = State::all(); //estados
+        $ciudades = City::all(); //ciudades
+        $municipios = Township::all(); //municipios
+        $rutaEntregas = DeliveryRoute::all(); //rutas de entrega
         //result
-        return view('formulario', compact('user','empresa','direcciones', 'categorias'));
+        return view('formulario', compact('user','empresa','direcciones', 'categorias','estados', 'ciudades', 'municipios', 'rutaEntregas'  ));
     }
 
     //Agradecimiento
