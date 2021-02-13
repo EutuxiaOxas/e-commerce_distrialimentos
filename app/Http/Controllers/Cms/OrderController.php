@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderProduct;
+use App\Variable;
 class OrderController extends Controller
 {
     public function index()
@@ -21,6 +22,7 @@ class OrderController extends Controller
 
     	$user = auth()->user();
 
+		$iva = Variable::where('name', 'IVA')->first();
 
         $oldOrder = Order::where('status', 'ACTIVO')
                         ->where('user_id', $user->id)
@@ -33,14 +35,17 @@ class OrderController extends Controller
         }
 
     	$cart = $user->cartVerify();
-    	$total = $cart->cartAmount();
+    	$total = $cart->cartAmount($iva);
 
 
 
     	$order = Order::create([
     		'user_id' => $user->id,
-    		'total_amount' => $total,
+    		'total_amount' => $total['total'],
     		'status' => 'ACTIVO',
+			'comment' => 'sin comentario',
+			'discount' => 0,
+			'n-control' => 0,
     	]);
 
     	$id = $order->id;
@@ -55,12 +60,12 @@ class OrderController extends Controller
     			'order_id' => $id,
     			'product_id' => $detalle->product->id,
     			'quantity' => $detalle->cantidad,
-    			'price' => $detalle->product->price,
+    			'price' => $detalle->product->wholesale_price,
     		]);
     	}
 
 
-    	return redirect("/shiping-data?orden=".$id);
+    	return redirect("/gracias-por-su-pedido");
 
     }
 

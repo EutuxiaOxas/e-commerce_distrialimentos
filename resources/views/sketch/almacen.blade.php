@@ -100,7 +100,7 @@ $color_header='dark';
                   <div class="card-pricing text-center align-self-end">
                     <h4 class="font-weight-bold mb-0 mt-3">
                       {{$producto->getPrice(session('currency'), $producto->wholesale_price)}} 
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
                     </h4>
                     <p class="smaller">{{$producto->packaging->packaging}} de {{$producto->units_packaging}} unidades</p>
                     {{-- producto agregado --}}

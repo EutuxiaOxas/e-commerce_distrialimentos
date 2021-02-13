@@ -122,12 +122,12 @@
                   </div>
                   <div class="productDetail__priceDescription active">
                     <h3 class="productDetail__priceDescription-price">
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}} 
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}} 
                       {{$product->getPrice(session('currency'), $product->wholesale_price)}} 
                     </h3>
                     <p class="productDetail__priceDescription-unitPrice">
                       {{$product->getPrice(session('currency'), $alMayorUnitPrice)}}  
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
                       / unidad
                     </p>
                   </div>
@@ -140,12 +140,12 @@
                   </div>
                   <div class="productDetail__priceDescription">
                     <h3 class="productDetail__priceDescription-price">
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
                       {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} 
                     </h3>
                     <p class="productDetail__priceDescription-unitPrice normal">
                       {{$product->getPrice(session('currency'), $alGranMayorUnitPrice)}}  
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
                       / unidad
                     </p>
                   </div>
@@ -158,12 +158,12 @@
                   </div>
                   <div class="productDetail__priceDescription">
                     <h3 class="productDetail__priceDescription-price">
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}}
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
                       {{$product->getPrice(session('currency'), (float) $product->vip_price)}} 
                     </h3>
                     <p class="productDetail__priceDescription-unitPrice normal">
                       {{$product->getPrice(session('currency'), $vipUnitPrice)}} 
-                      {{session('currency') == 'USD' ? 'USD' : 'Bs'}} / unidad
+                      {{session('currency') == 'USD' ? '$' : 'Bs'}} / unidad
                       </p>
                   </div>
                 </div>
