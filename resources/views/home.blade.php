@@ -572,7 +572,7 @@
         </div>
         <div class="categories_footer row text-center py-2">
           <div class="col">
-            <a href="#"">Ver todas las categorias</a>
+            <a href="#" onclick="document.querySelector('#categoriesIcon_desktop').click()">Ver todas las categorias</a>
           </div>
         </div>
       </div>
@@ -946,17 +946,17 @@
   {{-- Final version movil --}}
     
   <section id="user" class="d-block d-md-none">
-    <div class="container pt-3">
+    <div class="container p-5">
       <div class="row text-center">
         <div class="col-12 text-center">
           <h6 class="text-primary">Eres Nuevo, ¡Registrate!</h6>
           <p class="small text-muted pb-2">Haz click en el boton para registrarte</p>
         </div>
           <div class="col-10 offset-1">
-            <button type="button" class="btn btn btn-primary btn-block py-2">Registrarme</button>
+            <a href="/register" class="btn btn btn-primary btn-block py-2">Registrarme</a>
           </div>
-          <div class="col-12">
-            <p class="small text-muted">Ya tengo una cuenta, <a href="#">Iniciar sesión</a></p>
+          <div class="col-12 p-2">
+            <p class="small text-muted">Ya tengo una cuenta, <a href="/login">Iniciar sesión</a></p>
           </div>
       </div>
     </div>
@@ -985,7 +985,7 @@
           
             
           </div>
-          <div class="col-6 text-center">
+          <div class="col-6 text-center ">
             <figure>
               <img src="{{asset('images/imgs/registro.svg')}}" alt="">
               <p class="small text-muted">Te estamos esperando...</p>

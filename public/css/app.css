@@ -11157,6 +11157,7 @@ nav {
   border-radius: 50%;
   background-color: #FD6721;
   box-shadow: 1px 3.5px 15px -3px rgba(0, 0, 0, 0.75);
+  z-index: 998;
 }
 
 /*------------------------- DESKTOP VIEW --------------------- */
