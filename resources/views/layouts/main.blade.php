@@ -150,12 +150,16 @@
                             items:1,
                             nav:true
                         },
-                        600:{
-                            items:4,
+                        800:{
+                            items:8,
                             nav:false
                         },
-                        1000:{
+                        1050:{
                             items:10,
+                            nav:false
+                        },
+                        1276:{
+                            items:12,
                             nav:true,
                             loop:true
                         }

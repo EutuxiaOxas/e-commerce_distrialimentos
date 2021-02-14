@@ -12490,6 +12490,8 @@ nav {
   width: 100px;
   height: 100px;
   justify-self: center;
+  color: #02528a;
+  font-weight: bold;
 }
 
 .categorie__mobileBody-iconActive {
@@ -12504,7 +12506,7 @@ nav {
 @media (min-width: 768px) {
   .categorie__mobileSelection {
     position: absolute;
-    width: 25%;
+    width: 400px;
     top: 160px;
     left: -100%;
     transition: left 0.5s ease;
@@ -12513,6 +12515,38 @@ nav {
   .categorie__mobileSelection.active {
     transform: translateY(0%);
     left: 0;
+  }
+
+  .categorie__mobileBody {
+    width: 100%;
+  }
+
+  .categorie__mobileHead {
+    display: none;
+  }
+
+  /* width */
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+
+  ::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+  }
+
+  /* Handle on hover */
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
   }
 }
 

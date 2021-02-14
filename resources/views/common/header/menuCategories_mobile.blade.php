@@ -6,6 +6,7 @@
                 x
             </div>
         </div>
+      
         <div class="categorie__mobileBody">
             @for ($i = 0; $i < 7; $i++)
                 @foreach($categorias as $categoria)
