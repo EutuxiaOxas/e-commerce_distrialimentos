@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
+}
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10922,6 +10929,13 @@ nav {
   box-sizing: border-box;
 }
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
+}
+
 @font-face {
   font-family: "Righteous";
   src: url("/fonts/Righteous-Regular.ttf");
@@ -11421,6 +11435,13 @@ nav {
   .header__sesion-option {
     font-size: 1.3rem;
   }
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
 }
 
 .style-img {
@@ -11958,6 +11979,13 @@ nav {
   }
 }
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
+}
+
 .login__viewBody {
   padding: 4rem 0;
   background-color: #f5f5f5;
@@ -12159,6 +12187,13 @@ nav {
   }
 }
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
+}
+
 .almacen__productAdded {
   opacity: 0;
 }
@@ -12172,6 +12207,13 @@ nav {
   font-size: 0.7rem;
   font-weight: bold;
   margin-bottom: 0.7rem;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
 }
 
 .productDetail {
@@ -12379,6 +12421,13 @@ nav {
 
 .align-item-center {
   align-items: center;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
 }
 
 .categorie__mobileSelection {

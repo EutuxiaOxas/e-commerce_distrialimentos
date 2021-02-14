@@ -176,39 +176,34 @@ $color_header='dark';
 <!-------------------------- Javascript ----------------------------->
 
 <script>
+// formularios
 const $form1 = document.getElementById('formulario1');
 const $form2 = document.getElementById('formulario2');
 const $form3 = document.getElementById('formulario3');
-const $form4 = document.getElementById('formulario4');
-const $form5 = document.getElementById('formulario5');
-const $saludo = document.getElementById('saludo')
+
+// botones de siguiente
 const $btn_next1 = document.getElementById('btn_next1');
 const $btn_next2 = document.getElementById('btn_next2');
-const $btn_next3 = document.getElementById('btn_next3');
+// botones de atras
 const $btn_prior1 = document.getElementById('btn_prior1');
 const $btn_prior2 = document.getElementById('btn_prior2');
+//botones de circulos de pasos 
 const $btn_clr = document.getElementById('btn_clr');
 const $btn_clr1 = document.getElementById('btn_clr1');
 const $btn_clr2 = document.getElementById('btn_clr2');
-const $sell = document.getElementById('sell');
+
 const $mq = window.matchMedia("(min-width:768px)")
 
 /* next */
 $btn_next1.addEventListener('click', () => {
-$form1.classList.toggle('hide')&$form2.classList.toggle('hide');
+  $form1.classList.toggle('hide')&$form2.classList.toggle('hide');
 });
 
 $btn_next2.addEventListener('click', () => {
 $form2.classList.toggle('hide')&$form3.classList.toggle('hide');
 });
 
-$btn_next3.addEventListener('click', () => { 
-$form3.classList.toggle('hide')&$form4.classList.toggle('hide')&$saludo.classList.toggle('hide')&$form5.classList.toggle('hide');
-});
 
-$sell.addEventListener('click', () => {
-$form5.classList.toggle('hide')&$form4.classList.toggle('hide');
-});
 
 
 /* prior */

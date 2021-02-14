@@ -17,8 +17,8 @@ class FormController extends Controller
     function index() {
         //vars
         $user = auth()->user();
-        $empresa =  Enterprise::find($user->id); //empresa
-        $direcciones = Address::find($user->id); //direcciones
+        $empresa =  Enterprise::where('user_id', $user->id)->first(); //empresa
+        $direcciones = Address::where('user_id', $user->id)->get(); //direcciones
         $categorias = Category::all();
         $estados = State::all(); //estados
         $ciudades = City::all(); //ciudades

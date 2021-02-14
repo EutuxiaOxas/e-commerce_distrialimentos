@@ -155,7 +155,7 @@
           <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
         </div>
         <div class="col-7 pl-0">
-          <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
+          <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right" @if(!$empresa) disabled @endif>Siguiente</button>
         </div>
       </div>
     </div>

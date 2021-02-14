@@ -63,3 +63,9 @@ $separadorBackground: #E5E5E5;
 // products cards 
 
 $product_orange: #FF661B;
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #ffffff;
+    background-color: #838383;
+    border-color: #838383;
+}

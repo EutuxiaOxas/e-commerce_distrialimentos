@@ -156,5 +156,18 @@ $color_header='dark';
         </div>
 </section>
 
+<script>
+  // alternative to load event
+document.onreadystatechange = function () {
+  if (document.readyState == "complete") {
+    //Bloquear el regreso de pagina
+    window.location.hash="no-back-button";
+    window.location.hash="Again-No-back-button";//esta linea es necesaria para chrome
+    window.onhashchange=function(){window.location.hash="no-back-button";}
+  }
+}
+ 
+</script>
+
 
 @endsection

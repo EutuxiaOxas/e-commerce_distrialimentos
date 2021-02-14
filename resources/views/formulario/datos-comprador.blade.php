@@ -1,4 +1,4 @@
-<section id=formulario1 class="formularios__sections show">
+<section id="formulario1" class="formularios__sections show">
 
   <!-- datos de usuario-->                                
   <section class="py-1">
@@ -138,7 +138,7 @@
           <button type="button" class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
         </div>
         <div class="col-7 pl-0">
-          <button id="btn_next1" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
+          <button id="btn_next1" class="btn btn-primary btn-sm btn-block formularios__btn-right" @if( !$user->documento_identidad && !$user->phone ) disabled @endif >Siguiente</button>
         </div>
       </div>
     </div>
