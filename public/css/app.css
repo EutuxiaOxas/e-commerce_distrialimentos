@@ -12432,17 +12432,17 @@ nav {
 
 .categorie__mobileSelection {
   position: fixed;
-  top: -100%;
+  top: -200vh;
   height: 100vh;
   width: 100vw;
   background-color: #FD6721;
   z-index: 999;
   padding: 0 1.3rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .categorie__mobileSelection.active {
-  transform: translateY(100%);
+  transform: translateY(200vh);
 }
 
 .categorie__mobileHead {
@@ -12469,8 +12469,12 @@ nav {
 .categorie__mobileBody {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.8rem;
-  grid-row-gap: 2rem;
+  grid-gap: 0.1rem;
+  grid-row-gap: 0.8rem;
+  width: 90vw;
+  height: 75%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .categorie__mobileBody-item {
@@ -12484,6 +12488,7 @@ nav {
   font-size: 0.8rem;
   width: 100px;
   height: 100px;
+  justify-self: center;
 }
 
 .categorie__mobileBody-iconActive {
