@@ -70,7 +70,7 @@ $color_header='dark';
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
-                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                <div class="wrapper flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
                       <div class="col-12 pb-1 d-flex justify-content-between align-items-center">
                         <span class="inCart-icon almacen__productAdded" id="{{$producto->id}}">
@@ -79,6 +79,8 @@ $color_header='dark';
                             <p>En camión</p>
                           </div>
                         </span>
+                      </div>
+                      <div class="col-12">
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>{{$producto->sku}}</p>
                       </div>
                       <div class="col-12">

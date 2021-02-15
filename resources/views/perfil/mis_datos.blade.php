@@ -64,7 +64,7 @@
 					{{-- Aun falta datos por agregar --}}
 					<div class="perfil__cardBody direccion">
 						<div class="container p-5 text-center">
-							<img src="{{asset('icons/void-01.svg')}}" alt="">
+							<img src="{{asset('/images/void-01.svg')}}" alt="">
 							<p class="perfil__cardListItem-content" style="">Aun sin datos personales...</p>
 						</div>
 						<div class="perfil__agregarDatos ">
@@ -114,7 +114,7 @@
 				{{-- si no exite la empresa --}}
 				<div class="perfil__cardBody direccion">
 					<div class="container p-5 text-center">
-						<img src="{{asset('icons/void-02.svg')}}" alt="">
+						<img src="{{asset('/images/void-02.svg')}}" alt="">
 						<p class="perfil__cardListItem-content" style="">Aun sin datos de empresa...</p>
 					</div>
 					<div class="perfil__agregarDatos ">
@@ -152,7 +152,7 @@
 						{{-- si no exiten direcciones --}}
 						<div class="perfil__cardBody direccion">
 							<div class="container p-5 text-center">
-								<img src="{{asset('icons/void-03.svg')}}" alt="">
+								<img src="{{asset('/images/void-03.svg')}}" alt="">
 								<p class="perfil__cardListItem-content" style="">Aun sin direcciones de envio...</p>
 							</div>
 							<div class="perfil__agregarDatos ">

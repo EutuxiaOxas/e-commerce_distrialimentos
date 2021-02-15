@@ -120,7 +120,7 @@
     {{-- Aun falta datos por agregar --}}
     <div class="perfil__cardBody direccion">
       <div class="container p-5 text-center">
-        <img src="{{asset('icons/void-01.svg')}}" alt="">
+        <img src="{{asset('images/void-01.svg')}}" alt="sin datos">
         <p class="perfil__cardListItem-content" style="">Aun sin datos personales...</p>
       </div>
       <div class="perfil__agregarDatos ">

@@ -101,24 +101,25 @@
     // Cambiar el look & feel del scroll
 
     /* width */
-    ::-webkit-scrollbar {
+    .categorie__mobileSelection  ::-webkit-scrollbar {
         width: 5px;
     }
     
     /* Track */
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
+    .categorie__mobileSelection ::-webkit-scrollbar-track {
+        background: #ff8146;
     }
     
     /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: rgb(199, 199, 199); 
+    .categorie__mobileSelection ::-webkit-scrollbar-thumb {
+        background: #f1f1f1; 
     }
     
     /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555; 
+    .categorie__mobileSelection  ::-webkit-scrollbar-thumb:hover {
+        background: #dfdfdf; 
     }
 
+    
 
 }

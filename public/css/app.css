@@ -7,6 +7,30 @@
   border-color: #838383;
 }
 
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
 /*!
  * Bootstrap v4.5.2 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -10936,6 +10960,30 @@ nav {
   border-color: #838383;
 }
 
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
 @font-face {
   font-family: "Righteous";
   src: url("/fonts/Righteous-Regular.ttf");
@@ -11443,6 +11491,30 @@ nav {
   color: #ffffff;
   background-color: #838383;
   border-color: #838383;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
 }
 
 .style-img {
@@ -11987,6 +12059,30 @@ nav {
   border-color: #838383;
 }
 
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
 .login__viewBody {
   padding: 4rem 0;
   background-color: #f5f5f5;
@@ -12195,6 +12291,30 @@ nav {
   border-color: #838383;
 }
 
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
 .almacen__productAdded {
   opacity: 0;
 }
@@ -12215,6 +12335,30 @@ nav {
   color: #ffffff;
   background-color: #838383;
   border-color: #838383;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
 }
 
 .productDetail {
@@ -12431,6 +12575,30 @@ nav {
   border-color: #838383;
 }
 
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
 .categorie__mobileSelection {
   position: fixed;
   top: -200vh;
@@ -12527,26 +12695,26 @@ nav {
 
   /* width */
 
-  ::-webkit-scrollbar {
+  .categorie__mobileSelection ::-webkit-scrollbar {
     width: 5px;
   }
 
   /* Track */
 
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  .categorie__mobileSelection ::-webkit-scrollbar-track {
+    background: #ff8146;
   }
 
   /* Handle */
 
-  ::-webkit-scrollbar-thumb {
-    background: #c7c7c7;
+  .categorie__mobileSelection ::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
   }
 
   /* Handle on hover */
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  .categorie__mobileSelection ::-webkit-scrollbar-thumb:hover {
+    background: #dfdfdf;
   }
 }
 

@@ -69,3 +69,24 @@ $product_orange: #FF661B;
     background-color: #838383;
     border-color: #838383;
 }
+
+ /* width */
+   ::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+ ::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+/* Handle */
+ ::-webkit-scrollbar-thumb {
+    background: #a4a4a4; 
+}
+
+/* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #757575; 
+}
+
