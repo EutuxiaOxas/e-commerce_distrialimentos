@@ -73,7 +73,27 @@
     color: #ffffff;
 }
 
+ // Cambiar el look & feel del scroll
 
+/* width */
+.categorie__mobileSelection  ::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.categorie__mobileSelection ::-webkit-scrollbar-track {
+    background: #ff8146;
+}
+
+/* Handle */
+.categorie__mobileSelection ::-webkit-scrollbar-thumb {
+    background: #f1f1f1; 
+}
+
+/* Handle on hover */
+.categorie__mobileSelection  ::-webkit-scrollbar-thumb:hover {
+    background: #dfdfdf; 
+}
 
 @media (min-width: 768px) {
     .categorie__mobileSelection {
@@ -98,27 +118,7 @@
     }
         
 
-    // Cambiar el look & feel del scroll
 
-    /* width */
-    .categorie__mobileSelection  ::-webkit-scrollbar {
-        width: 5px;
-    }
-    
-    /* Track */
-    .categorie__mobileSelection ::-webkit-scrollbar-track {
-        background: #ff8146;
-    }
-    
-    /* Handle */
-    .categorie__mobileSelection ::-webkit-scrollbar-thumb {
-        background: #f1f1f1; 
-    }
-    
-    /* Handle on hover */
-    .categorie__mobileSelection  ::-webkit-scrollbar-thumb:hover {
-        background: #dfdfdf; 
-    }
 
     
 
