@@ -48,9 +48,9 @@ class PerfilController extends Controller
     public function agregarDatosDeEmpresa(Request $request)
     {
         $user = auth()->user();
-
-        if($user->enterprise) {
-            $empresa = Enterprise::update($request->all());
+        $enterprise = Enterprise::where('user_id', $user->id)->first();
+        if(isset($enterprise)) {
+            $enterprise->update($request->all());
         }else {
             $empresa = Enterprise::create([
                 'user_id' => $user->id,
@@ -87,5 +87,22 @@ class PerfilController extends Controller
         ]);
 
         return back();
+    }
+
+    public function actualizarDireccion(Request $request, $id) 
+    {
+        $user = auth()->user();
+        $direccion = Address::where('id', $id)->where('user_id', $user->id)->first();
+
+        $direccion->update($request->all());
+
+        return back();
+    }
+
+    public function obtenerDireccion($id)
+    {
+        $user = auth()->user();
+        $direccion = Address::where('id', $id)->where('user_id', $user->id)->first();
+        return response()->json($direccion, 200);
     }
 }
