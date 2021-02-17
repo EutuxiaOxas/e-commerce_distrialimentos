@@ -84,33 +84,32 @@
                     </div>
                   </div>
                 </div>
-                <form>
+                <form action="{{route('user.info.update')}}" method="POST">
+                  @csrf
                   <div class="form">
                     <div class="col">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Nombre completo">
+                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->name ?? ''}}" name="name" placeholder="Nombre completo">
                     </div>
                     <div class="col">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Cedula [ej: v-23432578]">
+                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->documento_identidad ?? ''}}" name="documento_identidad"  placeholder="Cedula [ej: v-23432578]">
                     </div>
                     <div class="col">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono [ej: 0241-8524234]">
+                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone ?? ''}}"  name="phone" placeholder="Telefono [ej: 0241-8524234]">
                     </div>
                     <div class="col pb-3">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono Alt. [ej: 0241-8524234]">
+                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone_alternative ?? ''}}" name="phone_alternative" placeholder="Telefono Alt. [ej: 0241-8524234]">
+                    </div>
+                  </div>
+                  <div class="container">
+                    <div class="row mb-1">
+                      <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
+                    </div>
+                    <div class="row">
+                      <p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
                     </div>
                   </div>
                 </form>
               </div>
-              <div class="modal-footer pt-5 border-0">
-                <div class="container">
-                  <div class="row mb-1">
-                    <button type="button" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
-                  </div>
-                  <div class="row">
-                    <p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
-                  </div>
-                </div>
-            </div>
           </div>
         </div>
       </div>
