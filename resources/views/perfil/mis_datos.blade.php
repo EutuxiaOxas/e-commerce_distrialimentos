@@ -277,13 +277,21 @@
 							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
 								<option value="">Escoge un estado</option>
 								@foreach($estados as $estado)
-									<option value="{{$estado->id}}" {{$empresa->state->id == $estado->id ? 'selected' : ''}}>{{$estado->state}}</option>
+									<option value="{{$estado->id}}" 
+										@if(isset($empresa))
+											{{$empresa->state->id == $estado->id ? 'selected' : ''}}
+										@endif
+									>{{$estado->state}}</option>
 								@endforeach
 							</select>
 							<select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
 								<option value="">Escoge una ciudad</option>
 								@foreach($ciudades as $ciudad)
-									<option value="{{$ciudad->id}}" {{$empresa->city->id == $ciudad->id ? 'selected' : ''}}>{{$ciudad->city}}</option>
+									<option value="{{$ciudad->id}}" 
+										@if(isset($empresa))
+											{{$empresa->city->id == $ciudad->id ? 'selected' : ''}}
+										@endif
+									>{{$ciudad->city}}</option>
 								@endforeach
 							</select>
 						</div>
