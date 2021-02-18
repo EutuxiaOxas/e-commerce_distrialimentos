@@ -53,7 +53,7 @@
                     <a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary">Cambiar dirección de envío</a>
                   </div>
                   <div class="col-6 text-center">
-                    <a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Editar dirección</a>
+                    <a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
                   </div>
                   
                 </div>
@@ -197,7 +197,7 @@
 						<div class="row">
 						<div class="col-10 mb-0">
 							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Cambiar la dirección de Envio</h4>
-							<p class="texto-small text-muted">Seleccione una de las direcciones...</p>
+							<p class="texto-small text-muted">Seleccione una de sus antiguas direcciones...</p>
 						</div>
 						<div class="col-2">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -215,61 +215,21 @@
 							</div>
 						</div>
 					</div>
-					<form action="{{route('user.addreses.update')}}" method="POST">
+					<div class="form">
 						@csrf
-						<div class="form">
-							<div class="col">
-                
-								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
-									<option value="">Escoge un estado</option>
-									@foreach($estados as $estado)
-										<option value="{{$estado->id}}">{{$estado->state}}</option>
-									@endforeach
-								</select>
-								<select class="form-control-plaintext formularios__inputBorders"  required name="city_id" >
-									<option value="">Escoge una ciudad</option>
-									@foreach($ciudades as $ciudad)
-										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
-									@endforeach
-								</select>
-								<select class="form-control-plaintext formularios__inputBorders" required name="township_id" >
-									<option value="">Escoge un municipio</option>
-									@foreach($municipios as $municipio)
-										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
-									@endforeach
-								</select>
-							</div>
-							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="postal_code" placeholder="Codigo postal">
-							</div>
-							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="address" placeholder="Dirección">
-							</div>
-							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable" placeholder="Responsable">
-							</div>
-							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable_phone" placeholder="Telefono Oficina">
-							</div>
-							<div class="col text-center my-4 py-2">
-								<p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
-								<select class="form-control-plaintext formularios__inputBorders" required name="delivery_route_id" >
-									<option value="">Escoge una ruta de entrega</option>
-									@foreach($rutaEntregas as $rutaEntrega)
-										<option value="{{$rutaEntrega->id}}">{{$rutaEntrega->name}}</option>
-									@endforeach
-								</select>
-							</div>
-							<div class="container">
-								<div class="row mb-0 mt-4 pt-4">
-									<button type="submit" class="btn btn-primary btn-block">Agregar</button>
-								</div>
-								<div class="row">
-								<p class="text-muted texto-small text-center">Al hacer click en agregar usted confirma que los datos administrados son reales</p>
-								</div>
+						<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
+							<option value="" disabled>Seleccione una direccion</option>
+							<option value="01">direccion 01</option>
+							<option value="02">direccion 01</option>
+							<option value="03">direccion 01</option>
+						</select>
+						<div class="container">
+							<div class="row mb-0 mt-4 pt-4">
+								<button type="submit" class="btn btn-primary btn-block">Cambiar dirección de envio</button>
 							</div>
 						</div>
-					</form>
+					</div>
+					
 				</div>
 			</div>
 		</div>
