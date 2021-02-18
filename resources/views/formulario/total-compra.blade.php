@@ -56,7 +56,7 @@
                   <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                          <button type="button" class="btn btn-primary btn-block formularios__padding-btnCarrito" data-toggle="modal" data-target="#modalFormulario4">
+                          <button type="button" class="btn btn-primary btn-block formularios__padding-btnCarrito" data-toggle="modal" data-target="#exampleModal">
                             <div class="row">
                               <div class="col-4 px-0 d-flex align-items-center">
                                 <p class="text-white fs-14 text-left font-weight-bold">2,000.00 $</p>

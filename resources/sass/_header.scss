@@ -235,6 +235,33 @@
 	z-index: 998;
 }
 
+
+.header__navListCurrencyMain {
+	position: relative;
+	
+}
+
+.header__navMobileChooseCurrency {
+	position: absolute;
+	display: none;
+	background-color: #F5F5F5;
+	top: 160%;
+	left: -10px;
+	z-index: 25;
+}
+
+.header__navMobileChooseCurrency.active {
+	display: block;
+}
+
+.header__navMobileChooseCurrency a {
+	color: #02528A;
+	display: block;
+	padding: .6rem 0;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
 /*------------------------- DESKTOP VIEW --------------------- */
 
 .header__main {
@@ -408,33 +435,21 @@
 	font-size: 1rem;
 	padding: .6rem 0 .8rem;
 	font-family: 'Righteous', cursive;
-	background-color: $currencyList_main;
+	background-color: #F5F5F5;
 }
 
 
-.navbar__currencyList--item a, .navbar__currencyList--item.title {
+.navbar__currencyList--item a {
 	text-decoration: none;
 	font-size: 1.2rem;
 	padding-left: 1rem;
+	color: #02528A;
+	font-weight: bold;
 }
 
-.navbar__currencyList--item.choose:hover {
-	background-color: $currencyList_secondary;
-}
-
-.navbar__currencyList--item.title {
+.navbar__currencyList--item {
 	font-family: 'Roboto', cursive;
-	color: $currencyList_title;
 	font-size: .7rem;
-}
-
-.navbar__currencyList--item.usd a {
-	color: #2B2B2B;
-	font-family: 'Righteous', cursive;
-}
-
-.navbar__currencyList--item.ves a {
-	color: #ffff;
 }
 
 
