@@ -127,7 +127,7 @@
 							</div>
 						</div>
 					</div>
-					<form action="{{route('user.addreses.update')}}" method="POST">
+					<form action="" method="POST">
 						@csrf
 						<div class="form">
 							<div class="col">
