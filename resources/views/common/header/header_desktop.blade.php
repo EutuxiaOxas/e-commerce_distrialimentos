@@ -98,14 +98,11 @@
 				</a>
 				<p class="navbar__currency--subtitle">Divisas</p>
 				<div id="currency_list" class="navbar__currencyList hide">
-					<div class="navbar__currencyList--item title">
-						<p >DIVISAS</p>
-					</div>
 					<div class="navbar__currencyList--item  usd choose">
-						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'usd')}}">USD <span>(Dolares)</span></a>
+						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'usd')}}">Dolares<span>(USD)</span></a>
 					</div>
 					<div class="navbar__currencyList--item ves choose">
-						<a class="navbar__currencyList--itemOption " href="{{route('active.curency', 'ves')}}">VES <span>(Bolivares)</span></a>
+						<a class="navbar__currencyList--itemOption " href="{{route('active.curency', 'ves')}}">Bolivares<span>(Bs)</span></a>
 					</div>
 				</div>
 			</div>

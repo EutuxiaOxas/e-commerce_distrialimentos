@@ -30,12 +30,20 @@
 
             <a href="#">Carabobo</a>
         </li>
-        <li class="header__navList main">
+        <li class="header__navList main header__navListCurrencyMain">
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.5 0C5.59692 0 0 5.59692 0 12.5C0 19.4031 5.59692 25 12.5 25C19.4046 25 25 19.4031 25 12.5C25 5.59692 19.4046 0 12.5 0ZM15.9088 17.3264C15.2938 18.0161 14.4059 18.422 13.2446 18.544V20.3125H11.7645V18.5532C9.82817 18.3548 8.63032 17.2287 8.16802 15.1779L10.4568 14.5813C10.6689 15.8707 11.3708 16.5146 12.5625 16.5146C13.1195 16.5146 13.5315 16.3773 13.7939 16.1011C14.0564 15.8249 14.1876 15.4922 14.1876 15.1016C14.1876 14.6973 14.0563 14.3905 13.7939 14.183C13.5315 13.974 12.9471 13.71 12.0422 13.3896C11.229 13.1073 10.5926 12.8295 10.1349 12.5519C9.6771 12.2772 9.30479 11.8912 9.01943 11.3953C8.73408 10.8978 8.59067 10.318 8.59067 9.65879C8.59067 8.7936 8.84702 8.01387 9.35669 7.32114C9.86636 6.62993 10.6689 6.20723 11.7646 6.05312V4.6875H13.2447V6.05317C14.8987 6.25156 15.9699 7.18691 16.4566 8.86079L14.4181 9.69697C14.0198 8.54951 13.4063 7.97578 12.5733 7.97578C12.1552 7.97578 11.8195 8.10395 11.5677 8.3603C11.3144 8.61665 11.1878 8.92793 11.1878 9.29263C11.1878 9.66494 11.3099 9.95029 11.554 10.1502C11.7966 10.3486 12.32 10.5942 13.1196 10.8887C13.9985 11.2092 14.6882 11.5128 15.1872 11.7981C15.6876 12.0835 16.0859 12.4787 16.385 12.9807C16.6825 13.4843 16.832 14.0718 16.832 14.7447C16.832 15.7776 16.5237 16.6382 15.9088 17.3264Z" fill="white"/>
             </svg>
 
-            <a href="#">USD</a>
+            <a href="#" id="headerMobileCurrencyChoose">{{session('currency')}}</a>
+            <div class="header__navMobileChooseCurrency" id="headerMobileCurrencyMain">
+                <a href="{{route('active.curency', 'usd')}}" class="header__navMobileChooseCurrency-option">
+                    Dolares(USD)
+                </a>
+                <a href="{{route('active.curency', 'ves')}}" class="header__navMobileChooseCurrency-option">
+                    Bolivares(Bs)
+                </a>
+            </div>
         </li>
     </ul>
 </nav>
@@ -47,8 +55,9 @@
 
         const ayudaMobileIcon                   =     document.getElementById('ayuda_mobile_icon'),
               categoriesMenu_mobile             =     document.getElementById('categoriesMenu_mobile'),
-              botonClose_categorieMenu_mobile   =     document.getElementById('botonClose_categorieMenu_mobile')
-
+              botonClose_categorieMenu_mobile   =     document.getElementById('botonClose_categorieMenu_mobile'),
+              butonActiveCurrencyChange         =     document.getElementById('headerMobileCurrencyChoose'),
+              MobileCurrencyMain                =     document.getElementById('headerMobileCurrencyMain')
 
         if(ayudaMobileIcon) {
             ayudaMobileIcon.addEventListener('click', (e) => {
@@ -59,6 +68,10 @@
                 categoriesMenu_mobile.classList.toggle('active')
             })
         }
+
+        butonActiveCurrencyChange.addEventListener('click', () => {
+            MobileCurrencyMain.classList.toggle('active')
+        })
 
    }
 
