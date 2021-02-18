@@ -241,7 +241,7 @@
 
 	function compraFormDirection(){
 
-		//------------------- STARTING SCRIPT ---------------------
+		//------------------- FUNCIONES SCOPE ---------------------
 
 		function addTypeAddressToSelect(addreses){
 
