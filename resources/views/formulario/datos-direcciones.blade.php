@@ -241,12 +241,15 @@
 
 	function compraFormDirection(){
 
+		//------------------- STARTING SCRIPT ---------------------
+
 		function addTypeAddressToSelect(addreses){
-		const selectAddress = document.getElementById('formDirectionAddreses');
-		selectAddress.innerHTML =  `<option value="" disabled>Seleccione una direccion</option>`;
-		addreses.forEach(address => {
-			const option = `<option value="${address.id}">${address.type}</option>`
-			selectAddress.innerHTML += option;
+
+			const selectAddress = document.getElementById('formDirectionAddreses');
+			selectAddress.innerHTML =  '';
+			addreses.forEach(address => {
+				const option = `<option value="${address.id}">${address.type}</option>`
+				selectAddress.innerHTML += option;
 			})
 		}
 
