@@ -310,3 +310,5 @@ Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');
 
 
+//-------------- OBTENER DIRECCIONES -----------
+Route::get('/user/address', 'AddressController@getAddress');
