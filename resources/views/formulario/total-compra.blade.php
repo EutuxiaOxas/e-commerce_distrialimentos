@@ -3,17 +3,11 @@
       <div class="container">
         <div class="row container">
           <div class="col p-4">
-            <div class="row Compra mb-0">
+            <div class="row Compra mb-4">
               <div class="col-8">
                 <div class="Compra_text_tittle">
-                  <h3 class="font-weight-bold mb-0">Finalizar la compra</h3>
-                  <p class="pt-1 pb-2 text-muted">Verifica los datos para completar la compra</p>
+                  <h3 class="font-weight-bold mb-0">Detalle de la Compra</h3>
                 </div>
-              </div>
-            </div>
-            <div class="row mb-0 pb-2">
-              <div class="col boton_details">
-                <button id="sell" class="btn btn-primary btn-sm btn-block font-weight-bold py-2 lead">Finalizar Compra</button>
               </div>
             </div>
 

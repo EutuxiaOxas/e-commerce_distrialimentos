@@ -26,125 +26,56 @@
           </div>
       </div>
       <!-- Fin Number-->
-      <!-- trj datos de envio-->
+    @if ($direcciones->isNotEmpty())
+         <!-- trj datos de envio-->
       <div class="container mt-1">
-          <div class="row">
-            <div class="col">
-              <div class="border shadow">
-                <div class="info-container p-3 mb-1">
-                  <p class="font-weight-bold text-black texto-small">Direccion de envio</p>
-                  <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">Calle 1 Avenida 10 Local 45 </p>
-                  <p class="texto-small px-3 my-0 py-0 text-muted">Cerca de colegio Moral y Luces</p>
-                  <p class="texto-small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
-                  <p class="texto-small px-3 my-0 py-0 pb-2 text-muted">Juan Perez +58 414 543 4563</p>
-                  <div class="row mb-1 py-2">
-                    <div class="col-6 pr-0">
-                      <p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
-                    </div>
-                    <div class="col-6 text-md-center">
-                      <p class="texto-small pl-0 text-muted">Valencia, Lunes 8:00AM - 11:00AM</p>
-                    </div>
+        <div class="row">
+          <div class="col">
+            <div class="border shadow">
+              <div class="info-container p-3 mb-1">
+                <p class="font-weight-bold text-black texto-small">Direccion de envio</p>
+                <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">Calle 1 Avenida 10 Local 45 </p>
+                <p class="texto-small px-3 my-0 py-0 text-muted">Cerca de colegio Moral y Luces</p>
+                <p class="texto-small px-3 my-0 py-0 text-muted">Carabobo, Valencia (2001)</p>
+                <p class="texto-small px-3 my-0 py-0 pb-2 text-muted">Juan Perez +58 414 543 4563</p>
+                <div class="row mb-1 py-2">
+                  <div class="col-6 pr-0">
+                    <p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
                   </div>
-                  <div class="row pt-2 padding-modal">
-                    <div class="col-12 text-center">
-                      <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="texto-small font-weight-bold text-secondary">Cambiar dirección de envío</a>
-                    </div>
-                    <div class="modal fade" id="modal-envio_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content p-3">
-
-                        <!-- Modal header-->
-
-                          <div class="modal-header p-2 border-bottom-0">
-                            <div class="container">
-                              <div class="row">
-                                <div class="col-10 mb-0">
-                                  <h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de envío</h4>
-                                  <p class="texto-small text-muted">Agregue los datos solicitados...</p>
-                                </div>
-                                <div class="col-2">
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>        
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                        <!-- fin Modal header-->
-
-                        <!-- Modal body-->
-                          <div class="modal-body px-2 pt-1 pb-2">
-                            <div class="form-title container">
-                              <div class="row">
-                                <div class="col text-center">
-                                  <p class="text-black font-weight-bold">Dirección de envío</p>
-                                </div>
-                              </div>
-                            </div>
-                            <form>
-                              <div class="form">
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Estado">
-                                </div>
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Ciudad">
-                                </div>
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Codigo postal">
-                                </div>
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Dirección">
-                                </div>
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Responsable">
-                                </div>
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Telefono Oficina">
-                                </div>
-                              </div>
-                            </form>
-                            <div class="form-title container pt-4">
-                              <div class="row">
-                                <div class="col text-center">
-                                  <p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
-                                </div>
-                              </div>
-                            </div>
-                            <form>
-                              <div class="form">
-                                <div class="col">
-                                  <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Ruta de entrega">
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        <!-- fin Modal body-->
-
-                        <!-- Modal footer-->
-                          <div class="modal-footer pt-5 border-0">
-                            <div class="container">
-                              <div class="row mb-0">
-                                  <button type="button" class="btn btn-primary btn-block">Editar</button>
-                              </div>
-                              <div class="row">
-                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
-                              </div>
-                            </div>
-                          </div>
-                        <!-- fin Modal footer-->
-
-
-                        </div>
-                      </div>
-                    </div>
+                  <div class="col-6 text-md-center">
+                    <p class="texto-small pl-0 text-muted">Valencia, Lunes 8:00AM - 11:00AM</p>
                   </div>
+                </div>
+                <div class="row pt-2 padding-modal">
+                  <div class="col-6 text-center">
+                    <a href="#" data-toggle="modal" data-target="#modal-envio_edit" class="texto-small font-weight-bold text-secondary">Cambiar dirección de envío</a>
+                  </div>
+                  <div class="col-6 text-center">
+                    <a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Agregar nueva dirección</a>
+                  </div>
+                  
                 </div>
               </div>
             </div>
           </div>
-      </div>
-      <!-- Fin trj datos de envio-->
+        </div>
+    </div>
+    <!-- Fin trj datos de envio-->
+    @else 
+      	{{-- si no exiten direcciones --}}
+        <div class="perfil__cardBody direccion">
+          <div class="container p-5 text-center">
+            <img src="{{asset('/images/void-03.svg')}}" alt="">
+            <p class="perfil__cardListItem-content" style="">Aun sin direcciones de envio...</p>
+          </div>
+          <div class="perfil__agregarDatos ">
+            <a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
+          </div>
+        </div>
+    @endif
+
+     
+
     </section>
     <!-- Fin Datos de usuario-->
 
@@ -164,3 +95,91 @@
     <!-- /Buttoms-->
   </section>
 </div>
+
+
+	<!-- Modal datos de Direccion -->
+	<div class="modal fade" id="modal-directionEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content p-3">
+				<div class="modal-header p-2 border-bottom-0">
+					<div class="container">
+						<div class="row">
+						<div class="col-10 mb-0">
+							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de dirección</h4>
+							<p class="texto-small text-muted">Agregue los datos solicitados...</p>
+						</div>
+						<div class="col-2">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>        
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body px-2 pt-1 pb-2">                   
+					<div class="form-title container">
+						<div class="row">
+							<div class="col text-center">
+								<h5 class="text-black font-weight-bold">Dirección de envio</h5>
+							</div>
+						</div>
+					</div>
+					<form action="{{route('user.addreses.update')}}" method="POST">
+						@csrf
+						<div class="form">
+							<div class="col">
+								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
+									<option value="">Escoge un estado</option>
+									@foreach($estados as $estado)
+										<option value="{{$estado->id}}">{{$estado->state}}</option>
+									@endforeach
+								</select>
+								<select class="form-control-plaintext formularios__inputBorders"  required name="city_id" >
+									<option value="">Escoge una ciudad</option>
+									@foreach($ciudades as $ciudad)
+										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
+									@endforeach
+								</select>
+								<select class="form-control-plaintext formularios__inputBorders" required name="township_id" >
+									<option value="">Escoge un municipio</option>
+									@foreach($municipios as $municipio)
+										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
+									@endforeach
+								</select>
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="postal_code" placeholder="Codigo postal">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="address" placeholder="Dirección">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable" placeholder="Responsable">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable_phone" placeholder="Telefono Oficina">
+							</div>
+							<div class="col text-center my-4 py-2">
+								<p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
+								<select class="form-control-plaintext formularios__inputBorders" required name="delivery_route_id" >
+									<option value="">Escoge una ruta de entrega</option>
+									@foreach($rutaEntregas as $rutaEntrega)
+										<option value="{{$rutaEntrega->id}}">{{$rutaEntrega->name}}</option>
+									@endforeach
+								</select>
+							</div>
+							<div class="container">
+								<div class="row mb-0 mt-4 pt-4">
+									<button type="submit" class="btn btn-primary btn-block">Agregar</button>
+								</div>
+								<div class="row">
+								<p class="text-muted texto-small text-center">Al hacer click en agregar usted confirma que los datos administrados son reales</p>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Fin Modal datos de Direccion -->
