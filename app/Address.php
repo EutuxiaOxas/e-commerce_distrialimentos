@@ -35,4 +35,9 @@ class Address extends Model
         return $this->belongsTo('App\township');
     }
    
+    public function delivery_route()
+    {
+        return $this->belongsTo('App\DeliveryRoute');
+    }
+   
 }
