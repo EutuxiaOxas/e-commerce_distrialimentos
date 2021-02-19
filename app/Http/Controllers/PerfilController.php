@@ -10,6 +10,7 @@ use App\City;
 use App\Township;
 use App\DeliveryRoute;
 use App\Category;
+use App\Variable;
 
 class PerfilController extends Controller
 {
@@ -34,7 +35,8 @@ class PerfilController extends Controller
         $categorias = Category::all();
         // $ordenes = $user->orders()->where('status_id', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
         $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(3);
-        return view('perfil.compras', compact('user','categorias','ordenes'));
+        $tasa_bs_dolar = Variable::where('name','DOLAR')->first();
+        return view('perfil.compras', compact('user','categorias','ordenes','tasa_bs_dolar'));
 
     }
 

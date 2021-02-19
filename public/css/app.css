@@ -11820,6 +11820,10 @@ nav {
   color: #00E23F;
 }
 
+.perfil__comprasInfo-title.canceled {
+  color: #FA5959;
+}
+
 .perfil__comprasInfo-alert {
   font-size: 0.9rem;
   color: #838383;
