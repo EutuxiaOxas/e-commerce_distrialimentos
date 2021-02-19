@@ -20,11 +20,16 @@ class Order extends Model
 
     public function shiping()
     {
-    	return $this->hasOne('App\Shiping_data', 'orden_id');
+    	return $this->hasOne('App\Shiping_data', 'order_id');
     }
 
     public function pagos()
     {
-        return $this->hasMany('App\Pago', 'orden_id');
+        return $this->hasMany('App\Pago', 'order_id');
+    }
+    //estatus de la orden
+    public function statusorden()
+    {
+        return $this->belongTo('App\StatusOrder');
     }
 }

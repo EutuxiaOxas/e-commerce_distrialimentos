@@ -23,16 +23,18 @@ class PerfilController extends Controller
         $ciudades = City::all(); //ciudades
         $municipios = Township::all(); //municipios
         $rutaEntregas = DeliveryRoute::all(); //municipios
-        $ordenes = $user->orders()->where('status', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
         $categorias = Category::all();
-        return view('perfil.mis_datos', compact('user', 'ordenes','empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias'));
+        return view('perfil.mis_datos', compact('user', 'empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias'));
     }
 
     //dashboard - mis compras
     public function mis_compras()
     {
+        $user = auth()->user();
         $categorias = Category::all();
-        return view('perfil.compras', compact('categorias'));
+        // $ordenes = $user->orders()->where('status_id', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
+        $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(3);
+        return view('perfil.compras', compact('user','categorias','ordenes'));
 
     }
 

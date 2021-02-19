@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('total_amount');
-            $table->string('status');
+            $table->foreignId('status_id');
             $table->string('comment');
             $table->integer('discount');
             $table->integer('n-control');

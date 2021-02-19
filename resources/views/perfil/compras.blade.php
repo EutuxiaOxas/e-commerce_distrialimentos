@@ -8,29 +8,39 @@
         @include('perfil.perfil_nav')
         <div class="perfil__body compras">
             <h2 class="perfil__body-title">Mis compras</h2>
-            <div class="perfil__cardBody compras">
-
-                <div class="perfil__comprasInfo">
-                    <h2 class="perfil__comprasInfo-title">Por pagar</h2>
-                    <p class="perfil__comprasInfo-alert">Realice el pago los mas pronto posible...</p>
-                    <div class="perfil__comprasInfoDetails">
-                        <p class="perfil__comprasInfoDetails-info id">ID: 0000000001</p>
-                        <p class="perfil__comprasInfoDetails-info date">Fecha:  21 diciembre  2020</p>
+            @if ($ordenes)
+                @foreach ($ordenes->take(5) as $orden)
+                    {{-- tarjeta Por pagar --}}
+                    <div class="perfil__cardBody compras">
+                        <div class="perfil__comprasInfo">
+                            <h2 class="perfil__comprasInfo-title">{{$orden->statusorder->status}}</h2>
+                            <p class="perfil__comprasInfo-alert">{{$orden->statusorder->msg}}</p>
+                            <div class="perfil__comprasInfoDetails">
+                                <p class="perfil__comprasInfoDetails-info id">ID: 0000000001</p>
+                                <p class="perfil__comprasInfoDetails-info date">Fecha:  21 diciembre  2020</p>
+                            </div>
+                        </div>
+                        
+                        <div class="perfil__comprasMount">
+                            <h3 class="perfil__comprasMount-title">Monto: 400,00 USD</h3>
+                            <p class="perfil__comprasMount-mount">Monto: 700.000.000,00 BS</p>
+                        </div>
+                        
+                        <div class="perfil__comprasActions">
+                            <a href="#" class="perfil__comprasActions-cancelar">Cancelar compra</a>
+                            <a href="#" class="perfil__comprasActions-detalle"> Ver detalle</a>
+                        </div>
                     </div>
-                </div>
+                    {{--  Fin Por pagar --}}
+                @endforeach     
+            @else
+                <h2>Sin Pedidos...</h2>
+            @endif
 
-                <div class="perfil__comprasMount">
-                    <h3 class="perfil__comprasMount-title">Monto: 400,00 USD</h3>
-                    <p class="perfil__comprasMount-mount">Monto: 700.000.000,00 BS</p>
-                </div>
 
-                <div class="perfil__comprasActions">
-                    <a href="#" class="perfil__comprasActions-cancelar">Cancelar compra</a>
-                    <a href="#" class="perfil__comprasActions-detalle"> Ver detalle</a>
-                </div>
-            </div>
+
+            {{-- Tarjeta comun --}}
             <div class="perfil__cardBody compras">
-
                 <div class="perfil__comprasInfo">
                     <h2 class="perfil__comprasInfo-title pendiente">Por empaquetar</h2>
                     <p class="perfil__comprasInfo-alert">Realice el pago los mas pronto posible...</p>
@@ -39,16 +49,18 @@
                         <p class="perfil__comprasInfoDetails-info date">Fecha:  21 diciembre  2020</p>
                     </div>
                 </div>
-
+                
                 <div class="perfil__comprasMount">
                     <h3 class="perfil__comprasMount-title">Monto: 400,00 USD</h3>
                     <p class="perfil__comprasMount-mount">Monto: 700.000.000,00 BS</p>
                 </div>
-
+                
                 <div class="perfil__comprasActions completed">
                     <a href="#" class="perfil__comprasActions-detalle"> Ver detalle</a>
                 </div>
             </div>
+            {{-- Fin Tarjeta comun --}}
+
             <div class="perfil__cardBody compras">
 
                 <div class="perfil__comprasInfo">
