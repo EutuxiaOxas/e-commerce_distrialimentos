@@ -29,44 +29,37 @@
     @if ($direcciones->isNotEmpty())
     @foreach ($direcciones->take(1) as $direccion)
         
-   
+	
          <!-- trj datos de envio-->
-      <div class="container mt-1">
-        <div class="row">
-          <div class="col">
-            <div class="border shadow">
-              <div class="info-container p-3 mb-1">
-                <p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
-                <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small" id="formDirectionType">{{$direccion->address}}</p>
-                <p class="texto-small px-3 my-0 py-0 text-muted" id="formDirectionLocation">{{$direccion->state->state}}, {{$direccion->city->city}} ({{$direccion->postal_code}})</p>
-                <p class="texto-small px-3 my-0 py-0 pb-2 text-muted" id="formDirectionResponsable">{{$direccion->responsable}} / {{$direccion->responsable_phone}}</p>
-                <div class="row mb-1 py-2">
-                  <div class="col-6 pr-0">
-                    <p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
-                  </div>
-                  <div class="col-6 text-md-center">
-                    <p class="texto-small pl-0 text-muted" id="formDirectionDeliveryRoute">{{$direccion->delivery_route->name}}</p>
-                  </div>
-                </div>
-                <div class="row pt-2 padding-modal">
-                  <div class="col-6 text-center">
-                    <a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary" id="formChangeAddress">Cambiar dirección de envío</a>
-                  </div>
-                  <div class="col-6 text-center">
-                    <a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
+		 <div class="perfil__cardBody direccion" id="formAddressMain">
+			<div class="info-container p-3 mb-1">
+				<p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
+				<p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small" id="formDirectionType">{{$direccion->address}}</p>
+				<p class="texto-small px-3 my-0 py-0 text-muted" id="formDirectionLocation">{{$direccion->state->state}}, {{$direccion->city->city}} ({{$direccion->postal_code}})</p>
+				<p class="texto-small px-3 my-0 py-0 pb-2 text-muted" id="formDirectionResponsable">{{$direccion->responsable}} / {{$direccion->responsable_phone}}</p>
+				<div class="row mb-1 py-2">
+				  <div class="col-6 pr-0">
+					<p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
+				  </div>
+				  <div class="col-6 text-md-center">
+					<p class="texto-small pl-0 text-muted" id="formDirectionDeliveryRoute">{{$direccion->delivery_route->name}}</p>
+				  </div>
+				</div>
+				<div class="row pt-2 padding-modal">
+				  <div class="col-6 text-center">
+					<a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary" id="formChangeAddress">Cambiar dirección de envío</a>
+				  </div>
+				  <div class="col-6 text-center">
+					<a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
+				  </div>
+				</div>
+			  </div>
+		 </div>
     <!-- Fin trj datos de envio-->
     @endforeach
     @else 
       	{{-- si no exiten direcciones --}}
-        <div class="perfil__cardBody direccion">
+        <div class="perfil__cardBody direccion" id="formAddressMain">
           <div class="container p-5 text-center">
             <img src="{{asset('/images/void-03.svg')}}" alt="">
             <p class="perfil__cardListItem-content">Aun sin direcciones de envio...</p>
@@ -91,7 +84,7 @@
           </div>
           <div class="col-7 pl-0">
             <form action="{{route('order.store')}}" id="formFinalizarCompra">
-				<input type="hidden" value="{{$direcciones[0]->id}}" name="address_id" id="finalizarCompraDireccionId">
+				<input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
 				<button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right">Finalizar Compra</button>
 			</form>
           </div>
@@ -130,9 +123,12 @@
 							</div>
 						</div>
 					</div>
-					<form action="" method="POST">
+					<form action="" id="formCreateAddress" method="POST">
 						@csrf
 						<div class="form">
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
+							</div>
 							<div class="col">
 								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
 									<option value="">Escoge un estado</option>
@@ -274,32 +270,147 @@
 			formDeliveryRoute.innerText = `${delivery_route.name}`
 		}
 
+		function addNewAddress(address){
+			const mainContainer = document.getElementById('formAddressMain')
+
+			if(mainContainer) {
+				addLoaderInFormAddress(mainContainer)
+				setTimeout(()=> {
+					addNewAddressToView(mainContainer, address)
+				}, 1500)
+			}
+			
+		}
+
+		function addLoaderInFormAddress(container){
+			element = '<div class="loader">Loading...</div>'
+
+			container.innerHTML = element;
+		}
+
+		function addNewAddressToView(container, {
+			address,
+			delivery_route,
+			responsable,
+			responsable_phone,
+			postal_code,
+			state: {state},
+			city: {city}
+		}) {
+			const view = `
+			<div class="info-container p-3 mb-1">
+                <p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
+                <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small" id="formDirectionType">${address}</p>
+                <p class="texto-small px-3 my-0 py-0 text-muted" id="formDirectionLocation">${state}, ${city} (${postal_code})</p>
+                <p class="texto-small px-3 my-0 py-0 pb-2 text-muted" id="formDirectionResponsable">${responsable} / ${responsable_phone}</p>
+                <div class="row mb-1 py-2">
+                  <div class="col-6 pr-0">
+                    <p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
+                  </div>
+                  <div class="col-6 text-md-center">
+                    <p class="texto-small pl-0 text-muted" id="formDirectionDeliveryRoute">${delivery_route.name}</p>
+                  </div>
+                </div>
+                <div class="row pt-2 padding-modal">
+                  <div class="col-6 text-center">
+                    <a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary" id="formChangeAddress">Cambiar dirección de envío</a>
+                  </div>
+                  <div class="col-6 text-center">
+                    <a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
+                  </div>
+                </div>
+              </div>
+			`
+
+			container.innerHTML = view;
+			reloadEvents();
+		}
+
+		//------------------------- RECARGAR EVENTOS -------------------------
+		function reloadEvents(){
+			const changeAddress = document.getElementById('formChangeAddress')
+			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
+			direcciones = [];
+			if(changeAddress) {
+				changeAddress.addEventListener('click', () => {
+				
+				axios.get('/user/address')
+					.then(res => {
+						direcciones = res.data;
+						addTypeAddressToSelect(direcciones)
+					})
+				})
+			}
+		}
+
+
+		function loadEventsInAddressScope(){
+
+			const changeAddress = document.getElementById('formChangeAddress')
+			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
+			const formCreate = document.getElementById('formCreateAddress');
+			direcciones = [];
+
+			//------------------------- EVENTOS VISTA -------------------------
+
+			if(changeAddress) {
+				changeAddress.addEventListener('click', () => {
+				
+				axios.get('/user/address')
+					.then(res => {
+						direcciones = res.data;
+						addTypeAddressToSelect(direcciones)
+					})
+				})
+			}
+
+			butonToSaveAddress.addEventListener('click', () => {
+				const selectAddress = document.getElementById('formDirectionAddreses');
+				const formAddressValue = document.getElementById('finalizarCompraDireccionId');
+				const value = selectAddress.value
+				
+				//get address
+				let direccion = direcciones.find(element => element.id == value)
+				
+				formAddressValue.value = direccion.id;
+				showAddressInView(direccion)
+			})
+
+			formCreate.addEventListener('submit', (e) => {
+				e.preventDefault();
+				
+				// form data
+				const [ , type, stateId, cityId, townshipId, postalCode, address, responsable, responsablePhone, deliveryRouteId] = e.target
+				
+				// close modal
+				$('#modal-directionEdit').modal('hide');
+				
+				axios.post(`/perfil/userShippingAddreses/add`, {
+					type: type.value,
+					state_id: stateId.value,
+					city_id: cityId.value,
+					township_id: townshipId.value,
+					postal_code: postalCode.value,
+					address: address.value,
+					responsable: responsable.value,
+					responsable_phone: responsablePhone.value,
+					delivery_route_id: deliveryRouteId.value
+				})
+				.then(res => {
+					e.target.reset();
+					addNewAddress(res.data)
+
+				})
+				.catch(err => {
+					console.log(err);
+				});
+			})
+		}
 
 		//------------------- STARTING SCRIPT ---------------------
+		let direcciones;
+		loadEventsInAddressScope();
 		
-		const changeAddress = document.getElementById('formChangeAddress')
-		const butonChangeAddress = document.getElementById('formButonChangeAddress');
-
-		let addresses = [];
-
-		changeAddress.addEventListener('click', () => {
-			
-			axios.get('/user/address')
-				.then(res => {
-					addresses = res.data;
-					addTypeAddressToSelect(addresses)
-				})
-		})
-
-		butonChangeAddress.addEventListener('click', () => {
-			const selectAddress = document.getElementById('formDirectionAddreses');
-			const formAddressValue = document.getElementById('finalizarCompraDireccionId');
-			const value = selectAddress.value
-			
-			const [address] = addresses.filter(element => element.id == value)
-			formAddressValue.value = address.id;
-			showAddressInView(address)
-		})
 
 	}	
 	

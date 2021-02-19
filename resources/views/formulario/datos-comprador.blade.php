@@ -19,7 +19,7 @@
     @if ($user->documento_identidad && $user->phone )
       <!--  datos de usuario-->
     <div class="container mt-1 px-3">
-      <div class="border shadow">
+      <div class="border shadow" id="formUserInfoContainer">
         <div class="info-container p-3">
           <div class="row mb-3">
             <div class="col-6">
@@ -55,75 +55,21 @@
           </div>
           <div class="row">
             <div class="col-12 text-center pt-3 padding_modal">
-              <a href="#" class="texto-small font-weight-bold text-secondary" data-toggle="modal" data-target="#moda-user-edit">Editar datos de comprador</a>
+              <a href="#" class="texto-small font-weight-bold text-secondary" data-toggle="modal" data-target="#modal-user-edit">Editar datos de comprador</a>
             </div>
-
-            <div class="modal fade" id="moda-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content p-3">
-                <div class="modal-header p-2 border-bottom-0">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-10 mb-0">
-                        <h5 class="modal-title text-secondary font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
-                        <p class="texto-small text-muted">Agregue los datos solicitados...</p>
-                      </div>
-                      <div class="col-2">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>        
-                      </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-body px-2 pt-1 pb-2">
-                <div class="form-title container">
-                  <div class="row">
-                    <div class="col text-center">
-                      <p class="font-weight-bold">Datos de usuario</p>
-                    </div>
-                  </div>
-                </div>
-                <form action="{{route('user.info.update')}}" method="POST">
-                  @csrf
-                  <div class="form">
-                    <div class="col">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->name ?? ''}}" name="name" placeholder="Nombre completo">
-                    </div>
-                    <div class="col">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->documento_identidad ?? ''}}" name="documento_identidad"  placeholder="Cedula [ej: v-23432578]">
-                    </div>
-                    <div class="col">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone ?? ''}}"  name="phone" placeholder="Telefono [ej: 0241-8524234]">
-                    </div>
-                    <div class="col pb-3">
-                      <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone_alternative ?? ''}}" name="phone_alternative" placeholder="Telefono Alt. [ej: 0241-8524234]">
-                    </div>
-                  </div>
-                  <div class="container">
-                    <div class="row mb-1">
-                      <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
-                    </div>
-                    <div class="row">
-                      <p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
-                    </div>
-                  </div>
-                </form>
-              </div>
-          </div>
         </div>
       </div>
     </div>
     <!-- /datos de usuario-->
     @else
     {{-- Aun falta datos por agregar --}}
-    <div class="perfil__cardBody direccion">
+    <div class="perfil__cardBody direccion" id="formUserInfoContainer">
       <div class="container p-5 text-center">
         <img src="{{asset('images/void-01.svg')}}" alt="sin datos">
-        <p class="perfil__cardListItem-content" style="">Aun sin datos personales...</p>
+        <p class="perfil__cardListItem-content">Aun sin datos personales...</p>
       </div>
       <div class="perfil__agregarDatos ">
-        <a href="#" data-toggle="modal" data-target="#modal_userEdit">Agregar los datos personales</a>
+        <a href="#" data-toggle="modal" data-target="#modal-user-edit">Agregar los datos personales</a>
       </div>
     </div>
     @endif
@@ -148,16 +94,15 @@
 
 
 {{-- Modales --}}
-
 <!-- Modal datos de usuario -->
-<div class="modal fade" id="modal_userEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content p-3">
+<div class="modal fade" id="modal-user-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content p-3">
       <div class="modal-header p-2 border-bottom-0">
         <div class="container">
           <div class="row">
             <div class="col-10 mb-0">
-              <h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de usuario</h4>
+              <h5 class="modal-title text-secondary font-weight-bold lead" id="exampleModalLabel">Datos de usuario</h5>
               <p class="texto-small text-muted">Agregue los datos solicitados...</p>
             </div>
             <div class="col-2">
@@ -165,44 +110,143 @@
                 <span aria-hidden="true">&times;</span>
               </button>        
             </div>
-          </div>
         </div>
-      </div>
-      <div class="modal-body px-2 pt-1 pb-2">
-        <div class="form-title container">
-          <div class="row">
-            <div class="col text-center">
-              <h5 class="font-weight-bold">Datos de usuario</h5>
-            </div>
-          </div>
-        </div>
-        <form action="{{route('user.info.update')}}" method="POST">
-          @csrf
-          <div class="form">
-            <div class="col">
-              <input type="text" class="form-control-plaintext formularios__inputBorders" name="name" placeholder="Nombre completo" required>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control-plaintext formularios__inputBorders" name="documento_identidad" placeholder="Cedula [ej: v-23432578]" required>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control-plaintext formularios__inputBorders" name="phone" placeholder="Telefono [ej: 0241-8524234]" required>
-            </div>
-            <div class="col pb-3">
-              <input type="text" class="form-control-plaintext formularios__inputBorders" name="phone_alternative" placeholder="Telefono Alt. [ej: 0241-8524234]">
-            </div>
-          </div>
-          <div class="container">
-            <div class="row mb-1 mt-4 pt-4">
-              <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Agregar</button>
-            </div>
-            <div class="row">
-              <p class="text-muted texto-small text-center">Al hacer click en agregar usted confirma que los datos administrados son reales</p>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
-  </div>
+    <div class="modal-body px-2 pt-1 pb-2">
+      <div class="form-title container">
+        <div class="row">
+          <div class="col text-center">
+            <p class="font-weight-bold">Datos de usuario</p>
+          </div>
+        </div>
+      </div>
+      <form action="{{route('user.info.update')}}" id="formEditOrCreateUserInfo" method="POST">
+        @csrf
+        <div class="form">
+          <div class="col">
+            <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->name ?? ''}}" name="name" placeholder="Nombre completo">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->documento_identidad ?? ''}}" name="documento_identidad"  placeholder="Cedula [ej: v-23432578]">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone ?? ''}}"  name="phone" placeholder="Telefono [ej: 0241-8524234]">
+          </div>
+          <div class="col pb-3">
+            <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone_alternative ?? ''}}" name="phone_alternative" placeholder="Telefono Alt. [ej: 0241-8524234]">
+          </div>
+        </div>
+        <div class="container">
+          <div class="row mb-1">
+            <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">
+              @if($user->documento_identidad && $user->phone)
+                Editar
+              @else 
+                Agregar
+              @endif
+            </button>
+          </div>
+          <div class="row">
+            <p class="text-muted texto-small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+          </div>
+        </div>
+      </form>
+    </div>
 </div>
+
 <!-- Fin Modal datos de usuario -->
+
+<script>
+  function compraFormBuyer(){
+
+    function addLoader(container) {
+      element = '<div class="loader">Loading...</div>';
+      container.innerHTML = element;
+    }
+
+    function addUserInfoToView(container, {
+      name,
+      documento_identidad,
+      phone,
+      phone_alternative
+    }) {
+      const view = `
+      <div class="info-container p-3">
+          <div class="row mb-3">
+            <div class="col-6">
+              <p class="font-weight-bold texto-small">Nombre y apellido</p>
+            </div>
+            <div class="col-6">
+              <p class="texto-small text-muted text-md-right">${name}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <p class="font-weight-bold texto-small">Documento</p>
+            </div>
+            <div class="col-6">
+              <p class="texto-small text-muted text-md-right">C.I. ${documento_identidad}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <p class="font-weight-bold texto-small">Telefono</p>
+            </div>
+            <div class="col-6">
+              <p class="texto-small text-muted text-md-right">${phone}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <p class="font-weight-bold texto-small">Telefono alternativo</p>
+            </div>
+            <div class="col-6">
+              <p class="texto-small text-muted text-md-right">${phone_alternative ? phone_alternative : '-'}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center pt-3 padding_modal">
+              <a href="#" class="texto-small font-weight-bold text-secondary" data-toggle="modal" data-target="#modal-user-edit">Editar datos de comprador</a>
+            </div>
+        </div>
+      </div>
+      `
+      container.innerHTML = view;
+    }
+
+    const formUserInfo = document.getElementById('formEditOrCreateUserInfo');
+    const userContainer = document.getElementById('formUserInfoContainer');
+
+    formUserInfo.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // form data
+      const [, name, documentoIdentidad, phone, phoneAlternative] = e.target;
+
+      addLoader(userContainer);
+
+      //close modal
+      $('#modal-user-edit').modal('hide');
+
+      axios.post(`/perfil/userInfo`, {
+        name: name.value,
+        documento_identidad: documentoIdentidad.value,
+        phone: phone.value,
+        phone_alternative: phoneAlternative.value
+      })
+      .then(res => {
+        setTimeout(() => {
+          addUserInfoToView(userContainer, res.data)
+        }, 2000);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+    })
+  }
+
+  // function scope
+  compraFormBuyer();
+</script>
