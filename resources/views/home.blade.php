@@ -154,7 +154,24 @@
     display: none;
   }
 
+}
+
+.text-container {
+    color:#02528A;
+    font-weight: bold;
   }
+
+  .home__textImg {   
+    font-size: 2.4rem;
+  }
+  .home__textImg2 {
+    font-size: 1.45rem;
+  }
+  .home_img {
+    position: absolute;
+    right: calc(100% - 36vw);
+  }
+
   </style>
 
   {{-- Seccion de productos destacados --}}
@@ -516,10 +533,10 @@
 
   {{-- Final version Desktop --}}
 
-  <section class="d-none d-md-block py-5 my-5">
+  <section class="d-none d-md-block">
     <div class="container">
         <div class="row">
-          <div class="col-6 d-flex align-items-center justify-content-center flex-column">
+          <div class="col-6 d-flex align-items-center justify-content-center flex-column py-5 my-5">
             <div class="row text-center">
               <div class="col">
                 <h4 class="text-primary py-1">Tus pedidos a un click de distancia</h4>
@@ -531,16 +548,19 @@
                 <a href="/register" class="btn btn-primary btn-registro">Registrate</a>
               </div>
               <div class="col">
-                <p class="small text-muted">Ya tengo una cuenta, <a href="/login">Iniciar sesión</a></p>
+                <p class="small text-muted font-weight-bold">Ya tengo una cuenta, <a class="text-secondary font-weight-bold" href="/login">Iniciar sesión</a></p>
               </div>
             </div>
           
             
           </div>
-          <div class="col-6 text-center ">
+          <div class="col-6 text-center pt-5 mt-5">
+            <div class="text-container text-right">
+              <p class="home__textImg">¿Y tu ya tienes tu cuenta?</p>
+              <p class="home__textImg2">Te estamos esperando...</p>
+            </div>
             <figure>
-              <img src="{{asset('images/imgs/registro.svg')}}" alt="">
-              <p class="small text-muted">Te estamos esperando...</p>
+              <img class="home_img" src="{{asset('images/imgs/registro.svg')}}" alt="">
             </figure>
           </div>
         </div>
