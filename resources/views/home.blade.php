@@ -162,10 +162,10 @@
   }
 
   .home__textImg {   
-    font-size: 2.4rem;
+    font-size: 2.1rem;
   }
   .home__textImg2 {
-    font-size: 1.45rem;
+    font-size: 1.25rem;
   }
   .home_img {
     position: absolute;
