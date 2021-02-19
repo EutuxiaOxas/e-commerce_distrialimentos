@@ -137,10 +137,12 @@ Route::middleware('auth')->group(function () {
 
 	Route::get('/perfil/compras', 'PerfilController@mis_compras')
 	->name('perfil.compras');
+	Route::get('/perfil/get/address/{id}', 'PerfilController@obtenerDireccion');
 
 	Route::post('/perfil/userInfo', 'PerfilController@agregarDatosPersonales')->name('user.info.update');
 	Route::post('/perfil/userEnterprise/update', 'PerfilController@agregarDatosDeEmpresa')->name('user.enterprise.update');
-	Route::post('/perfil/userShippingAddreses/update', 'PerfilController@agregarDirecciones')->name('user.addreses.update');
+	Route::post('/perfil/userShippingAddreses/add', 'PerfilController@agregarDirecciones')->name('user.addreses.add');
+	Route::post('/perfil/userShippingAddreses/update/{id}', 'PerfilController@actualizarDireccion')->name('user.addreses.update');
 });
 
 // Route::get('/productos', 'HomeController@products')->name('productos');
@@ -308,3 +310,5 @@ Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');
 
 
+//-------------- OBTENER DIRECCIONES -----------
+Route::get('/user/address', 'AddressController@getAddress');

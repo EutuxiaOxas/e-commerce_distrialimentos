@@ -229,7 +229,9 @@
 .perfil__comprasInfo-title.completed {
 	color: $perfil_completed-color;
 }
-
+.perfil__comprasInfo-title.canceled {
+	color: $perfil-canceled-color;
+}
 .perfil__comprasInfo-alert {
 	font-size: .9rem;
 	color: $perfil_third-color;

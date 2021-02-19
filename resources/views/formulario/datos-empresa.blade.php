@@ -98,32 +98,53 @@
                               </div>
                             </div>
                           </div>
-                          <form>
+                          <form action="{{route('user.enterprise.update')}}" method="POST">
+                            @csrf
                             <div class="form">
                               <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Nombre de empresa">
+                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required  name="name" placeholder="Nombre de empresa">
                               </div>
                               <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="RIF [ej: j-20180578-4]">
+                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}"  required name="RIF" placeholder="RIF [ej: j-20180578-4]">
                               </div>
                               <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="SADA">
+                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}"  required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
                               </div>
                               <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" placeholder="Horario de atención">
+                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}"  required name="postal_code" placeholder="Código postal [ej: 2002]">
+                              </div>
+                              <div class="col">
+                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}"  required name="SADA" placeholder="SADA">
+                              </div>
+                              <div class="col mb-3">
+                                <select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
+                                  <option value="">Escoge un estado</option>
+                                  @foreach($estados as $estado)
+                                    <option value="{{$estado->id}}" {{$empresa->state->id == $estado->id ? 'selected' : ''}}>{{$estado->state}}</option>
+                                  @endforeach
+                                </select>
+                                <select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
+                                  <option value="">Escoge una ciudad</option>
+                                  @foreach($ciudades as $ciudad)
+                                    <option value="{{$ciudad->id}}" {{$empresa->city->id == $ciudad->id ? 'selected' : ''}}>{{$ciudad->city}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                              <div class="col form-group my-4 py-4">
+                                <h5 class="mt-2 pt-2 font-weight-bold">Horario de atención <small>(apertura - cierre)</small></h5>
+                                <input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->opening_time ?? ''}}" required required name="opening_time">
+                                <input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->closing_time ?? ''}}" required required name="closing_time">
+                              </div>
+                            </div>
+                            <div class="container">
+                              <div class="row mb-1">
+                                <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
+                              </div>
+                              <div class="row">
+                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
                               </div>
                             </div>
                           </form>                                      
-                        </div>
-                        <div class="modal-footer pt-5 border-0">
-                          <div class="container">
-                            <div class="row mb-1">
-                              <button type="button" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
-                            </div>
-                            <div class="row">
-                              <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

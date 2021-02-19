@@ -11208,6 +11208,31 @@ nav {
   z-index: 998;
 }
 
+.header__navListCurrencyMain {
+  position: relative;
+}
+
+.header__navMobileChooseCurrency {
+  position: absolute;
+  display: none;
+  background-color: #F5F5F5;
+  top: 160%;
+  left: -10px;
+  z-index: 25;
+}
+
+.header__navMobileChooseCurrency.active {
+  display: block;
+}
+
+.header__navMobileChooseCurrency a {
+  color: #02528A;
+  display: block;
+  padding: 0.6rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 /*------------------------- DESKTOP VIEW --------------------- */
 
 .header__main {
@@ -11368,33 +11393,20 @@ nav {
   font-size: 1rem;
   padding: 0.6rem 0 0.8rem;
   font-family: "Righteous", cursive;
-  background-color: #02528A;
+  background-color: #F5F5F5;
 }
 
-.navbar__currencyList--item a,
-.navbar__currencyList--item.title {
+.navbar__currencyList--item a {
   text-decoration: none;
   font-size: 1.2rem;
   padding-left: 1rem;
+  color: #02528A;
+  font-weight: bold;
 }
 
-.navbar__currencyList--item.choose:hover {
-  background-color: #0068B1;
-}
-
-.navbar__currencyList--item.title {
+.navbar__currencyList--item {
   font-family: "Roboto", cursive;
-  color: #0079CE;
   font-size: 0.7rem;
-}
-
-.navbar__currencyList--item.usd a {
-  color: #2B2B2B;
-  font-family: "Righteous", cursive;
-}
-
-.navbar__currencyList--item.ves a {
-  color: #ffff;
 }
 
 .navbar__location {
@@ -11806,6 +11818,10 @@ nav {
 
 .perfil__comprasInfo-title.completed {
   color: #00E23F;
+}
+
+.perfil__comprasInfo-title.canceled {
+  color: #FA5959;
 }
 
 .perfil__comprasInfo-alert {

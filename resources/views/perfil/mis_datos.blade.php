@@ -135,7 +135,7 @@
 					<div class="direccionCard">
 						<div class="perfil__cardTitle direccion">
 							<h2 class="perfil__card-title direccion">{{$direccion->type}}</h2>
-							<img data-toggle="modal" data-target="#modal-directionEdit" src="{{asset('/images/editar-icon.svg')}}">
+							<img data-toggle="modal" class="perfilDirectionsEdit" id="directionEdit-{{$direccion->id}}" data-target="#modal-directionEditar" src="{{asset('/images/editar-icon.svg')}}">
 						</div>
 						<div class="perfil__cardDireccion">
 							<h3 class="perfil__cardDireccion-title">{{$direccion->address}}</h3>
@@ -201,16 +201,16 @@
 						@csrf
 						<div class="form">
 							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" name="name" placeholder="Nombre completo" required>
+								<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->name ?? ''}}" name="name" placeholder="Nombre completo" required>
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" name="documento_identidad" placeholder="Cedula [ej: v-23432578]" required>
+								<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->documento_identidad ?? ''}}" name="documento_identidad" placeholder="Cedula [ej: v-23432578]" required>
 							</div>
 							<div class="col">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" name="phone" placeholder="Telefono [ej: 0241-8524234]" required>
+								<input type="text" class="form-control-plaintext formularios__inputBorders"  value="{{$user->phone ?? ''}}" name="phone" placeholder="Telefono [ej: 0241-8524234]" required>
 							</div>
 							<div class="col pb-3">
-								<input type="text" class="form-control-plaintext formularios__inputBorders" name="phone_alternative" placeholder="Telefono Alt. [ej: 0241-8524234]">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$user->phone_alternative ?? ''}}"  name="phone_alternative" placeholder="Telefono Alt. [ej: 0241-8524234]">
 							</div>
 						</div>
 						<div class="container">
@@ -259,38 +259,46 @@
 						@csrf
 						<div class="form">
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="name" placeholder="Nombre de empresa">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required required name="name" placeholder="Nombre de empresa">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="RIF" placeholder="RIF [ej: j-20180578-4]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}" required required name="RIF" placeholder="RIF [ej: j-20180578-4]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}" required required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="postal_code" placeholder="Código postal [ej: 2002]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}" required required name="postal_code" placeholder="Código postal [ej: 2002]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="SADA" placeholder="SADA">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}" required required name="SADA" placeholder="SADA">
 						</div>
 						<div class="col mb-3">
 							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
 								<option value="">Escoge un estado</option>
 								@foreach($estados as $estado)
-									<option value="{{$estado->id}}">{{$estado->state}}</option>
+									<option value="{{$estado->id}}" 
+										@if(isset($empresa))
+											{{$empresa->state->id == $estado->id ? 'selected' : ''}}
+										@endif
+									>{{$estado->state}}</option>
 								@endforeach
 							</select>
 							<select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
 								<option value="">Escoge una ciudad</option>
 								@foreach($ciudades as $ciudad)
-									<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
+									<option value="{{$ciudad->id}}" 
+										@if(isset($empresa))
+											{{$empresa->city->id == $ciudad->id ? 'selected' : ''}}
+										@endif
+									>{{$ciudad->city}}</option>
 								@endforeach
 							</select>
 						</div>
 						<div class="col form-group my-4 py-4">
 							<h5 class="mt-2 pt-2 font-weight-bold">Horario de atención <small>(apertura - cierre)</small></h5>
-							<input type="time" class="form-control-plaintext formularios__inputBorders" required required name="opening_time">
-							<input type="time" class="form-control-plaintext formularios__inputBorders" required required name="closing_time">
+							<input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->opening_time ?? ''}}" required required name="opening_time">
+							<input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->closing_time ?? ''}}" required required name="closing_time">
 						</div>
 						</div>
 						<div class="container">
@@ -335,9 +343,12 @@
 							</div>
 						</div>
 					</div>
-					<form action="{{route('user.addreses.update')}}" method="POST">
+					<form action="{{route('user.addreses.add')}}" method="POST">
 						@csrf
 						<div class="form">
+							<div class="col">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
+							</div>
 							<div class="col">
 								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
 									<option value="">Escoge un estado</option>
@@ -395,6 +406,190 @@
 	</div>
 	<!-- Fin Modal datos de Direccion -->
 
+	<!-- Fin Modal datos de editar Direccion -->
+	<div class="modal fade" id="modal-directionEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content p-3">
+				<div class="modal-header p-2 border-bottom-0">
+					<div class="container">
+						<div class="row">
+						<div class="col-10 mb-0">
+							<h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de dirección</h4>
+							<p class="texto-small text-muted">Agregue los datos solicitados...</p>
+						</div>
+						<div class="col-2">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>        
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body px-2 pt-1 pb-2">                   
+					<div class="form-title container">
+						<div class="row">
+							<div class="col text-center">
+								<h5 class="text-black font-weight-bold">Direccion Juridica</h5>
+							</div>
+						</div>
+					</div>
+					<form action="" method="POST" id="formEditDirectionModal">
+						@csrf
+						<div class="form">
+							<div class="col">
+								<input type="text" id="directionEditType" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
+							</div>
+							<div class="col">
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditState" required name="state_id" >
+									<option value="">Escoge un estado</option>
+									@foreach($estados as $estado)
+										<option value="{{$estado->id}}">{{$estado->state}}</option>
+									@endforeach
+								</select>
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditCity"  required name="city_id" >
+									<option value="">Escoge una ciudad</option>
+									@foreach($ciudades as $ciudad)
+										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
+									@endforeach
+								</select>
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditTownship" required name="township_id" >
+									<option value="">Escoge un municipio</option>
+									@foreach($municipios as $municipio)
+										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
+									@endforeach
+								</select>
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" id="directionEditPostalCode" required name="postal_code" placeholder="Codigo postal">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" id="directionEditAddress" required name="address" placeholder="Dirección">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" id="directionEditResponsable" required name="responsable" placeholder="Responsable">
+							</div>
+							<div class="col">
+								<input type="text" class="form-control-plaintext formularios__inputBorders" id="directionEditResponsablePhone" required name="responsable_phone" placeholder="Telefono Oficina">
+							</div>
+							<div class="col text-center my-4 py-2">
+								<p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditDeliveryRoute" required name="delivery_route_id" >
+									<option value="">Escoge una ruta de entrega</option>
+									@foreach($rutaEntregas as $rutaEntrega)
+										<option value="{{$rutaEntrega->id}}">{{$rutaEntrega->name}}</option>
+									@endforeach
+								</select>
+							</div>
+							<div class="container">
+								<div class="row mb-0 mt-4 pt-4">
+									<button type="submit" class="btn btn-primary btn-block">Actualizar</button>
+								</div>
+								<div class="row">
+								<p class="text-muted texto-small text-center">Al hacer click en actualizar usted confirma que los datos administrados son reales</p>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
+<script>
+	function addDirectionToEditModal({
+		id,
+		city_id,
+		state_id,
+		township_id,
+		delivery_route_id,
+		postal_code,
+		responsable,
+		responsable_phone,
+		type,
+		address
+	}) 
+	{
+		// ELEMENTOS
+		const editState = document.getElementById('directionEditState')
+		const editCity = document.getElementById('directionEditCity')
+		const editTownship = document.getElementById('directionEditTownship')
+		const editDeliveryRoute = document.getElementById('directionEditDeliveryRoute')
+		const editPostalCode = document.getElementById('directionEditPostalCode')
+		const editAddress = document.getElementById('directionEditAddress')
+		const editResponsable = document.getElementById('directionEditResponsable')
+		const editResponsablePhone = document.getElementById('directionEditResponsablePhone')
+		const EditType = document.getElementById('directionEditType')
+		const form = document.getElementById('formEditDirectionModal')
+		directionEditType
+		// ESTADO SELECCIONADO
+		for(let i = 0; i < editState.children.length; i++) {
+
+			if(editState.children[i].value == state_id) {
+				editState.children[i].setAttribute('selected', "true")
+			}
+		}
+
+		// CIUDAD SELECCIONADO
+		for(let i = 0; i < editCity.children.length; i++) {
+
+			if(editCity.children[i].value == city_id) {
+				editCity.children[i].setAttribute('selected', "true")
+			}
+		}
+
+		// MUNICIPIO SELECCIONADO
+		for(let i = 0; i < editTownship.children.length; i++) {
+
+			if(editTownship.children[i].value == township_id) {
+				editTownship.children[i].setAttribute('selected', "true")
+			}
+		}
+
+		// RUTA DE ENTREGA SELECCIONADA
+		for(let i = 0; i < editDeliveryRoute.children.length; i++) {
+
+			if(editDeliveryRoute.children[i].value == delivery_route_id) {
+				editDeliveryRoute.children[i].setAttribute('selected', "true")
+			}
+		}
+
+		// VALORES COMUNES
+		editPostalCode.value = postal_code
+		editAddress.value = address
+		editResponsable.value = responsable
+		editResponsablePhone.value = responsable_phone
+		EditType.value = type
+
+		// ACTION FORM
+		form.action = `/perfil/userShippingAddreses/update/${id}`
+	}
+
+	function misDatosInit() {
+		const editarDirecciones = document.querySelectorAll('.perfilDirectionsEdit');
+
+
+		if(editarDirecciones) {
+			editarDirecciones.forEach(direccion => {
+
+				direccion.addEventListener('click', e => {
+					const [ , id] = e.target.id.split('directionEdit-');
+					axios.get(`/perfil/get/address/${id}`)
+						.then(res => {
+							addDirectionToEditModal(res.data)
+						})
+						.catch(err => {
+							console.log('Ha ocurrido un error: ', err)
+						}); 
+				})
+				
+			})
+		}
+	}
+
+	document.addEventListener('DOMContentLoaded', () => {
+		//inicializar JS en scope
+		misDatosInit();
+	})
+</script>
 
 @endsection

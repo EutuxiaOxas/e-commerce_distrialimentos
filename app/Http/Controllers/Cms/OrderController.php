@@ -18,19 +18,18 @@ class OrderController extends Controller
     }
 
 
-    public function nuevaOrden(){
-
+    public function nuevaOrden(Request $request){
     	$user = auth()->user();
 
 		$iva = Variable::where('name', 'IVA')->first();
 
-        $oldOrder = Order::where('status', 'ACTIVO')
+        $oldOrder = Order::where('status_id', '1')
                         ->where('user_id', $user->id)
                         ->first();
     	
         if(isset($oldOrder))
         {
-            $oldOrder->status = 'CANCELADO';
+            $oldOrder->status_id = '5'; //cancelado
             $oldOrder->save();
         }
 
@@ -42,10 +41,11 @@ class OrderController extends Controller
     	$order = Order::create([
     		'user_id' => $user->id,
     		'total_amount' => $total['total'],
-    		'status' => 'ACTIVO',
+    		'status_id' => '1',
 			'comment' => 'sin comentario',
 			'discount' => 0,
 			'n-control' => 0,
+			'address_id' => $request->address_id,
     	]);
 
     	$id = $order->id;
@@ -102,7 +102,7 @@ class OrderController extends Controller
     public function cancelarOrden($id)
     {
         $orden = Order::find($id);
-        $orden->status = 'CANCELADO';
+        $orden->status_id = '5'; //cancelar orden
         $orden->save();
 
         return redirect('/home')->with('message', 'Orden cancelada con éxito');

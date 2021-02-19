@@ -10,6 +10,7 @@ use App\City;
 use App\Township;
 use App\DeliveryRoute;
 use App\Category;
+use App\Variable;
 
 class PerfilController extends Controller
 {
@@ -23,16 +24,19 @@ class PerfilController extends Controller
         $ciudades = City::all(); //ciudades
         $municipios = Township::all(); //municipios
         $rutaEntregas = DeliveryRoute::all(); //municipios
-        $ordenes = $user->orders()->where('status', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
         $categorias = Category::all();
-        return view('perfil.mis_datos', compact('user', 'ordenes','empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias'));
+        return view('perfil.mis_datos', compact('user', 'empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias'));
     }
 
     //dashboard - mis compras
     public function mis_compras()
     {
+        $user = auth()->user();
         $categorias = Category::all();
-        return view('perfil.compras', compact('categorias'));
+        // $ordenes = $user->orders()->where('status_id', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
+        $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(3);
+        $tasa_bs_dolar = Variable::where('name','DOLAR')->first();
+        return view('perfil.compras', compact('user','categorias','ordenes','tasa_bs_dolar'));
 
     }
 
@@ -48,9 +52,9 @@ class PerfilController extends Controller
     public function agregarDatosDeEmpresa(Request $request)
     {
         $user = auth()->user();
-
-        if($user->enterprise) {
-            $empresa = Enterprise::update($request->all());
+        $enterprise = Enterprise::where('user_id', $user->id)->first();
+        if(isset($enterprise)) {
+            $enterprise->update($request->all());
         }else {
             $empresa = Enterprise::create([
                 'user_id' => $user->id,
@@ -83,9 +87,26 @@ class PerfilController extends Controller
             'responsable' => $request->responsable,
             'responsable_phone' => $request->responsable_phone,
             'delivery_route_id' => $request->delivery_route_id,
-            'type' => 'direccion',
+            'type' => $request->type,
         ]);
 
         return back();
+    }
+
+    public function actualizarDireccion(Request $request, $id) 
+    {
+        $user = auth()->user();
+        $direccion = Address::where('id', $id)->where('user_id', $user->id)->first();
+
+        $direccion->update($request->all());
+
+        return back();
+    }
+
+    public function obtenerDireccion($id)
+    {
+        $user = auth()->user();
+        $direccion = Address::where('id', $id)->where('user_id', $user->id)->first();
+        return response()->json($direccion, 200);
     }
 }
