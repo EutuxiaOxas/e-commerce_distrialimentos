@@ -85,7 +85,7 @@ class PerfilController extends Controller
             'responsable' => $request->responsable,
             'responsable_phone' => $request->responsable_phone,
             'delivery_route_id' => $request->delivery_route_id,
-            'type' => 'direccion',
+            'type' => $request->type,
         ]);
 
         return back();

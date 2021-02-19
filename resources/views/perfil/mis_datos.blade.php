@@ -347,6 +347,9 @@
 						@csrf
 						<div class="form">
 							<div class="col">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
+							</div>
+							<div class="col">
 								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
@@ -434,6 +437,9 @@
 						@csrf
 						<div class="form">
 							<div class="col">
+								<input type="text" id="directionEditType" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
+							</div>
+							<div class="col">
 								<select class="form-control-plaintext formularios__inputBorders" id="directionEditState" required name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
@@ -512,8 +518,9 @@
 		const editAddress = document.getElementById('directionEditAddress')
 		const editResponsable = document.getElementById('directionEditResponsable')
 		const editResponsablePhone = document.getElementById('directionEditResponsablePhone')
+		const EditType = document.getElementById('directionEditType')
 		const form = document.getElementById('formEditDirectionModal')
-
+		directionEditType
 		// ESTADO SELECCIONADO
 		for(let i = 0; i < editState.children.length; i++) {
 
@@ -551,6 +558,7 @@
 		editAddress.value = address
 		editResponsable.value = responsable
 		editResponsablePhone.value = responsable_phone
+		EditType.value = type
 
 		// ACTION FORM
 		form.action = `/perfil/userShippingAddreses/update/${id}`

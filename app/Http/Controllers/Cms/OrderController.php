@@ -18,8 +18,7 @@ class OrderController extends Controller
     }
 
 
-    public function nuevaOrden(){
-
+    public function nuevaOrden(Request $request){
     	$user = auth()->user();
 
 		$iva = Variable::where('name', 'IVA')->first();
@@ -46,6 +45,7 @@ class OrderController extends Controller
 			'comment' => 'sin comentario',
 			'discount' => 0,
 			'n-control' => 0,
+			'address_id' => $request->address_id,
     	]);
 
     	$id = $order->id;

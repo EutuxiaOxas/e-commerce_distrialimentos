@@ -37,20 +37,20 @@
             <div class="border shadow">
               <div class="info-container p-3 mb-1">
                 <p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
-                <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small">{{$direccion->address}}</p>
-                <p class="texto-small px-3 my-0 py-0 text-muted">{{$direccion->state->state}}, {{$direccion->city->city}} ({{$direccion->postal_code}})</p>
-                <p class="texto-small px-3 my-0 py-0 pb-2 text-muted">{{$direccion->responsable}} / {{$direccion->responsable_phone}}</p>
+                <p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small" id="formDirectionType">{{$direccion->address}}</p>
+                <p class="texto-small px-3 my-0 py-0 text-muted" id="formDirectionLocation">{{$direccion->state->state}}, {{$direccion->city->city}} ({{$direccion->postal_code}})</p>
+                <p class="texto-small px-3 my-0 py-0 pb-2 text-muted" id="formDirectionResponsable">{{$direccion->responsable}} / {{$direccion->responsable_phone}}</p>
                 <div class="row mb-1 py-2">
                   <div class="col-6 pr-0">
                     <p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
                   </div>
                   <div class="col-6 text-md-center">
-                    <p class="texto-small pl-0 text-muted">{{$direccion->delivery_route->name}}</p>
+                    <p class="texto-small pl-0 text-muted" id="formDirectionDeliveryRoute">{{$direccion->delivery_route->name}}</p>
                   </div>
                 </div>
                 <div class="row pt-2 padding-modal">
                   <div class="col-6 text-center">
-                    <a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary">Cambiar dirección de envío</a>
+                    <a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary" id="formChangeAddress">Cambiar dirección de envío</a>
                   </div>
                   <div class="col-6 text-center">
                     <a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
@@ -69,7 +69,7 @@
         <div class="perfil__cardBody direccion">
           <div class="container p-5 text-center">
             <img src="{{asset('/images/void-03.svg')}}" alt="">
-            <p class="perfil__cardListItem-content" style="">Aun sin direcciones de envio...</p>
+            <p class="perfil__cardListItem-content">Aun sin direcciones de envio...</p>
           </div>
           <div class="perfil__agregarDatos ">
             <a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
@@ -90,7 +90,10 @@
             <button id="btn_prior2" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
           </div>
           <div class="col-7 pl-0">
-            <a id="" href="{{route('order.store')}}" class="btn btn-primary btn-sm btn-block formularios__btn-right">Finalizar Compra</a>
+            <form action="{{route('order.store')}}" id="formFinalizarCompra">
+				<input type="hidden" value="{{$direcciones[0]->id}}" name="address_id" id="finalizarCompraDireccionId">
+				<button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right">Finalizar Compra</button>
+			</form>
           </div>
         </div>
       </div>
@@ -216,16 +219,12 @@
 						</div>
 					</div>
 					<div class="form">
-						@csrf
-						<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
+						<select class="form-control-plaintext formularios__inputBorders" required id="formDirectionAddreses" >
 							<option value="" disabled>Seleccione una direccion</option>
-							<option value="01">direccion 01</option>
-							<option value="02">direccion 01</option>
-							<option value="03">direccion 01</option>
 						</select>
 						<div class="container">
 							<div class="row mb-0 mt-4 pt-4">
-								<button type="submit" class="btn btn-primary btn-block">Cambiar dirección de envio</button>
+								<button type="submit" class="btn btn-primary btn-block" data-dismiss="modal" id="formButonChangeAddress">Cambiar dirección de envio</button>
 							</div>
 						</div>
 					</div>
@@ -235,3 +234,74 @@
 		</div>
 	</div>
 	<!-- Fin Modal datos de Direccion -->
+
+<script>
+	
+
+
+	function compraFormDirection(){
+
+		//------------------- FUNCIONES SCOPE ---------------------
+
+		function addTypeAddressToSelect(addreses){
+
+			const selectAddress = document.getElementById('formDirectionAddreses');
+			selectAddress.innerHTML =  '';
+			addreses.forEach(address => {
+				const option = `<option value="${address.id}">${address.type}</option>`
+				selectAddress.innerHTML += option;
+			})
+		}
+
+
+		function showAddressInView({
+			address,
+			delivery_route,
+			responsable,
+			responsable_phone,
+			postal_code,
+			state: {state},
+			city: {city}
+		}) {
+			const formAddress = document.getElementById('formDirectionType')
+			const formLocation = document.getElementById('formDirectionLocation')
+			const formResponsable = document.getElementById('formDirectionResponsable')
+			const formDeliveryRoute = document.getElementById('formDirectionDeliveryRoute')
+
+			formAddress.innerText = address
+			formLocation.innerText = `${state}, ${city} (${postal_code})`
+			formResponsable.innerText = `${responsable} / ${responsable_phone}`
+			formDeliveryRoute.innerText = `${delivery_route.name}`
+		}
+
+
+		//------------------- STARTING SCRIPT ---------------------
+		
+		const changeAddress = document.getElementById('formChangeAddress')
+		const butonChangeAddress = document.getElementById('formButonChangeAddress');
+
+		let addresses = [];
+
+		changeAddress.addEventListener('click', () => {
+			
+			axios.get('/user/address')
+				.then(res => {
+					addresses = res.data;
+					addTypeAddressToSelect(addresses)
+				})
+		})
+
+		butonChangeAddress.addEventListener('click', () => {
+			const selectAddress = document.getElementById('formDirectionAddreses');
+			const formAddressValue = document.getElementById('finalizarCompraDireccionId');
+			const value = selectAddress.value
+			
+			const [address] = addresses.filter(element => element.id == value)
+			formAddressValue.value = address.id;
+			showAddressInView(address)
+		})
+
+	}	
+	
+	compraFormDirection();
+</script>
