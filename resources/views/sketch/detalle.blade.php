@@ -66,12 +66,49 @@
      }
      
    }
+
+   .productDetail__CardCambios {
+      display: flex; 
+      margin:0;
+    }
+    .productDetail__fontCaracteristicas {
+      font-size: 0.85rem;
+      color:white;
+    }
+    .fs-20{
+      font-size: 20px;
+    }
+    .productDetail__priceBodyCambio {
+      display: flex;
+      flex-direction: column;                
+      justify-content: center;
+    }
+    .productDetail__CardSpacingRight {
+      padding-right: 0.25rem;
+      padding-left: 0;
+    }
+    .productDetail__CardSpacingleft {
+      padding-left: 0.25rem;
+      padding-right: 0;
+    }
+    @media (max-width:768px){
+      .productDetail__CardSpacingRight {
+        padding-right: 0;
+        padding-left: 0;
+        
+      }
+    .productDetail__CardSpacingleft {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0.3rem;
+      }
+    }
    </style>
    <!-- Prdoduct -->
     <section class="pb-3">
       <div class="container px-3">
         <div class="row">
-          <div class="col-12 col-md-6 p-5">
+          <div class="col-12 col-md-6 pt-5 pb-0 px-5">
             <figure>
               <img class="img-fluid" src="{{asset('storage/'.$product->image)}}" alt="Detalle-product">
             </figure>
@@ -102,56 +139,69 @@
               <p class="productDetail__bodyProductUnits small marb">({{$product->units_packaging}} Disponibles)</p>
 
               <div class="row mb-3">
+                <div class="col-12">
+                  <p><b class="text-secondary">Categoria: </b><a href="#" class="marb productDetail__body-categories">Viveres</a></p>
+                </div>
                 <div class="col-6 col-md-12">
-                <a href="#" class="small marb productDetail__body-categories">Viveres</a>
+                  <p class="text-primary"><b>Marca: </b><a href="#" class="text-primary productDetail__body-categories">Carabobo</a></p>
                 </div>
                 <div class="col-6 col-md-12 d-md-none d-sm-block">
                   <p class="small text-right">IVA incluido</p>
                 </div>
                 <div class="col-6 col-md-12 d-none d-md-block">
                   <p class="small">IVA incluido</p>
-                </div>
-                
+                </div>         
               </div>
+
               <!-- PRICE CARDS -->
-              <div class="productDetail__priceCardsMain">
-                <div class="productDetail__priceCard active">
-                  <div class="productDetail__priceBody">
-                    <h3 class="productDetail__priceBody-title">Al mayor</h3>
-                    <p class="productDetail__priceBody-subtitle">menos de {{$product->amount_min_big_wholesale}} cajas </p>
-                  </div>
-                  <div class="productDetail__priceDescription active">
-                    <h3 class="productDetail__priceDescription-price">
-                      {{session('currency') == 'USD' ? '$' : 'Bs'}} 
-                      {{$product->getPrice(session('currency'), $product->wholesale_price)}} 
-                    </h3>
-                    <p class="productDetail__priceDescription-unitPrice">
-                      {{$product->getPrice(session('currency'), $alMayorUnitPrice)}}  
-                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
-                      / unidad
-                    </p>
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 col-md-6 productDetail__CardSpacingRight">
+                    <div class="productDetail__priceCardsMain">
+                      <div class="productDetail__priceCard productDetail__CardCambios py-4 active">
+                        <div class="productDetail__priceBody productDetail__priceBodyCambio">
+                          <h3 class="productDetail__priceBody-title productDetail__fontCaracteristicas pb-1">Precio al mayor</h3>
+                          <p class="productDetail__priceBody-subtitle text-white m-0 pt-1">Menos de {{$product->amount_min_big_wholesale}} cajas </p>
+                        </div>
+                        <div class="productDetail__priceDescription active">
+                          <h3 class="productDetail__priceDescription-price fs-20">
+                            {{session('currency') == 'USD' ? '$' : 'Bs'}} 
+                            {{$product->getPrice(session('currency'), $product->wholesale_price)}} 
+                          </h3>
+                          <p class="productDetail__priceDescription-unitPrice">
+                            {{$product->getPrice(session('currency'), $alMayorUnitPrice)}}  
+                            {{session('currency') == 'USD' ? '$' : 'Bs'}}
+                            / unidad
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                  
+                  <div class="col-12 col-md-6 productDetail__CardSpacingleft">
+                    <div class="productDetail__priceCard productDetail__CardCambios py-4">
+                      <div class="productDetail__priceBody productDetail__priceBodyCambio">
+                        <h3 class="productDetail__priceBody-title pb-1 productDetail__fontCaracteristicas text-primary">Al gran mayor</h3>
+                        <p class="productDetail__priceBody-subtitle m-0 pt-1">Menos de {{$product->amount_min_big_wholesale}} cajas </p>
+                      </div>
+                      <div class="productDetail__priceDescription">
+                        <h3 class="productDetail__priceDescription-price fs-20">
+                          {{session('currency') == 'USD' ? '$' : 'Bs'}}
+                          {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} 
+                        </h3>
+                        <p class="productDetail__priceDescription-unitPrice normal">
+                          {{$product->getPrice(session('currency'), $alGranMayorUnitPrice)}}  
+                          {{session('currency') == 'USD' ? '$' : 'Bs'}}
+                          / unidad
+                        </p>
+                      </div>
+                    </div> 
                   </div>
                 </div>
+              </div>
+
   
-                <div class="productDetail__priceCard">
-                  <div class="productDetail__priceBody">
-                    <h3 class="productDetail__priceBody-title">Al Gran Mayor</h3>
-                    <p class="productDetail__priceBody-subtitle normal">entre de {{$product->amount_min_big_wholesale}} - {{$product->amount_min_vip}} cajas </p>
-                  </div>
-                  <div class="productDetail__priceDescription">
-                    <h3 class="productDetail__priceDescription-price">
-                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
-                      {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} 
-                    </h3>
-                    <p class="productDetail__priceDescription-unitPrice normal">
-                      {{$product->getPrice(session('currency'), $alGranMayorUnitPrice)}}  
-                      {{session('currency') == 'USD' ? '$' : 'Bs'}}
-                      / unidad
-                    </p>
-                  </div>
-                </div>
-  
-                <div class="productDetail__priceCard">
+                <!-- <div class="productDetail__priceCard">
                   <div class="productDetail__priceBody">
                     <h3 class="productDetail__priceBody-title">Precio VIP</h3>
                     <p class="productDetail__priceBody-subtitle normal">Más de {{$product->amount_min_vip}} cajas </p>
@@ -167,7 +217,7 @@
                       </p>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- ADD TO CARD -->
               <h4 class="productDetail__addAnnouncement">Seleccione la cantidad de cajas a comprar</h4>
