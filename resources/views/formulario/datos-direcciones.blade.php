@@ -27,36 +27,36 @@
       </div>
       <!-- Fin Number-->
     @if ($direcciones->isNotEmpty())
-    @foreach ($direcciones->take(1) as $direccion)
-        
-	
-         <!-- trj datos de envio-->
-		 <div class="perfil__cardBody direccion" id="formAddressMain">
-			<div class="info-container p-3 mb-1">
-				<p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
-				<p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small" id="formDirectionType">{{$direccion->address}}</p>
-				<p class="texto-small px-3 my-0 py-0 text-muted" id="formDirectionLocation">{{$direccion->state->state}}, {{$direccion->city->city}} ({{$direccion->postal_code}})</p>
-				<p class="texto-small px-3 my-0 py-0 pb-2 text-muted" id="formDirectionResponsable">{{$direccion->responsable}} / {{$direccion->responsable_phone}}</p>
-				<div class="row mb-1 py-2">
-				  <div class="col-6 pr-0">
-					<p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
-				  </div>
-				  <div class="col-6 text-md-center">
-					<p class="texto-small pl-0 text-muted" id="formDirectionDeliveryRoute">{{$direccion->delivery_route->name}}</p>
-				  </div>
+		@foreach ($direcciones->take(1) as $direccion)
+			
+		
+			<!-- trj datos de envio-->
+			<div class="perfil__cardBody direccion" id="formAddressMain">
+				<div class="info-container p-3 mb-1">
+					<p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
+					<p class="font-weight-bold text-black px-3 pb-0 pt-2 texto-small" id="formDirectionType">{{$direccion->address}}</p>
+					<p class="texto-small px-3 my-0 py-0 text-muted" id="formDirectionLocation">{{$direccion->state->state}}, {{$direccion->city->city}} ({{$direccion->postal_code}})</p>
+					<p class="texto-small px-3 my-0 py-0 pb-2 text-muted" id="formDirectionResponsable">{{$direccion->responsable}} / {{$direccion->responsable_phone}}</p>
+					<div class="row mb-1 py-2">
+					<div class="col-6 pr-0">
+						<p class="font-weight-bold text-black texto-small">Ruta de entrega</p>
+					</div>
+					<div class="col-6 text-md-center">
+						<p class="texto-small pl-0 text-muted" id="formDirectionDeliveryRoute">{{$direccion->delivery_route->name}}</p>
+					</div>
+					</div>
+					<div class="row pt-2 padding-modal">
+					<div class="col-6 text-center">
+						<a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary" id="formChangeAddress">Cambiar dirección de envío</a>
+					</div>
+					<div class="col-6 text-center">
+						<a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
+					</div>
+					</div>
 				</div>
-				<div class="row pt-2 padding-modal">
-				  <div class="col-6 text-center">
-					<a href="#" data-toggle="modal" data-target="#modal-directionChange" class="texto-small font-weight-bold text-secondary" id="formChangeAddress">Cambiar dirección de envío</a>
-				  </div>
-				  <div class="col-6 text-center">
-					<a href="#" data-toggle="modal" data-target="#modal-directionEdit" class="texto-small font-weight-bold text-secondary">Nueva dirección</a>
-				  </div>
-				</div>
-			  </div>
-		 </div>
-    <!-- Fin trj datos de envio-->
-    @endforeach
+			</div>
+		<!-- Fin trj datos de envio-->
+		@endforeach
     @else 
       	{{-- si no exiten direcciones --}}
         <div class="perfil__cardBody direccion" id="formAddressMain">
@@ -85,7 +85,7 @@
           <div class="col-7 pl-0">
             <form action="{{route('order.store')}}" id="formFinalizarCompra">
 				<input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
-				<button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right">Finalizar Compra</button>
+				<button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" @if (!$direcciones->isNotEmpty()) disabled @endif>Finalizar Compra</button>
 			</form>
           </div>
         </div>
@@ -233,6 +233,7 @@
 
 <script>
 	
+	const $btn_next3 = document.getElementById('btn_finish');
 
 
 	function compraFormDirection(){
@@ -277,6 +278,7 @@
 				addLoaderInFormAddress(mainContainer)
 				setTimeout(()=> {
 					addNewAddressToView(mainContainer, address)
+					$btn_next3.removeAttribute('disabled')
 				}, 1500)
 			}
 			
@@ -338,6 +340,7 @@
 					.then(res => {
 						direcciones = res.data;
 						addTypeAddressToSelect(direcciones)
+						$btn_next3.removeAttribute('disabled')
 					})
 				})
 			}
@@ -399,7 +402,7 @@
 				.then(res => {
 					e.target.reset();
 					addNewAddress(res.data)
-
+					$btn_next3.removeAttribute('disabled')
 				})
 				.catch(err => {
 					console.log(err);

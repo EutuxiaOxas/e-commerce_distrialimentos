@@ -420,6 +420,7 @@
 
       const formEnterprise = document.getElementById('formEditOrCreateEnterprise');
       const enterpriseContainer = document.getElementById('formEnterpriseContainer');
+      const $btn_next2 = document.getElementById('btn_next2');
 
       formEnterprise.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -447,6 +448,7 @@
           const {enterprise, time} = res.data;
           setTimeout(() => {
             addEnterpriseInfoToView(enterpriseContainer, time, enterprise)
+            $btn_next2.removeAttribute('disabled')
           }, 2000)
         })
         .catch(err => {

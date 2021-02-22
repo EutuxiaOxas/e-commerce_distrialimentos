@@ -4,10 +4,6 @@
     Formulario
 @endsection
 
-@php
-// importante para el color de las letras del header
-$color_header='dark';
-@endphp
 
 @section('content')
  
@@ -148,26 +144,24 @@ $color_header='dark';
     <div class="row">
       <div class="col-md-7 px-0">
 
-        {{-- saludos al usuario --}}
-        @include('formulario.saludo')
+  {{-- saludos al usuario --}}
+  @include('formulario.saludo')
 
+  <!---------------------------------- Formulario I ----------------------------->
+  {{-- datos del comprador --}}
+  @include('formulario.datos-comprador')
 
-        <!---------------------------------- Formulario I ----------------------------->
-        {{-- datos del comprador --}}
-        @include('formulario.datos-comprador')
+  <!-------------------------- Formulario II ----------------------------->
+  {{-- datos de la empresa --}}
+  @include('formulario.datos-empresa')
 
-        <!-------------------------- Formulario II ----------------------------->
-        {{-- datos de la empresa --}}
-        @include('formulario.datos-empresa')
+  <!-------------------------- Formulario III ----------------------------->
+  {{-- datos de la direccion  --}}
+  @include('formulario.datos-direcciones')
 
-          <!-------------------------- Formulario III ----------------------------->
-        {{-- datos de la direccion  --}}
-        @include('formulario.datos-direcciones')
-
-        <!-------------------------- Seccion de Total del camion ----------------------------->
-        {{-- datos de la direccion  --}}
-        @include('formulario.total-compra')
-        
+  <!-------------------------- Seccion de Total del camion ----------------------------->
+  {{-- datos de la direccion  --}}
+  @include('formulario.total-compra')
         
       </div>
     </div>
