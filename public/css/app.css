@@ -12338,6 +12338,7 @@ nav {
 
 .almacen__marcaText {
   font-weight: bold;
+  color: #FD6721;
 }
 
 .almacen__marcaText span {
@@ -12357,9 +12358,14 @@ nav {
   font-weight: normal;
 }
 
-.almacen__categoriaText:hover,
+.almacen__categoriaText:hover {
+  text-decoration: none;
+  color: #02528A;
+}
+
 .almacen__marcaText:hover {
   text-decoration: none;
+  color: #FD6721;
 }
 
 .almacen__productAdded {

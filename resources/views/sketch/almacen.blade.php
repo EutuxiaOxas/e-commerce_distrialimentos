@@ -93,8 +93,8 @@ $color_header='dark';
                         <p class="card-text smaller">({{$producto->available_stock}}) Disponibles</p>
                       </div>
                       <div class="col-12">
-                        <a href="#" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($producto->brand->brand))}}</span></a>
-                        <a href="#" class="almacen__categoriaText smaller">Categoria: <span>{{ucfirst(strtolower($producto->category->title))}}</span></a>
+                        <a href="{{route('product.brand.show', $producto->brand->brand)}}" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($producto->brand->brand))}}</span></a>
+                        <a href="{{route('product.category.show', $producto->category->slug)}}" class="almacen__categoriaText smaller">Categoria: <span>{{ucfirst(strtolower($producto->category->title))}}</span></a>
                       </div>
                       <div class="col-12">
                         <p class="smaller">{{$producto->iva->msg}}</p>

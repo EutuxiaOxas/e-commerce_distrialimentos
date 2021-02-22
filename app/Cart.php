@@ -75,7 +75,7 @@ class Cart extends Model
 
 
             //PRECIO AL GRAN MAYOR
-            if($cantidadProducto >= $granMayorMinimo && $cantidadProducto < $precioVipMin) 
+            if($cantidadProducto >= $granMayorMinimo) 
             {
 
                 if($producto->iva->value) 
@@ -94,21 +94,21 @@ class Cart extends Model
 
 
             // PRECIO VIP
-            if($cantidadProducto >= $precioVipMin) 
-            {
+            // if($cantidadProducto >= $precioVipMin) 
+            // {
 
-                if($producto->iva->value) 
-                {
-                    $useIva = true;
-                    $totalCart = $totalCart + (($vipPrice * $cantidadProducto) + $iva->value);
-                    $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
-                }else 
-                {
-                    $totalCart = $totalCart + ($vipPrice * $cantidadProducto);
-                    $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
-                }
+            //     if($producto->iva->value) 
+            //     {
+            //         $useIva = true;
+            //         $totalCart = $totalCart + (($vipPrice * $cantidadProducto) + $iva->value);
+            //         $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
+            //     }else 
+            //     {
+            //         $totalCart = $totalCart + ($vipPrice * $cantidadProducto);
+            //         $subTotal = $subTotal + ($vipPrice * $cantidadProducto);
+            //     }
 
-            }
+            // }
             
     	}
 
