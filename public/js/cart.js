@@ -265,7 +265,71 @@ class CarritoUI {
 			})
 		}
 	  }
+  	}
+
+//--------------------- ACTIVAR O DESACTIVAR BUTTON/SELECT DEL PRODUCT CARD ---------------------
+  enableOrDisableButtonOrSelect(productos) {
+	
+	const selectButtons = Array.prototype.slice.call(document.querySelectorAll('.productSelectStock'));
+	const agregarButtons = Array.prototype.slice.call(document.querySelectorAll('.agregarButtons'));
+
+	if(selectButtons && agregarButtons) {
+	  if(productos.length > 0) {
+
+		//BOTONES DE AGREGAR
+		 agregarButtons.forEach(button => {
+			 let disabled = false;
+
+			productos.forEach(producto => {
+				if(producto.producto) {
+				   const { id } = producto.producto;
+				   if(button.dataset.id == id) {
+						disabled = true;
+				   }
+				}
+			})
+
+			if(disabled) {
+				button.classList.add('disabled');
+			}else{ 
+				button.classList.remove('disabled')
+			}
+		 })
+
+		//SELECTORES CANTIDAD
+		selectButtons.forEach(select => {
+			let active = false;
+
+			productos.forEach(producto => {
+				if(producto.producto) {
+				   const { id } = producto.producto;
+				   if(select.id == id) {
+					active = true;
+				   }
+				}
+			})
+
+			if(active) {
+				select.parentNode.classList.add('active');
+			}else{ 
+				select.parentNode.classList.remove('remove');
+			}
+		})
+
+	  // EN CASO DE NO HABER PRODUCTOS	
+	  }else {
+		selectButtons.forEach(select => {
+			select.parentNode.classList.remove('active');
+		})
+
+		agregarButtons.forEach(select => {
+			select.classList.remove('disabled');
+		})
+	  }
+	}
   }
+
+  
 }
 
 //-------------------------------------------------------- API CALLS class ----------------------------------
@@ -416,7 +480,8 @@ if(session.value == 1){
 //-------------------- Agregar productos -----------------
 
 function events(value, elements)
-{	
+{
+	
 
 	//-------------------- LocalStorage -----------------
 
@@ -485,6 +550,8 @@ function events(value, elements)
 	//-------------------- Servidor -----------------
 
 	if(value == 1){
+		const agregarButtons = document.querySelectorAll('.agregarButtons-server');
+
 		elements.forEach(element => {
 			element.addEventListener('change', (e) => {
 				const id = e.target.id,
@@ -501,7 +568,27 @@ function events(value, elements)
 					})
 			});
 		});
+
+		//----- BUTTON AGREGAR
+
+		agregarButtons.forEach(button => {
+			button.addEventListener('click', (e) => {
+				const select = e.target.parentNode.children[0].children[1];
+				select.value = 1;
+
+				apiCart.addToCart(select.id, 1)
+					.then(res => {
+						if(res.status == 200){
+							callingCart();
+							// carrito.addingAlert(alert)
+						}
+					})
+			})
+		})
 	}
+
+	
+
 }
 
 	//-------------- VERIFICAR PRODUCTO --------
@@ -558,6 +645,7 @@ function callingCart(){
 			carrito.agregarCarrito(productos);
 			carrito.addIconOfProductAdded(productos);
 			carrito.selectStockOfProduct(productos);
+			carrito.enableOrDisableButtonOrSelect(productos);
 			// loadProducts(productos);
 			// loadTotalProducts(productos, 1)
 		})

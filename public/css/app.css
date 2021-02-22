@@ -12331,6 +12331,37 @@ nav {
   background: #757575;
 }
 
+.almacen__categoriaText,
+.almacen__marcaText {
+  display: block;
+}
+
+.almacen__marcaText {
+  font-weight: bold;
+}
+
+.almacen__marcaText span {
+  font-weight: normal;
+}
+
+.almacen__marcaTexthover {
+  text-decoration: none;
+}
+
+.almacen__categoriaText {
+  font-weight: bold;
+  color: #02528A;
+}
+
+.almacen__categoriaText span {
+  font-weight: normal;
+}
+
+.almacen__categoriaText:hover,
+.almacen__marcaText:hover {
+  text-decoration: none;
+}
+
 .almacen__productAdded {
   opacity: 0;
 }
@@ -12339,11 +12370,40 @@ nav {
   opacity: 1;
 }
 
+.almacen__productoAgregado {
+  display: none;
+}
+
+.almacen__productoAgregado.active {
+  display: block;
+}
+
 .almancen__agregarProducto-text {
   color: #FD6721;
   font-size: 0.7rem;
   font-weight: bold;
   margin-bottom: 0.7rem;
+}
+
+.productSelectStock {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.almacen__agregarProducto-button {
+  width: 90%;
+  background-color: #FF661B;
+  padding: 0.76rem 0;
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  font-size: 0.67rem;
+  border-radius: 5px;
+}
+
+.almacen__agregarProducto-button.disabled {
+  display: none;
 }
 
 .btn-primary.disabled,

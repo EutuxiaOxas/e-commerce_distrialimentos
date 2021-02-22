@@ -93,7 +93,8 @@ $color_header='dark';
                         <p class="card-text smaller">({{$producto->available_stock}}) Disponibles</p>
                       </div>
                       <div class="col-12">
-                      <a href="#" class="smaller">{{$producto->category->title}}</a>
+                        <a href="#" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($producto->brand->brand))}}</span></a>
+                        <a href="#" class="almacen__categoriaText smaller">Categoria: <span>{{ucfirst(strtolower($producto->category->title))}}</span></a>
                       </div>
                       <div class="col-12">
                         <p class="smaller">{{$producto->iva->msg}}</p>
@@ -107,14 +108,19 @@ $color_header='dark';
                     <p class="smaller">{{$producto->packaging->packaging}} de {{$producto->units_packaging}} unidades</p>
                     {{-- producto agregado --}}
                     <div class="almancen__agregarProducto pt-2">
-                        <p class="almancen__agregarProducto-text">Selecciona una cantidad </p>
-                        @php $disponible = $producto->available_stock; @endphp
-                        <select id="{{$producto->id}}" class="form-control to_server productSelectStock">
-                          <option value="0">0</option>
-                          @for($i = 1; $i <= $disponible; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
-                          @endfor
-                        </select>
+                        <div class="almacen__productoAgregado">
+                          <p class="almancen__agregarProducto-text">Selecciona una cantidad </p>
+                          @php $disponible = $producto->available_stock; @endphp
+                          <select id="{{$producto->id}}" class="form-control to_server productSelectStock">
+                            <option value="0">0</option>
+                            @for($i = 1; $i <= $disponible; $i++)
+                              <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                          </select>
+                        </div>
+                        <button class="almacen__agregarProducto-button agregarButtons agregarButtons-server" data-id="{{$producto->id}}">
+                          Añadir al camión 
+                        </button>
                     </div>
                   </div>
                 </div>
