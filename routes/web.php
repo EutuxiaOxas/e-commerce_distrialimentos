@@ -96,10 +96,6 @@ Route::get('/header', function () {
 	return view('sketch.header');
 });
 
-Route::get('/formulario-nuevo', function () {
-	return view('sketch.formulario-nuevo');
-});
-
 //ayuda 
 Route::get('/ayuda', function () {
 	$categorias = Category::all();
@@ -117,6 +113,11 @@ Route::get('/politicas', function () {
 	$categorias = Category::all();
 	return view('en_desarrollo', compact('categorias'));
 })->name('politicas');
+
+//Formulario nuevo usuario/Usuario no loggeado
+Route::get('/formulario-nuevo', function () {
+	return view('sketch.formulario-nuevo');
+});
 
 //FIN DE SOLO PARA MAQUETACION
 

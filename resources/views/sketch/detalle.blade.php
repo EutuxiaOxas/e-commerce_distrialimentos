@@ -103,7 +103,7 @@
         padding-top: 0.3rem;
       }
     }
-    .fs-14 {
+    .productDetail__fs-14 {
       font-size: 0.75rem;
     }
    </style>
@@ -171,7 +171,7 @@
                             {{session('currency') == 'USD' ? '$' : 'Bs'}} 
                             {{$product->getPrice(session('currency'), $product->wholesale_price)}} 
                           </h3>
-                          <p class="productDetail__priceDescription-unitPrice fs-14">
+                          <p class="productDetail__priceDescription-unitPrice productDetail__fs-14">
                             {{$product->getPrice(session('currency'), $alMayorUnitPrice)}}  
                             {{session('currency') == 'USD' ? '$' : 'Bs'}}
                             / unidad
@@ -192,7 +192,7 @@
                           {{session('currency') == 'USD' ? '$' : 'Bs'}}
                           {{$product->getPrice(session('currency'), $product->big_wholesale_price)}} 
                         </h3>
-                        <p class="productDetail__priceDescription-unitPrice normal fs-14">
+                        <p class="productDetail__priceDescription-unitPrice normal productDetail__fs-14">
                           {{$product->getPrice(session('currency'), $alGranMayorUnitPrice)}}  
                           {{session('currency') == 'USD' ? '$' : 'Bs'}}
                           / unidad
