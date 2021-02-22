@@ -135,6 +135,8 @@ class CarritoUI {
   	const cartIva 	   			= document.getElementById('modalCartIva');
   	const cartTotal 			= document.getElementById('modalCartTotal');
   	const cartTotalBolivares 	= document.getElementById('modalCartTotalBolivares');
+
+	//Enlace al formulario
 	const modalCartFinish		= document.getElementById('modalCartFinish');
 
 
@@ -148,6 +150,8 @@ class CarritoUI {
 
 			  if(total > 0) {
 				modalCartFinish.href = '/formulario'
+			  }else{ 
+				modalCartFinish.href = '#'
 			  }
 		  }) 
 

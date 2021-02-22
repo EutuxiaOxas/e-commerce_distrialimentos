@@ -291,6 +291,7 @@
 		}
 
 		function addNewAddressToView(container, {
+			id,
 			address,
 			delivery_route,
 			responsable,
@@ -299,6 +300,7 @@
 			state: {state},
 			city: {city}
 		}) {
+			const formAddressValue = document.getElementById('finalizarCompraDireccionId');
 			const view = `
 			<div class="info-container p-3 mb-1">
                 <p class="font-weight-bold text-black texto-small">Direccion de Envio</p>
@@ -325,6 +327,7 @@
 			`
 
 			container.innerHTML = view;
+			formAddressValue.value = id
 			reloadEvents();
 		}
 
