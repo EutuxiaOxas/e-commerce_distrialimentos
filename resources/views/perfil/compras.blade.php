@@ -62,13 +62,65 @@
             justify-content: flex-end;
         }
         .img {
-            width: 40px;
-            height: 40px;
+            width: 55px;
+            height: 55px;
         }
         .perfil__comprasDetalle {
             background: #E5E5E5;
-            width:85%;
+            
         }
+        .perfil__comprasColumnasProduct {
+            width: 13%;
+            color: #6c757d;
+            vertical-align: middle !important;
+            padding-top: 5px !important;
+        }
+        .perfil__comprasColumnasProducttitle {
+            width: 32%;
+            color: #6c757d;
+            vertical-align: middle !important;
+            padding-top: 5px !important;
+        }
+        .perfil__comprasColumnasProductImg {
+            width: 16%;
+            color: #6c757d;
+            vertical-align: middle !important;
+            padding-top: 5px !important;
+        }
+        .perfil_comprasBorder {
+            border-bottom: 1px solid #cecece;
+        }
+        .perfil__comprasTotal {
+            font-size:1.25rem;
+        }
+        .perfil__comprasFilasTotal {
+            line-height: 2rem;
+            padding: 0;
+            margin:0;
+        }
+        @media(max-width:768px) {
+            .perfil__comprasColumnasProduct {
+                width: 18%;
+            }
+            .perfil__comprasColumnasProducttitle {
+                width: 28%;  
+            }
+            .perfil__comprasColumnasProductImg {
+                width: 22%;
+            }
+        }
+
+        @media (min-width: 576px){
+            .modal-dialog {
+                max-width: 445px;
+            }
+        }
+
+        .perfil__comprasBtnModal {
+            font-weight:bold;
+            padding:12px;
+        }
+
     </style>
 
     
@@ -92,7 +144,7 @@
 						<div class="row py-3">
                             <div class="col-12 mb-0">
                                 <h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Detalle de pedido</h4>
-                                <p class="texto-small texto-muted">Este pedido fue completado con exito...</p>
+                                <p class="texto-small text-muted pt-1">Este pedido fue completado con exito...</p>
                             </div>
 						</div>
 					</div>
@@ -136,18 +188,18 @@
 						</div>
 					</div>
                     <div class="form">
-                        <div class="col">
+                        <div class="col pb-4">
                             <p class="text-muted"><b>Ruta:</b> Valencia, Lunes 08:00 AM</p>
                         </div>
                     </div>
-                    <hr>
+                    <hr class="border-0">
                     <div class="form-title container pb-2">
 						<div class="row">
                             <div class="col text-left">
                                 <h5 class="font-weight-bold">Lista de Productos</h5>
                             </div>
 						</div>
-                        <div class="row py-2 px-2">
+                        <div class="row pb-2 pt-1 px-2">
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
@@ -158,45 +210,45 @@
                                     <th class="px-0 pb-0" scope="col">Total</th>
                                     </tr>
                                 </thead>
-                                    <tr>
-                                        <th class="px-0" style="width:17%" scope="row"><img class="img" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Producto"></th>
-                                        <td class="px-0" style="width:33%"><p class="">Titulo del producto</p></td>
-                                        <td class="px-0" style="width:15%"><p>100</p></td>
-                                        <td class="px-0" style="width:15%"><p>10.00</p></td>
-                                        <td class="px-0" style="width:15%"><p>100</p></td>
+                                    <tr class="perfil_comprasBorder">
+                                        <th class="px-0 perfil__comprasColumnasProductImg" scope="row"><img class="img" src="{{asset('images/productos/aceite2.png')}}" alt="Producto"></th>
+                                        <td class="px-0 perfil__comprasColumnasProducttitle"><p class="">Titulo del producto</p></td>
+                                        <td class="px-0 perfil__comprasColumnasProduct"><p>100</p></td>
+                                        <td class="px-0 perfil__comprasColumnasProduct"><p>10.00</p></td>
+                                        <td class="px-0 perfil__comprasColumnasProduct"><p>1000</p></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 					</div> 
-                    <div class="container pt-4">
-                          <div class="row m-0 p-0">
+                    <div class="container">
+                          <div class="row perfil__comprasFilasTotal">
                             <div class="col-6 text-left mb-0">
-                              <p>Subtotal</p>
+                              <p class="text-muted">Subtotal</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p>59,35 $</p>
+                              <p class="text-muted">59,35 $</p>
                             </div>
                           </div>
-                          <div class="row m-0 p-0">
+                          <div class="row perfil__comprasFilasTotal">
                             <div class="col-6 text-left mb-1">
-                              <p>IVA</p>
+                              <p class="text-muted">IVA</p>
                             </div>
                             <div class="col-6 text-right mb-1">
-                              <p>11,65 $</p>
+                              <p class="text-muted">11,65 $</p>
                             </div>
                           </div>
-                          <div class="row m-0 p-0">
+                          <div class="row perfil__comprasFilasTotal">
                             <div class="col-6 text-left mb-0">
-                              <p class="text-uppercase text-blue fs-16 font-weight-bold">Total</p>
+                              <p class="text-uppercase text-secondary font-weight-bold perfil__comprasTotal">Total</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p class="font-weight-bold text-black fs-20">70,35 $</p>
+                              <p class="font-weight-bold text-black perfil__comprasTotal">70,35 $</p>
                             </div>
                           </div>
-                          <div class="row m-0 p-0">
+                          <div class="row perfil__comprasFilasTotal">
                             <div class="col-5 text-left mb-0">
-                              <p class="text-blue">TOTAL (Bs)</p>
+                              <p class="text-secondary">TOTAL (Bs)</p>
                             </div>
                             <div class="col-7 text-right mb-0">
                               <p class="font-weight-bold text-black">89,000,000.00 Bs</p>
@@ -206,7 +258,7 @@
 
 
                         <div class="modal-footer"> 
-                          <button type="button" class="btn btn-primary btn-block">Volver</button>
+                          <button type="button" class="btn btn-primary btn-block perfil__comprasBtnModal">Volver</button>
                         </div>     
 				</div>
 
