@@ -17,7 +17,7 @@
   .center-elements{
   width: -webkit-fill-available;
   }
-
+/* -------------------------Inicio CSS footer----------------------------------- */
   .social {
     padding: 15px 10px;
   }
@@ -116,7 +116,7 @@
     display:none;
   }
   
-} /* ------------------------------------------------------------ */
+} 
   @media(max-width:768px){
 
   .footer__logoInfo{
@@ -155,12 +155,11 @@
   }
 
 }
-
-.text-container {
-    color:#02528A;
-    font-weight: bold;
-  }
-
+/* -------------------------Fin CSS footer----------------------------------- */
+  .home__text-container {
+      color:#02528A;
+      font-weight: bold;
+    }
   .home__textImg {   
     font-size: 2.1rem;
   }
@@ -555,7 +554,7 @@
             
           </div>
           <div class="col-6 text-center pt-5 mt-5">
-            <div class="text-container text-right">
+            <div class="home__text-container text-right">
               <p class="home__textImg">¿Y tu ya tienes tu cuenta?</p>
               <p class="home__textImg2">Te estamos esperando...</p>
             </div>
