@@ -124,7 +124,7 @@
           </div> 
           <div class="productDetail">
 
-              <p class="text-right productDetail__bodySku  smaller mb-0 d-sm-block d-md-none"><strong>SKU:</strong> 00005644545</p>
+              <p class="text-right productDetail__bodySku smaller mb-0 d-sm-block d-md-none"><strong>SKU:</strong> 00005644545</p>
               <div class="productDetail__agregadoIcon">
                     <span class="inCart-icon productDetail__productAdded" id="{{$product->id}}"> 
                       <div class="productDetail__componenteCamion productDetail__componenteCamion-desktop">
@@ -133,9 +133,9 @@
                       </div>
                     </span> 
                   </div>
-              <h4 class="productDetail__bodyTitle mb-0 marb">{{$product->title}}</h4>
-              <p class="productDetail__bodyDescription small text-muted marb">{{$product->description}}</p>
-              <p class="text-muted smaller mb-0 d-none d-md-block"><strong class="text-muted">SKU:</strong> {{$product->sku}}</p>
+              <h4 class="productDetail__bodyTitle mb-0">{{$product->title}}</h4>
+              <p class="productDetail__bodyDescription small text-muted">{{$product->description}}</p>
+              <p class="text-muted smaller mb-0 d-block d-md-none"><strong class="text-muted">SKU:</strong> {{$product->sku}}</p>
               <p class="productDetail__bodyProductUnits small marb">({{$product->units_packaging}} Disponibles)</p>
 
               <div class="row mb-3">
