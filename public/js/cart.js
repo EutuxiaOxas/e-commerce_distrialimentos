@@ -17,7 +17,7 @@ class CarritoUI {
   			let template = ''
   			if(producto.producto){
   				template = `
-				  <div class="row px-1 pt-1 pb-0 mb-0"> 
+				  <div class="carritoCompras__productCardMain"> 
 					<div class="col">
 						<div class="row boxed border shadow radeus">
 						<div class="col-4 col-md-4 px-0">
@@ -28,30 +28,28 @@ class CarritoUI {
 							<div class="prod-details p-1">
 							<div class="row mb-0">
 								<div class="col-10 my-0 py-0">
-								<h5 class="text-blue font-weight-bold my-0 pb-0 text-left">${producto.producto.title}</h5>
-								</div>
-								<div class="col-2">
-								<button type="button"  class="close py-0 text-right "  aria-label="Close">
-									<span class="p-0 cart_modal_delete_server" id="${producto.producto.id}"  aria-hidden="true">&times;</span>
-								</button>
+									<h5 class="text-blue carritoProductCard__title font-weight-bold pb-0 text-left">${producto.producto.title}</h5>
+									</div>
+									<div class="col-2">
+									<button type="button"  class="close py-0 text-right "  aria-label="Close">
+										<span class="p-0 cart_modal_delete_server" id="${producto.producto.id}"  aria-hidden="true">&times;</span>
+									</button>
 								</div>
 												
 								<div class="col-12 my-0 py-0">
-								<p class="small text-left">${producto.iva}</p>
+								<p class="small carritoProductCard__iva text-left">${producto.iva}</p>
 								</div>
 							</div>
 							<div class="row my-0 py-0">                   
-								<div class="col-7 my-0 py-0 pr-0">
-								<p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.producto.wholesale_price} $</p>
-								<p class="small my-0 py-0">${producto.empaque} - ${producto.producto.units_packaging} unidades</p>
-								</div>
-								<div class="col-5 pl-0">                         
-								<form class="text-center">
-									<div class="form-group m-0">
-									<label class="labelfs" for="cantidad">Cantidad</label>
-									<input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
+								<div class="col-12 my-0 py-0 pr-0 carritoProductCard__caracteristicas ">
+									<div class="carritoProductCard__caracteristicasInfo">
+										<p class="small carritoProductCard__caracteristicasInfo-price font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.producto.wholesale_price.toFixed(2)} $</p>
+										<p class="small carritoProductCard__caracteristicasInfo-empaque my-0 py-0">${producto.empaque} - ${producto.producto.units_packaging} unidades</p>
 									</div>
-								</form>
+									<div class="carritoProductCard__caracteristicasCantidad">
+										<label class="labelfs" style="margin:0;" for="cantidad">Cantidad</label>
+										<input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
+									</div>
 								</div>
 							</div>
 							</div>
@@ -137,6 +135,8 @@ class CarritoUI {
   	const cartTotalBolivares 	= document.getElementById('modalCartTotalBolivares');
 
 	//Enlace al formulario
+	const nextButton			= document.getElementById('carritoComprasBotonSiguiente');
+	const alertaMinimo			= document.getElementById('carritoComprasAlertaMinimo');
 	const modalCartFinish		= document.getElementById('modalCartFinish');
 
 
@@ -150,8 +150,19 @@ class CarritoUI {
 
 			  if(total > 0) {
 				modalCartFinish.href = '/formulario'
+				modalCartFinish.classList.add('disabled');
+				nextButton.disabled = true;
+				alertaMinimo.classList.add('active')
+
+				if(total > 40) {
+					alertaMinimo.classList.remove('active')
+					modalCartFinish.classList.remove('disabled');
+					nextButton.disabled = false;
+				}
 			  }else{ 
-				modalCartFinish.href = '#'
+				modalCartFinish.classList.add('disabled');
+				nextButton.disabled = true;
+				alertaMinimo.classList.remove('active')
 			  }
 		  }) 
 
