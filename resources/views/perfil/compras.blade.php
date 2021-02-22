@@ -138,7 +138,7 @@
     {{-- modal de detalles --}}
 	<div class="modal fade" id="modal_DetalleOrden" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content p-3 perfil__comprasDetalle">
+			<div class="modal-content py-3 px-2 perfil__comprasDetalle">
                 {{-- Header del modal --}}
 				<div class="modal-header p-2 border-bottom-0">
 					<div class="container">
