@@ -69,26 +69,34 @@
             background: #E5E5E5;
             
         }
-        .perfil__comprasColumnasProduct {
-            width: 13%;
+        .perfil__comprasTextProducts{
+            font-family:'Roboto';
             color: #6c757d;
-            vertical-align: middle !important;
-            padding-top: 5px !important;
+            font-size:0.8rem;
         }
-        .perfil__comprasColumnasProducttitle {
-            width: 32%;
-            color: #6c757d;
-            vertical-align: middle !important;
-            padding-top: 5px !important;
+
+        .perfil__comprasWidth {
+            flex: 14%;
+            max-width: 14%;
+            display: flex;
+            align-items: center;
         }
-        .perfil__comprasColumnasProductImg {
-            width: 16%;
-            color: #6c757d;
-            vertical-align: middle !important;
-            padding-top: 5px !important;
+        .perfil__comprasWidthProduct {
+            flex: 38%;
+            max-width: 38%;
+            display: flex;
+            align-items: center;
         }
-        .perfil_comprasBorder {
-            border-bottom: 1px solid #cecece;
+        .perfil__comprasWidthImg {
+            flex: 16%;
+            max-width: 16%;
+            display: flex;
+            align-items: center;
+        }
+        .perfil_comprasProducts {
+            border-bottom: 2px solid #cecece;
+            background: white;
+            
         }
         .perfil__comprasTotal {
             font-size:1.25rem;
@@ -99,14 +107,17 @@
             margin:0;
         }
         @media(max-width:768px) {
-            .perfil__comprasColumnasProduct {
-                width: 18%;
+            .perfil__comprasWidth {
+                flex: 16%;
+                max-width: 16%;
             }
-            .perfil__comprasColumnasProducttitle {
-                width: 28%;  
+            .perfil__comprasWidthProduct {
+                flex: 32%;
+                max-width: 32%;
             }
-            .perfil__comprasColumnasProductImg {
-                width: 22%;
+            .perfil__comprasWidthImg {
+                flex: 20%;
+                max-width: 20%;
             }
         }
 
@@ -188,40 +199,46 @@
 						</div>
 					</div>
                     <div class="form">
-                        <div class="col pb-4">
+                        <div class="col pb-2">
                             <p class="text-muted"><b>Ruta:</b> Valencia, Lunes 08:00 AM</p>
                         </div>
                     </div>
-                    <hr class="border-0">
-                    <div class="form-title container pb-2">
-						<div class="row">
+                    <hr class="">
+                    <div class="container form-title pb-2">
+						<div class="row pb-3">
                             <div class="col text-left">
-                                <h5 class="font-weight-bold">Lista de Productos</h5>
+                                <h5 class="font-weight-bold">Listado de Productos</h5>
                             </div>
 						</div>
-                        <div class="row pb-2 pt-1 px-2">
-                            <table class="table table-borderless">
-                                <thead>
-                                    <tr>
-                                    <th class="px-0 pb-0" scope="col">Imagen</th>
-                                    <th class="px-0 pb-0" scope="col">Productos</th>
-                                    <th class="px-0 pb-0" scope="col">Cant.</th>
-                                    <th class="px-0 pb-0" scope="col">Precio</th>
-                                    <th class="px-0 pb-0" scope="col">Total</th>
-                                    </tr>
-                                </thead>
-                                    <tr class="perfil_comprasBorder">
-                                        <th class="px-0 perfil__comprasColumnasProductImg" scope="row"><img class="img" src="{{asset('images/productos/aceite2.png')}}" alt="Producto"></th>
-                                        <td class="px-0 perfil__comprasColumnasProducttitle"><p class="">Titulo del producto</p></td>
-                                        <td class="px-0 perfil__comprasColumnasProduct"><p>100</p></td>
-                                        <td class="px-0 perfil__comprasColumnasProduct"><p>10.00</p></td>
-                                        <td class="px-0 perfil__comprasColumnasProduct"><p>1000</p></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row px-2">
+                            <div class="perfil__comprasWidthImg pl-0 font-weight-bold">Imagen</div>
+                            <div class="perfil__comprasWidthProduct pl-0 font-weight-bold">Productos</div>
+                            <div class="perfil__comprasWidth font-weight-bold">Cant.</div>
+                            <div class="perfil__comprasWidth font-weight-bold">Precio</div>
+                            <div class="perfil__comprasWidth font-weight-bold justify-content-center">Total</div>
                         </div>
+                                                
+                        <div class="perfil__comprasBodyProducts pb-1 px-2">
+                            <div class="row perfil_comprasProducts">
+                                <div class="perfil__comprasWidthImg pl-0"><img class="img" src="{{asset('images/productos/leche3.jpg')}}" alt="Producto"></div>
+                                <div class="perfil__comprasWidthProduct pl-0"><p class="perfil__comprasTextProducts">Leche descremada</p></div>
+                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">100</p></div>
+                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">10.00</p></div>
+                                <div class="perfil__comprasWidth justify-content-center"><p class="perfil__comprasTextProducts">1000</p></div>
+                            </div>
+                        </div>   
+                        <div class="perfil__comprasBodyProducts pb-1 px-2">
+                            <div class="row perfil_comprasProducts">
+                                <div class="perfil__comprasWidthImg pl-0"><img class="img" src="{{asset('images/productos/aceite2.png')}}" alt="Producto"></div>
+                                <div class="perfil__comprasWidthProduct pl-0"><p class="perfil__comprasTextProducts">Leche descremada</p></div>
+                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">100</p></div>
+                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">10.00</p></div>
+                                <div class="perfil__comprasWidth justify-content-center"><p class="perfil__comprasTextProducts">1000</p></div>
+                            </div>
+                        </div>
+                        
 					</div> 
-                    <div class="container">
+                        <div class="container">
                           <div class="row perfil__comprasFilasTotal">
                             <div class="col-6 text-left mb-0">
                               <p class="text-muted">Subtotal</p>
