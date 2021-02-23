@@ -407,7 +407,7 @@ $color_header='dark';
         </div>
         <div class="row pt-3">
           <div class="col text-center">
-            <p class="text-secondary"><a class="text-secondary font-weight-bold" href="#" data-toggle="modal" data-target="#exampleModal">Crea una nueva cuenta</a></p>        
+            <p class="text-secondary"><a class="text-secondary font-weight-bold" href="/register" >Crea una nueva cuenta</a></p>        
           </div>
         </div>
       </div>
