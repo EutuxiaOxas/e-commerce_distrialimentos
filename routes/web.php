@@ -85,6 +85,11 @@ Route::get('/perfil/historial', function () {
 	return view('sketch.pedidos-historial');
 });
 
+//formularios usuarios sin datos
+Route::get('/formulario-sindatos', function () {
+	return view('sketch.formulario-sindatos');
+});
+
 
 //carrito de compras
 Route::get('/carrito-de-compra', function () {
@@ -94,10 +99,6 @@ Route::get('/carrito-de-compra', function () {
 
 Route::get('/header', function () {
 	return view('sketch.header');
-});
-
-Route::get('/formulario-nuevo', function () {
-	return view('sketch.formulario-nuevo');
 });
 
 //ayuda 
@@ -117,6 +118,11 @@ Route::get('/politicas', function () {
 	$categorias = Category::all();
 	return view('en_desarrollo', compact('categorias'));
 })->name('politicas');
+
+//Formulario nuevo usuario/Usuario no loggeado
+Route::get('/formulario_nuevo', function () {
+	return view('sketch.formulario_nuevo');
+});
 
 //FIN DE SOLO PARA MAQUETACION
 
