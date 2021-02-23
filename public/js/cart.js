@@ -327,7 +327,7 @@ class CarritoUI {
 			if(active) {
 				select.parentNode.classList.add('active');
 			}else{ 
-				select.parentNode.classList.remove('remove');
+				select.parentNode.classList.remove('active');
 			}
 		})
 

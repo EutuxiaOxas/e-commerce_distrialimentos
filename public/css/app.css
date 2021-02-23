@@ -12852,6 +12852,26 @@ nav {
      object-fit: cover;
 }
 
+.carritoCompras-title {
+  font-family: "Righteous", cursive;
+  font-size: 1.2rem;
+}
+
+.carritoCompras-subtitle {
+  font-family: "Roboto", cursive;
+  color: #838383;
+}
+
+.carritoCompras-completaTuCompra-text {
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: bold;
+}
+
+.carritoCompras-siguienteButton {
+  padding: 0.7rem 0;
+}
+
 .carritoCompras__finalizarButton.disabled {
   cursor: not-allowed;
   background-color: grey;
@@ -12874,6 +12894,10 @@ nav {
   font-family: "Roboto", cursive;
   font-weight: bold;
   color: #ffffff;
+}
+
+.carritoCompras-listadoTitle {
+  font-family: "Roboto", cursive;
 }
 
 .carritoCompras__productCardMain {
@@ -12925,6 +12949,35 @@ nav {
   font-weight: bold;
   text-align: center;
   color: #0068B1;
+}
+
+.carritoCompras_subTotal,
+.carritoCompras_subTotal-amount,
+.carritoCompras_iva,
+.carritoCompras_iva-amount {
+  font-family: "Roboto", cursive;
+  color: #A7A7A7;
+  font-size: 0.8rem;
+}
+
+.carritoCompras_total {
+  color: #02528A;
+}
+
+.carritoCompras_total,
+.carritoCompras_total-amount {
+  font-family: "Roboto", cursive;
+  font-size: 1.3rem;
+}
+
+.carritoCompras_totalBolivares {
+  color: #02528A;
+}
+
+.carritoCompras_totalBolivares,
+.carritoCompras_totalBolivares-amount {
+  font-family: "Roboto", cursive;
+  font-weight: bold;
 }
 
 .loader,

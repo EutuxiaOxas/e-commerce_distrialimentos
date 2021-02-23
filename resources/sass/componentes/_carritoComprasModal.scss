@@ -17,10 +17,31 @@
     object-fit: cover;
 }
 
+.carritoCompras-title {
+    font-family: $principal_font;
+    font-size: 1.2rem;
+}
+
+.carritoCompras-subtitle {
+    font-family: $secondary_font;
+    color: #838383;
+}
+
+.carritoCompras-completaTuCompra-text {
+    font-family: $secondary_font;
+    color: #838383;
+    font-weight: bold;
+}
+
+.carritoCompras-siguienteButton {
+    padding: .7rem 0;
+}
+
 .carritoCompras__finalizarButton.disabled {
     cursor: not-allowed;
     background-color: grey;
 }
+
 
 .carritoCompras__alertMinimunPrice {
     display: none;
@@ -41,6 +62,12 @@
     color: #ffffff;
 }
 
+.carritoCompras-listadoTitle{
+    font-family: $secondary_font;
+    
+}
+
+// ------------ CARRITO DE COMPRAS CARD DE PRODUCTO ------------
 .carritoCompras__productCardMain {
     margin-bottom: .5rem;
 }
@@ -95,3 +122,33 @@
     color: #0068B1;
 }
 
+
+// ------------ CARRITO DE COMPRAS TOTAL ------------
+.carritoCompras_subTotal, 
+.carritoCompras_subTotal-amount,
+.carritoCompras_iva,
+.carritoCompras_iva-amount{
+    font-family: $secondary_font;
+    color: $header_searchInput;
+    font-size: .8rem;
+}
+
+.carritoCompras_total{
+    color: $currencyList_main;
+}
+
+.carritoCompras_total,
+.carritoCompras_total-amount {
+    font-family: $secondary_font;
+    font-size: 1.3rem;
+}
+
+.carritoCompras_totalBolivares {
+    color: $currencyList_main;
+}
+
+.carritoCompras_totalBolivares,
+.carritoCompras_totalBolivares-amount {
+    font-family: $secondary_font;
+    font-weight: bold;
+}
