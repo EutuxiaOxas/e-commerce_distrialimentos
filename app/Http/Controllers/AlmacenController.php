@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Brand;
 
 class AlmacenController extends Controller
 {
@@ -42,4 +43,13 @@ class AlmacenController extends Controller
         $productos = $product_categorie->products()->paginate(25);
         return view('sketch.almacen', compact('productos', 'categorias'));
     }
+
+    public function showProductsByBrand($brand)
+    {
+        $product_brand = Brand::where('brand', $brand)->first();
+        $categorias = Category::all();
+        $productos = $product_brand->products()->paginate(25);
+        return view('sketch.almacen', compact('productos', 'categorias'));
+    }
+    
 }

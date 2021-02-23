@@ -12331,6 +12331,43 @@ nav {
   background: #757575;
 }
 
+.almacen__categoriaText,
+.almacen__marcaText {
+  display: block;
+}
+
+.almacen__marcaText {
+  font-weight: bold;
+  color: #FD6721;
+}
+
+.almacen__marcaText span {
+  font-weight: normal;
+}
+
+.almacen__marcaTexthover {
+  text-decoration: none;
+}
+
+.almacen__categoriaText {
+  font-weight: bold;
+  color: #02528A;
+}
+
+.almacen__categoriaText span {
+  font-weight: normal;
+}
+
+.almacen__categoriaText:hover {
+  text-decoration: none;
+  color: #02528A;
+}
+
+.almacen__marcaText:hover {
+  text-decoration: none;
+  color: #FD6721;
+}
+
 .almacen__productAdded {
   opacity: 0;
 }
@@ -12339,11 +12376,40 @@ nav {
   opacity: 1;
 }
 
+.almacen__productoAgregado {
+  display: none;
+}
+
+.almacen__productoAgregado.active {
+  display: block;
+}
+
 .almancen__agregarProducto-text {
   color: #FD6721;
   font-size: 0.7rem;
   font-weight: bold;
   margin-bottom: 0.7rem;
+}
+
+.productSelectStock {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.almacen__agregarProducto-button {
+  width: 90%;
+  background-color: #FF661B;
+  padding: 0.76rem 0;
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  font-size: 0.67rem;
+  border-radius: 5px;
+}
+
+.almacen__agregarProducto-button.disabled {
+  display: none;
 }
 
 .btn-primary.disabled,
@@ -12734,9 +12800,42 @@ nav {
   }
 }
 
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #ffffff;
+  background-color: #838383;
+  border-color: #838383;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #757575;
+}
+
 .labelfs {
   /* tamaño de la fuente del label */
-  font-size: 70%;
+  font-size: 0.8rem;
+  font-family: "Roboto", cursive;
+  color: #A7A7A7;
 }
 
 .radeus {
@@ -12748,7 +12847,137 @@ nav {
   /* Border radius de las img */
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  max-width: 100%;
+  max-width: 70%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.carritoCompras-title {
+  font-family: "Righteous", cursive;
+  font-size: 1.2rem;
+}
+
+.carritoCompras-subtitle {
+  font-family: "Roboto", cursive;
+  color: #838383;
+}
+
+.carritoCompras-completaTuCompra-text {
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: bold;
+}
+
+.carritoCompras-siguienteButton {
+  padding: 0.7rem 0;
+}
+
+.carritoCompras__finalizarButton.disabled {
+  cursor: not-allowed;
+  background-color: grey;
+}
+
+.carritoCompras__alertMinimunPrice {
+  display: none;
+  background-color: #FD6721;
+  padding: 0.9rem 0;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.carritoCompras__alertMinimunPrice.active {
+  display: block;
+}
+
+.carritoCompras__alertMinimunPrice-text {
+  font-family: "Roboto", cursive;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.carritoCompras-listadoTitle {
+  font-family: "Roboto", cursive;
+}
+
+.carritoCompras__productCardMain {
+  margin-bottom: 0.5rem;
+}
+
+.carritoProductCard__title {
+  font-family: "Roboto", cursive;
+  color: #02528A;
+  font-size: 1.4rem;
+}
+
+.carritoProductCard__iva {
+  font-family: "Roboto", cursive;
+  color: #A7A7A7;
+}
+
+.carritoProductCard__caracteristicas {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carritoProductCard__caracteristicasInfo {
+  flex: 1 0 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carritoProductCard__caracteristicasInfo .carritoProductCard__caracteristicasInfo-price {
+  font-size: 1.2rem;
+  font-family: "Roboto", cursive;
+}
+
+.carritoProductCard__caracteristicasInfo .carritoProductCard__caracteristicasInfo-empaque {
+  font-family: "Roboto", cursive;
+}
+
+.carritoProductCard__caracteristicasCantidad {
+  flex: 1 0 30%;
+  justify-content: center;
+  text-align: center;
+}
+
+.cart_modal_cantidad_producto {
+  width: 79%;
+  margin: 0 auto;
+  font-weight: bold;
+  text-align: center;
+  color: #0068B1;
+}
+
+.carritoCompras_subTotal,
+.carritoCompras_subTotal-amount,
+.carritoCompras_iva,
+.carritoCompras_iva-amount {
+  font-family: "Roboto", cursive;
+  color: #A7A7A7;
+  font-size: 0.8rem;
+}
+
+.carritoCompras_total {
+  color: #02528A;
+}
+
+.carritoCompras_total,
+.carritoCompras_total-amount {
+  font-family: "Roboto", cursive;
+  font-size: 1.3rem;
+}
+
+.carritoCompras_totalBolivares {
+  color: #02528A;
+}
+
+.carritoCompras_totalBolivares,
+.carritoCompras_totalBolivares-amount {
+  font-family: "Roboto", cursive;
+  font-weight: bold;
 }
 
 .loader,

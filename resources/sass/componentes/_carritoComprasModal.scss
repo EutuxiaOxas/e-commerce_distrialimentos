@@ -1,5 +1,9 @@
+@import '../variables';
+
 .labelfs { /* tamaño de la fuente del label */
-    font-size: 70%
+    font-size: .8rem;
+    font-family: $secondary_font;
+    color: $header_searchInput;
 }
 
 .radeus { /* Border radius de las tarjetas */
@@ -9,5 +13,142 @@
 .img-border { /* Border radius de las img */
     border-top-left-radius:20px;
     border-bottom-left-radius:20px;
-    max-width: 100%;
+    max-width: 70%;
+    object-fit: cover;
+}
+
+.carritoCompras-title {
+    font-family: $principal_font;
+    font-size: 1.2rem;
+}
+
+.carritoCompras-subtitle {
+    font-family: $secondary_font;
+    color: #838383;
+}
+
+.carritoCompras-completaTuCompra-text {
+    font-family: $secondary_font;
+    color: #838383;
+    font-weight: bold;
+}
+
+.carritoCompras-siguienteButton {
+    padding: .7rem 0;
+}
+
+.carritoCompras__finalizarButton.disabled {
+    cursor: not-allowed;
+    background-color: grey;
+}
+
+
+.carritoCompras__alertMinimunPrice {
+    display: none;
+    background-color: $navbar_Background;
+    padding: .9rem 0;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.carritoCompras__alertMinimunPrice.active {
+    display: block;
+}
+
+.carritoCompras__alertMinimunPrice-text {
+    font-family: $secondary_font;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.carritoCompras-listadoTitle{
+    font-family: $secondary_font;
+    
+}
+
+// ------------ CARRITO DE COMPRAS CARD DE PRODUCTO ------------
+.carritoCompras__productCardMain {
+    margin-bottom: .5rem;
+}
+
+.carritoProductCard__title {
+    font-family: $secondary_font;
+    color: $currencyList_main;
+    font-size: 1.4rem;
+}
+
+.carritoProductCard__iva {
+    font-family: $secondary_font;
+    color: $header_searchInput;
+}
+
+
+.carritoProductCard__caracteristicas {
+    display: flex;
+    justify-content: space-between;   
+}
+
+.carritoProductCard__caracteristicasInfo {
+    flex: 1 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .carritoProductCard__caracteristicasInfo-price {
+        font-size: 1.2rem;
+        font-family: $secondary_font;
+    }
+
+    .carritoProductCard__caracteristicasInfo-empaque {
+        font-family: $secondary_font;
+    }
+}
+
+
+
+.carritoProductCard__caracteristicasCantidad {
+    flex: 1 0 30%;
+    justify-content: center;
+    text-align: center;
+}
+
+.cart_modal_cantidad_producto {
+    width: 79%;
+    margin: 0 auto;
+    font-weight: bold;
+    text-align: center;
+    color: #0068B1;
+}
+
+
+// ------------ CARRITO DE COMPRAS TOTAL ------------
+.carritoCompras_subTotal, 
+.carritoCompras_subTotal-amount,
+.carritoCompras_iva,
+.carritoCompras_iva-amount{
+    font-family: $secondary_font;
+    color: $header_searchInput;
+    font-size: .8rem;
+}
+
+.carritoCompras_total{
+    color: $currencyList_main;
+}
+
+.carritoCompras_total,
+.carritoCompras_total-amount {
+    font-family: $secondary_font;
+    font-size: 1.3rem;
+}
+
+.carritoCompras_totalBolivares {
+    color: $currencyList_main;
+}
+
+.carritoCompras_totalBolivares,
+.carritoCompras_totalBolivares-amount {
+    font-family: $secondary_font;
+    font-weight: bold;
 }
