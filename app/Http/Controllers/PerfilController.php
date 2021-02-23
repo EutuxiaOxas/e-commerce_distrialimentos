@@ -11,6 +11,7 @@ use App\Township;
 use App\DeliveryRoute;
 use App\Category;
 use App\Variable;
+use App\User;
 
 class PerfilController extends Controller
 {
@@ -46,6 +47,11 @@ class PerfilController extends Controller
 
         $user->update($request->all());
 
+        if($request->wantsJson()) {
+            $user = User::find($user->id);
+            return response()->json($user, 200);
+        }
+
         return back();
     }
 
@@ -53,6 +59,7 @@ class PerfilController extends Controller
     {
         $user = auth()->user();
         $enterprise = Enterprise::where('user_id', $user->id)->first();
+        $empresa = null;
         if(isset($enterprise)) {
             $enterprise->update($request->all());
         }else {
@@ -68,6 +75,21 @@ class PerfilController extends Controller
                 'opening_time' => $request->opening_time,
                 'closing_time' => $request->closing_time, 
             ]); 
+        }
+
+        if($request->wantsJson()) {
+            if(isset($enterprise))
+            {
+                $empresa = Enterprise::with(['state', 'city'])->where('id', $enterprise->id)->first();
+            }else {
+                $empresa = Enterprise::with(['state', 'city'])->where('id', $empresa->id)->first();
+            }
+            
+            $data =  [
+                "enterprise" => $empresa,
+                "time" =>  $empresa->getOperationTime(),
+            ];
+            return response()->json($data, 200);
         }
 
         return back();
@@ -90,6 +112,10 @@ class PerfilController extends Controller
             'type' => $request->type,
         ]);
 
+        if($request->wantsJson()) {
+            $direccion = Address::with(['delivery_route', 'state', 'city'])->where('id', $direccion->id)->first();
+            return response()->json($direccion, 200);
+        }
         return back();
     }
 

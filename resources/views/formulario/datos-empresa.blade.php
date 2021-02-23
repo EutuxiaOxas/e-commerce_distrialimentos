@@ -25,7 +25,7 @@
   	@if($empresa)
           <!-- trj 1 datos de empresa-->
           <div class="container mt-1">
-            <div class="border shadow mb-3">
+            <div class="border shadow mb-3" id="formEnterpriseContainer">
               <div class="info-container p-3">
                 <div class="row mb-3">
                   <div class="col-6">
@@ -72,96 +72,19 @@
                   <div class="col-12 text-center padding_modal">
                     <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="texto-small font-weight-bold text-secondary">Editar datos de empresa</a>
                   </div>
-                  <div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content p-3">
-                        <div class="modal-header p-2 border-bottom-0">
-                          <div class="container">
-                            <div class="row">
-                              <div class="col-10 mb-0">
-                                <h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
-                                <p class="texto-small texto-muted">Agregue los datos solicitados...</p>
-                              </div>
-                              <div class="col-2">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>        
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-body px-2 pt-1 pb-2">
-                          <div class="form-title container">
-                            <div class="row">
-                              <div class="col text-center">
-                                <p class="text-black font-weight-bold">Datos de empresa</p>
-                              </div>
-                            </div>
-                          </div>
-                          <form action="{{route('user.enterprise.update')}}" method="POST">
-                            @csrf
-                            <div class="form">
-                              <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required  name="name" placeholder="Nombre de empresa">
-                              </div>
-                              <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}"  required name="RIF" placeholder="RIF [ej: j-20180578-4]">
-                              </div>
-                              <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}"  required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
-                              </div>
-                              <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}"  required name="postal_code" placeholder="Código postal [ej: 2002]">
-                              </div>
-                              <div class="col">
-                                <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}"  required name="SADA" placeholder="SADA">
-                              </div>
-                              <div class="col mb-3">
-                                <select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
-                                  <option value="">Escoge un estado</option>
-                                  @foreach($estados as $estado)
-                                    <option value="{{$estado->id}}" {{$empresa->state->id == $estado->id ? 'selected' : ''}}>{{$estado->state}}</option>
-                                  @endforeach
-                                </select>
-                                <select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
-                                  <option value="">Escoge una ciudad</option>
-                                  @foreach($ciudades as $ciudad)
-                                    <option value="{{$ciudad->id}}" {{$empresa->city->id == $ciudad->id ? 'selected' : ''}}>{{$ciudad->city}}</option>
-                                  @endforeach
-                                </select>
-                              </div>
-                              <div class="col form-group my-4 py-4">
-                                <h5 class="mt-2 pt-2 font-weight-bold">Horario de atención <small>(apertura - cierre)</small></h5>
-                                <input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->opening_time ?? ''}}" required required name="opening_time">
-                                <input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->closing_time ?? ''}}" required required name="closing_time">
-                              </div>
-                            </div>
-                            <div class="container">
-                              <div class="row mb-1">
-                                <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">Editar</button>
-                              </div>
-                              <div class="row">
-                                <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
-                              </div>
-                            </div>
-                          </form>                                      
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
         </div>
     @else
         	{{-- si no exite la empresa --}}
-				<div class="perfil__cardBody direccion">
+				<div class="perfil__cardBody direccion" id="formEnterpriseContainer">
 					<div class="container p-5 text-center">
 						<img src="{{asset('/images/void-02.svg')}}" alt="">
-						<p class="perfil__cardListItem-content" style="">Aun sin datos de facturación...</p>
+						<p class="perfil__cardListItem-content">Aun sin datos de facturación...</p>
 					</div>
 					<div class="perfil__agregarDatos ">
-						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de empresa</a>
+						<a href="#" data-toggle="modal" data-target="#modal-facturation_edit">Agregar los datos de empresa</a>
 					</div>
 				</div>
     @endif
@@ -184,6 +107,98 @@
   <!-- /Buttoms-->
 </section>
 
+<!-- Modal editar datos empresa--> 
+<div class="modal fade" id="modal-facturation_edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content p-3">
+      <div class="modal-header p-2 border-bottom-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-10 mb-0">
+              <h4 class="modal-title text-secondary font-weight-bold" id="exampleModalLabel">Datos de facturación</h4>
+              <p class="texto-small texto-muted">Agregue los datos solicitados...</p>
+            </div>
+            <div class="col-2">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>        
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body px-2 pt-1 pb-2">
+        <div class="form-title container">
+          <div class="row">
+            <div class="col text-center">
+              <p class="text-black font-weight-bold">Datos de empresa</p>
+            </div>
+          </div>
+        </div>
+        <form action="{{route('user.enterprise.update')}}" id="formEditOrCreateEnterprise" method="POST">
+          @csrf
+          <div class="form">
+            <div class="col">
+              <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required  name="name" placeholder="Nombre de empresa">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}"  required name="RIF" placeholder="RIF [ej: j-20180578-4]">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}"  required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}"  required name="postal_code" placeholder="Código postal [ej: 2002]">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}"  required name="SADA" placeholder="SADA">
+            </div>
+            <div class="col mb-3">
+              <select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
+                <option value="">Escoge un estado</option>
+                @foreach($estados as $estado)
+                  <option value="{{$estado->id}}" 
+                    @if(isset($empresa))
+                      {{$empresa->state->id == $estado->id ? 'selected' : ''}}
+                    @endif
+                    >{{$estado->state}}</option>
+                @endforeach
+              </select>
+              <select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
+                <option value="">Escoge una ciudad</option>
+                @foreach($ciudades as $ciudad)
+                  <option value="{{$ciudad->id}}"
+                    @if(isset($empresa))
+                      {{$empresa->city->id == $ciudad->id ? 'selected' : ''}}
+                    @endif
+                    >{{$ciudad->city}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col form-group my-4 py-4">
+              <h5 class="mt-2 pt-2 font-weight-bold">Horario de atención <small>(apertura - cierre)</small></h5>
+              <input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->opening_time ?? ''}}" required required name="opening_time">
+              <input type="time" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->closing_time ?? ''}}" required required name="closing_time">
+            </div>
+          </div>
+          <div class="container">
+            <div class="row mb-1">
+              <button type="submit" class="btn btn-primary btn-block formulario__modalBtn">
+                @if(isset($empresa))
+                  {{'Editar'}}
+                @else
+                  {{'Agregar'}}
+                @endif
+              </button>
+            </div>
+            <div class="row">
+              <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+            </div>
+          </div>
+        </form>                                      
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal de direccion juridica-->  
 <div class="modal fade" id="modal-direction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -276,7 +291,7 @@
 						</div>
 						</div>
 					</div>
-					<form action="{{route('user.enterprise.update')}}" method="POST">
+					<form action="{{route('user.enterprise.update')}}" id="" method="POST">
 						@csrf
 						<div class="form">
 						<div class="col">
@@ -328,3 +343,121 @@
 		</div>
 	</div>
 	<!-- Fin Modal datos de empresa -->
+  <script>
+    function compraFormEnterprise() {
+
+
+      function addLoader(container) {
+        element = '<div class="loader">Loading...</div>';
+        container.innerHTML = element;
+      }
+
+      function addEnterpriseInfoToView(container, time, {
+        RIF,
+        SADA,
+        city: {city},
+        state: {state},
+        name,
+        postal_code,
+        legal_address,
+      }){ 
+        const view = `
+              <div class="info-container p-3">
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <p class="text-black font-weight-bold texto-small">Empresa</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="texto-small text-right text-muted">${name}</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <p class="text-black font-weight-bold texto-small">R.I.F</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="texto-small text-right text-muted">R.I.F ${RIF}</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <p class="text-black font-weight-bold texto-small">SADA</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="texto-small text-right text-muted">${SADA}</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <p class="text-black font-weight-bold texto-small">Horario de atención</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="texto-small text-right text-muted">${time}</p>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <p class="text-black font-weight-bold texto-small">Direccion Jurídica</p>
+                  </div>
+                  <div class="col-6">
+                    <p class="font-weight-bold text-black texto-small text-right">${legal_address}</p>
+                    <p class="texto-small text-muted text-right">${state}, ${city} (${postal_code})</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center padding_modal">
+                    <a href="#" data-toggle="modal" data-target="#modal-facturation_edit" class="texto-small font-weight-bold text-secondary">Editar datos de empresa</a>
+                  </div>
+                </div>
+              </div>
+        `
+        container.innerHTML = view;
+      }
+
+
+
+
+
+      const formEnterprise = document.getElementById('formEditOrCreateEnterprise');
+      const enterpriseContainer = document.getElementById('formEnterpriseContainer');
+      const $btn_next2 = document.getElementById('btn_next2');
+
+      formEnterprise.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // form data
+        const [, name, rif, legalAddress, postalCode, sada, stateId, cityId, openingTime, closingTime] = e.target
+
+        addLoader(enterpriseContainer);
+
+        //close modal
+        $('#modal-facturation_edit').modal('hide');
+
+        axios.post(`/perfil/userEnterprise/update`, {
+          name: name.value,
+          RIF: rif.value,
+          legal_address: legalAddress.value,
+          postal_code: postalCode.value,
+          SADA: sada.value,
+          state_id: stateId.value,
+          city_id: cityId.value,
+          opening_time: openingTime.value,
+          closing_time: closingTime.value
+        })
+        .then(res => {
+          const {enterprise, time} = res.data;
+          setTimeout(() => {
+            addEnterpriseInfoToView(enterpriseContainer, time, enterprise)
+            $btn_next2.removeAttribute('disabled')
+          }, 2000)
+        })
+        .catch(err => {
+          console.log(err);
+        }) 
+
+      })
+    }
+
+    //scope function
+    compraFormEnterprise();
+  </script>
