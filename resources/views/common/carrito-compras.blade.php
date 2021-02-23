@@ -80,3 +80,17 @@
                     </div>
                   </div>
               </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    function carritoComprasView() {
+      const botonSiguiente = document.getElementById('carritoComprasBotonSiguiente');
+      
+      botonSiguiente.addEventListener('click', () => {
+        const URL = window.location.host
+        window.location.href= `http://${URL}/formulario`
+      })
+    }
+
+    carritoComprasView()
+  })
+</script>
