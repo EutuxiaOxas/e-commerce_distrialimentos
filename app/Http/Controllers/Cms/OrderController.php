@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\OrderProduct;
 use App\Variable;
+use App\Address;
+use Carbon\Carbon;
+
 class OrderController extends Controller
 {
     public function index()
@@ -41,6 +44,8 @@ class OrderController extends Controller
     	$order = Order::create([
     		'user_id' => $user->id,
     		'total_amount' => $total['total'],
+    		'sub_total' => $total['subTotal'],
+    		'iva' => $total['iva'] ? $iva->value : 0,
     		'status_id' => '1',
 			'comment' => 'sin comentario',
 			'discount' => 0,
@@ -75,23 +80,52 @@ class OrderController extends Controller
     	if($request->wantsJson()){
 
     		$orden = Order::find($id);
+			$ordenStatus = $orden->statusOrder;
     		$detalles = $orden->orderProduct;
+
+			$address = Address::with(['delivery_route', 'state', 'city', 'township'])
+						->where('id', $orden->address->id)
+						->first();
+			
+			$dolar = Variable::where('name', 'DOLAR')->first();
+			$totalBolivar = number_format($orden->total_amount * $dolar->value, 0, ',', '.');
 
     		$productos = [];
 
     		foreach ($detalles as $detalle) {
 
+				$totalDetail = $detalle->price * $detalle->quantity;
+
     			$producto = [
     				'img' => $detalle->product->image,
     				'title' => $detalle->product->title,
-    				'cantidad' => $detalle->quantity,
-    				'price' => $detalle->price,
+    				'productQuantity' => $detalle->quantity,
+    				'productPrice' => $detalle->price,
+					'detailTotalAmount' => $totalDetail
     			];
 
     			$productos[] = $producto;
     		}
 
-    		return $productos;
+			$data = [
+				'order' => [
+					'id' => $orden->id,
+					'created_at' => $orden->created_at->format('d-m-Y'),
+					'updated_at' =>  $orden->updated_at->format('d-m-Y'),
+					'total_amount' => $orden->total_amount
+				],
+				'status' => $ordenStatus,
+				'orderDetails' => $productos,
+				'address' => $address,
+				'orderTotalAmount' => [
+					'total' => $orden->total_amount,
+					'totalBolivar' => $totalBolivar,
+					'subTotal' => $orden->sub_total,
+					'iva' => $orden->iva
+				],
+			];
+
+    		return $data;
     	}
 
     	return redirect('/');

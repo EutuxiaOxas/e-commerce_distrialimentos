@@ -18,6 +18,8 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('address_id');
             $table->integer('total_amount');
+            $table->integer('sub_total');
+            $table->integer('iva');
             $table->foreignId('status_id');
             $table->string('comment');
             $table->integer('discount');
