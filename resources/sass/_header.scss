@@ -421,7 +421,7 @@
 	z-index: 200;
 	position: absolute;
 	top: 108%;
-	right: -57%;
+	right: calc(100% - 5vw);
 	width: 172px;
 	background-color: pink;
 }

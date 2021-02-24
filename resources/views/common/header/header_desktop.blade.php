@@ -1,3 +1,15 @@
+<style>
+	.navbar__currencyList{
+	z-index: 200;
+	position: absolute;
+	top: 108%;
+	right: calc(100% - 5vw);
+	width: 172px;
+	background-color: pink;
+}
+</style>
+
+
 <header class="header__main">
 	<div class="header__container">
 		<div class="header__body">
@@ -98,14 +110,70 @@
 				<p class="navbar__currency--subtitle">Divisas</p>
 				<div id="currency_list" class="navbar__currencyList hide">
 					<div class="navbar__currencyList--item  usd choose">
-						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'usd')}}">Dolares<span>(USD)</span></a>
+						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'us')}}">Dolares</a>
 					</div>
 					<div class="navbar__currencyList--item ves choose">
-						<a class="navbar__currencyList--itemOption " href="{{route('active.curency', 'ves')}}">Bolivares<span>(Bs)</span></a>
+						<a class="navbar__currencyList--itemOption " href="{{route('active.curency', 'ves')}}">Bolivares</a>
 					</div>
 				</div>
 			</div>
-			<div class="navbar__location">
+
+
+			<style>
+				.navbar__locationList {
+					z-index: 200;
+					position: absolute;
+					top: 10% !important;
+					right: calc(100% - 10vw);
+					border:none;
+					background: #f5f5f5;
+					padding:0;
+				}
+
+				.navbar__locationListItems {
+					text-decoration: none;
+					font-size: 1.2rem;
+					font-family: 'Roboto';
+					color: #02528A;
+					font-weight: bold;
+					padding: 0.6rem 1rem 0.8rem;
+				}
+				.navbar__locationListItems:hover {
+					background: #02528A;
+					color:white;
+				}
+
+				.navbar__currencyList--item:hover {
+					background: #02528A;
+					color:white;
+				}
+				.navbar__currencyList--item a :hover {
+					background: #02528A;
+					color:white;
+				}
+				
+				
+				.dropdown-toggle::after {
+					display:none !important;
+				}
+				.navbar__location-img {
+					position: absolute;
+					top: -0.2rem;
+    				left: -1.3rem;
+				}
+				
+				.navbar__location{
+					flex: 1;
+					padding-top: .3rem;
+					position: relative;
+				}
+
+			</style>
+
+			
+
+
+			<div class="navbar__location dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"">
 				<p class="navbar__locationBody-title">Carabobo</p>
 				<p class="navbar__locationBody-subtitle">Ubicación</p>
 				<div class="navbar__location-img">
@@ -113,7 +181,12 @@
 						<path d="M7.49996 0C3.35781 0 0 3.35785 0 7.50001C0 15 7.50001 24 7.50001 24C7.50001 24 15 15 15 7.50001C15 3.35785 11.6421 0 7.49996 0ZM7.49996 12C5.01466 12 2.99997 9.98531 2.99997 7.50001C2.99997 5.0147 5.01466 3.00001 7.49996 3.00001C9.98526 3.00001 12 5.0147 12 7.50001C12 9.98531 9.98526 12 7.49996 12Z" fill="white"/>
 					</svg>
 				</div>
+				<div class="dropdown-menu navbar__locationList" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item navbar__locationListItems" href="#">Carabobo</a>
+					<a class="dropdown-item navbar__locationListItems" href="#">Aragua</a>
+				</div>
 			</div>
+
 			<div class="navbar__icon">
 				<div>
 					<a href="#" data-toggle="modal" data-target="#exampleModal" id="cart_main">
