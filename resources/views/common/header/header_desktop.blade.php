@@ -174,7 +174,7 @@
 			
 
 
-			<div class="navbar__location dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"">
+			<div class="navbar__location dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<p class="navbar__locationBody-title">Carabobo</p>
 				<p class="navbar__locationBody-subtitle">Ubicación</p>
 				<div class="navbar__location-img">
