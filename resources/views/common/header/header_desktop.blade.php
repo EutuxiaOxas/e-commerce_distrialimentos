@@ -6,11 +6,61 @@
 	right: calc(100% - 5vw);
 	width: 172px;
 	background-color: pink;
+	
 }
+.navbar__locationList {
+		z-index: 200;
+		position: absolute;
+		top: 10% !important;
+		left: -20px !important;
+		right: calc(100% - 10vw);
+		border:none;
+		background: #f5f5f5;
+		padding:0;
+	}
+
+	.navbar__locationListItems {
+		text-decoration: none;
+		font-size: 1.2rem;
+		font-family: 'Roboto';
+		color: #02528A;
+		font-weight: bold;
+		padding: 0.6rem 1rem 0.8rem;
+	}
+	.navbar__locationListItems:hover {
+		background: #02528A;
+		color:white;
+	}
+	.navbar__currencyList--item:hover {
+		background: #02528A;
+	}
+
+	.navbar__currencyList--item:hover a {
+		background: #02528A;
+		color:white;
+	}
+	
+	
+	
+	.dropdown-toggle::after {
+		display:none !important;
+	}
+	.navbar__location-img {
+		position: absolute;
+		top: -0.2rem;
+		left: -1.3rem;
+	}
+	
+	.navbar__location{
+		flex: 1;
+		padding-top: .3rem;
+		position: relative;
+	}
+
 </style>
 
 
-<header class="header__main">
+<header class="header__main fixed-top">
 	<div class="header__container">
 		<div class="header__body">
 			<div class="header__logo">
@@ -117,62 +167,6 @@
 					</div>
 				</div>
 			</div>
-
-
-			<style>
-				.navbar__locationList {
-					z-index: 200;
-					position: absolute;
-					top: 10% !important;
-					left: -20px !important;
-					right: calc(100% - 10vw);
-					border:none;
-					background: #f5f5f5;
-					padding:0;
-				}
-
-				.navbar__locationListItems {
-					text-decoration: none;
-					font-size: 1.2rem;
-					font-family: 'Roboto';
-					color: #02528A;
-					font-weight: bold;
-					padding: 0.6rem 1rem 0.8rem;
-				}
-				.navbar__locationListItems:hover {
-					background: #02528A;
-					color:white;
-				}
-				.navbar__currencyList--item:hover {
-					background: #02528A;
-				}
-
-				.navbar__currencyList--item:hover a {
-					background: #02528A;
-					color:white;
-				}
-				
-				
-				
-				.dropdown-toggle::after {
-					display:none !important;
-				}
-				.navbar__location-img {
-					position: absolute;
-					top: -0.2rem;
-    				left: -1.3rem;
-				}
-				
-				.navbar__location{
-					flex: 1;
-					padding-top: .3rem;
-					position: relative;
-				}
-
-			</style>
-
-			
-
 
 			<div class="navbar__location dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<p class="navbar__locationBody-title">Carabobo</p>

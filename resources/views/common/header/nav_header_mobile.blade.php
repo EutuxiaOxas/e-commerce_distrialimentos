@@ -1,4 +1,14 @@
-<nav class="header__navMobile main" >
+<style>
+    .header__navMobile {
+	width: 100%;
+	background-color: $navbar_Background;
+	padding-left: .2rem;
+    top:80px !important;
+}
+</style>
+
+
+<nav class="header__navMobile main fixed-top">
     <ul class="header__navMain main">
         <li class="header__navList main" id="ayuda_mobile_icon">
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">

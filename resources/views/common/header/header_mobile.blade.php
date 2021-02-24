@@ -1,4 +1,4 @@
-<header class="header__mobileMain">
+<header class="header__mobileMain fixed-top">
 	<div class="header__mobileContainer">
 		<div class="header__logoMobile">
 			<a href="/">
