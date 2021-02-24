@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="/AdminLTE/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ asset('vendor/bootstrap/dist/css/bootstrap.min.css') }}">
 
@@ -28,6 +30,15 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script src="/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <style>
+    h1,h2,h3,h4,h5,h6 {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    p,li,a,ul,input,select,td,th,button,small{
+     font-family: 'Roboto', sans-serif;
+    }
+
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
@@ -42,22 +53,15 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <form action="/logout" id="logout_form" method="POST">
-          @csrf
-          <a href="#" onclick="document.getElementById('logout_form').submit()" class="nav-link">Cerrar Sesión</a>
-        </form>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >
+          Distrialmientos del Centro C.A.
+        </a>
       </li>
     </ul>
-
+    
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    {{-- <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -66,70 +70,12 @@
           </button>
         </div>
       </div>
-    </form>
-
+    </form> --}}
+    
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/AdminLTE/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="/AdminLTE/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
@@ -154,15 +100,25 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
+      </li> --}}
+      
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('home')}}" class="nav-link">Inicio</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
-            class="fas fa-th-large"></i></a>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{route('cms.home')}}" class="nav-link">Tablero principal</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <form action="/logout" id="logout_form" method="POST">
+          @csrf
+          <a href="#" onclick="document.getElementById('logout_form').submit()" class="nav-link">Cerrar Sesión</a>
+        </form>
+      </li>
+      
     </ul>
   </nav>
   <!-- /.navbar -->
-
+  
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -188,7 +144,7 @@
           @if(auth()->user()->roles->title == 'administrador')
           <li class="nav-item ">
             <a href="{{ route('cms.users') }}" class="nav-link secciones usuarios ">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
                 Usuarios
               </p>
@@ -206,14 +162,57 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              {{-- banner --}}
               <li class="nav-item">
                 <a href="{{route('banners.home')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Banners</p>
                 </a>
               </li>
+              {{-- promociones --}}
+              <li class="nav-item">
+                <a href="{{route('promociones.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i></i>
+                  <p>Promociones</p>
+                </a>
+              </li>
             </ul>
           </li> 
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link secciones bancos">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Configuraciones
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('tienda.category.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categorias</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('tienda.category.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Marcas</p>
+                </a>
+              </li>
+              {{-- <li class="nav-item">
+                <a href="{{route('bank.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bancos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('bank.user.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cuentas Bancarias</p>
+                </a>
+              </li> --}}
+            </ul>
+          </li>
           @endif
           @if(auth()->user()->roles->title == 'inventario' || auth()->user()->roles->title == 'administrador')
           <li class="nav-item has-treeview">
@@ -226,17 +225,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('tienda.category.home')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categorias</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{route('tienda.product.home')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Productos</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('tienda.product.home')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inventario</p>
+                </a>
+              </li>
+             
             </ul>
           </li> 
           @endif
@@ -265,45 +265,15 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link secciones bancos">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Configuraciones
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('bank.home')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Bancos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('bank.user.home')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cuentas Bancarias</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item ">
+         
+          {{-- <li class="nav-item ">
             <a href="{{route('pagos.home')}}" class="nav-link secciones pagos">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pagos
               </p>
             </a>
-          </li>
-          <li class="nav-item ">
-            <a href="{{route('promociones.home')}}" class="nav-link secciones promociones">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Promociones
-              </p>
-            </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
