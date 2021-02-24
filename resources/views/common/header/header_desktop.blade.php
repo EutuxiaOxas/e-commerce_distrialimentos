@@ -124,6 +124,7 @@
 					z-index: 200;
 					position: absolute;
 					top: 10% !important;
+					left: -20px !important;
 					right: calc(100% - 10vw);
 					border:none;
 					background: #f5f5f5;
@@ -142,15 +143,15 @@
 					background: #02528A;
 					color:white;
 				}
-
 				.navbar__currencyList--item:hover {
 					background: #02528A;
-					color:white;
 				}
-				.navbar__currencyList--item a :hover {
+
+				.navbar__currencyList--item:hover a {
 					background: #02528A;
 					color:white;
 				}
+				
 				
 				
 				.dropdown-toggle::after {

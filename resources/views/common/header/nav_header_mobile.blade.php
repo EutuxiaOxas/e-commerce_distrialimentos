@@ -38,10 +38,10 @@
             <a href="#" id="headerMobileCurrencyChoose">{{session('currency')}}</a>
             <div class="header__navMobileChooseCurrency" id="headerMobileCurrencyMain">
                 <a href="{{route('active.curency', 'usd')}}" class="header__navMobileChooseCurrency-option">
-                    Dolares(USD)
+                    Dolares
                 </a>
                 <a href="{{route('active.curency', 'ves')}}" class="header__navMobileChooseCurrency-option">
-                    Bolivares(Bs)
+                    Bolivares
                 </a>
             </div>
         </li>
