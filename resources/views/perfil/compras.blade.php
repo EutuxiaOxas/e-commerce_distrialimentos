@@ -9,7 +9,7 @@
         <div class="perfil__body compras">
             <h2 class="perfil__body-title">Mis compras</h2>
             @if ($ordenes)
-                @foreach ($ordenes->take(5) as $orden)
+                @foreach ($ordenes as $orden)
                     {{-- tarjeta Por pagar --}}
                     <div class="perfil__cardBody compras">
                         <div class="perfil__comprasInfo">
