@@ -382,9 +382,9 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable_phone" placeholder="Telefono Oficina">
 							</div>
 							<div class="col text-center my-4 py-2">
-								<p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
+								<p class="text-black font-weight-bold">Sugerencia de envío</p>
 								<select class="form-control-plaintext formularios__inputBorders" required name="delivery_route_id" >
-									<option value="">Escoge una ruta de entrega</option>
+									<option value="">Sugiérenos una hora de entrega</option>
 									@foreach($rutaEntregas as $rutaEntrega)
 										<option value="{{$rutaEntrega->id}}">{{$rutaEntrega->name}}</option>
 									@endforeach
