@@ -135,6 +135,13 @@ Route::get('/formulario_nuevo', function () {
 Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.login');
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
+// CAMBIAR CONTRASEÑA
+
+Route::middleware('auth')->group(function () {
+	Route::get('/auth/change-password', 'PerfilController@cambiarContraseñaView')->name('change.password.view');
+	Route::post('/auth/change-password', 'PerfilController@cambiarContraseñaUsuario')->name('change.password');
+});
+
 //--------- PERFIL ROUTES ---------
 Route::middleware('auth')->group(function () {
 
