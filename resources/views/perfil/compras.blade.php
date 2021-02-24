@@ -28,7 +28,7 @@
                         
                         <div class="perfil__comprasActions">
                             @if($orden->status_id =='1' )
-                             <a href="#" class="perfil__comprasActions-cancelar">Cancelar compra</a>
+                             <a href="#" data-id="{{$orden->id}}" data-toggle="modal" data-target="#modalCancelarOrden"  class="perfil__comprasActions-cancelar cancelarButton">Cancelar compra</a>
                              @endif
                              <a data-toggle="modal" data-id="{{$orden->id}}" data-target="#modal_DetalleOrden" class="perfil__comprasActions-detalle verDetalleOrden"> Ver detalle</a>
                         </div>
@@ -278,6 +278,30 @@
 	</div>
 	<!-- Fin Modal datos de empresa -->
 
+    <!-- Modal Cancelar orden -->
+
+    <div class="modal fade" id="modalCancelarOrden" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cancelar compra</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5>¿Seguro que desea cancelar su orden?</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <form action="" id="cancelarOrdenForm" method="POST">
+                  @csrf
+                <button type="submit" class="btn btn-danger">Cancelar orden</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     
 <script>
     function verMisCompras(){
@@ -408,6 +432,7 @@
         }
 
         const detalleButtons = document.querySelectorAll('.verDetalleOrden');
+        const cancelarButton = document.querySelectorAll('.cancelarButton');
 
         if(detalleButtons) {
             detalleButtons.forEach(button => {
@@ -423,6 +448,17 @@
                         console.log(error)
                     }
                     
+                })
+            })
+        }
+
+        if(cancelarButton) {
+            cancelarButton.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const form = document.getElementById('cancelarOrdenForm');
+                    const id = e.target.dataset.id;
+
+                    form.action = `/cancelar/orden/${id}`;
                 })
             })
         }

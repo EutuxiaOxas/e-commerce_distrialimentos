@@ -294,7 +294,7 @@ Route::get('/make/order', 'Cms\OrderController@nuevaOrden')
 
 Route::get('/order/Detail/{id}', 'Cms\OrderController@getOrderDetail');
 
-Route::get('/cancelar/orden/{id}', 'Cms\OrderController@cancelarOrden')->name('orden.cancelar');
+Route::post('/cancelar/orden/{id}', 'Cms\OrderController@cancelarOrden')->name('orden.cancelar');
 
 //-------------- FORMULARIO DE ENVIO -----------
 Route::get('/shiping-data', 'ShipingDataController@index');

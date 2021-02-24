@@ -135,10 +135,10 @@ class OrderController extends Controller
 
     public function cancelarOrden($id)
     {
-        $orden = Order::find($id);
+        $orden = Order::findOrFail($id);
         $orden->status_id = '5'; //cancelar orden
         $orden->save();
 
-        return redirect('/home')->with('message', 'Orden cancelada con éxito');
+        return redirect('/perfil/compras')->with('message', 'Orden cancelada con éxito');
     }
 }
