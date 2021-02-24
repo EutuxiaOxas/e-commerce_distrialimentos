@@ -31,7 +31,7 @@
                     background: #f5f5f5;
 					padding:0;
 				}
-                .navbar__locationListItems {
+                .navbar__locationMobilListItems {
 					text-decoration: none;
 					font-size: 1rem  !important;
 					font-family: 'Roboto';
@@ -52,8 +52,8 @@
             <a class="dropdown" href="#" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carabobo</a>
             
             <div class="dropdown-menu navbar__mobillocationList" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item navbar__locationListItems" href="#">Carabobo</a>
-					<a class="dropdown-item navbar__locationListItems" href="#">Aragua</a>
+					<a class="dropdown-item navbar__locationMobilListItems" href="#">Carabobo</a>
+					<a class="dropdown-item navbar__locationMobilListItems" href="#">Aragua</a>
 				</div>
         </li>
         <li class="header__navList main header__navListCurrencyMain">
