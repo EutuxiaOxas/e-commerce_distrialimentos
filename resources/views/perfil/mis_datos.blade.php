@@ -76,7 +76,7 @@
 
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
-					<h2 class="perfil__card-title">Datos de empresa</h2>
+					<h2 class="perfil__card-title">Datos de facturación</h2>
 					@if($empresa)
 					<img data-toggle="modal" data-target="#modal_FacturationEdit" class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
 					@endif
@@ -115,10 +115,10 @@
 				<div class="perfil__cardBody direccion">
 					<div class="container p-5 text-center">
 						<img src="{{asset('/images/void-02.svg')}}" alt="">
-						<p class="perfil__cardListItem-content" style="">Aun sin datos de empresa...</p>
+						<p class="perfil__cardListItem-content pt-3" style="">Aun sin datos de facturación...</p>
 					</div>
 					<div class="perfil__agregarDatos ">
-						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de empresa</a>
+						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de facturación</a>
 					</div>
 				</div>
 				@endif
@@ -236,7 +236,7 @@
 					<div class="container">
 						<div class="row">
 						<div class="col-10 mb-0">
-							<h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h4>
+							<h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Facturación</h4>
 							<p class="texto-small texto-muted">Agregue los datos solicitados...</p>
 						</div>
 						<div class="col-2">
@@ -251,7 +251,7 @@
 					<div class="form-title container">
 						<div class="row">
 						<div class="col text-center">
-							<h5 class="font-weight-bold">Datos de empresa</h5>
+							<h5 class="font-weight-bold">Datos de facturación</h5>
 						</div>
 						</div>
 					</div>

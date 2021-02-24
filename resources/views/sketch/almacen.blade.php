@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    <title>Almacen</title>
+    Almacén
 @endsection
 
 @php
