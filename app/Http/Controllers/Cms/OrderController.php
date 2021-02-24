@@ -45,7 +45,7 @@ class OrderController extends Controller
     		'user_id' => $user->id,
     		'total_amount' => $total['total'],
     		'sub_total' => $total['subTotal'],
-    		'iva' => $total['iva'] ? $iva->value : 0,
+    		'iva' => $total['iva'],
     		'status_id' => '1',
 			'comment' => 'sin comentario',
 			'discount' => 0,

@@ -253,7 +253,7 @@
                               <p class="text-uppercase text-secondary font-weight-bold perfil__comprasTotal">Total</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p class="font-weight-bold text-black perfil__comprasTotal" id="ordenDetailModalTotal">70,35 $</p>
+                              <p class="font-weight-bold text-black perfil__comprasTotal" id="ordenDetailModalTotalAmount">70,35 $</p>
                             </div>
                           </div>
                           <div class="row perfil__comprasFilasTotal">
@@ -357,17 +357,17 @@
         function modalTotalAmountView(totalAmount) {
             //DATA DESESTRUCTURADA
             const { total, subTotal, iva, totalBolivar } = totalAmount;
-
+            console.log(subTotal);
                 //TOTAL ELEMENTS
-            const modalTotal = document.getElementById('ordenDetailModalSubTotal');
+            const modalTotal = document.getElementById('ordenDetailModalTotalAmount');
             const modalIva = document.getElementById('ordenDetailModalIva');
-            const modalSubTotal = document.getElementById('ordenDetailModalTotal');
+            const modalSubTotal = document.getElementById('ordenDetailModalSubTotal');
             const modalTotalBolivares = document.getElementById('ordenDetailModalTotalBolivares');
 
 
                 //AGREGAR DATA
             modalTotal.textContent = `${total} $`;
-            modalIva.textContent = `${iva} $`;
+            modalIva.textContent = `${iva.toFixed(2)} $`;
             modalSubTotal.textContent = `${subTotal} $`
             modalTotalBolivares.textContent = `${totalBolivar} Bs`
         }
