@@ -39,7 +39,7 @@
                 <h2>Sin Pedidos...</h2>
             @endif
 
-            
+            {{$ordenes->links()}}
             <div class="perfil__cardMasCompras">
                 <a class="perfil__cardMasCompras-option" href="#">Ver mas compras</a>
             </div>

@@ -35,7 +35,7 @@ class PerfilController extends Controller
         $user = auth()->user();
         $categorias = Category::all();
         // $ordenes = $user->orders()->where('status_id', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
-        $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(3);
+        $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(25);
         $tasa_bs_dolar = Variable::where('name','DOLAR')->first();
         return view('perfil.compras', compact('user','categorias','ordenes','tasa_bs_dolar'));
 
