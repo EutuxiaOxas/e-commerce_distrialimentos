@@ -11805,6 +11805,11 @@ nav {
   display: none;
 }
 
+.perfil__comprasPaginacion {
+  display: flex;
+  justify-content: center;
+}
+
 .perfil__cardBody.compras {
   margin-bottom: 2rem;
   padding: 1rem 1.5rem 0;
