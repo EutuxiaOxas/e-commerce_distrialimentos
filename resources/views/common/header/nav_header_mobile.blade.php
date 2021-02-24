@@ -3,8 +3,14 @@
 	width: 100%;
 	background-color: $navbar_Background;
 	padding-left: .2rem;
-    top:80px !important;
+    top: 70px !important;
+    height:48px;
 }
+
+.header__navMobile ul {
+    height:48px;
+}
+
 </style>
 
 
