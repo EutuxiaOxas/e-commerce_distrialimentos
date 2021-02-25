@@ -7,7 +7,7 @@
     height:48px;
 }
 
-.header__navMobile ul {
+.header__navMain {
     height:48px;
 }
 

@@ -1,14 +1,10 @@
 <style>
 	.navbar__currencyList{
-	z-index: 200;
-	position: absolute;
-	top: 108%;
-	right: calc(100% - 5vw);
-	width: 172px;
-	background-color: pink;
-	
-}
-.navbar__locationList {
+		top: 108%;
+		right: calc(100% - 5vw);	
+	}
+
+	.navbar__locationList {
 		z-index: 200;
 		position: absolute;
 		top: 10% !important;
@@ -44,39 +40,21 @@
 		display:none !important;
 	}
 	.navbar__location-img {
-		position: absolute;
-		top: -0.2rem;
-		left: -1.3rem;
+		top: -.2rem;
 	}
 	
-	.navbar__location{
-		flex: 1;
+	.navbar__location {
 		padding-top: .3rem;
-		position: relative;
 	}
-	.header__body{
-		width: 97%;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		padding: 1rem 0;
+
+	.header__body {
 		height: 85px;
 	}
-	.header__search-input{
-		font-family: 'Roboto', cursive;
-		width: 100%;
+	.header__search-input {
 		padding: 1rem;
-		border-radius: 50px;
-		border: none;
-		-webkit-box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
-		-moz-box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
-		box-shadow: -1px 4px 11px -6px rgba(0,0,0,0.75);
-		outline: none;
 	}
 	.navbar__container {
-		width: 100%;
 		height: 55px;
-		background-color: $navbar_Background;
 	}
 
 </style>
