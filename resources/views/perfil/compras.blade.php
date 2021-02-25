@@ -9,12 +9,12 @@
         <div class="perfil__body compras">
             <h2 class="perfil__body-title">Mis compras</h2>
             @if ($ordenes)
-                @foreach ($ordenes->take(5) as $orden)
+                @foreach ($ordenes as $orden)
                     {{-- tarjeta Por pagar --}}
                     <div class="perfil__cardBody compras">
                         <div class="perfil__comprasInfo">
                             <h2 class="perfil__comprasInfo-title  @if($orden->status_id >= 2 && $orden->status_id < 4 ) pendiente @endif @if($orden->status_id == 4 ) completed @endif  @if($orden->status_id == 5 ) canceled @endif  ">{{$orden->statusorder->status}}</h2>
-                            <p class="perfil__comprasInfo-alert">{{$orden->statusorder->msg}}</p>
+                            <p class="perfil__comprasInfo-alert">{{$orden->statusOrder->msg}}</p>
                             <div class="perfil__comprasInfoDetails">
                                 <p class="perfil__comprasInfoDetails-info id">ID: {{str_pad($orden->id, 9, '0', STR_PAD_LEFT)}}</p>
                                 <p class="perfil__comprasInfoDetails-info date">Fecha: {{$orden->created_at}}</p>
@@ -28,9 +28,9 @@
                         
                         <div class="perfil__comprasActions">
                             @if($orden->status_id =='1' )
-                             <a href="#" class="perfil__comprasActions-cancelar">Cancelar compra</a>
+                             <a href="#" data-id="{{$orden->id}}" data-toggle="modal" data-target="#modalCancelarOrden"  class="perfil__comprasActions-cancelar cancelarButton">Cancelar compra</a>
                              @endif
-                             <a data-toggle="modal" data-target="#modal_DetalleOrden" class="perfil__comprasActions-detalle"> Ver detalle</a>
+                             <a data-toggle="modal" data-id="{{$orden->id}}" data-target="#modal_DetalleOrden" class="perfil__comprasActions-detalle verDetalleOrden"> Ver detalle</a>
                         </div>
                     </div>
                     {{--  Fin Por pagar --}}
@@ -39,9 +39,8 @@
                 <h2>Sin Pedidos...</h2>
             @endif
 
-            
-            <div class="perfil__cardMasCompras">
-                <a class="perfil__cardMasCompras-option" href="#">Ver mas compras</a>
+            <div class="perfil__comprasPaginacion">
+                {{$ordenes->links()}}
             </div>
         </div>
     </section>
@@ -144,8 +143,8 @@
 					<div class="container">
                         <div class="row">
                             <div class="col-12 perfil__comprasPill">
-                                <div class="perfil__comprasCompletado">
-                                    <p>Completado</p>
+                                <div class="perfil__comprasCompletado" id="ordenDetailModalStatusMain">
+                                    <p id="ordenDetailModalStatus">Completado</p>
                                 </div>
                                 <button type="button" class="close m-0 py-0 pr-0 pl-2" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">X</span>
@@ -155,7 +154,7 @@
 						<div class="row py-3">
                             <div class="col-12 mb-0">
                                 <h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Detalle de pedido</h4>
-                                <p class="texto-small text-muted pt-1">Este pedido fue completado con exito...</p>
+                                <p class="texto-small text-muted pt-1" id="ordenDetailModalStatusInfo">Este pedido fue completado con exito...</p>
                             </div>
 						</div>
 					</div>
@@ -172,10 +171,10 @@
 					</div>
                     <div class="form pb-3">
                         <div class="col">
-                            <p class="text-muted"><b>ID:</b> 000000254</p>
-                            <p class="text-muted"><b>Fecha:</b> 000000254</p>
-                            <p class="text-muted"><b>Ultima modificacion:</b> 000000254</p>
-                            <p class="text-muted"><b>Monto:</b> 000000254</p>
+                            <p class="text-muted"><b>ID:</b> <span id="ordenDetailModalId">000000254</span></p>
+                            <p class="text-muted"><b>Fecha:</b> <span id="ordenDetailModalFecha">000000254</span> </p>
+                            <p class="text-muted"><b>Ultima modificacion:</b> <span id="ordenDetailModalUpdated">000000254</span></p>
+                            <p class="text-muted"><b>Monto:</b> <span id="ordenDetailModalTotal">000000254</span></p>
                         </div>
                     </div>
                     {{-- datos de envio --}}
@@ -187,9 +186,9 @@
 						</div>
 					</div>
                     <div class="perfil__cardDireccion pb-3">
-                        <p class="text-muted"><b>Calle 1 Avenida 10 Local 45</b></p>
-                        <p class="text-muted">Carabobo, Valencia (2001)</p>
-                        <p class="text-muted">Carlos Maita - +58 414 453 3456</p>
+                        <p class="text-muted"><b id="ordenDetailModalDireccion-address">Calle 1 Avenida 10 Local 45</b></p>
+                        <p class="text-muted" id="ordenDetailModalDireccion-localidad">Carabobo, Valencia (2001)</p>
+                        <p class="text-muted" id="ordenDetailModalDireccion-responsable">Carlos Maita - +58 414 453 3456</p>
                     </div>
                     <div class="form-title container pb-2">
 						<div class="row">
@@ -200,7 +199,7 @@
 					</div>
                     <div class="form">
                         <div class="col pb-2">
-                            <p class="text-muted"><b>Ruta:</b> Valencia, Lunes 08:00 AM</p>
+                            <p class="text-muted"><b>Ruta:</b> <span id="ordenDetailModalDireccion-delivery">Valencia, Lunes 08:00 AM</span></p>
                         </div>
                     </div>
                     <hr class="">
@@ -217,23 +216,17 @@
                             <div class="perfil__comprasWidth font-weight-bold">Precio</div>
                             <div class="perfil__comprasWidth font-weight-bold justify-content-center">Total</div>
                         </div>
-                                                
-                        <div class="perfil__comprasBodyProducts pb-1 px-2">
-                            <div class="row perfil_comprasProducts">
-                                <div class="perfil__comprasWidthImg pl-0"><img class="img" src="{{asset('images/productos/leche3.jpg')}}" alt="Producto"></div>
-                                <div class="perfil__comprasWidthProduct pl-0"><p class="perfil__comprasTextProducts">Leche descremada</p></div>
-                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">100</p></div>
-                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">10.00</p></div>
-                                <div class="perfil__comprasWidth justify-content-center"><p class="perfil__comprasTextProducts">1000</p></div>
-                            </div>
-                        </div>   
-                        <div class="perfil__comprasBodyProducts pb-1 px-2">
-                            <div class="row perfil_comprasProducts">
-                                <div class="perfil__comprasWidthImg pl-0"><img class="img" src="{{asset('images/productos/aceite2.png')}}" alt="Producto"></div>
-                                <div class="perfil__comprasWidthProduct pl-0"><p class="perfil__comprasTextProducts">Leche descremada</p></div>
-                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">100</p></div>
-                                <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">10.00</p></div>
-                                <div class="perfil__comprasWidth justify-content-center"><p class="perfil__comprasTextProducts">1000</p></div>
+                         
+                        <div id="perfil__comprasBodyProductsMainContainer">
+                             
+                            <div class="perfil__comprasBodyProducts pb-1 px-2">
+                                <div class="row perfil_comprasProducts">
+                                    <div class="perfil__comprasWidthImg pl-0"><img class="img" src="{{asset('images/productos/aceite2.png')}}" alt="Producto"></div>
+                                    <div class="perfil__comprasWidthProduct pl-0"><p class="perfil__comprasTextProducts">Leche descremada</p></div>
+                                    <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">100</p></div>
+                                    <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">10.00</p></div>
+                                    <div class="perfil__comprasWidth justify-content-center"><p class="perfil__comprasTextProducts">1000</p></div>
+                                </div>
                             </div>
                         </div>
                         
@@ -244,7 +237,7 @@
                               <p class="text-muted">Subtotal</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p class="text-muted">59,35 $</p>
+                              <p class="text-muted" id="ordenDetailModalSubTotal">59,35 $</p>
                             </div>
                           </div>
                           <div class="row perfil__comprasFilasTotal">
@@ -252,7 +245,7 @@
                               <p class="text-muted">IVA</p>
                             </div>
                             <div class="col-6 text-right mb-1">
-                              <p class="text-muted">11,65 $</p>
+                              <p class="text-muted" id="ordenDetailModalIva">11,65 $</p>
                             </div>
                           </div>
                           <div class="row perfil__comprasFilasTotal">
@@ -260,7 +253,7 @@
                               <p class="text-uppercase text-secondary font-weight-bold perfil__comprasTotal">Total</p>
                             </div>
                             <div class="col-6 text-right mb-0">
-                              <p class="font-weight-bold text-black perfil__comprasTotal">70,35 $</p>
+                              <p class="font-weight-bold text-black perfil__comprasTotal" id="ordenDetailModalTotalAmount">70,35 $</p>
                             </div>
                           </div>
                           <div class="row perfil__comprasFilasTotal">
@@ -268,14 +261,14 @@
                               <p class="text-secondary">TOTAL (Bs)</p>
                             </div>
                             <div class="col-7 text-right mb-0">
-                              <p class="font-weight-bold text-black">89,000,000.00 Bs</p>
+                              <p class="font-weight-bold text-black" id="ordenDetailModalTotalBolivares">89,000,000.00 Bs</p>
                             </div>
                           </div>
                         </div>
 
 
                         <div class="modal-footer"> 
-                          <button type="button" class="btn btn-primary btn-block perfil__comprasBtnModal">Volver</button>
+                          <button type="button" class="btn btn-primary btn-block perfil__comprasBtnModal" data-dismiss="modal">Volver</button>
                         </div>     
 				</div>
 
@@ -284,8 +277,197 @@
 	</div>
 	<!-- Fin Modal datos de empresa -->
 
-    
+    <!-- Modal Cancelar orden -->
 
+    <div class="modal fade" id="modalCancelarOrden" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cancelar compra</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h5>¿Seguro que desea cancelar su orden?</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <form action="" id="cancelarOrdenForm" method="POST">
+                  @csrf
+                <button type="submit" class="btn btn-danger">Cancelar orden</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+<script>
+    function verMisCompras(){
+        async function getOrdenDetails(id) {
+           return axios.get(`/order/Detail/${id}`)
+                .then(res => {
+                    return res.data
+                })
+                .catch(err => {
+                    return err
+                }) 
+        }
+
+        function modalAddressView(address) {
+            //DATA DESESTRUCTURADA
+            const { city: { city }, state: { state }, delivery_route, postal_code, responsable, responsable_phone } = address;
+            
+            // ELEMENTOS MODAL
+            const ordenAddress = document.getElementById('ordenDetailModalDireccion-address');
+            const ordenAddresLocalidad =document.getElementById('ordenDetailModalDireccion-localidad');
+            const ordenAddressResponsable = document.getElementById('ordenDetailModalDireccion-responsable');
+            const ordenAddresDelivery = document.getElementById('ordenDetailModalDireccion-delivery');
+
+            //AGREGAR DATA
+            ordenAddress.textContent = `${address.address}`;
+            ordenAddresLocalidad.textContent = `${state}, ${city} (${postal_code})`
+            ordenAddressResponsable.textContent = `${responsable} - ${responsable_phone}`
+            ordenAddresDelivery.textContent = `${delivery_route.name}`
+        }
+
+        function modalProductsView(products){
+            //PRODUCTS 
+            const productsDetailContainer = document.getElementById('perfil__comprasBodyProductsMainContainer');
+            productsDetailContainer.innerHTML = '';
+
+            products.forEach(product => {
+                const { detailTotalAmount, img, productPrice, productQuantity, title } = product
+
+                const template = `
+                <div class="perfil__comprasBodyProducts pb-1 px-2">
+                    <div class="row perfil_comprasProducts">
+                        <div class="perfil__comprasWidthImg pl-0"><img class="img" src="/storage/${img}" alt="Producto"></div>
+                        <div class="perfil__comprasWidthProduct pl-0"><p class="perfil__comprasTextProducts">${title}</p></div>
+                        <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">${productQuantity}</p></div>
+                        <div class="perfil__comprasWidth"><p class="perfil__comprasTextProducts">${productPrice} $</p></div>
+                        <div class="perfil__comprasWidth justify-content-center"><p class="perfil__comprasTextProducts">${detailTotalAmount} $</p></div>
+                    </div>
+                </div>  
+                `
+                productsDetailContainer.innerHTML+= template
+            })
+        }
+
+        function modalTotalAmountView(totalAmount) {
+            //DATA DESESTRUCTURADA
+            const { total, subTotal, iva, totalBolivar } = totalAmount;
+            console.log(subTotal);
+                //TOTAL ELEMENTS
+            const modalTotal = document.getElementById('ordenDetailModalTotalAmount');
+            const modalIva = document.getElementById('ordenDetailModalIva');
+            const modalSubTotal = document.getElementById('ordenDetailModalSubTotal');
+            const modalTotalBolivares = document.getElementById('ordenDetailModalTotalBolivares');
+
+
+                //AGREGAR DATA
+            modalTotal.textContent = `${total} $`;
+            modalIva.textContent = `${iva.toFixed(2)} $`;
+            modalSubTotal.textContent = `${subTotal} $`
+            modalTotalBolivares.textContent = `${totalBolivar} Bs`
+        }
+
+        function modalOrdenDataView(order) {
+            //DATA DESESTRUCTURADA
+            const { id, created_at, updated_at, total_amount } = order;
+
+            // ELEMENTOS MODAL
+            const ordenId = document.getElementById('ordenDetailModalId');
+            const ordenFecha = document.getElementById('ordenDetailModalFecha');
+            const ordenUpdated =document.getElementById('ordenDetailModalUpdated');
+            const ordenTotal =document.getElementById('ordenDetailModalTotal');
+
+            //AGREGAR DATA A LA VISTA 
+            ordenId.textContent = `#${id}`
+            ordenFecha.textContent = `${created_at}`;
+            ordenUpdated.textContent = `${updated_at}`;
+            ordenTotal.innerText = `${total_amount} $`;
+        }
+
+        function modalOrdenStatusView({ status, msg, color, background }) {
+            
+            //ELEMENTOS MODAL
+            const ordenModalStatusMain = document.getElementById('ordenDetailModalStatusMain');
+            const ordenModalStatus = document.getElementById('ordenDetailModalStatus');
+            const ordenModalStatusInfo = document.getElementById('ordenDetailModalStatusInfo');
+
+            //AGREGAR DATA
+            ordenModalStatus.textContent = `${status}`;
+            ordenModalStatusInfo.textContent = `${msg}`
+
+            //STYLE STATUS CONTAINER
+            ordenModalStatusMain.style.backgroundColor = `${background}`;
+            ordenModalStatusMain.style.color = `${color}`;
+        }
+
+        function addOrdenDataToModal({
+            address,
+            order,
+            status,
+            orderDetails,
+            orderTotalAmount
+        }) {
+                
+                //STATUS ORDER
+            modalOrdenStatusView(status)
+
+                //STEP 1
+            modalOrdenDataView(order)
+
+                //STEP 2
+            modalAddressView(address)
+
+                //STEP 3
+            modalProductsView(orderDetails)
+
+                //STEP 4
+            modalTotalAmountView(orderTotalAmount)
+
+        }
+
+        const detalleButtons = document.querySelectorAll('.verDetalleOrden');
+        const cancelarButton = document.querySelectorAll('.cancelarButton');
+
+        if(detalleButtons) {
+            detalleButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    
+                    try {
+
+                        const ordenId = e.target.dataset.id
+                        orden = await getOrdenDetails(ordenId)
+                        addOrdenDataToModal(orden)
+
+                    } catch (error) {
+                        console.log(error)
+                    }
+                    
+                })
+            })
+        }
+
+        if(cancelarButton) {
+            cancelarButton.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const form = document.getElementById('cancelarOrdenForm');
+                    const id = e.target.dataset.id;
+
+                    form.action = `/cancelar/orden/${id}`;
+                })
+            })
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        //FUNCTION SCOPE
+        verMisCompras()
+    })
+</script>
 
 
 

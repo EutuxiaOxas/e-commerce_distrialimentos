@@ -135,6 +135,13 @@ Route::get('/formulario_nuevo', function () {
 Route::get('/auth/google', 'LoginGoogleController@loginRedirect')->name('google.login');
 Route::get('/auth/google/callback', 'LoginGoogleController@loginCallback');
 
+// CAMBIAR CONTRASEÑA
+
+Route::middleware('auth')->group(function () {
+	Route::get('/auth/change-password', 'PerfilController@cambiarContraseñaView')->name('change.password.view');
+	Route::post('/auth/change-password', 'PerfilController@cambiarContraseñaUsuario')->name('change.password');
+});
+
 //--------- PERFIL ROUTES ---------
 Route::middleware('auth')->group(function () {
 
@@ -293,9 +300,8 @@ Route::get('/make/order', 'Cms\OrderController@nuevaOrden')
 	->name('order.store');
 
 Route::get('/order/Detail/{id}', 'Cms\OrderController@getOrderDetail');
-Route::get('/cancelar/orden/{id}', 'Cms\OrderController@cancelarOrden')->name('orden.cancelar');
 
-Route::get('/cancelar/orden/{id}', 'Cms\OrderController@cancelarOrden')->name('orden.cancelar');
+Route::post('/cancelar/orden/{id}', 'Cms\OrderController@cancelarOrden')->name('orden.cancelar');
 
 //-------------- FORMULARIO DE ENVIO -----------
 Route::get('/shiping-data', 'ShipingDataController@index');

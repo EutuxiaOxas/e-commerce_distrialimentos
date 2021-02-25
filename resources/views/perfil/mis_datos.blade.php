@@ -26,6 +26,7 @@
 				<div class="perfil__cardBody email">
 					<h3 class="perfil__cardEmail-title">Correo</h3>
 					<p class="perfil__cardEmail-content ">{{$user->email}}</p>
+					<a href="{{route('change.password.view')}}" class="perfil__cardBody-changePassword">Cambiar contraseña</a>
 				</div>
 			</div>
 
