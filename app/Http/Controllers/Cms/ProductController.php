@@ -223,4 +223,28 @@ class ProductController extends Controller
 
     }
 
+
+    public function getProductDetails(Request $request, $id)
+    {
+        
+        if($request->wantsJson()){
+            $product = Product::findOrFail($id);
+            $data = [
+                'id' => $product->id,
+                'product' => $product,
+                'cantidad' => 1,
+                'empaque' => $product->packaging->packaging,
+                'imagen'  => $product->image,
+                'disponible' => $product->available_stock,
+                'iva' => $product->iva->msg,
+                'ivaStatus' => $product->iva->value
+            ];
+
+            return response()->json($data, 200);
+        }
+
+        return redirect('/');
+
+    }
+
 }

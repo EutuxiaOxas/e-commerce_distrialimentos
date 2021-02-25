@@ -324,3 +324,6 @@ Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');
 
 //-------------- OBTENER DIRECCIONES -----------
 Route::get('/user/address', 'AddressController@getAddress');
+
+// ------------ OBTENER PRODUCTO -----------------
+Route::get('/get/product/{id}', 'Cms\ProductController@getProductDetails');

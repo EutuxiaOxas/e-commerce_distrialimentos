@@ -1,11 +1,12 @@
 //----------------- UI cart class -------------
 class CarritoUI {
-  constructor(carrito, cart_body, api) {
+  constructor(carrito, cart_body, api, storage, session) {
     this.cart_body = cart_body;
 	this.carrito = carrito;
 	this.api = api;
+	this.storage = storage;
+	this.session = parseInt(session)
   }
-
 
   agregarCarrito(productos)
   {
@@ -20,100 +21,98 @@ class CarritoUI {
 				  <div class="carritoCompras__productCardMain"> 
 					<div class="col">
 						<div class="row boxed border shadow radeus">
-						<div class="col-4 col-md-4 px-0">
-							<img class="img-border" src="/storage/${producto.imagen}" alt="Product-related">
-						</div>
+							<div class="col-4 col-md-4 px-0">
+								<img class="img-border" src="/storage/${producto.imagen}" alt="Product-related">
+							</div>
 
-						<div class="col-8 col-md-8 px-0">
-							<div class="prod-details p-1">
-							<div class="row mb-0">
-								<div class="col-10 my-0 py-0">
-									<h5 class="text-blue carritoProductCard__title font-weight-bold pb-0 text-left">${producto.producto.title}</h5>
+							<div class="col-8 col-md-8 px-0">
+								<div class="prod-details p-1">
+									<div class="row mb-0">
+										<div class="col-10 my-0 py-0">
+											<h5 class="text-blue carritoProductCard__title font-weight-bold pb-0 text-left">${producto.producto.title}</h5>
+											</div>
+											<div class="col-2">
+											<button type="button"  class="close py-0 text-right "  aria-label="Close">
+												<span class="p-0 cart_modal_delete_server" id="${producto.producto.id}"  aria-hidden="true">&times;</span>
+											</button>
+										</div>
+														
+										<div class="col-12 my-0 py-0">
+										<p class="small carritoProductCard__iva text-left">${producto.iva}</p>
+										</div>
 									</div>
-									<div class="col-2">
-									<button type="button"  class="close py-0 text-right "  aria-label="Close">
-										<span class="p-0 cart_modal_delete_server" id="${producto.producto.id}"  aria-hidden="true">&times;</span>
-									</button>
-								</div>
-												
-								<div class="col-12 my-0 py-0">
-								<p class="small carritoProductCard__iva text-left">${producto.iva}</p>
-								</div>
-							</div>
-							<div class="row my-0 py-0">                   
-								<div class="col-12 my-0 py-0 pr-0 carritoProductCard__caracteristicas ">
-									<div class="carritoProductCard__caracteristicasInfo">
-										<p class="small carritoProductCard__caracteristicasInfo-price font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.producto.wholesale_price.toFixed(2)} $</p>
-										<p class="small carritoProductCard__caracteristicasInfo-empaque my-0 py-0">${producto.empaque} - ${producto.producto.units_packaging} unidades</p>
-									</div>
-									<div class="carritoProductCard__caracteristicasCantidad">
-										<label class="labelfs" style="margin:0;" for="cantidad">Cantidad</label>
-										<input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto" id="${producto.producto.id}">
+									<div class="row my-0 py-0">                   
+										<div class="col-12 my-0 py-0 pr-0 carritoProductCard__caracteristicas ">
+											<div class="carritoProductCard__caracteristicasInfo">
+												<p class="small carritoProductCard__caracteristicasInfo-price font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.producto.wholesale_price.toFixed(2)} $</p>
+												<p class="small carritoProductCard__caracteristicasInfo-empaque my-0 py-0">${producto.empaque} - ${producto.producto.units_packaging} unidades</p>
+											</div>
+											<div class="carritoProductCard__caracteristicasCantidad">
+												<label class="labelfs" style="margin:0;" for="cantidad">Cantidad</label>
+												<input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto cart_modal_cantidad_producto_storage" id="${producto.producto.id}">
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-							</div>
-						</div>        
+							</div>        
 						</div>
 					</div>
 				</div>
   				`;
   			}else{
   				template = `
-				<div class="row px-1 pt-1 pb-0 mb-0"> 
-					<div class="col">
-						<div class="row boxed border shadow radeus">
-						<div class="col-4 col-md-4 px-0">
-							<img class="img-border" src="/images/lineas/linea-viveres.jpg" alt="Product-related">
-						</div>
+				  <div class="carritoCompras__productCardMain"> 
+				  <div class="col">
+					  <div class="row boxed border shadow radeus">
+						  <div class="col-4 col-md-4 px-0">
+							  <img class="img-border" src="/storage/${producto.imagen}" alt="Product-related">
+						  </div>
 
-						<div class="col-8 col-md-8 px-0">
-							<div class="prod-details p-1">
-							<div class="row mb-0">
-								<div class="col-10 my-0 py-0">
-								<h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
-								</div>
-								<div class="col-2">
-								<button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
-									<span class="p-0" aria-hidden="true">&times;</span>
-								</button>
-								</div>
-												
-								<div class="col-12 my-0 py-0">
-								<p class="small text-left">IVA incluido</p>
-								</div>
-							</div>
-							<div class="row my-0 py-0">                   
-								<div class="col-7 my-0 py-0 pr-0">
-								<p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
-								<p class="small my-0 py-0">Caja - 30 unidades</p>
-								</div>
-								<div class="col-5 pl-0">                         
-								<form class="text-center">
-									<div class="form-group m-0">
-									<label class="labelfs" for="cantidad">Cantidad</label>
-									<input type="number" class="form-control form-control-sm" id="cantidadProductos">
-									</div>
-								</form>
-								</div>
-							</div>
-							</div>
-						</div>        
-						</div>
-					</div>
-				</div>
+						  <div class="col-8 col-md-8 px-0">
+							  <div class="prod-details p-1">
+								  <div class="row mb-0">
+									  <div class="col-10 my-0 py-0">
+										  <h5 class="text-blue carritoProductCard__title font-weight-bold pb-0 text-left">${producto.product.title}</h5>
+										  </div>
+										  <div class="col-2">
+										  <button type="button"  class="close py-0 text-right "  aria-label="Close">
+											  <span class="p-0 cart_modal_delete_storage" data-id="${producto.product.id}"  aria-hidden="true">&times;</span>
+										  </button>
+									  </div>
+													  
+									  <div class="col-12 my-0 py-0">
+									  <p class="small carritoProductCard__iva text-left">${producto.iva}</p>
+									  </div>
+								  </div>
+								  <div class="row my-0 py-0">                   
+									  <div class="col-12 my-0 py-0 pr-0 carritoProductCard__caracteristicas ">
+										  <div class="carritoProductCard__caracteristicasInfo">
+											  <p class="small carritoProductCard__caracteristicasInfo-price font-weight-bold text-black my-0 pb-0 fs-18 pt-1">${producto.product.wholesale_price.toFixed(2)} $</p>
+											  <p class="small carritoProductCard__caracteristicasInfo-empaque my-0 py-0">${producto.empaque} - ${producto.product.units_packaging} unidades</p>
+										  </div>
+										  <div class="carritoProductCard__caracteristicasCantidad">
+											  <label class="labelfs" style="margin:0;" for="cantidad">Cantidad</label>
+											  <input type="number" value="${producto.cantidad}" min="1" max="${producto.disponible}" class="form-control form-control-sm cart_modal_cantidad_producto cart_modal_cantidad_producto-storage" data-id="${producto.product.id}">
+										  </div>
+									  </div>
+								  </div>
+							  </div>
+						  </div>        
+					  </div>
+				  </div>
+			  </div>
   				`;
   			}
   			this.cart_body.innerHTML+= template;
   			
   		})
 		  // this.carrito.children[0].children[0].classList.add('cart_on')
-		  this.eventosModal()
-		  this.totalCart();
+		  this.eventosModal(this.session, productos)
+		//   this.totalCart();
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
   		// this.carrito.children[0].children[0].classList.remove('cart_on')
-		this.totalCart();
+		// this.totalCart();
   	}
 	
   }
@@ -165,51 +164,76 @@ class CarritoUI {
 				alertaMinimo.classList.remove('active')
 			  }
 		  }) 
-
-
-  	
-
-  	
   }
 
 
-  eventosModal(){
-	  const deleteButtos = document.querySelectorAll('.cart_modal_delete_server');
-	  const cantidadButtons = document.querySelectorAll('.cart_modal_cantidad_producto');
+  eventosModal(sessionValue, items){
+	//SESION ACTIVA
+	  if(sessionValue) {
+		const deleteButtos = document.querySelectorAll('.cart_modal_delete_server');
+		const cantidadButtons = document.querySelectorAll('.cart_modal_cantidad_producto');
 
-	//--------------EVENTO ELIMINAR PRODUCTO DEL CARRITO
-	  if(deleteButtos) {
-		  deleteButtos.forEach(button => {
-			  button.addEventListener('click', (e) => {
-				  const id = e.target.id
-				  this.api.deleteItemOfCart(id)
-				  	.then(res => {
-						callingCart()
-					  })
-					.catch(err => {
-						console.log(err)
-					});
-			  })
-		  })
-	  }
-
-	  if(cantidadButtons) {
-
-		cantidadButtons.forEach(button => {
-			
-			button.addEventListener('change', (e) => {
-				const id = e.target.id
-				const quantity = parseInt(e.target.value)
-
-				this.api.addQuantity(id, quantity)
-					.then(res => {
-						callingCart()
-					})
-					.catch(err => {
-						console.log(err)
-					})
+		//--------------EVENTO ELIMINAR PRODUCTO DEL CARRITO
+		if(deleteButtos) {
+			deleteButtos.forEach(button => {
+				button.addEventListener('click', (e) => {
+					const id = e.target.id
+					this.api.deleteItemOfCart(id)
+						.then(res => {
+							callingCart()
+						})
+						.catch(err => {
+							console.log(err)
+						});
+				})
 			})
-		})
+		}
+
+		if(cantidadButtons) {
+
+			cantidadButtons.forEach(button => {
+				
+				button.addEventListener('change', (e) => {
+					const id = e.target.id
+					const quantity = parseInt(e.target.value)
+
+					this.api.addQuantity(id, quantity)
+						.then(res => {
+							callingCart()
+						})
+						.catch(err => {
+							console.log(err)
+						})
+				})
+			})
+		}
+	  
+	  //SIN SESION
+	  }else {
+		const deleteButtos = document.querySelectorAll('.cart_modal_delete_storage');
+		const cantidadButtons = document.querySelectorAll('.cart_modal_cantidad_producto-storage');
+
+		if(deleteButtos) {
+			deleteButtos.forEach(button => {
+				button.addEventListener('click', (e) => {
+					const productId = parseInt(e.target.dataset.id);
+
+					this.storage.deleteItemOfStorage(items, productId);
+					
+				})
+			})
+		}
+
+		if(cantidadButtons) {
+			cantidadButtons.forEach(button => {
+				button.addEventListener('change', (e) => {
+					const productId = parseInt(e.target.dataset.id);
+					const cantidadValue= parseInt(e.target.value);
+
+					this.storage.changeAmountItemOfStorage(items, productId, cantidadValue);
+				})
+			})
+		}
 	  }
   }
 
@@ -227,6 +251,14 @@ class CarritoUI {
 				productos.forEach(producto => {
 					if(producto.producto) {
 						const id = producto.producto.id
+					
+						if(parseInt(icon.id) === id) {
+							active = true;
+							icon.classList.add('active');
+							return;
+						}
+					}else {
+						const id = producto.id
 					
 						if(parseInt(icon.id) === id) {
 							active = true;
@@ -267,6 +299,14 @@ class CarritoUI {
 							select.selectedIndex = producto.cantidad;
 							return;
 						}
+					}else {
+						const { id } = producto;
+
+						if(parseInt(select.id) == id) {
+							active = true;
+							select.selectedIndex = producto.cantidad;
+							return;
+						}
 					}
 				})
 
@@ -301,6 +341,11 @@ class CarritoUI {
 				   if(button.dataset.id == id) {
 						disabled = true;
 				   }
+				}else {
+				   const { id } = producto;
+				   if(button.dataset.id == id) {
+						disabled = true;
+				   }
 				}
 			})
 
@@ -318,6 +363,11 @@ class CarritoUI {
 			productos.forEach(producto => {
 				if(producto.producto) {
 				   const { id } = producto.producto;
+				   if(select.id == id) {
+					active = true;
+				   }
+				}else {
+				   const { id } = producto;
 				   if(select.id == id) {
 					active = true;
 				   }
@@ -382,9 +432,14 @@ class CartApi {
 			console.log(err)
 		}) 
 	}
+
+	async getProductData(id) {
+		return axios.get(`/get/product/${id}`)
+			.catch(err => {
+				console.log(err);
+			})
+	}
 }
-
-
 
 
 //--------------------------------------------------- LocalSorage class ------------------------------------------
@@ -426,6 +481,32 @@ class Storage{
 		localStorage.setItem('carrito', JSON.stringify(products));
 	}
 
+	async deleteItemOfStorage(items, productId) {
+		const newProducts = await items.filter(item => {
+			return item.id !== productId
+		})
+
+		verifyProductInStorage(newProducts);
+	}
+
+
+	async changeAmountItemOfStorage(items, productId, newCantidad) {
+		const newProducts = await items.map(item => {
+			if(item.id === productId) {
+				return {
+					...item,
+					cantidad: newCantidad
+				}
+			}
+
+			return item;
+		})
+
+		verifyProductInStorage(newProducts);
+	}
+
+	
+
 }
 
 
@@ -443,7 +524,7 @@ let productos = [];
 //-------------------- Inicio de clases -----------------
 let storage = new Storage();
 let apiCart = new CartApi();
-let carrito = new CarritoUI(cart_main, cart_body, apiCart);
+let carrito = new CarritoUI(cart_main, cart_body, apiCart, storage, session.value);
 
 
 
@@ -452,11 +533,12 @@ let carrito = new CarritoUI(cart_main, cart_body, apiCart);
 	//-------------------- Sesion no iniciada-----------------
 if(session.value == 0)
 {
+	//Obtener Storage y verificar los datos de los productos
 	productos = storage.getStorage();
+	verifyProductInStorage(productos);
+
 	let buttonsStorage = document.querySelectorAll('.to_storage'),
 		buttonsVerStorage = document.querySelectorAll('.ver_storage');
-	
-	carrito.agregarCarrito(productos);
 	
 	if(buttonsStorage)
 	{
@@ -496,70 +578,55 @@ if(session.value == 1){
 
 function events(value, elements)
 {
-	
 
 	//-------------------- LocalStorage -----------------
 
 	if(value == 0)
 	{
+		const agregarButtons = document.querySelectorAll('.agregarButtons-storage'); 
 		elements.forEach(element => {
-			element.addEventListener('click', (e) => {
-				console.log(e.target)
-				
-				// let name = e.target.parentNode.parentNode.children[0].textContent,
-				// 	id = e.target.id,
-				// 	price = e.target.parentNode.parentNode.children[2].textContent,
-				// 	image = e.target.parentNode.parentNode.parentNode.children[0].src,
-				// 	slug = e.target.parentNode.parentNode.children[3].value,
-				// 	alert = document.getElementById('add_alert');
+			
 
-				// let producto = {title: name, id: id, image: image, price: price, cantidad: 1, link: slug}
-
-				// let verify = verifyProduct(producto);
-				// if(verify){
-				// 	productos.push(producto);
-				// }
+			element.addEventListener('change', async (e) => {
+				const productId = parseInt(e.target.id);
+				const selectValue = parseInt(e.target.value);
 
 
-				// storage.addStorage(productos)
-				// 	.then(res => {
-				// 		carrito.agregarCarrito(productos);
-				// 		carrito.addingAlert(alert);
-				// 	})
+				//cambiando al cantidad
+				let newProductsArray = productos.map(item => {
+					if(item.id === productId) {
+						return {
+							...item,
+							cantidad: selectValue
+						}
+					}else{ 
+						return {
+							...item
+						}
+					}
+				})
+
+				verifyProductInStorage(newProductsArray);
 			});
 		});
+
+		if(agregarButtons) {
+			agregarButtons.forEach(button => {
+				button.addEventListener('click', (e) => {
+					const productId = parseInt(e.target.dataset.id);
+					
+					const select = e.target.parentNode.children[0].children[1];
+					select.value = 1;
+					
+					apiCart.getProductData(productId)
+						.then(({ data }) => {
+							productos.push(data);
+							verifyProductInStorage(productos)
+						})
+				})
+			})
+		}
 	}
-
-	//--------------------Vista producto LocalStorage -----------------
-	// if(value == 2){
-	// 	elements.forEach(element => {
-	// 		element.addEventListener('click', (e) => {
-	// 			let id = e.target.id,
-	// 				padre = e.target.parentNode.parentNode.children[0].children[0],
-	// 				name = padre.children[0].textContent,
-	// 				price = padre.children[2].textContent,
-	// 				image = e.target.parentNode.parentNode.parentNode.children[0].src,
-	// 				slug = padre.children[4].value,
-	// 				alert = document.getElementById('add_alert');
-
-	// 			console.log(padre)
-	// 			let producto = {title: name, id: id, image: image, price: price, cantidad: 1, link: slug}
-
-				
-	// 			let verify = verifyProduct(producto);
-	// 			if(verify){
-	// 				productos.push(producto);
-	// 			}
-
-
-	// 			storage.addStorage(productos)
-	// 				.then(res => {
-	// 					carrito.agregarCarrito(productos);
-	// 					carrito.addingAlert(alert);
-	// 				})
-	// 		});
-	// 	});
-	// }
 
 
 	//-------------------- Servidor -----------------
@@ -664,6 +731,52 @@ function callingCart(){
 			// loadProducts(productos);
 			// loadTotalProducts(productos, 1)
 		})
+}
+
+//-------------------- Verificar datos de los productos en storage y refrescar el localStorage  -----------------
+
+async function verifyProductInStorage(items) {
+	if(items.length > 0) {
+		let refreshProducts = []
+	
+		for (let i = 0; i < items.length; i++) {
+			
+			const { id, cantidad} = items[i];
+			const { data } = await apiCart.getProductData(id)
+			const objectProduct = {
+				...data,
+				cantidad: cantidad
+			}
+
+			refreshProducts.push(objectProduct)	
+		}
+
+		storage.addStorage(refreshProducts)
+			.then(() => {
+				carrito.agregarCarrito(refreshProducts);
+				carrito.addIconOfProductAdded(refreshProducts);
+				carrito.selectStockOfProduct(refreshProducts);
+				carrito.enableOrDisableButtonOrSelect(refreshProducts);
+				productos = refreshProducts
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}else {
+		storage.addStorage(items)
+			.then(() => {
+				carrito.agregarCarrito(items);
+				carrito.addIconOfProductAdded(items);
+				carrito.selectStockOfProduct(items);
+				carrito.enableOrDisableButtonOrSelect(items);
+				productos = items
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+
+	return;
 }
 
 

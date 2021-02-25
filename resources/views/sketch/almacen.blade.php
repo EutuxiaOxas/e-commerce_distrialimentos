@@ -111,14 +111,14 @@ $color_header='dark';
                         <div class="almacen__productoAgregado">
                           <p class="almancen__agregarProducto-text">Selecciona una cantidad </p>
                           @php $disponible = $producto->available_stock; @endphp
-                          <select id="{{$producto->id}}" class="form-control to_server productSelectStock">
+                          <select id="{{$producto->id}}" class="form-control {{auth()->user() ? 'to_server' : 'to_storage'}} productSelectStock">
                             <option value="0">0</option>
                             @for($i = 1; $i <= $disponible; $i++)
                               <option value="{{$i}}">{{$i}}</option>
                             @endfor
                           </select>
                         </div>
-                        <button class="almacen__agregarProducto-button agregarButtons agregarButtons-server" data-id="{{$producto->id}}">
+                        <button class="almacen__agregarProducto-button agregarButtons {{auth()->user() ? 'agregarButtons-server ': 'agregarButtons-storage'}}" data-id="{{$producto->id}}">
                           Añadir al camión 
                         </button>
                     </div>
