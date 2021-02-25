@@ -4,6 +4,28 @@
   Almacen
 @endsection
 
+@section('metas')
+<!-- Primary Meta Tags -->
+<title>Almacén de productos</title>
+<meta name="title" content="Almacén de productos">
+<meta name="description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://metatags.io/">
+<meta property="og:title" content="Almacén de productos">
+<meta property="og:description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+<meta property="og:image" content="{{asset('images/cta/Envios.jpg')}}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://metatags.io/">
+<meta property="twitter:title" content="Almacén de productos">
+<meta property="twitter:description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+<meta property="twitter:image" content="{{asset('images/cta/Envios.jpg')}}">
+@endsection
+
+
 @section('menu-perfil')
   {{-- header principal --}}
   @include('perfil.perfil_navMobile')

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <style>
 	.navbar__currencyList{
 		top: 108%;
@@ -8,7 +8,7 @@
 	.navbar__locationList {
 		z-index: 200;
 		position: absolute;
-		top: 10% !important;
+		top: 7% !important;
 		left: -20px !important;
 		right: calc(100% - 10vw);
 		border:none;
@@ -60,9 +60,6 @@
 
 </style>
 
-
-=======
->>>>>>> bb8abc896559217bc2171626d39efe9e244c8023
 <header class="header__main fixed-top">
 	<div class="header__container">
 		<div class="header__body">

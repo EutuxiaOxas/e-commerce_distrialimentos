@@ -4,6 +4,27 @@
     Inicio - Distrialimentos del centro
 @endsection
 
+@section('metas')
+<!-- Primary Meta Tags -->
+<title>Distrialimentos del centro</title>
+<meta name="title" content="Distrialimentos del centro">
+<meta name="description" content="Distrialimentos del Centro una empresa líder en la distribución y comercialización de productos de consumo masivo para el sector alimenticio en Valencia.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://distrialimentos.com">
+<meta property="og:title" content="Distrialimentos del centro">
+<meta property="og:description" content="Distrialimentos del Centro una empresa líder en la distribución y comercialización de productos de consumo masivo para el sector alimenticio en Valencia.">
+<meta property="og:image" content="{{asset('images/cta/compras.jpg')}}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://distrialimentos.com">
+<meta property="twitter:title" content="Distrialimentos del centro">
+<meta property="twitter:description" content="Distrialimentos del Centro una empresa líder en la distribución y comercialización de productos de consumo masivo para el sector alimenticio en Valencia.">
+<meta property="twitter:image" content="{{asset('images/cta/compras.jpg')}}">
+@endsection
+
 
 @section('content')
     {{-- header principal --}}

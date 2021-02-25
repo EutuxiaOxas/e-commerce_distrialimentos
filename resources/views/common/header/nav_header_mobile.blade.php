@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <style>
     .header__navMobile {
 	width: 100%;
@@ -11,12 +11,35 @@
 .header__navMain {
     height:48px;
 }
+.navbar__mobillocationList {
+    top: 23% !important;
+    left: -44px !important;
+    border:none;
+    background: #f5f5f5;
+    padding:0;
+}
+.navbar__locationMobilListItems {
+    text-decoration: none;
+    font-size: 1rem  !important;
+    font-family: 'Roboto';
+    color: #02528A !important;
+    font-weight: bold;
+    padding: 0.4rem 0.5rem 0.6rem;
+}
+.header__navMobileChooseCurrency a {
+    padding: 0.4rem 0.5rem 0.6rem;
+    width: 105px;
+    text-align: left;
+    
+}
+.header__navMobileChooseCurrency{
+    top:143%;
+   
+}
 
 </style>
 
 
-=======
->>>>>>> bb8abc896559217bc2171626d39efe9e244c8023
 <nav class="header__navMobile main fixed-top">
     <ul class="header__navMain main">
         <li class="header__navList main" id="ayuda_mobile_icon">
@@ -42,26 +65,6 @@
 
             <!-- <a href="#" style="visibility: hidden;">Ayuda</a> -->
 
-            <style>
-				.navbar__mobillocationList {
-					top: 3% !important;
-                    left: -44px !important;
-                    border:none;
-                    background: #f5f5f5;
-					padding:0;
-				}
-                .navbar__locationMobilListItems {
-					text-decoration: none;
-					font-size: 1rem  !important;
-					font-family: 'Roboto';
-					color: #02528A !important;
-					font-weight: bold;
-					padding: 0.4rem 0.5rem 0.6rem;
-				}
-                .header__navMobileChooseCurrency a {
-                    padding: 0.55rem;
-                }
-            </style>
         </li>
         <li class="header__navList main">
             <svg width="25" height="25" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
