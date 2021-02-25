@@ -96,15 +96,28 @@
 	font-size: .8rem;
 	font-family: $secondary_font;
 	font-weight: bold;
-	padding-bottom: 2rem;
+	padding-bottom: 1rem;
 	color: $perfil_third-color;
+}
+
+.perfil__cardBody-changePassword {
+	font-family: $secondary_font;
+	display: inline-block;
+	padding-bottom: 1rem;
+	color: #02528A;
+	font-weight: bold;
+}
+
+.perfil__cardBody-changePassword:hover {
+	color: #02528A;
+	text-decoration: none;
 }
 
 //CARD LISTS
 
-.perfil__cardList {
+// .perfil__cardList {
 
-}
+// }
 
 .perfil__cardListItem {
 	display: flex;
@@ -200,6 +213,11 @@
 
 
 //------------------------------  VISTA MIS COMPRAS -----------------
+
+.perfil__comprasPaginacion {
+	display: flex;
+	justify-content: center;
+}
 
 .perfil__cardBody.compras {
 	margin-bottom: 2rem;
@@ -352,14 +370,22 @@
 		margin: 0;
 		padding: 0;
 		text-align: start;
-		flex: 1 0 40%;
+		flex: 1 0 32%;
 		padding-left: 2rem;
 		font-size: 1rem;
 	}
 	.perfil__cardEmail-content {
 		padding: 0;
-		flex: 1 0 60%;
+		flex: 1 0 31%;
 		font-size: 1rem;
+		text-align: start;
+	}
+
+	.perfil__cardBody-changePassword {
+		padding: 0;
+		flex: 1 0 15%;
+		font-size: .9rem;
+		// font-size: 1rem;
 		text-align: start;
 	}
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['user_id', 'total_amount', 'status_id', 'comment', 'discount','n-control', 'address_id'];
+    protected $fillable = ['user_id', 'total_amount', 'status_id', 'comment', 'discount','n-control', 'address_id', 'sub_total', 'iva'];
 
     public function user()
     {
@@ -18,9 +18,9 @@ class Order extends Model
     	return $this->hasMany('App\OrderProduct', 'order_id');
     }
 
-    public function shiping()
+    public function address()
     {
-    	return $this->hasOne('App\Shiping_data', 'order_id');
+    	return $this->belongsTo('App\Address', 'address_id');
     }
 
     public function pagos()
@@ -28,7 +28,7 @@ class Order extends Model
         return $this->hasMany('App\Pago', 'order_id');
     }
     //estatus de la orden
-    public function statusorder()
+    public function statusOrder()
     {
         return $this->belongsTo('App\StatusOrder', 'status_id');
     }

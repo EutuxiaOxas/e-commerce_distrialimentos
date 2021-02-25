@@ -11798,8 +11798,21 @@ nav {
   font-size: 0.8rem;
   font-family: "Roboto", cursive;
   font-weight: bold;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   color: #838383;
+}
+
+.perfil__cardBody-changePassword {
+  font-family: "Roboto", cursive;
+  display: inline-block;
+  padding-bottom: 1rem;
+  color: #02528A;
+  font-weight: bold;
+}
+
+.perfil__cardBody-changePassword:hover {
+  color: #02528A;
+  text-decoration: none;
 }
 
 .perfil__cardListItem {
@@ -11888,6 +11901,11 @@ nav {
 
 .perfil__menuDesktop {
   display: none;
+}
+
+.perfil__comprasPaginacion {
+  display: flex;
+  justify-content: center;
 }
 
 .perfil__cardBody.compras {
@@ -12037,15 +12055,22 @@ nav {
     margin: 0;
     padding: 0;
     text-align: start;
-    flex: 1 0 40%;
+    flex: 1 0 32%;
     padding-left: 2rem;
     font-size: 1rem;
   }
 
   .perfil__cardEmail-content {
     padding: 0;
-    flex: 1 0 60%;
+    flex: 1 0 31%;
     font-size: 1rem;
+    text-align: start;
+  }
+
+  .perfil__cardBody-changePassword {
+    padding: 0;
+    flex: 1 0 15%;
+    font-size: 0.9rem;
     text-align: start;
   }
 
@@ -12246,6 +12271,11 @@ nav {
 
 .login__inputContainer.last {
   margin-bottom: 2rem;
+}
+
+.login__inputContainer-message {
+  font-family: "Roboto", cursive;
+  color: #838383;
 }
 
 .login__inputContainer-input::-webkit-input-placeholder {
