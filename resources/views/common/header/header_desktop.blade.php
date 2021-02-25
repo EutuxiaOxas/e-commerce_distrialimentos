@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
 	.navbar__currencyList{
 		top: 108%;
@@ -60,6 +61,8 @@
 </style>
 
 
+=======
+>>>>>>> bb8abc896559217bc2171626d39efe9e244c8023
 <header class="header__main fixed-top">
 	<div class="header__container">
 		<div class="header__body">
@@ -134,10 +137,10 @@
 					<a href="{{route('almacen.all')}}">Almacen</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="{{route('almacen.all')}}">Productos recientes</a>
+					<a href="{{route('almacen.all')}}">Más recientes</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="{{route('almacen.all')}}">Mas vendidos</a>
+					<a href="{{route('almacen.all')}}">Destacados</a>
 				</li>
 				<li class="navbar__list-item">
 					<a href="{{route('ayuda')}}">Ayuda</a>

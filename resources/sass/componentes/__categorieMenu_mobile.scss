@@ -6,9 +6,10 @@
    height: 100vh;
    width: 100vw;
    background-color: $navbar_Background;
-   z-index: 999;
+   z-index: 10000;
    padding: 0 1.3rem;
    transition: transform .5s ease;
+   
 }
 
 .categorie__mobileSelection.active {
@@ -97,9 +98,9 @@
 
 @media (min-width: 768px) {
     .categorie__mobileSelection {
-        position: absolute;
+        position: fixed;
         width: 400px;
-        top: 160px;
+        top: 140px;
         left: -100%;
         transition: left .5s ease;
     }
@@ -111,15 +112,12 @@
 
     .categorie__mobileBody{
         width: 100%;
+        padding-top: 10px;
+        height: 79vh;
     }
 
     .categorie__mobileHead {
        display: none;
     }
-        
-
-
-
-    
 
 }

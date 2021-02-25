@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
     .header__navMobile {
 	width: 100%;
@@ -14,6 +15,8 @@
 </style>
 
 
+=======
+>>>>>>> bb8abc896559217bc2171626d39efe9e244c8023
 <nav class="header__navMobile main fixed-top">
     <ul class="header__navMain main">
         <li class="header__navList main" id="ayuda_mobile_icon">

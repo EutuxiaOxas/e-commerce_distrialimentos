@@ -8,20 +8,17 @@
         </div>
       
         <div class="categorie__mobileBody">
-            @for ($i = 0; $i < 7; $i++)
-                @foreach($categorias as $categoria)
-                <a href="{{route('product.category.show', $categoria->slug)}}" class="categorie__mobileBody-item">
-                    <span class="categorie__mobileBody-icon">
-                        @include('common.header.menuCategoryIcon_mobile')    
-                    </span>
-                    <span class="categorie__mobileBody-iconActive">
-                        @include('common.header.menuCategoryIconActive_mobile')
-                    </span>
-                    {{$categoria->title}}
-                </a>
-                @endforeach
-                
-            @endfor
+            @foreach($categorias as $categoria)
+            <a href="{{route('product.category.show', $categoria->slug)}}" class="categorie__mobileBody-item">
+                <span class="categorie__mobileBody-icon">
+                    @include('common.header.menuCategoryIcon_mobile')    
+                </span>
+                <span class="categorie__mobileBody-iconActive">
+                    @include('common.header.menuCategoryIconActive_mobile')
+                </span>
+                {{$categoria->title}}
+            </a>
+            @endforeach
         </div>
     </div>
 @endisset

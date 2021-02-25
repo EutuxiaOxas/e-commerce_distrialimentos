@@ -145,7 +145,7 @@ class CarritoUI {
 			  const { total, subTotal, iva, totalBolivar } = res.data;
 			  cartSubTotal.innerText 			= `${subTotal} $`;
 			  cartTotal.innerText				= `${total} $`;
-			  cartIva .innerText				= `${iva} $`;
+			  cartIva .innerText				= `${iva.toFixed(2)} $`;
 			  cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`;
 
 			  if(total > 0) {

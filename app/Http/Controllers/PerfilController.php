@@ -12,6 +12,7 @@ use App\DeliveryRoute;
 use App\Category;
 use App\Variable;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
@@ -35,10 +36,33 @@ class PerfilController extends Controller
         $user = auth()->user();
         $categorias = Category::all();
         // $ordenes = $user->orders()->where('status_id', '!=', 'CANCELADO')->orderBy('id', 'DESC')->paginate(3);
-        $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(3);
+        $ordenes = $user->orders()->orderBy('id', 'DESC')->paginate(25);
         $tasa_bs_dolar = Variable::where('name','DOLAR')->first();
         return view('perfil.compras', compact('user','categorias','ordenes','tasa_bs_dolar'));
 
+    }
+
+    public function cambiarContraseñaView(){
+        return view('auth.changePassword');
+    }
+
+    public function cambiarContraseñaUsuario(Request $request) {
+        $user = auth()->user();
+
+        if (Hash::check($request->password, $user->password)) 
+        {
+            
+            if($request->new_password === $request->confirm_password) 
+            {
+                $newPassword = Hash::make($request->new_password);
+                $user->password = $newPassword;
+                $user->save();
+
+                return redirect('/auth/change-password')->with('message', 'Contraseña actualizada con éxito');
+            }            
+        }
+
+        return redirect('/auth/change-password')->with('error', 'Los datos son incorrectos');
     }
 
     public function agregarDatosPersonales(Request $request)

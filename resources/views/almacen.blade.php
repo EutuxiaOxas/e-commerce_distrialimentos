@@ -4,14 +4,12 @@
   Almacen
 @endsection
 
-@php
-// importante para el color de las letras del header
-$color_header='dark';
-@endphp
+@section('menu-perfil')
+  {{-- header principal --}}
+  @include('perfil.perfil_navMobile')
+@endsection
 
 @section('content')
-    {{-- header principal --}}
-    @include('perfil.perfil_navMobile')
  
   <style>
   .colorG {

@@ -35,14 +35,16 @@
     <body>
         <input id="verifyLogin" type="hidden" value="{{auth()->user() ? '1' : '0'}}">
         @include('common.header.header_desktop')
-
         @include('common.header.header_mobile')
         
         @include('common.header.menuCategories_mobile')
+        @yield('menu-perfil')
 
-        @yield('content')
+        <div class="header__content">
+            @yield('content')
+        </div>
 
-
+        {{-- boton flotante de carrito de compra--}}
         <div class="camionIcon__mobile" data-toggle="modal" data-target="#exampleModal" id="cart_main">
             <svg width="30" height="30" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M47.9811 28.2849V21.5713C47.9811 20.5715 47.6389 19.5716 47.1241 18.7145L41.9952 11.4296C41.4809 10.5726 40.2811 10.0012 39.0814 10.0012H31.368C30.1682 10.0012 29.1395 10.8583 29.1395 11.8582V27.1421H27.4255V7.14442C27.4255 5.57317 25.883 4.2876 23.9973 4.2876H0V29.999H5.14227C5.99932 27.5707 8.57045 25.7137 11.827 25.7137C15.084 25.7137 17.8263 27.5707 18.5122 29.999H31.0252C31.8822 27.5707 34.4533 25.7137 37.7099 25.7137C40.4526 25.7137 42.6805 26.9993 43.7092 28.8562C44.2235 29.5704 45.0676 29.999 45.9247 29.999C47.1241 29.999 48.1528 29.1419 47.9811 28.2849ZM32.5677 20.0001V12.858H39.4241L44.3947 20.0001H32.5677Z" fill="white"/>

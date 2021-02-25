@@ -20,7 +20,8 @@ class Cart extends Model
     	$detalles = $this->cartDetails;
     	$totalCart = 0;
         $subTotal = 0;
-        $useIva = false;
+        $totalIva = 0;
+
         //detalles Carrito
     	foreach ($detalles as $detalle) {
             
@@ -63,9 +64,10 @@ class Cart extends Model
             {
                 if($producto->iva->value) 
                 {
-                    $useIva = true;
-                    $totalCart = $totalCart + (($alMayorPrice * $cantidadProducto) + $iva->value);
-                    $subTotal = $subTotal + ($alMayorPrice * $cantidadProducto);
+                    $totalCart = $totalCart + ($alMayorPrice * $cantidadProducto);
+                    $totalIva = $totalIva + (($iva->value/100)*($alMayorPrice * $cantidadProducto));
+                    $subTotal = $subTotal + ($totalCart - $totalIva);
+
                 }else 
                 {
                     $totalCart = $totalCart + ($alMayorPrice * $cantidadProducto);
@@ -80,14 +82,13 @@ class Cart extends Model
 
                 if($producto->iva->value) 
                 {
-                    $useIva = true;
-                    $totalCart = $totalCart + (($granMayorPrice * $cantidadProducto) + $iva->value);
-
-                    $subTotal = $subTotal + ($granMayorPrice * $cantidadProducto);
+                    $totalCart = $totalCart + ($granMayorPrice * $cantidadProducto);
+                    $totalIva = $totalIva + (($iva->value/100)*($granMayorPrice * $cantidadProducto));
+                    $subTotal = $subTotal + ($totalCart - $totalIva);
                 }else 
                 {
                     $totalCart = $totalCart + ($granMayorPrice * $cantidadProducto);
-                    $subTotal = $subTotal + ($granMayorPrice * $cantidadProducto);
+                    $subTotal = $subTotal + $totalCart;
                 }
 
             }
@@ -115,7 +116,7 @@ class Cart extends Model
     	return $amount = [
             'subTotal'  => $subTotal,
             'total'     => $totalCart,
-            'iva'       => $useIva,
+            'iva'       => $totalIva,
         ];
     }
 }

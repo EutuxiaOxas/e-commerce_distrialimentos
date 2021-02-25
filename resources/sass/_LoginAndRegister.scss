@@ -57,6 +57,11 @@
     margin-bottom: 2rem;
 }
 
+.login__inputContainer-message {
+    font-family: $secondary_font;
+    color: #838383;
+}
+
 .login__inputContainer-input::-webkit-input-placeholder {
 	color: $header_searchInput;
 	font-family: $secondary_font;
