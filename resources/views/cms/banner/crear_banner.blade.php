@@ -126,7 +126,7 @@
     @endif
 
     <div class="row p-2">
-        <h3 class="col-auto">Crear Nuevo Banner</h3>
+        <h3 class="col-auto">Crear Nuevo Banner Principal</h3>
         <div class="col-auto ml-auto"><a class="btn btn-outline-info btn-sm px-5" href="{{ route('banners.home') }}">Volver</a></div>
     </div>
 
@@ -135,9 +135,9 @@
         enctype="multipart/form-data">
         @csrf
             <p class="pt-2"><b>Seleccione</b> El tipo de Banner</p>
-            <select class="form-control" name="tipo" id="">
-                <option value="principal" selected>Banner Principal</option>
-                <option value="promocional">Banner Promocional</option>
+            <select class="form-control" name="tipo" id="" >
+                <option value="principal" selected >Banner Principal</option>
+                {{-- <option value="promocional">Banner Promocional</option> --}}
             </select>
             <p class="pt-2"><b>Ingrese</b> la URL del Banner</p>
             <input name="url" type="input" class="form-control" placeholder="Ej: https://distrialimentosdelcentro.com">

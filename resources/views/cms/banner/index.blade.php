@@ -6,7 +6,7 @@
 
 @section('content')
         <section>
-            <h3>Configuración de Banners</h3>
+            <h3>Configuración de Banners Principal</h3>
             <hr>
         </section>
         <div class="alert alert-danger" style="display: none;" id="error_container">
@@ -48,7 +48,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($banners as $banner)
+                        @foreach ($banners->where('tipo','principal') as $banner)
                             <tr class="text-center">
                                 {{-- <td>{{ $banner->id }}</td> --}}
                                 <td width='20%'>

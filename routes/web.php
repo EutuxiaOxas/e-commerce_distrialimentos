@@ -240,9 +240,12 @@ Route::middleware('landing')->group(function () {
 	Route::post('/cms/eliminar/banner/{id}', 'Cms\LogoBannerController@eliminarBanner')->name('banners.destroy');
 	Route::post('/cms/guardar/logo', 'Cms\LogoBannerController@guardarLogo')->name('banners.logo');
 
-	//ocultar/activar banners
+	//ocultar/activar banners principales
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
+	//ocultar/activar banners promocionales
+	Route::get('/cms/activar/promociones/{id}', 'Cms\PromotionController@activarBanner')->name('promociones.active');
+	Route::get('/cms/ocultar/promociones/{id}', 'Cms\PromotionController@ocultarBanner')->name('promociones.desactive');
 
 });
 
