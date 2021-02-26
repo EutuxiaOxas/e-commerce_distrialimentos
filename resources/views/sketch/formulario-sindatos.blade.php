@@ -888,7 +888,7 @@ $color_header='dark';
 
 <!------------------------------ Formulalio envio ----------------------------------->
 <section class="container-width">
-    <
+  
   
     <!-- Carrito formulario-->
     <section class="form-shoppingCar d-block d-md-none">
@@ -1279,8 +1279,7 @@ $color_header='dark';
 
 <!------------------------------ Formulalio envio ----------------------------------->
 <section class="container-width">
-    <
-  
+    
     <!-- Carrito formulario-->
     <section class="form-shoppingCar d-block d-md-none">
       <div class="form-shoppingCar container">
