@@ -48,7 +48,7 @@ $color_header='dark';
     font-size: 12px;
   }
   .espaciado {
-    padding: 0 6px;
+    padding: 7px 6px;
   }
 
   .productDetail__componenteCamion {
