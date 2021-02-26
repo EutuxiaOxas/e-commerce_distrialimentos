@@ -53,6 +53,7 @@ $color_header='dark';
       background: #FF661B;
       color:white;
       text-align: center;
+      font-size:80%;
     }
     .almacen__textCard {
       position: absolute;
@@ -61,6 +62,11 @@ $color_header='dark';
     }
     .almacen__cardImg {
       position:relative;
+    }
+    @media (max-width:560px) {
+      .almacen__textProduct {
+        font-size:60%;
+      }
     }
 
   </style>
@@ -83,10 +89,10 @@ $color_header='dark';
               <a class="almacen__cardImg" href="{{route('producto.show', $producto->slug)}}">
                 <img class="card-img-top" src="{{asset('storage/'.$producto->image)}}" alt="Card image cap">
                 <div class="almacen__textCard">
-                  <p class="small almacen__textProduct almacen__productAdded">Disponible Al gran Mayor 18.00 $</p>
+                  <p class="almacen__textProduct">Disponible Al gran Mayor 18.00 $</p>
                 </div>
                 <div class="almacen__textCard">
-                  <p class="small almacen__textProduct">Más de 20 - 18.00 $ Al gran Mayor</p>
+                  <p class="almacen__textProduct almacen__productAdded">Más de 20 - 18.00 $ Al gran Mayor</p>
                 </div>
               </a>
              <!-- card-body-->
