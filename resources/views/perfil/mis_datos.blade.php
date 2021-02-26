@@ -86,15 +86,15 @@
 				<div class="perfil__cardBody ">
 					<ul class="perfil__cardList">
 						<li class="perfil__cardListItem">
-							<h3 class="perfil__cardListItem-title">Empresa</h3>
+							<h3 class="perfil__cardListItem-title">Empresa/Nombre</h3>
 							<p class="perfil__cardListItem-content">{{$empresa->name}}</p>
 						</li>
 						<li class="perfil__cardListItem">
-							<h3 class="perfil__cardListItem-title">R.I.F.</h3>
+							<h3 class="perfil__cardListItem-title">R.I.F./ C.I</h3>
 							<p class="perfil__cardListItem-content">R.I.F. {{$empresa->RIF}}</p>
 						</li>
 						<li class="perfil__cardListItem">
-							<h3 class="perfil__cardListItem-title">SADA</h3>
+							<h3 class="perfil__cardListItem-title">SADA (Opcional)</h3>
 							<p class="perfil__cardListItem-content">{{$empresa->SADA}}</p>
 						</li>
 						<li class="perfil__cardListItem">
@@ -260,10 +260,10 @@
 						@csrf
 						<div class="form">
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required required name="name" placeholder="Nombre de empresa">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required required name="name" placeholder="Nombre de empresa/Usuario">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}" required required name="RIF" placeholder="RIF [ej: j-20180578-4]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}" required required name="RIF" placeholder="RIF/ C.I">
 						</div>
 						<div class="col">
 							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}" required required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
@@ -272,7 +272,7 @@
 							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}" required required name="postal_code" placeholder="Código postal [ej: 2002]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}" required required name="SADA" placeholder="SADA">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}" required required name="SADA" placeholder="SADA (Opcional)">
 						</div>
 						<div class="col mb-3">
 							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
