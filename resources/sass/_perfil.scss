@@ -45,6 +45,35 @@
 	padding-bottom: 1rem;
 }
 
+.perfil__bodyNewUser {
+	background-color: $currencyList_main;
+	color: #ffffff;
+}
+
+.perfil__bodyNewUser-title {
+	font-family: $principal_font;
+	color: #ffffff;
+	font-size: 1.3rem;
+}
+
+.perfil__bodyNewUser-content, .perfil__bodyNewUser-lastMessage {
+	font-family: $secondary_font;
+	color: #ffffff;
+	font-size: .85rem;
+}
+
+.perfil__bodyNewUser-moreInfo {
+	color: #E5E5E5;
+	font-family: $secondary_font;
+	text-decoration: none;
+}
+
+.perfil__bodyNewUser-moreInfo:hover {
+	text-decoration: none;
+	color: #E5E5E5;
+}
+
+
 .perfil__body-title {
 	padding: 1.2rem 0;
 	text-align: center;

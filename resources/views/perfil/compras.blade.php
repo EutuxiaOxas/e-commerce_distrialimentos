@@ -357,7 +357,7 @@
         function modalTotalAmountView(totalAmount) {
             //DATA DESESTRUCTURADA
             const { total, subTotal, iva, totalBolivar } = totalAmount;
-            console.log(subTotal);
+            
                 //TOTAL ELEMENTS
             const modalTotal = document.getElementById('ordenDetailModalTotalAmount');
             const modalIva = document.getElementById('ordenDetailModalIva');

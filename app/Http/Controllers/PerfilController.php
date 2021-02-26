@@ -12,6 +12,7 @@ use App\DeliveryRoute;
 use App\Category;
 use App\Variable;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
@@ -27,7 +28,10 @@ class PerfilController extends Controller
         $municipios = Township::all(); //municipios
         $rutaEntregas = DeliveryRoute::all(); //municipios
         $categorias = Category::all();
-        return view('perfil.mis_datos', compact('user', 'empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias'));
+
+        $currentDay = Carbon::today();
+
+        return view('perfil.mis_datos', compact('user', 'empresa','direcciones', 'ciudades', 'estados', 'municipios', 'rutaEntregas','categorias', 'currentDay'));
     }
 
     //dashboard - mis compras

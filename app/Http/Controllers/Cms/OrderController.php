@@ -80,52 +80,57 @@ class OrderController extends Controller
     	if($request->wantsJson()){
 
     		$orden = Order::find($id);
-			$ordenStatus = $orden->statusOrder;
-    		$detalles = $orden->orderProduct;
+			if(auth()->user()->id == $orden->user_id)
+			{
+				$ordenStatus = $orden->statusOrder;
+				$detalles = $orden->orderProduct;
 
-			$address = Address::with(['delivery_route', 'state', 'city', 'township'])
-						->where('id', $orden->address->id)
-						->first();
-			
-			$dolar = Variable::where('name', 'DOLAR')->first();
-			$totalBolivar = number_format($orden->total_amount * $dolar->value, 0, ',', '.');
+				$address = Address::with(['delivery_route', 'state', 'city', 'township'])
+							->where('id', $orden->address->id)
+							->first();
+				
+				$dolar = Variable::where('name', 'DOLAR')->first();
+				$totalBolivar = number_format($orden->total_amount * $dolar->value, 0, ',', '.');
 
-    		$productos = [];
+				$productos = [];
 
-    		foreach ($detalles as $detalle) {
+				foreach ($detalles as $detalle) {
 
-				$totalDetail = $detalle->price * $detalle->quantity;
+					$totalDetail = $detalle->price * $detalle->quantity;
 
-    			$producto = [
-    				'img' => $detalle->product->image,
-    				'title' => $detalle->product->title,
-    				'productQuantity' => $detalle->quantity,
-    				'productPrice' => $detalle->price,
-					'detailTotalAmount' => $totalDetail
-    			];
+					$producto = [
+						'img' => $detalle->product->image,
+						'title' => $detalle->product->title,
+						'productQuantity' => $detalle->quantity,
+						'productPrice' => $detalle->price,
+						'detailTotalAmount' => $totalDetail
+					];
 
-    			$productos[] = $producto;
-    		}
+					$productos[] = $producto;
+				}
 
-			$data = [
-				'order' => [
-					'id' => $orden->id,
-					'created_at' => $orden->created_at->format('d-m-Y'),
-					'updated_at' =>  $orden->updated_at->format('d-m-Y'),
-					'total_amount' => $orden->total_amount
-				],
-				'status' => $ordenStatus,
-				'orderDetails' => $productos,
-				'address' => $address,
-				'orderTotalAmount' => [
-					'total' => $orden->total_amount,
-					'totalBolivar' => $totalBolivar,
-					'subTotal' => $orden->sub_total,
-					'iva' => $orden->iva
-				],
-			];
+				$data = [
+					'order' => [
+						'id' => $orden->id,
+						'created_at' => $orden->created_at->format('d-m-Y'),
+						'updated_at' =>  $orden->updated_at->format('d-m-Y'),
+						'total_amount' => $orden->total_amount
+					],
+					'status' => $ordenStatus,
+					'orderDetails' => $productos,
+					'address' => $address,
+					'orderTotalAmount' => [
+						'total' => $orden->total_amount,
+						'totalBolivar' => $totalBolivar,
+						'subTotal' => $orden->sub_total,
+						'iva' => $orden->iva
+					],
+				];
 
-    		return $data;
+				return response()->json($data, 200);
+			}else {
+				return response()->json('No autorizado', 401);
+			}
     	}
 
     	return redirect('/');
