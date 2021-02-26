@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Banks_User;
 use App\Logo_Banner;
 use App\Category;
+use App\Variable;
+use Illuminate\Http\Request;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -327,3 +331,17 @@ Route::get('/user/address', 'AddressController@getAddress');
 
 // ------------ OBTENER PRODUCTO -----------------
 Route::get('/get/product/{id}', 'Cms\ProductController@getProductDetails');
+
+// ------------ OBTENER IVA Y VALOR DOLAR -------
+
+Route::get('/get/iva-dolar-value', function (Request $request) {
+	$ivaValue = Variable::where('name', 'IVA')->first();
+	$dolarValue = Variable::where('name', 'DOLAR')->first();
+
+	$data = [
+		'ivaValue' => $ivaValue,
+		'dolarValue' => $dolarValue
+	];
+
+	return response()->json($data, 200);
+});

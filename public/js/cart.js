@@ -1,3 +1,5 @@
+
+
 //----------------- UI cart class -------------
 class CarritoUI {
   constructor(carrito, cart_body, api, storage, session) {
@@ -108,11 +110,10 @@ class CarritoUI {
   		})
 		  // this.carrito.children[0].children[0].classList.add('cart_on')
 		  this.eventosModal(this.session, productos)
-		//   this.totalCart();
+		  this.totalCart(this.session, productos);
   	}else {
   		this.cart_body.innerHTML = 'No hay productos en el carrito';
-  		// this.carrito.children[0].children[0].classList.remove('cart_on')
-		// this.totalCart();
+		this.totalCart(this.session, productos);
   	}
 	
   }
@@ -127,7 +128,7 @@ class CarritoUI {
   }
 
 
-  totalCart(){
+ async totalCart(sessionValue, items){
   	const cartSubTotal 			= document.getElementById('modalcartSubTotal');
   	const cartIva 	   			= document.getElementById('modalCartIva');
   	const cartTotal 			= document.getElementById('modalCartTotal');
@@ -139,31 +140,106 @@ class CarritoUI {
 	const modalCartFinish		= document.getElementById('modalCartFinish');
 
 
-	  this.api.getTotalCartAmount()
-	  	.then(res => {
-			  const { total, subTotal, iva, totalBolivar } = res.data;
-			  cartSubTotal.innerText 			= `${subTotal} $`;
-			  cartTotal.innerText				= `${total} $`;
-			  cartIva .innerText				= `${iva.toFixed(2)} $`;
-			  cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`;
+	  if(sessionValue) {
+		this.api.getTotalCartAmount()
+		.then(res => {
+			const { total, subTotal, iva, totalBolivar } = res.data;
+			cartSubTotal.innerText 			= `${subTotal} $`;
+			cartTotal.innerText				= `${total} $`;
+			cartIva .innerText				= `${iva.toFixed(2)} $`;
+			cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`;
 
-			  if(total > 0) {
-				modalCartFinish.href = '/formulario'
-				modalCartFinish.classList.add('disabled');
-				nextButton.disabled = true;
-				alertaMinimo.classList.add('active')
+			if(total > 0) {
+			  modalCartFinish.href = '/formulario'
+			  modalCartFinish.classList.add('disabled');
+			  nextButton.disabled = true;
+			  alertaMinimo.classList.add('active')
 
-				if(total > 40) {
-					alertaMinimo.classList.remove('active')
-					modalCartFinish.classList.remove('disabled');
-					nextButton.disabled = false;
-				}
-			  }else{ 
-				modalCartFinish.classList.add('disabled');
-				nextButton.disabled = true;
-				alertaMinimo.classList.remove('active')
+			  if(total > 40) {
+				  alertaMinimo.classList.remove('active')
+				  modalCartFinish.classList.remove('disabled');
+				  nextButton.disabled = false;
 			  }
-		  }) 
+			}else{ 
+			  modalCartFinish.classList.add('disabled');
+			  nextButton.disabled = true;
+			  alertaMinimo.classList.remove('active')
+			}
+		}) 
+	  }else {
+		  if(items.length > 0) {
+			  	
+				let totalIva = 0;
+				let totalAmount = 0;
+				let subTotal = 0;
+				let totalBolivares = 0;
+			  	const { ivaValue, dolarValue } = await this.api.getIvaAndDolarValue();
+
+				items.forEach(item => {
+					const { cantidad } = item
+					const { 
+						amount_min_big_wholesale, 
+						wholesale_price,
+						big_wholesale_price
+					} = item.product
+
+					if(cantidad <= amount_min_big_wholesale) {
+						if(item.ivaStatus) {
+							
+							totalAmount = totalAmount + (wholesale_price * cantidad);
+							totalIva = totalIva + ((ivaValue.value/100)*(wholesale_price * cantidad));
+							subTotal = subTotal + (totalAmount - totalIva);
+
+						}else {
+
+							totalAmount = totalAmount + (wholesale_price * cantidad);
+							subTotal = subTotal + (wholesale_price * cantidad);
+						
+						}
+					}
+
+					if(cantidad >= amount_min_big_wholesale) {
+						if(item.ivaStatus) {
+							
+							totalAmount = totalAmount + (big_wholesale_price * cantidad);
+							totalIva = totalIva + ((ivaValue.value/100)*(big_wholesale_price * cantidad));
+							subTotal = subTotal + (totalAmount - totalIva);
+
+						}else {
+
+							totalAmount = totalAmount + (big_wholesale_price * cantidad);
+							subTotal = subTotal + (big_wholesale_price * cantidad);
+						
+						}
+					}
+					
+				})
+				
+				totalBolivares = totalAmount * dolarValue.value;
+
+				cartSubTotal.innerText 			= `${subTotal} $`;
+				cartTotal.innerText				= `${totalAmount} $`;
+				cartIva .innerText				= `${totalIva.toFixed(2)} $`;
+				cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivares))} Bs`;
+
+				if(totalAmount > 0) {
+					modalCartFinish.href = '#'
+					modalCartFinish.classList.add('disabled');
+					nextButton.disabled = true;
+					alertaMinimo.classList.add('active')
+	  
+					if(totalAmount > 40) {
+						alertaMinimo.classList.remove('active')
+						modalCartFinish.classList.remove('disabled');
+						nextButton.disabled = false;
+					}
+				  }
+		  }else {
+			modalCartFinish.classList.add('disabled');
+			nextButton.disabled = true;
+			alertaMinimo.classList.remove('active')
+		  }
+	  }
   }
 
 
@@ -437,6 +513,16 @@ class CartApi {
 		return axios.get(`/get/product/${id}`)
 			.catch(err => {
 				console.log(err);
+			})
+	}
+
+	async getIvaAndDolarValue() {
+		return axios.get('/get/iva-dolar-value')
+			.then(res => {
+				return res.data;
+			})
+			.catch(err => {
+				console.log(err)
 			})
 	}
 }
