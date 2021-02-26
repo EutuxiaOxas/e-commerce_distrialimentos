@@ -46,7 +46,22 @@ $color_header='dark';
   }
   .productDetail__componenteCamion img{
     width: fit-content;
-    padding-top:4px;}
+    padding-top:4px;
+    }
+    
+    .almacen__textProduct {
+      background: #FF661B;
+      color:white;
+      text-align: center;
+    }
+    .almacen__textCard {
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
+    }
+    .almacen__cardImg {
+      position:relative;
+    }
 
   </style>
 
@@ -65,14 +80,20 @@ $color_header='dark';
       @foreach($productos as $producto)
         <div class="col-6 col-md-2 espaciado d-flex">
             <div class="card rising border">
-              <a href="{{route('producto.show', $producto->slug)}}">
+              <a class="almacen__cardImg" href="{{route('producto.show', $producto->slug)}}">
                 <img class="card-img-top" src="{{asset('storage/'.$producto->image)}}" alt="Card image cap">
+                <div class="almacen__textCard">
+                  <p class="small almacen__textProduct almacen__productAdded">Disponible Al gran Mayor 18.00 $</p>
+                </div>
+                <div class="almacen__textCard">
+                  <p class="small almacen__textProduct">Más de 20 - 18.00 $ Al gran Mayor</p>
+                </div>
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
                 <div class="wrapper flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12 pb-1 d-flex justify-content-between align-items-center">
+                      <div class="col-6 pb-1 d-flex justify-content-between align-items-center">
                         <span class="inCart-icon almacen__productAdded" id="{{$producto->id}}">
                           <div class="productDetail__componenteCamion productDetail__componenteCamion-desktop">
                             <img src="{{asset('images/imgs/check.svg')}}" alt="Check-Nike">
@@ -84,7 +105,7 @@ $color_header='dark';
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>{{$producto->sku}}</p>
                       </div>
                       <div class="col-12">
-                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">{{$producto->title}}</h6>
+                        <h6 class="card-title font-weight-bold mb-0 text-secondary pb-1">{{$producto->title}}</h6>
                       </div>
                       <div class="col-12">
                         <h6 class="text-black mb-0 smaller-3 pb-1">{{$producto->description}}</h6>
