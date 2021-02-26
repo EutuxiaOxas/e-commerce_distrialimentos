@@ -223,7 +223,7 @@ class CarritoUI {
 				cartTotalBolivares.innerText 		= `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivares))} Bs`;
 
 				if(totalAmount > 0) {
-					modalCartFinish.href = '#'
+					modalCartFinish.href = '/formulario_nuevo'
 					modalCartFinish.classList.add('disabled');
 					nextButton.disabled = true;
 					alertaMinimo.classList.add('active')
