@@ -104,7 +104,7 @@ $color_header='dark';
                 <img class="d-block w-100" src="{{asset('images/portada/portada2.jpg')}}" alt="First slide">
               </div>
               <div class="carousel-item">
-                
+              <img class="d-block w-100" src="{{asset('images/portada/portada2.jpg')}}" alt="First slide">
               </div>
             </div>
           </div>
