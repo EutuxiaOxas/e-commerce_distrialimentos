@@ -10,6 +10,7 @@ use App\State;
 use App\City;
 use App\Township;
 use App\DeliveryRoute;
+use App\Banks_User;
 
 class FormController extends Controller
 {
@@ -24,8 +25,10 @@ class FormController extends Controller
         $ciudades = City::all(); //ciudades
         $municipios = Township::all(); //municipios
         $rutaEntregas = DeliveryRoute::all(); //rutas de entrega
+        $banks = Banks_User::all();
+
         //result
-        return view('formulario', compact('user','empresa','direcciones', 'categorias','estados', 'ciudades', 'municipios', 'rutaEntregas'  ));
+        return view('formulario', compact('user','empresa','direcciones', 'categorias','estados', 'ciudades', 'municipios', 'rutaEntregas', 'banks'));
     }
 
     //Agradecimiento
