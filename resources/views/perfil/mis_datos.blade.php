@@ -77,7 +77,7 @@
 
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
-					<h2 class="perfil__card-title">Datos de empresa</h2>
+					<h2 class="perfil__card-title">Datos de facturación</h2>
 					@if($empresa)
 					<img data-toggle="modal" data-target="#modal_FacturationEdit" class="perfil__cardEditar-icon cardLists" src="{{asset('/images/editar-icon.svg')}}">
 					@endif
@@ -86,15 +86,15 @@
 				<div class="perfil__cardBody ">
 					<ul class="perfil__cardList">
 						<li class="perfil__cardListItem">
-							<h3 class="perfil__cardListItem-title">Empresa</h3>
+							<h3 class="perfil__cardListItem-title">Empresa/Nombre</h3>
 							<p class="perfil__cardListItem-content">{{$empresa->name}}</p>
 						</li>
 						<li class="perfil__cardListItem">
-							<h3 class="perfil__cardListItem-title">R.I.F.</h3>
+							<h3 class="perfil__cardListItem-title">R.I.F./ C.I</h3>
 							<p class="perfil__cardListItem-content">R.I.F. {{$empresa->RIF}}</p>
 						</li>
 						<li class="perfil__cardListItem">
-							<h3 class="perfil__cardListItem-title">SADA</h3>
+							<h3 class="perfil__cardListItem-title">SADA (Opcional)</h3>
 							<p class="perfil__cardListItem-content">{{$empresa->SADA}}</p>
 						</li>
 						<li class="perfil__cardListItem">
@@ -116,10 +116,10 @@
 				<div class="perfil__cardBody direccion">
 					<div class="container p-5 text-center">
 						<img src="{{asset('/images/void-02.svg')}}" alt="">
-						<p class="perfil__cardListItem-content" style="">Aun sin datos de empresa...</p>
+						<p class="perfil__cardListItem-content pt-3" style="">Aun sin datos de facturación...</p>
 					</div>
 					<div class="perfil__agregarDatos ">
-						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de empresa</a>
+						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de facturación</a>
 					</div>
 				</div>
 				@endif
@@ -237,7 +237,7 @@
 					<div class="container">
 						<div class="row">
 						<div class="col-10 mb-0">
-							<h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Empresa</h4>
+							<h4 class="text-secondary font-weight-bold" id="exampleModalLabel">Datos de Facturación</h4>
 							<p class="texto-small texto-muted">Agregue los datos solicitados...</p>
 						</div>
 						<div class="col-2">
@@ -252,7 +252,7 @@
 					<div class="form-title container">
 						<div class="row">
 						<div class="col text-center">
-							<h5 class="font-weight-bold">Datos de empresa</h5>
+							<h5 class="font-weight-bold">Datos de facturación</h5>
 						</div>
 						</div>
 					</div>
@@ -260,10 +260,10 @@
 						@csrf
 						<div class="form">
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required required name="name" placeholder="Nombre de empresa">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->name ?? ''}}" required required name="name" placeholder="Nombre de empresa/Usuario">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}" required required name="RIF" placeholder="RIF [ej: j-20180578-4]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}" required required name="RIF" placeholder="RIF/ C.I">
 						</div>
 						<div class="col">
 							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}" required required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
@@ -272,7 +272,7 @@
 							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}" required required name="postal_code" placeholder="Código postal [ej: 2002]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}" required required name="SADA" placeholder="SADA">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}" required required name="SADA" placeholder="SADA (Opcional)">
 						</div>
 						<div class="col mb-3">
 							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
@@ -383,9 +383,9 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="responsable_phone" placeholder="Telefono Oficina">
 							</div>
 							<div class="col text-center my-4 py-2">
-								<p class="text-black font-weight-bold">Ruta de entrega sugerida</p>
+								<p class="text-black font-weight-bold">Sugerencia de envío</p>
 								<select class="form-control-plaintext formularios__inputBorders" required name="delivery_route_id" >
-									<option value="">Escoge una ruta de entrega</option>
+									<option value="">Sugiérenos una hora de entrega</option>
 									@foreach($rutaEntregas as $rutaEntrega)
 										<option value="{{$rutaEntrega->id}}">{{$rutaEntrega->name}}</option>
 									@endforeach

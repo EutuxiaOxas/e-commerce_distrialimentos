@@ -4,10 +4,12 @@
     <title>Productos</title>
 @endsection
 
+@section('menu-perfil')
+  {{-- header nav--}}
+  @include('common.header.nav_header_mobile')
+@endsection
 
 @section('content')
-    {{-- header nav--}}
-    @include('common.header.nav_header_mobile')
  
    <style>
   .productDetail__componenteCamion {

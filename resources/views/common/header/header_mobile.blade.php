@@ -1,4 +1,14 @@
-<header class="header__mobileMain">
+<style>
+	.header__mobileMain {
+		height: 70px;
+	}
+	.header__mobileContainer {
+		height: 76px;
+	}
+</style>
+
+
+<header class="header__mobileMain fixed-top">
 	<div class="header__mobileContainer">
 		<div class="header__logoMobile">
 			<a href="/">

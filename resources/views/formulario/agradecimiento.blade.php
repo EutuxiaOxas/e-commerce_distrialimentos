@@ -7,20 +7,20 @@
             </button>
           </div>
           <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
-            <button class="formularios__btnNumber bg-blue" disabled>
-              <p class="text-white small">2</p>
-            </button>
-              </div>
-              <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
-                <button class="formularios__btnNumber bg-blue" disabled>
-                  <p class="text-white small">3</p>
-                </button>
-              </div>
-              <div class="col-6 d-flex align-items-center pl-2 col-md-9">
-                <p class="font-weight-bold m-0 texto-small text-black">Fin del proceso</p>
-              </div>
-            </div>
+              <button class="formularios__btnNumber bg-blue" disabled>
+                <p class="text-white small">2</p>
+              </button>
           </div>
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
+            <button class="formularios__btnNumber bg-blue" disabled>
+              <p class="text-white small">3</p>
+            </button>
+          </div>
+          <div class="col-6 d-flex align-items-center pl-2 col-md-9">
+            <p class="font-weight-bold m-0 texto-small text-black">Fin del proceso</p>
+          </div>
+        </div>
+      </div>
             <!-- trj compra-->
           <div class="box-contain container mt-1">
             <div class=" border shadow">

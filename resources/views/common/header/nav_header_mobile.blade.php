@@ -1,4 +1,46 @@
-<nav class="header__navMobile main" >
+
+<style>
+    .header__navMobile {
+	width: 100%;
+	background-color: $navbar_Background;
+	padding-left: .2rem;
+    top: 70px !important;
+    height:48px;
+}
+
+.header__navMain {
+    height:48px;
+}
+.navbar__mobillocationList {
+    top: 23% !important;
+    left: -44px !important;
+    border:none;
+    background: #f5f5f5;
+    padding:0;
+}
+.navbar__locationMobilListItems {
+    text-decoration: none;
+    font-size: 1rem  !important;
+    font-family: 'Roboto';
+    color: #02528A !important;
+    font-weight: bold;
+    padding: 0.4rem 0.5rem 0.6rem;
+}
+.header__navMobileChooseCurrency a {
+    padding: 0.4rem 0.5rem 0.6rem;
+    width: 105px;
+    text-align: left;
+    
+}
+.header__navMobileChooseCurrency{
+    top:143%;
+   
+}
+
+</style>
+
+
+<nav class="header__navMobile main fixed-top">
     <ul class="header__navMain main">
         <li class="header__navList main" id="ayuda_mobile_icon">
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,13 +64,19 @@
                 
 
             <!-- <a href="#" style="visibility: hidden;">Ayuda</a> -->
+
         </li>
         <li class="header__navList main">
             <svg width="25" height="25" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.49996 0C3.35781 0 0 3.35785 0 7.50001C0 15 7.50001 24 7.50001 24C7.50001 24 15 15 15 7.50001C15 3.35785 11.6421 0 7.49996 0ZM7.49996 12C5.01466 12 2.99997 9.98531 2.99997 7.50001C2.99997 5.0147 5.01466 3.00001 7.49996 3.00001C9.98526 3.00001 12 5.0147 12 7.50001C12 9.98531 9.98526 12 7.49996 12Z" fill="white"/>
             </svg>
 
-            <a href="#">Carabobo</a>
+            <a class="dropdown" href="#" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carabobo</a>
+            
+            <div class="dropdown-menu navbar__mobillocationList" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item navbar__locationMobilListItems" href="#">Carabobo</a>
+					<a class="dropdown-item navbar__locationMobilListItems" href="#">Aragua</a>
+				</div>
         </li>
         <li class="header__navList main header__navListCurrencyMain">
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,10 +86,10 @@
             <a href="#" id="headerMobileCurrencyChoose">{{session('currency')}}</a>
             <div class="header__navMobileChooseCurrency" id="headerMobileCurrencyMain">
                 <a href="{{route('active.curency', 'usd')}}" class="header__navMobileChooseCurrency-option">
-                    Dolares(USD)
+                    Dolares
                 </a>
                 <a href="{{route('active.curency', 'ves')}}" class="header__navMobileChooseCurrency-option">
-                    Bolivares(Bs)
+                    Bolivares
                 </a>
             </div>
         </li>
