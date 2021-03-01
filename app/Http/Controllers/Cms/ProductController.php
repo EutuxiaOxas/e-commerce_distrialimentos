@@ -247,4 +247,15 @@ class ProductController extends Controller
 
     }
 
+    public function getSearchedProduct(Request $request)
+    {
+        if($request->wantsJson()){     
+            $productos = Product::with(['packaging'])->where('title', 'LIKE', '%'.$request->search.'%')->take(5)->get();
+            return response()->json($productos, 200);
+        }
+    
+        return redirect('/');
+    }
+    
+
 }

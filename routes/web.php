@@ -331,7 +331,7 @@ Route::get('/user/address', 'AddressController@getAddress');
 
 // ------------ OBTENER PRODUCTO -----------------
 Route::get('/get/product/{id}', 'Cms\ProductController@getProductDetails');
-
+Route::get('/search-product', 'Cms\ProductController@getSearchedProduct');
 // ------------ OBTENER IVA Y VALOR DOLAR -------
 
 Route::get('/get/iva-dolar-value', function (Request $request) {
