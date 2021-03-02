@@ -11096,6 +11096,47 @@ nav {
   background: #EBE7E7;
 }
 
+.header__searchMobileItemsMain {
+  position: absolute;
+  display: none;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 30;
+  top: 59%;
+  box-shadow: -1px 7px 10px -4px rgba(0, 0, 0, 0.75);
+  border-radius: 0 0 5px 5px;
+}
+
+.header__searchMobileItemsMain.active {
+  display: block;
+}
+
+.header__searchMobileItems {
+  padding: 0.4rem;
+}
+
+.header__searchMobileItems-elements {
+  display: flex;
+  align-items: center;
+}
+
+.header__searchMobileItems-image img {
+  width: 80%;
+}
+
+.header__searchMobileItems-content {
+  flex: 1 0 80%;
+  font-size: 0.6rem;
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: bold;
+}
+
+.header__searchMobileItems-content span {
+  font-weight: lighter;
+  color: rgba(131, 131, 131, 0.4);
+}
+
 .header__mobileMenuBody {
   padding-top: 1rem;
   width: 77%;
@@ -11326,6 +11367,56 @@ nav {
   top: 23%;
   cursor: pointer;
   right: 3.5%;
+}
+
+.header__searchItemsMain {
+  position: absolute;
+  display: none;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 30;
+  top: 66%;
+  box-shadow: -1px 7px 10px -4px rgba(0, 0, 0, 0.75);
+  border-radius: 0 0 5px 5px;
+}
+
+.header__searchItemsMain.active {
+  display: block;
+}
+
+.header__searchItems {
+  padding: 0.4rem;
+}
+
+.header__searchItems-elements {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__searchItems-elements:hover {
+  text-decoration: none;
+}
+
+.header__searchItems-image {
+  text-align: center;
+}
+
+.header__searchItems-image img {
+  width: 50%;
+}
+
+.header__searchItems-content {
+  flex: 1 0 90%;
+  font-size: 0.8rem;
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: bold;
+}
+
+.header__searchItems-content span {
+  font-weight: lighter;
+  color: rgba(131, 131, 131, 0.4);
 }
 
 .header__sesion {
@@ -11807,6 +11898,35 @@ nav {
   margin: 0 auto;
   min-height: 100%;
   padding-bottom: 1rem;
+}
+
+.perfil__bodyNewUser {
+  background-color: #02528A;
+  color: #ffffff;
+}
+
+.perfil__bodyNewUser-title {
+  font-family: "Righteous", cursive;
+  color: #ffffff;
+  font-size: 1.3rem;
+}
+
+.perfil__bodyNewUser-content,
+.perfil__bodyNewUser-lastMessage {
+  font-family: "Roboto", cursive;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.perfil__bodyNewUser-moreInfo {
+  color: #E5E5E5;
+  font-family: "Roboto", cursive;
+  text-decoration: none;
+}
+
+.perfil__bodyNewUser-moreInfo:hover {
+  text-decoration: none;
+  color: #E5E5E5;
 }
 
 .perfil__body-title {
@@ -13271,5 +13391,120 @@ nav {
   40% {
     box-shadow: 0 2.5em 0 0;
   }
+}
+
+.hideForm {
+  display: none;
+}
+
+.fomularioMetodoPago__selectbBankCard {
+  border-radius: 5px;
+  border: 1px solid #FF661B;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.6rem 0.9rem;
+  align-items: center;
+  color: #FD6721;
+  cursor: pointer;
+}
+
+.fomularioMetodoPago__selectbBankCard:not(:last-child) {
+  margin-bottom: 0.7rem;
+}
+
+.fomularioMetodoPago__selectbBankCardIcon {
+  display: flex;
+  justify-content: center;
+  flex: 0 1 20%;
+}
+
+.fomularioMetodoPago__selectbBankCardIcon-active {
+  display: none;
+}
+
+.fomularioMetodoPago__selectbBankCardBody-title {
+  text-align: end;
+  font-family: "Righteous", cursive;
+  margin: 0;
+  color: inherit;
+  font-size: 1.1rem;
+}
+
+.fomularioMetodoPago__selectbBankCardBody-description {
+  font-family: "Roboto", cursive;
+}
+
+.fomularioMetodoPago__selectbBankCard:hover {
+  background-color: #FD6721;
+  color: #ffff;
+}
+
+.fomularioMetodoPago__selectbBankCard:hover .fomularioMetodoPago__selectbBankCardIcon-inactive {
+  display: none;
+}
+
+.fomularioMetodoPago__selectbBankCard:hover .fomularioMetodoPago__selectbBankCardIcon-active {
+  display: block;
+}
+
+.fomularioMetodoPago__metodoAlert {
+  text-align: center;
+  padding: 0.8rem 0 0.4rem;
+}
+
+.fomularioMetodoPago__metodoAlert .fomularioMetodoPago__metodoAlert-text {
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: bold;
+}
+
+.formPayment__headerMain {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.3rem;
+}
+
+.formPayment__headerLeft {
+  color: #FD6721;
+}
+
+.formPayment__headerMain-title {
+  font-family: "Righteous", cursive;
+  font-size: 1.1rem;
+}
+
+.formPayment__headerMain-description {
+  font-family: "Roboto", cursive;
+  font-size: 0.73rem;
+}
+
+.formPayment__headerMain-description.price {
+  text-align: end;
+  color: #838383;
+}
+
+.formPayment__alertInformation {
+  background-color: #0068B1;
+  border-radius: 0px;
+  padding: 0.3rem 1rem 0.8rem;
+}
+
+.formPayment__alertInformation-actionContainer {
+  margin-bottom: 0.5rem;
+}
+
+.formPayment__alertInformation-actionContainer .formPayment__alertInformation-paymentData {
+  font-size: 0.7rem;
+}
+
+.formPayment__alertInformation-paymentData {
+  color: rgba(245, 245, 245, 0.7);
+  font-weight: 300;
+  font-family: "Roboto", cursive;
+}
+
+.formPayment__alertInformation-paymentData span {
+  font-weight: 400;
+  color: #ffffff;
 }
 

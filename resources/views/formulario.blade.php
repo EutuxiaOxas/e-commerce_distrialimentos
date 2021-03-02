@@ -147,9 +147,13 @@
   {{-- saludos al usuario --}}
   @include('formulario.saludo')
 
+  {{-- datos de pago --}}
+  @include('formulario.datos-pago-uno')
+  {{-- @include('formulario.datos-pago-dos') --}}
+  
   <!---------------------------------- Formulario I ----------------------------->
   {{-- datos del comprador --}}
-  @include('formulario.datos-comprador')
+  {{-- @include('formulario.datos-comprador') --}}
 
   <!-------------------------- Formulario II ----------------------------->
   {{-- datos de la empresa --}}
@@ -162,6 +166,7 @@
   <!-------------------------- Seccion de Total del camion ----------------------------->
   {{-- datos de la direccion  --}}
   @include('formulario.total-compra')
+
         
       </div>
     </div>

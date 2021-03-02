@@ -18,6 +18,25 @@
 	<section class="perfil__container">
 		@include('perfil.perfil_nav')
 		<div class="perfil__body">
+			@if(isset(auth()->user()->created_at) && auth()->user()->created_at->format('d-m-Y') === $currentDay->format('d-m-Y'))
+				<div class="alert perfil__bodyNewUser" role="alert">
+					<div class="d-flex justify-content-between mb-2" style="flex:1;">
+						<h2 class="perfil__bodyNewUser-title pt-2">Bienvenido a Distrialimentos del Centro...</h2>
+						
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true"><img src="{{asset('images/close-icon.png')}}" alt="Icono cerrar"></span>
+						</button>
+					</div>
+					<div>
+						<p class="perfil__bodyNewUser-content mb-3">La plataforma  con los estándares más altos de calidad en la comercialización y distribución de productos consumo masivo.  mantenemos una relación directa con los fabricantes para así garantizar el precio <strong>más competitivo</strong>. </p>
+						<p class="perfil__bodyNewUser-lastMessage">Por los momentos solo tenemos covertura de distribución en el estado <strong>Carabobo</strong>.</p>
+					</div>
+					<div class="text-right">
+						<a href="#" class="perfil__bodyNewUser-moreInfo">Más información </a>
+					</div>
+				</div>
+			@endif
+
 			<h2 class="perfil__body-title">Mis datos</h2>
 			<div class="perfil__card">
 				<div class="perfil__cardTitle">
