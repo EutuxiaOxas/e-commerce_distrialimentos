@@ -51,45 +51,6 @@ $color_header='dark';
     padding: 7px 6px;
   }
 
-  .productDetail__componenteCamion {
-    height:25px;
-    width: 112px;
-    padding: 0 8px;
-    border-radius: 12px;
-    background: #FF9417;
-    color:white;
-    font-weight:bold;
-    font-size: 13px;
-    display:flex;
-    justify-content: space-evenly;
-    align-items:center;
-    
-  }
-  .productDetail__componenteCamion img{
-    width: fit-content;
-    padding-top:4px;
-    }
-    
-    .almacen__textProduct {
-      background: #FF661B;
-      color:white;
-      text-align: center;
-      font-size:80%;
-    }
-    .almacen__textCard {
-      position: absolute;
-      width: 100%;
-      bottom: 0px;
-    }
-    .almacen__cardImg {
-      position:relative;
-    }
-    @media (max-width:560px) {
-      .almacen__textProduct {
-        font-size:60%;
-      }
-    }
-
   </style>
 
 

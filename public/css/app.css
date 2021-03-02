@@ -11427,13 +11427,13 @@ nav {
 
 .navbar__location {
   flex: 1;
-  padding-top: 0.2rem;
+  padding-top: 0.3rem;
   position: relative;
 }
 
 .navbar__location-img {
   position: absolute;
-  top: -0.1rem;
+  top: -0.2rem;
   left: -1.3rem;
 }
 
@@ -11464,6 +11464,44 @@ nav {
   color: #FFB78D;
   font-size: 0.75rem;
   font-weight: 300;
+}
+
+.navbar__locationList {
+  z-index: 200;
+  position: absolute;
+  top: 10% !important;
+  left: -20px !important;
+  right: calc(100% - 10vw);
+  border: none;
+  background: #f5f5f5;
+  padding: 0;
+}
+
+.navbar__locationListItems {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: "Roboto";
+  color: #02528A;
+  font-weight: bold;
+  padding: 0.6rem 1rem 0.8rem;
+}
+
+.navbar__locationListItems:hover {
+  background: #02528A;
+  color: white;
+}
+
+.navbar__currencyList--item:hover {
+  background: #02528A;
+}
+
+.navbar__currencyList--item:hover a {
+  background: #02528A;
+  color: white;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
 }
 
 .navbar__currencyList {
@@ -12540,6 +12578,29 @@ nav {
   display: none;
 }
 
+.almacen__textProduct {
+  background: #FF661B;
+  color: white;
+  text-align: center;
+  font-size: 80%;
+}
+
+.almacen__textCard {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+
+.almacen__cardImg {
+  position: relative;
+}
+
+@media (max-width: 560px) {
+  .almacen__textProduct {
+    font-size: 60%;
+  }
+}
+
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #ffffff;
@@ -12740,6 +12801,25 @@ nav {
   .productDetail__agregadoSelect {
     width: 100%;
   }
+}
+
+.productDetail__componenteCamion {
+  height: 25px;
+  width: 112px;
+  padding: 0 8px;
+  border-radius: 12px;
+  background: #FF9417;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.productDetail__componenteCamion img {
+  padding-top: 4px;
+  width: auto;
 }
 
 .productos__text-agregado {

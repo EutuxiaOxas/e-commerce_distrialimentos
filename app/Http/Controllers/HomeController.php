@@ -20,7 +20,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function lading()
+   
+    public function index()
+    {
+        $banners_principales = Logo_Banner::where('tipo','principal')->get();
+        $banners_promocionales = Logo_Banner::where('tipo','promocional')->get();
+        $categories = Category::all();
+        $categorias = $categories;
+        $productos_destacados= Product::where('isfeatured','1')->orderByRaw('rand()')->take(12)->get();
+        $productos_recientes= Product::latest()->orderByRaw('rand()')->take(12)->get();
+        //dos categorias ramdon en el Home    
+        $dos_categorias  = Category::orderByRaw('rand()')->take(2)->get();
+        if($dos_categorias){
+            $productos_cat_uno= Product::where('category_id',$dos_categorias[0]->id)->orderByRaw('rand()')->take(12)->get();
+            $productos_cat_dos= Product::where('category_id',$dos_categorias[1]->id)->orderByRaw('rand()')->take(12)->get();
+        }else{
+            $productos_cat_uno= null;
+            $productos_cat_dos= null;
+        }
+        return view('home', compact('banners_principales','banners_promocionales', 'categories','categorias','productos_destacados','productos_recientes','dos_categorias','productos_cat_uno','productos_cat_dos' ));
+    }
+
+     public function lading()
     {
         $sliders = Logo_Banner::where('tipo', 'banner')->where('status', 1)->get();
         $logo = Logo_Banner::where('tipo', 'logo')->first();

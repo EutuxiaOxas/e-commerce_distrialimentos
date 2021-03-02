@@ -110,12 +110,13 @@
                         },
                         600:{
                             items:4,
-                            nav:false
+                            nav:false,
+                            loop:false
                         },
                         1000:{
                             items:6,
                             nav:false,
-                            loop:true
+                            loop:false
                         }
                     }
                 });
@@ -132,7 +133,8 @@
                         },
                         600:{
                             items:4,
-                            nav:false
+                            nav:false,
+                            loop:false
                         },
                         1000:{
                             items:6,
