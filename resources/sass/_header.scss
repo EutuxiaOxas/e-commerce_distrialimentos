@@ -25,12 +25,17 @@
 	background-color: $header_background;
 }
 
+.header__mobileMain {
+	height: 70px;
+}
+
 .header__mobileContainer {
 	width: 95%;
 	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	padding: .8rem 0 1.3rem;
+	height: 70px;
 }
 
 .header__logoMobile {
@@ -92,16 +97,20 @@
 
 .header__mobileMenuNav_container {
 	overflow: hidden;
-	transition: .6s ease;
+	transition: .4s ease;
 	height: 0px;
 }
 
 .header__mobileMenuNav_container.logged.active {
-	height: 322px;
+	height: fit-content;
+	z-index: 2000;
+	background: #EBE7E7;
 }
 
 .header__mobileMenuNav_container.guest.active {
-	height: 348px;
+	height: fit-content;
+	z-index: 2000;
+	background: #EBE7E7;
 }
 
 .header__mobileMenuBody {
@@ -163,6 +172,7 @@
 	flex-direction: column;
 	justify-content: center;
 	background-color: #ffffff;
+	margin: 5px;
 }
 
 .navSection__mobileMenu a{
@@ -173,6 +183,10 @@
 .navSection__mobileMenu-container{
 	text-align: center;
 	padding: .5rem 0;
+}
+.navSection__mobileMenu-container:hover, .navSection__mobileMenu-container:active {
+	background: #02528A;
+	background-color: #ffffff;
 }
 
 .navSection__mobileMenu-container a {
@@ -188,6 +202,7 @@
 	padding-left: .2rem;
 	top: 70px !important;
     height:48px;
+	z-index: 1000;
 }
 
 .header__navMobile ul {
@@ -636,7 +651,7 @@
 	}
 
 	.header__mobileMenuNav_container.guest.active {
-		height: 357px;
+		height: fit-content;
 	}
 
 	.userSection__mobileMenu_guest-actions a {
