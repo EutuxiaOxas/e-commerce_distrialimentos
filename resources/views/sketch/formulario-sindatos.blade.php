@@ -36,7 +36,7 @@ $color_header='dark';
   height: 2.52rem;
   font-size: 1rem;
 }
-.formularios__sections {
+.container-width  {
   margin: auto;
   padding:0;
 }
@@ -109,6 +109,12 @@ $color_header='dark';
   height: 100vh;
   background-color: #F5F5F5;
 }
+
+.formularios__btnEnvioAncla {
+  display:flex;
+  justify-content: space-around;
+}
+
 @media(max-width:767px)
 {
   .formularios__numberWidth {
@@ -139,7 +145,7 @@ $color_header='dark';
     
 </style>
 
-  <section id="saludo" class="formularios__sections formularios__Height show pt-3">
+  <section class="container-width show pt-3">
     <div class="container">
       <div class="row py-1">
         <div class="col-3 formularios__containerBtn-Precio col-md-2 formularios__Saludo">
@@ -166,8 +172,7 @@ $color_header='dark';
 
 
 <!------------------------------ Formulario datos usuario ----------------------------------->
-<section id=form_datos class="pb-5">
-    
+<section class="container-width">
   
     <!-- Carrito formulario-->
     <section class="form-shoppingCar d-block d-md-none">
@@ -393,10 +398,8 @@ $color_header='dark';
       <!-------- /Modal body --------->
     </section>   
     <!-- /Carrito formulario-->
-
     <!-- User-datos_info-->
-    <section class="datos-info">
-
+    <section class="container-width">
 
        <!-- Numbers-->
         <div class="container">
@@ -412,7 +415,6 @@ $color_header='dark';
           </div>
         </div>
         <!-- fin Numbers-->
-
 
         <div class="container container-width-md p-4">
           <div class="wrapper boxed border shadow p-4">
@@ -490,11 +492,11 @@ $color_header='dark';
     <!--/User-datos_info-->
 
      <!-- Buttoms-->
-      <section class="">
+      <section class="container-width">
         <div class="container">
           <div class="row">
             <div class="col-5 pr-0">
-              <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
+              <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted" disabled><span></span></button>
             </div>
             <div class="col-7 pl-0">
               <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
@@ -508,10 +510,8 @@ $color_header='dark';
 
 
 <!------------------------------ Formulalio facturacion ----------------------------------->
-<section id=form_bussines>
-    
-  
-  
+<section class="container-width">
+ 
     <!-- Carrito formulario-->
     <section class="form-shoppingCar d-block d-md-none">
       <div class="form-shoppingCar container">
@@ -740,12 +740,11 @@ $color_header='dark';
     <section class="datos-info">
 
       <div class="datos-info container container-width-md px-4 pb-4">
-
         <!-- Numbers-->                                          
         <div class="container">
-          <div class="row p-1">
+          <div class="row p-1 pr-0">
             <div class="formularios__numberWidth pt-1 pr-0 d-block d-md-none">
-              <button id="btn_clr" class="formularios__btnNumber bg-blue">
+              <button class="formularios__btnNumber bg-blue">
                 <p class="text-white small">1</p>
               </button>
             </div>
@@ -776,7 +775,7 @@ $color_header='dark';
           </div>
           <div class="datos-info-modal row pt-3">
             <div class="col  text-center">
-              <a href="#" data-toggle="modal" data-target="#modal-facturation"> <p class="font-weight-bold text center fs-14">Agregar datos de empresa</p></a>          
+              <a href="#" data-toggle="modal" data-target="#modal-facturation"> <p class="font-weight-bold text center text-secondary">Agregar datos de empresa</p></a>          
             </div>
             <div class="modal fade" id="modal-facturation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -870,17 +869,17 @@ $color_header='dark';
     <!--/bussines-datos_info-->
 
     <!-- Buttoms-->
-    <section>
-          <div class="container container-width-md">
-            <div class="row">
-              <div class="col-5 pr-0">
-                <button type="button" class="btn btn-secondary btn-sm btn-block radius-buton-right text-secondary font-weight-bold">Anterior</button>
-              </div>
-              <div class="col-7 pl-0">
-                <button id=btn_next1 class="btn btn-primary btn-sm btn-block radius-buton-left font-weight-bold">Siguiente</button>
-              </div>
+    <section class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-5 pr-0">
+              <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
+            </div>
+            <div class="col-7 pl-0">
+              <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
             </div>
           </div>
+        </div>
     </section>
     <!-- /Buttoms-->     
 </section>
@@ -888,8 +887,8 @@ $color_header='dark';
 
 
 <!------------------------------ Formulalio envio ----------------------------------->
-<section id=form_envio>
-    <
+<section class="container-width">
+  
   
     <!-- Carrito formulario-->
     <section class="form-shoppingCar d-block d-md-none">
@@ -1119,40 +1118,59 @@ $color_header='dark';
     <!-- info-envio-->
     <section class="envio-info">
       <div class="datos-info container container-width-md px-4 pb-4">
-        <div class="circle row p-3">
-          <div class="circle-number col-2 col-md-1 p-0 d-block d-sm-none">
-            <button class="rounded-circle circle_number bg-dark border-0">
-              <p class="text-white small">1</p>
-            </button>
+
+        <!-- Numbers-->                                          
+        <div class="container">
+          <div class="row p-1">
+            <div class="formularios__numberWidth pt-1 pr-0 d-block d-md-none">
+              <button id=btn_clr1 class="formularios__btnNumber bg-blue">
+                <p class="text-white small">1</p>
+              </button>
+            </div>
+            <div class="formularios__numberWidth pt-1 pr-0 d-md-none">
+              <button id=btn_clr2 class="formularios__btnNumber bg-blue">
+                <p class="text-white small">2</p>
+              </button>
+            </div>
+            <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
+              <button class="formularios__btnNumber bg-primary">
+                <p class="text-white small">3</p>
+              </button>
+            </div>
+            <div class="col-6 d-flex align-items-center pl-3 col-md-11">
+              <p class="font-weight-bold m-0 texto-small text-black">Datos de envío</p>
+            </div>
           </div>
-          <div class="circle-number col-2 col-sm-1 p-0 d-block d-sm-none">
-            <button class="rounded-circle circle_number bg-dark border-0">
-              <p class="text-white small">2</p>
-            </button>
-          </div>
-          <div class="circle-number col-2 col-sm-1 p-0">
-            <button class="rounded-circle circle_number bg-primary border-0">
-              <p class="text-white small">3</p>
-            </button>
-          </div>
-          <div class="circle-text col-6 col-11-9 d-flex align-items-center pl-0">
-            <p class="font-weight-bold small text-black">Datos de envío</p>
-          </div>
-        </div>  
-        <div class="wrapper boxed border shadow p-4">
+        </div>
+        <!-- Fin Numbers-->
+
+
+        <div class="wrapper border shadow p-4">
           <div class="datos_info-img row"> 
             <div class="col text-center">
               <img class="formularios__imgWidth" src="{{asset('images/imgs/new-delivery.svg')}}" alt="">
             </div>
           </div>
           <div class="datos-info-text row py-2">
-            <div class="col text-center">
+            <div class="col-12 text-center">
               <p class="small text-muted">Agrega los datos de envio</p>            
             </div>
+            <div class="col-12 col-md-6 offset-md-3 text-center formularios__btnEnvios p-3">
+              <a href="#" class="btn btn-primary formularios__btnEnvioAncla">
+                <img src="{{asset('images/imgs/group.svg')}}" alt="">
+                <div class="formularios__btnEnvioText">
+                  <p class="font-weight-bold lead">Recoger en almacén</p>
+                  <p>Valencia Carabobo</p>
+                </div>
+              </a>
+            </div>
+            
+
+
           </div>
-          <div class="datos-info-modal row pt-3">
+          <div class="datos-info-modal row">
             <div class="col  text-center">
-              <a href="#" data-toggle="modal" data-target="#modal-envio"> <p class="font-weight-bold text center fs-14">Agregar datos de envio</p></a>          
+              <a href="#" data-toggle="modal" data-target="#modal-envio"> <p class="font-weight-bold text center text-secondary">Agregar datos de envio</p></a>          
             </div>
             <div class="modal fade" id="modal-envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -1241,18 +1259,396 @@ $color_header='dark';
     <!--/info-envio-->
 
     <!-- Buttoms-->
-    <section>
-          <div class="container container-width-md">
-            <div class="row">
-              <div class="col-5 pr-0">
-                <button type="button" class="btn btn-secondary btn-sm btn-block radius-buton-right text-secondary font-weight-bold">Anterior</button>
-              </div>
-              <div class="col-7 pl-0">
-                <button id=btn_next1 class="btn btn-primary btn-sm btn-block radius-buton-left font-weight-bold">Finalizar</button>
-              </div>
+      <section class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-5 pr-0">
+              <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
+            </div>
+            <div class="col-7 pl-0">
+              <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
             </div>
           </div>
+        </div>
+      </section>
+    <!-- /Buttoms-->     
+</section>
+<!----------------------------- /Formulalio envio ------------------------------------>
+
+
+
+<!------------------------------ Formulalio envio ----------------------------------->
+<section class="container-width">
+    
+    <!-- Carrito formulario-->
+    <section class="form-shoppingCar d-block d-md-none">
+      <div class="form-shoppingCar container">
+        <div class="row">
+            <div class="col text-center">
+              <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modalFormulario">
+                <div class="row">
+                  <div class="col-4 d-flex align-items-center">
+                    <p class="text-white fs-14 font-weight-bold">2,000.00 $</p>
+                  </div>
+                  <div class="col-8 d-flex align-items-center justify-content-end">
+                    <p class="text-white fs-14 text-right font-weight-bold">Camion de compras
+                      <svg width="30" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M29.9882 19.5166V14.8843C29.9882 14.1944 29.7743 13.5044 29.4526 12.9131L26.247 7.88651C25.9256 7.29514 25.1757 6.9009 24.4259 6.9009H19.605C18.8551 6.9009 18.2122 7.49227 18.2122 8.18219V18.7281H17.1409V4.9297C17.1409 3.84554 16.1769 2.9585 14.9983 2.9585H0V20.6993H3.21392C3.74957 19.0238 5.35653 17.7425 7.39188 17.7425C9.4275 17.7425 11.1415 19.0238 11.5701 20.6993H19.3907C19.9264 19.0238 21.5333 17.7425 23.5687 17.7425C25.2829 17.7425 26.6753 18.6296 27.3183 19.9109C27.6397 20.4037 28.1673 20.6993 28.7029 20.6993C29.4526 20.6993 30.0955 20.108 29.9882 19.5166ZM20.3548 13.8001V8.87211H24.6401L27.7467 13.8001H20.3548Z" fill="white"/>
+                        <path d="M23.5688 18.728C21.7477 18.728 20.3549 20.0093 20.3549 21.6848C20.3549 23.3604 21.7477 24.6416 23.5688 24.6416C25.39 24.6416 26.7828 23.3604 26.7828 21.6848C26.7828 20.0093 25.39 18.728 23.5688 18.728ZM23.5688 23.0647C22.7117 23.0647 22.0691 22.4733 22.0691 21.6848C22.0691 20.8964 22.7118 20.305 23.5688 20.305C24.426 20.305 25.0685 20.8964 25.0685 21.6848C25.0685 22.4733 24.426 23.0647 23.5688 23.0647Z" fill="white"/>
+                        <path d="M7.4992 18.728C5.67804 18.728 4.28528 20.0093 4.28528 21.6848C4.28528 23.3604 5.67804 24.6416 7.4992 24.6416C9.32035 24.6416 10.7131 23.3604 10.7131 21.6848C10.7131 20.0093 9.32035 18.728 7.4992 18.728ZM7.4992 23.0647C6.64209 23.0647 5.9995 22.4733 5.9995 21.6848C5.9995 20.8964 6.64215 20.305 7.4992 20.305C8.35624 20.305 8.99889 20.8964 8.99889 21.6848C8.99889 22.4733 8.35631 23.0647 7.4992 23.0647Z" fill="white"/>
+                        <path d="M7.49916 22.1775C7.79499 22.1775 8.03481 21.9569 8.03481 21.6847C8.03481 21.4125 7.79499 21.1919 7.49916 21.1919C7.20332 21.1919 6.9635 21.4125 6.9635 21.6847C6.9635 21.9569 7.20332 22.1775 7.49916 22.1775Z" fill="white"/>
+                        <path d="M23.5688 22.1775C23.8646 22.1775 24.1044 21.9569 24.1044 21.6847C24.1044 21.4125 23.8646 21.1919 23.5688 21.1919C23.273 21.1919 23.0331 21.4125 23.0331 21.6847C23.0331 21.9569 23.273 22.1775 23.5688 22.1775Z" fill="white"/>
+                      </svg>             
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </div>
+        </div>
+      </div>
+      <!-------- Modal body --------->
+      <div class="modal fade" id="modalFormulario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <!-------------  Modal header------------>
+              <div class="modal-header d-block pt-2 pb-1"> 
+                <div class="row">
+                  <div class="col-10 pt-3">
+                    <h3 class="font-weight-bold p-0 my-0 text-left fs-28">Camion de compras</h3>
+                    <p class="py-0 my-0 text-left">Todo esta en tu camion de compras!</p>
+                  </div>
+                  <div class="col-2">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="icon-x"></span>
+                    </button>
+                  </div> 
+                </div> 
+              </div>
+            <!------------- // Modal header------------>
+            <!------------   Modal-body --------------->
+            <div class="Modal-body container-fluid pt-1">
+
+                      <h5 class="text-left font-weight-bold fs-18 pl-1">Listado de productos</h5>
+                      <div class="row px-1 pt-1 pb-0 mb-0"> 
+                        <div class="col">
+                          <div class="Modal-body-card row boxed border shadow radeus">
+                            <div class="Modal-body_img col-4 col-md-4 px-0">
+                              <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                            </div>
+
+                            <div class="Modal-body_info col-8 col-md-8 px-0">
+                              <div class="prod-details p-1">
+                                <div class="row mb-0">
+                                  <div class="prod-details_title col-10 my-0 py-0">
+                                    <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+                                  </div>
+                                  <div class="prod-details_delete col-2">
+                                    <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
+                                      <span class="p-0" aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                                  
+                                  <div class="col-12 my-0 py-0">
+                                    <p class="small text-left">IVA incluido</p>
+                                  </div>
+                                </div>
+                                <div class="row my-0 py-0">                   
+                                  <div class="col-7 my-0 py-0 pr-0">
+                                    <p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
+                                    <p class="small my-0 py-0">Caja - 30 unidades</p>
+                                  </div>
+                                  <div class="col-5 pl-0">                         
+                                    <form class="text-center">
+                                      <div class="form-group m-0">
+                                        <label class="labelfs" for="cantidad">Cantidad</label>
+                                        <input type="number" class="form-control form-control-sm" id="cantidadProductos">
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>        
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row px-1 pt-1 pb-0 mb-0"> 
+                        <div class="col">
+                          <div class="row boxed border shadow radeus">
+                            <div class="col-4 col-md-4 px-0">
+                              <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                            </div>
+
+                            <div class="col-8 col-md-8 px-0">
+                              <div class="prod-details p-1">
+                                <div class="row mb-0">
+                                  <div class="col-10 my-0 py-0">
+                                    <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+                                  </div>
+                                  <div class="col-2">
+                                    <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
+                                      <span class="p-0" aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                                  
+                                  <div class="col-12 my-0 py-0">
+                                    <p class="small text-left">IVA incluido</p>
+                                  </div>
+                                </div>
+                                <div class="row my-0 py-0">                   
+                                  <div class="col-7 my-0 py-0 pr-0">
+                                    <p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
+                                    <p class="small my-0 py-0">Caja - 30 unidades</p>
+                                  </div>
+                                  <div class="col-5 pl-0">                         
+                                    <form class="text-center">
+                                      <div class="form-group m-0">
+                                        <label class="labelfs" for="cantidad">Cantidad</label>
+                                        <input type="number" class="form-control form-control-sm" id="cantidadProductos">
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>        
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="row px-1 pt-1 pb-0 mb-0"> 
+                        <div class="col">
+                          <div class="row boxed border shadow radeus">
+                            <div class="col-4 col-md-4 px-0">
+                              <img class="img-border" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Product-related">
+                            </div>
+
+                            <div class="col-8 col-md-8 px-0">
+                              <div class="prod-details p-1">
+                                <div class="row mb-0">
+                                  <div class="col-10 my-0 py-0">
+                                    <h5 class="text-blue font-weight-bold my-0 pb-0 text-left">Titulo del producto</h5>
+                                  </div>
+                                  <div class="col-2">
+                                    <button type="button" class="close py-0 text-right" data-dismiss="modal" aria-label="Close">
+                                      <span class="p-0" aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                                  
+                                  <div class="col-12 my-0 py-0">
+                                    <p class="small text-left">IVA incluido</p>
+                                  </div>
+                                </div>
+                                <div class="row my-0 py-0">                   
+                                  <div class="col-7 my-0 py-0 pr-0">
+                                    <p class="small font-weight-bold text-black my-0 pb-0 fs-18 pt-1">20,00 $</p>
+                                    <p class="small my-0 py-0">Caja - 30 unidades</p>
+                                  </div>
+                                  <div class="col-5 pl-0">                         
+                                    <form class="text-center">
+                                      <div class="form-group m-0">
+                                        <label class="labelfs" for="cantidad">Cantidad</label>
+                                        <input type="number" class="form-control form-control-sm" id="cantidadProductos">
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>        
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <!--  Modal footer-->
+                      <div class="container pt-4">
+                        <div class="row m-0 p-0">
+                          <div class="col-6 text-left mb-0">
+                            <p>Subtotal</p>
+                          </div>
+                          <div class="col-6 text-right mb-0">
+                            <p>59,35 $</p>
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="col-6 text-left mb-1">
+                            <p>IVA</p>
+                          </div>
+                          <div class="col-6 text-right mb-1">
+                            <p>11,65 $</p>
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="col-6 text-left mb-0">
+                            <p class="text-uppercase text-blue fs-16 font-weight-bold">Total</p>
+                          </div>
+                          <div class="col-6 text-right mb-0">
+                            <p class="font-weight-bold text-black fs-24">70,35 $</p>
+                          </div>
+                        </div>
+                        <div class="row m-0 p-0">
+                          <div class="col-5 text-left mb-0">
+                            <p class="text-blue">TOTAL (Bs)</p>
+                          </div>
+                          <div class="col-7 text-right mb-0 pb-6">
+                            <p class="font-weight-bold text-black">89,000,000.00 Bs</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-------- /Modal body --------->
+    </section>   
+    <!-- /Carrito formulario-->
+
+    <!-- info-envio-->
+    <section class="envio-info">
+      <div class="datos-info container container-width-md px-4 pb-4">
+
+        <!-- Numbers-->                                          
+        <div class="container">
+          <div class="row p-1">
+            <div class="formularios__numberWidth pt-1 pr-0 d-block d-md-none">
+              <button id=btn_clr1 class="formularios__btnNumber bg-blue">
+                <p class="text-white small">1</p>
+              </button>
+            </div>
+            <div class="formularios__numberWidth pt-1 pr-0 d-md-none">
+              <button id=btn_clr2 class="formularios__btnNumber bg-blue">
+                <p class="text-white small">2</p>
+              </button>
+            </div>
+            <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
+              <button class="formularios__btnNumber bg-primary">
+                <p class="text-white small">3</p>
+              </button>
+            </div>
+            <div class="col-6 d-flex align-items-center pl-3 col-md-11">
+              <p class="font-weight-bold m-0 texto-small text-black">Datos de envío</p>
+            </div>
+          </div>
+        </div>
+        <!-- Fin Numbers-->
+
+
+        <div class="wrapper border shadow p-4">
+          <div class="datos_info-img row"> 
+            <div class="col text-center">
+              <img class="formularios__imgWidth" src="{{asset('images/imgs/new-delivery.svg')}}" alt="">
+            </div>
+          </div>
+          <div class="datos-info-text row py-2">
+            <div class="col text-center">
+              <p class="small text-muted">Agrega los datos de envio</p>            
+            </div>
+          </div>
+          <div class="datos-info-modal row pt-3">
+            <div class="col  text-center">
+              <a href="#" data-toggle="modal" data-target="#modal-envio"> <p class="font-weight-bold text center text-secondary">Agregar datos de envio</p></a>          
+            </div>
+            <div class="modal fade" id="modal-envio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header px-2 pb-1">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-10 mb-0">
+                          <h4 class="modal-title text-blue font-weight-bold" id="exampleModalLabel">Datos de envío</h4>
+                          <p class="small">Agregue los datos solicitados</p>
+                        </div>
+                        <div class="col-2">
+                          <button type="button" class="close p-0" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-body px-2 pt-1 pb-2">
+                    <div class="form-title container">
+                      <div class="form-check pb-2">
+                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                        <label class="form-check-label" for="invalidCheck2"> Seleccionar en la dirección de envio la misma dirección juridica.</label>
+                      </div>
+                      <div class="row">
+                        <div class="col text-center">
+                          <p class="text-black font-weight-bold">Dirección de envío</p>
+                        </div>
+                      </div>
+                    </div>
+                    <form>
+                      <div class="form">
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Estado">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Ciudad">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Codigo postal">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Dirección">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Responsable">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Telefono Oficina">
+                        </div>
+                      </div>
+                    </form>
+                    <div class="form-title container pt-4">
+                      <div class="row">
+                        <div class="col text-center">
+                          <p class="text-black font-weight-bold">Hora de entrega sugerida</p>
+                        </div>
+                      </div>
+                    </div>
+                    <form>
+                      <div class="form">
+                        <div class="col">
+                          <input type="text" class="form-control-plaintext border-bottom pb-1 px-1" placeholder="Horario de atención">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer pt-2">
+                    <div class="container">
+                      <div class="row mb-0">
+                          <button type="button" class="btn btn-primary btn-block">Aceptar</button>
+                      </div>
+                      <div class="row">
+                        <p class="text-muted small text-center">Al hacer click en continuar usted confirma que los datos administrados son reales</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>     
+        </div>
+      </div>       
     </section>
+    <!--/info-envio-->
+
+    <!-- Buttoms-->
+      <section class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-5 pr-0">
+              <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
+            </div>
+            <div class="col-7 pl-0">
+              <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </section>
     <!-- /Buttoms-->     
 </section>
 <!----------------------------- /Formulalio envio ------------------------------------>
@@ -1260,32 +1656,33 @@ $color_header='dark';
 
 
 <!------------------------------ Formulalio venta ----------------------------------->
-<section id=form_venta>
+<section class="container-width">
    
     <!-- info-envio-->
     <section class="venta-info pt-4">
-      <div class="envio-info-circle container container-width-md">
-        <div class="circle row py-3 px-4">
-          <div class="circle-number col-2 col-sm-1 p-0">
-            <button class="rounded-circle circle_number bg-dark border-0">
+    <div class="container">
+        <div class="row p-1">
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
+            <button class="formularios__btnNumber bg-blue" disabled>
               <p class="text-white small">1</p>
             </button>
           </div>
-          <div class="circle-number col-2 col-sm-1 p-0">
-            <button class="rounded-circle circle_number bg-dark border-0">
-              <p class="text-white small">2</p>
-            </button>
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
+              <button class="formularios__btnNumber bg-blue" disabled>
+                <p class="text-white small">2</p>
+              </button>
           </div>
-          <div class="circle-number col-2 col-sm-1 p-0">
-            <button class="rounded-circle circle_number bg-dark border-0">
+          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
+            <button class="formularios__btnNumber bg-blue" disabled>
               <p class="text-white small">3</p>
             </button>
           </div>
-          <div class="circle-text col-6 col-11-9 d-flex align-items-center pl-0">
-            <p class="font-weight-bold small text-black">Fin del proceso</p>
+          <div class="col-6 d-flex align-items-center pl-2 col-md-9">
+            <p class="font-weight-bold m-0 texto-small text-black">Fin del proceso</p>
           </div>
-        </div> 
         </div>
+      </div>
+
       <div class="datos-info container container-width-md px-4 pb-4">
         <div class="wrapper boxed border shadow p-4">
           <div class="datos_info-img row"> 
@@ -1310,18 +1707,18 @@ $color_header='dark';
     <!--/info-envio-->
 
     <!-- Buttoms-->
-    <section>
-          <div class="container container-width-md">
-            <div class="row">
-              <div class="col-5 pr-0">
-                <button type="button" class="btn btn-secondary btn-sm btn-block radius-buton-right text-secondary font-weight-bold">Anterior</button>
-              </div>
-              <div class="col-7 pl-0">
-                <button id=btn_next1 class="btn btn-primary btn-sm btn-block radius-buton-left font-weight-bold">Ver compras</button>
-              </div>
+    <section class="">
+        <div class="container">
+          <div class="row">
+            <div class="col-5 pr-0">
+              <button id="btn_prior1" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
+            </div>
+            <div class="col-7 pl-0">
+              <button id="btn_next2" class="btn btn-primary btn-sm btn-block formularios__btn-right">Siguiente</button>
             </div>
           </div>
-    </section>
+        </div>
+      </section>
     <!-- /Buttoms-->     
 </section>
 <!----------------------------- /Formulalio venta ------------------------------------>

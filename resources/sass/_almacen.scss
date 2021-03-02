@@ -83,3 +83,25 @@
 .almacen__agregarProducto-button.disabled {
     display: none;
 }
+
+//modificaciones finales
+ 
+.almacen__textProduct {
+    background: #FF661B;
+    color:white;
+    text-align: center;
+    font-size:80%;
+  }
+  .almacen__textCard {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+  }
+  .almacen__cardImg {
+    position:relative;
+  }
+  @media (max-width:560px) {
+    .almacen__textProduct {
+      font-size:60%;
+    }
+  }

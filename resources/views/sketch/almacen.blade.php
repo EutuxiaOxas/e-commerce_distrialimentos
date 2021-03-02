@@ -1,7 +1,28 @@
 @extends('layouts.main')
 
 @section('title')
-    <title>Almacen</title>
+    Almacén
+@endsection
+
+@section('metas')
+<!-- Primary Meta Tags -->
+<title>Almacén de productos</title>
+<meta name="title" content="Almacén de productos">
+<meta name="description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://metatags.io/">
+<meta property="og:title" content="Almacén de productos">
+<meta property="og:description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+<meta property="og:image" content="{{asset('images/cta/Envios.jpg')}}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://metatags.io/">
+<meta property="twitter:title" content="Almacén de productos">
+<meta property="twitter:description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+<meta property="twitter:image" content="{{asset('images/cta/Envios.jpg')}}">
 @endsection
 
 @php
@@ -27,31 +48,31 @@ $color_header='dark';
     font-size: 12px;
   }
   .espaciado {
-    padding: 0 6px;
+    padding: 7px 6px;
   }
-
-  .productDetail__componenteCamion {
-    height:25px;
-    width: 112px;
-    padding: 0 8px;
-    border-radius: 12px;
-    background: #FF9417;
-    color:white;
-    font-weight:bold;
-    font-size: 13px;
-    display:flex;
-    justify-content: space-evenly;
-    align-items:center;
-    
-  }
-  .productDetail__componenteCamion img{
-    width: fit-content;
-    padding-top:4px;}
 
   </style>
 
 
    <!-- Almacen-->
+
+      <!----- Banner de almacen------>
+      <section>
+        <div class="container-fluid p-0">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="{{asset('images/portada/portada2.jpg')}}" alt="First slide">
+              </div>
+              <div class="carousel-item">
+              <img class="d-block w-100" src="{{asset('images/portada/portada2.jpg')}}" alt="First slide">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!----- FIN Banner de almacen------>
+
    <section>
     <div class="container-fluid pt-5">
       <div class="row my-1 px-2 py-0">
@@ -65,14 +86,20 @@ $color_header='dark';
       @foreach($productos as $producto)
         <div class="col-6 col-md-2 espaciado d-flex">
             <div class="card rising border">
-              <a href="{{route('producto.show', $producto->slug)}}">
+              <a class="almacen__cardImg" href="{{route('producto.show', $producto->slug)}}">
                 <img class="card-img-top" src="{{asset('storage/'.$producto->image)}}" alt="Card image cap">
+                <div class="almacen__textCard">
+                  <p class="almacen__textProduct">Disponible Al gran Mayor 18.00 $</p>
+                </div>
+                <div class="almacen__textCard">
+                  <p class="almacen__textProduct almacen__productAdded">Más de 20 - 18.00 $ Al gran Mayor</p>
+                </div>
               </a>
              <!-- card-body-->
               <div class="card-body pt-1 px-1 flex-fill">
                 <div class="wrapper flex-wrap h-100 justify-content-center p-2">
                   <div class="row mb-0">
-                      <div class="col-12 pb-1 d-flex justify-content-between align-items-center">
+                      <div class="col-6 pb-1 d-flex justify-content-between align-items-center">
                         <span class="inCart-icon almacen__productAdded" id="{{$producto->id}}">
                           <div class="productDetail__componenteCamion productDetail__componenteCamion-desktop">
                             <img src="{{asset('images/imgs/check.svg')}}" alt="Check-Nike">
@@ -84,7 +111,7 @@ $color_header='dark';
                         <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>{{$producto->sku}}</p>
                       </div>
                       <div class="col-12">
-                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">{{$producto->title}}</h6>
+                        <h6 class="card-title font-weight-bold mb-0 text-secondary pb-1">{{$producto->title}}</h6>
                       </div>
                       <div class="col-12">
                         <h6 class="text-black mb-0 smaller-3 pb-1">{{$producto->description}}</h6>

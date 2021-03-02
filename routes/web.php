@@ -39,14 +39,7 @@ Route::get('/currency/{type}', function($type) {
 })->name('active.curency');
 
 //home 
-Route::get('/', function () {
-	$banners_principales = Logo_Banner::where('tipo','principal')->get();
-	$banners_promocionales = Logo_Banner::where('tipo','promocional')->get();
-	$categories = Category::all();
-
-	$categorias = $categories;
-	return view('home', compact('banners_principales','banners_promocionales', 'categories','categorias'));
-})->name('home');
+Route::get('/', 'HomeController@index' )->name('home');
 
 //nosotros 
 Route::get('/nosotros', function () {

@@ -422,7 +422,7 @@ $color_header='dark';
                 <button type="button" class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
                 </div>
                 <div class="col-7 pl-0">
-                    <a href="/login" class="btn btn-primary btn-sm btn-block formularios__btn-right"><p>Iniciar seccion</p></a>
+                    <a href="/login" class="btn btn-primary btn-sm btn-block formularios__btn-right"><p>Iniciar sesión</p></a>
                 </div>
                 </div>
             </div>
