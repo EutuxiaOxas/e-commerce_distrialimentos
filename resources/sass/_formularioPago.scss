@@ -1,3 +1,11 @@
+.hideForm {
+    display: none;
+}
+
+
+//----------------- FORMULARIO METODO DE PAGO ------------------
+
+
 .fomularioMetodoPago__selectbBankCard{ 
     border-radius: 5px;
     border: 1px solid #FF661B;
@@ -45,5 +53,74 @@
 
     .fomularioMetodoPago__selectbBankCardIcon-active {
         display: block;
+    }
+}
+
+
+.fomularioMetodoPago__metodoAlert{
+    text-align: center;
+    padding: .8rem 0 .4rem;
+    
+    .fomularioMetodoPago__metodoAlert-text {
+        font-family: $secondary_font;
+        color: #838383;
+        font-weight: bold;
+    }
+}
+
+
+//----------------- FORMULARIO REALIZACIÓN DE PAGO ------------------
+
+//Header 
+.formPayment__headerMain {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.3rem;
+}
+
+.formPayment__headerLeft{
+    color: #FD6721;
+}
+
+.formPayment__headerMain-title {
+    font-family: $principal_font;
+    font-size: 1.1rem;
+}
+
+.formPayment__headerMain-description {
+    font-family: $secondary_font;
+    font-size: .73rem;
+}
+
+.formPayment__headerMain-description.price {
+    text-align: end;
+    color: #838383;
+}
+
+//Info Alert
+.formPayment__alertInformation {
+    background-color: #0068B1;
+    border-radius: 0px;
+    padding: .3rem 1rem .8rem;
+}
+
+
+
+
+.formPayment__alertInformation-actionContainer{
+    margin-bottom: .5rem;
+
+    .formPayment__alertInformation-paymentData {
+        font-size: .7rem;
+    }
+}
+
+.formPayment__alertInformation-paymentData {
+    color: rgba($color: #F5F5F5, $alpha: .7);
+    font-weight: 300;
+    font-family: $secondary_font;
+    span {
+        font-weight: 400;
+        color: #ffffff;
     }
 }

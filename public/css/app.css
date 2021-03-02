@@ -13190,6 +13190,10 @@ nav {
   }
 }
 
+.hideForm {
+  display: none;
+}
+
 .fomularioMetodoPago__selectbBankCard {
   border-radius: 5px;
   border: 1px solid #FF661B;
@@ -13238,5 +13242,66 @@ nav {
 
 .fomularioMetodoPago__selectbBankCard:hover .fomularioMetodoPago__selectbBankCardIcon-active {
   display: block;
+}
+
+.fomularioMetodoPago__metodoAlert {
+  text-align: center;
+  padding: 0.8rem 0 0.4rem;
+}
+
+.fomularioMetodoPago__metodoAlert .fomularioMetodoPago__metodoAlert-text {
+  font-family: "Roboto", cursive;
+  color: #838383;
+  font-weight: bold;
+}
+
+.formPayment__headerMain {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.3rem;
+}
+
+.formPayment__headerLeft {
+  color: #FD6721;
+}
+
+.formPayment__headerMain-title {
+  font-family: "Righteous", cursive;
+  font-size: 1.1rem;
+}
+
+.formPayment__headerMain-description {
+  font-family: "Roboto", cursive;
+  font-size: 0.73rem;
+}
+
+.formPayment__headerMain-description.price {
+  text-align: end;
+  color: #838383;
+}
+
+.formPayment__alertInformation {
+  background-color: #0068B1;
+  border-radius: 0px;
+  padding: 0.3rem 1rem 0.8rem;
+}
+
+.formPayment__alertInformation-actionContainer {
+  margin-bottom: 0.5rem;
+}
+
+.formPayment__alertInformation-actionContainer .formPayment__alertInformation-paymentData {
+  font-size: 0.7rem;
+}
+
+.formPayment__alertInformation-paymentData {
+  color: rgba(245, 245, 245, 0.7);
+  font-weight: 300;
+  font-family: "Roboto", cursive;
+}
+
+.formPayment__alertInformation-paymentData span {
+  font-weight: 400;
+  color: #ffffff;
 }
 
