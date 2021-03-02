@@ -1,4 +1,4 @@
-<section id="formulario1" class="formularios__sections show">
+<section id="formulario4" class="formularios__sections show hide">
 
   <!-- datos de usuario-->                                
   <section class="py-1">
@@ -7,7 +7,7 @@
       <div class="row p-1">
         <div class="col-2 pt-1 pr-0 col-md-1 col-lg-1">
           <button class="formularios__btnNumber bg-primary">
-            <p class="text-white small">1</p>
+            <p class="text-white small">4</p>
           </button>
         </div>
         <div class="col-10 d-flex align-items-center pl-0 col-md-11 col-lg-11">
@@ -58,7 +58,10 @@
           <button type="button" class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
         </div>
         <div class="col-7 pl-0">
-          <button id="btn_next1" class="btn btn-primary btn-sm btn-block formularios__btn-right" @if( !($user->documento_identidad && $user->phone) ) disabled @endif >Siguiente</button>
+          <form action="{{route('order.store')}}" id="formFinalizarCompra">
+            <input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
+            <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" @if (!$direcciones->isNotEmpty()) disabled @endif>Finalizar Compra</button>
+          </form>
         </div>
       </div>
     </div>

@@ -83,10 +83,7 @@
             <button id="btn_prior2" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
           </div>
           <div class="col-7 pl-0">
-            <form action="{{route('order.store')}}" id="formFinalizarCompra">
-				<input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
-				<button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" @if (!$direcciones->isNotEmpty()) disabled @endif>Finalizar Compra</button>
-			</form>
+			<button id="btn_next3" class="btn btn-primary btn-sm btn-block formularios__btn-right" @if( !($user->documento_identidad && $user->phone) ) disabled @endif >Siguiente</button>
           </div>
         </div>
       </div>
