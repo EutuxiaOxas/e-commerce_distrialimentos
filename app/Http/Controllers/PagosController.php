@@ -7,6 +7,7 @@ use App\Order;
 use App\Bank;
 use App\Banks_User;
 use App\Pago;
+use Carbon\Carbon;
 class PagosController extends Controller
 {
 
@@ -104,12 +105,20 @@ class PagosController extends Controller
 
     public function guardarPago(Request $request)
     {
-        $orden = Order::find($request->orden_id);
+        // return $request->all();
+        $user = auth()->user();
+    	$pagoRealizado = new Pago();
+        
+        $pagoRealizado->user_id = $user->id;
+        $pagoRealizado->monto = $request->monto;
+        $pagoRealizado->id_banco_receptor = $request->id_banco_receptor;
+        $pagoRealizado->referencia = $request->referencia;
+        $pagoRealizado->titular_cuenta = $request->titular_cuenta;
+        $pagoRealizado->documento_identidad_titular = $request->documento_identidad_titular;
 
-    	Pago::create($request->all());
-        $orden->status = 'REGISTRADO';
-        $orden->save();
-    	return redirect('/home')->with('message', 'Orden realizada con éxito y en proceso!');
+        $pagoRealizado->save();
+
+        return response()->json($pagoRealizado, 201);
     }
 
 

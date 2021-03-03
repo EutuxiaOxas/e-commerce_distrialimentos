@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pago extends Model
 {
-    protected $fillable = ['user_id', 'orden_id', 'monto', 'fecha', 'id_banco_emisor', 'id_banco_receptor', 'referencia', 'titular_cuenta', 'documento_identidad_titular'];
+    protected $fillable = ['user_id', 'monto', 'fecha', 'id_banco_receptor', 'referencia', 'titular_cuenta', 'documento_identidad_titular'];
 
-    public function emisor()
-    {
-    	return $this->belongsTo('App\Bank', 'id_banco_emisor');
-    }
+    // public function emisor()
+    // {
+    // 	return $this->belongsTo('App\Bank', 'id_banco_emisor');
+    // }
 
     public function receptor()
     {

@@ -6,7 +6,7 @@
     </div>
     <div class="formPayment__headerRight">
       <h5 class="formPayment__headerMain-title price" id="paymentForm__totalAmount">20000.00 $</h5>
-      <p class="formPayment__headerMain-description price" id="paymentForm__amountDescription">Monto a transferir</p>
+      <p class="formPayment__headerMain-description price">Monto a transferir</p>
     </div>
   </div>
 
@@ -24,22 +24,27 @@
   </div>
 
   <div class="formPayment__paymentInfomation">
-    <form action="">
+    <form action="" id="formularioPayment">
       @csrf
-      <div class="login__inputContainer">
-        <input type="text" class="login__inputContainer-input" name="titular_cuenta" placeholder="Titular de cuenta" autocomplete="off">
-      </div>
+      <div id="formPaymentFormContainer">
+        <div class="login__inputContainer">
+          <input type="text" class="login__inputContainer-input" name="titular_cuenta" placeholder="Titular de cuenta" autocomplete="off">
+        </div>
 
-      <div class="login__inputContainer">
-        <input type="text" class="login__inputContainer-input" name="documento_identidad_titular" placeholder="Documento identidad titular" autocomplete="off">
-      </div>
+        <div class="login__inputContainer">
+          <input type="text" class="login__inputContainer-input" name="documento_identidad_titular" placeholder="Documento identidad titular" autocomplete="off">
+        </div>
 
-      <div class="login__inputContainer">
-        <input type="text" class="login__inputContainer-input" name="referencia" placeholder="Referencia" autocomplete="off">
-      </div>
+        <div class="login__inputContainer">
+          <input type="text" class="login__inputContainer-input" name="referencia" placeholder="Referencia" autocomplete="off">
+        </div>
 
+        <div class="login__inputContainer">
+          <input type="number" class="login__inputContainer-input" name="monto" placeholder="Monto pagado" autocomplete="off">
+        </div>
+      </div>
       <div class="login__inputContainer">
-        <input type="number" class="login__inputContainer-input" name="monto" placeholder="Monto pagado" autocomplete="off">
+        <button type="submit" class="btn btn-primary">Registrar pago</button>
       </div>
     </form>
     <div class="fomularioMetodoPago__metodoAlert">

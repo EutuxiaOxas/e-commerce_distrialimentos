@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('address_id');
+            $table->foreignId('pago_id');
             $table->float('total_amount');
             $table->float('sub_total');
             $table->float('iva');
