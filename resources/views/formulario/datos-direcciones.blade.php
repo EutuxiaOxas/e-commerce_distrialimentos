@@ -230,9 +230,10 @@
 
 <script>
 	
-	const $btn_next3 = document.getElementById('btn_finish');
+	// const $btn_next3 = document.getElementById('btn_next3');
+	// const $btn_next3 = document.getElementById('btn_finish');
 
-
+ 
 	function compraFormDirection(){
 
 		//------------------- FUNCIONES SCOPE ---------------------
