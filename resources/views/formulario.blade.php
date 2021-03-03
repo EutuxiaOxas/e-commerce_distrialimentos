@@ -144,35 +144,35 @@
     <div class="row">
       <div class="col-md-7 px-0">
 
-  {{-- saludos al usuario --}}
-  @include('formulario.saludo')
+        {{-- saludos al usuario --}}
+        @include('formulario.saludo')
 
+        
+        <!---------------------------------- Formulario I ----------------------------->
+        {{-- datos del comprador --}}
+        @include('formulario.datos-comprador')
+        
+        <!-------------------------- Formulario II ----------------------------->
+        {{-- datos de la empresa --}}
+        @include('formulario.datos-empresa')
+        
+        <!-------------------------- Formulario IV ----------------------------->
+        {{-- datos de pago --}}
+        @include('formulario.datos-pago-uno')
+        {{-- @include('formulario.datos-pago-dos') --}}
+        
+        <!-------------------------- Formulario III ----------------------------->
+        {{-- datos de la direccion  --}}
+        @include('formulario.datos-direcciones')
+        
+        <!-------------------------- Seccion de Total del camion ----------------------------->
+        {{-- datos de la direccion  --}}
+        @include('formulario.total-compra')
   
-  <!---------------------------------- Formulario I ----------------------------->
-  {{-- datos del comprador --}}
-  @include('formulario.datos-comprador')
   
-  <!-------------------------- Formulario II ----------------------------->
-  {{-- datos de la empresa --}}
-  @include('formulario.datos-empresa')
-  
-  <!-------------------------- Formulario III ----------------------------->
-  {{-- datos de la direccion  --}}
-  @include('formulario.datos-direcciones')
-  
-  <!-------------------------- Formulario IV ----------------------------->
-  {{-- datos de pago --}}
-  @include('formulario.datos-pago-uno')
-  {{-- @include('formulario.datos-pago-dos') --}}
-  
-  <!-------------------------- Seccion de Total del camion ----------------------------->
-  {{-- datos de la direccion  --}}
-  @include('formulario.total-compra')
-  
-  
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-------------------------- Javascript ----------------------------->
 
