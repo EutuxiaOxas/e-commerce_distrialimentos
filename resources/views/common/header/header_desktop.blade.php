@@ -164,7 +164,7 @@
 				<p class="navbar__currency--subtitle">Divisas</p>
 				<div id="currency_list" class="navbar__currencyList hide">
 					<div class="navbar__currencyList--item  usd choose">
-						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'us')}}">Dolares</a>
+						<a class="navbar__currencyList--itemOption" href="{{route('active.curency', 'usd')}}">Dolares</a>
 					</div>
 					<div class="navbar__currencyList--item ves choose">
 						<a class="navbar__currencyList--itemOption " href="{{route('active.curency', 'ves')}}">Bolivares</a>
@@ -173,7 +173,7 @@
 			</div>
 
 			<div class="navbar__location dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<p class="navbar__locationBody-title">Carabobo</p>
+				<p class="navbar__locationBody-title">{{session('location')}}</p>
 				<p class="navbar__locationBody-subtitle">Ubicación</p>
 				<div class="navbar__location-img">
 					<svg class="px-1" width="25" height="25" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -181,8 +181,8 @@
 					</svg>
 				</div>
 				<div class="dropdown-menu navbar__locationList" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item navbar__locationListItems" href="#">Carabobo</a>
-					<a class="dropdown-item navbar__locationListItems" href="#">Aragua</a>
+					<a class="dropdown-item navbar__locationListItems" href="{{route('active.location', 'carabobo')}}">Carabobo</a>
+					<a class="dropdown-item navbar__locationListItems" href="{{route('active.location', 'aragua')}}">Aragua</a>
 				</div>
 			</div>
 
