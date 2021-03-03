@@ -210,6 +210,9 @@ Route::middleware('cms')->group(function () {
 	Route::post('/cms/promociones/create', 'PromotionController@agregarPromocion')->name('promociones.store');
 	Route::post('/cms/promociones/update/{id}', 'PromotionController@actualizarPromocion')->name('promociones.update');
 	Route::post('/cms/promociones/eliminar/{id}', 'PromotionController@eliminarPromocion');
+	//ocultar/activar banners promocionales
+	Route::get('/cms/activar/promociones/{id}', 'PromotionController@activarBanner')->name('promociones.active');
+	Route::get('/cms/ocultar/promociones/{id}', 'PromotionController@ocultarBanner')->name('promociones.desactive');
 });
 
 /*---------------ADMINISTRADORES --------------*/
@@ -240,9 +243,7 @@ Route::middleware('landing')->group(function () {
 	//ocultar/activar banners principales
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
-	//ocultar/activar banners promocionales
-	Route::get('/cms/activar/promociones/{id}', 'Cms\PromotionController@activarBanner')->name('promociones.active');
-	Route::get('/cms/ocultar/promociones/{id}', 'Cms\PromotionController@ocultarBanner')->name('promociones.desactive');
+
 
 });
 

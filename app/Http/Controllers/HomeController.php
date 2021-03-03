@@ -23,8 +23,8 @@ class HomeController extends Controller
    
     public function index()
     {
-        $banners_principales = Logo_Banner::where('tipo','principal')->get();
-        $banners_promocionales = Logo_Banner::where('tipo','promocional')->get();
+        $banners_principales = Logo_Banner::where('tipo','principal')->where('status','1')->get();
+        $banners_promocionales = Logo_Banner::where('tipo','promocional')->where('status','1')->get();
         $categories = Category::all();
         $categorias = $categories;
         $productos_destacados= Product::where('isfeatured','1')->orderByRaw('rand()')->take(12)->get();

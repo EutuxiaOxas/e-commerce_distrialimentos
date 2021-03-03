@@ -86,6 +86,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <p>¿Desea eliminar el banner principal?</p>
                         <form action="" id="eliminar_form" method="POST">
                             @csrf
                         </form>
