@@ -42,6 +42,27 @@ Route::get('/currency/{type}', function($type) {
 	return back();
 })->name('active.curency');
 
+Route::get('/location/{type}', function($type) {
+	if($type === 'carabobo')
+	{
+
+		if(session()->has('location')) {
+			session()->forget('location');
+			session(['location' => 'Carabobo']);
+		}
+
+	}else 
+	{
+		if(session()->has('location')) {
+			session()->forget('location');
+			session(['location' => 'Aragua']);
+		}
+	}
+
+	return back();
+})->name('active.location');
+
+
 //home 
 Route::get('/', 'HomeController@index' )->name('home');
 
