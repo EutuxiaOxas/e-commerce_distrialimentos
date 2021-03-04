@@ -28,8 +28,7 @@
       <!-- Fin Number-->
     @if ($direcciones->isNotEmpty())
 		@foreach ($direcciones->take(1) as $direccion)
-			
-		
+		<div class="container mt-1">
 			<!-- trj datos de envio-->
 			<div class="perfil__cardBody direccion" id="formAddressMain">
 				<div class="info-container p-3 mb-1">
@@ -55,6 +54,8 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
 		<!-- Fin trj datos de envio-->
 		@endforeach
     @else 
@@ -70,9 +71,7 @@
         </div>
     @endif
 
-     
-
-    </section>
+</section>
     <!-- Fin Datos de usuario-->
 
     <!-- Buttoms-->

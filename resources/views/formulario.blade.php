@@ -228,9 +228,17 @@ $form3.classList.toggle('hide')&$form2.classList.toggle('hide');
 $btn_clr2.addEventListener('click', () => {
 $form3.classList.toggle('hide')&$form2.classList.toggle('hide');
 });
-
 $btn_clr1.addEventListener('click', () => {
 $form3.classList.toggle('hide')&$form1.classList.toggle('hide');
+});
+
+
+
+$btn_clr3.addEventListener('click', () => {
+$form4.classList.toggle('hide')&$form3.classList.toggle('hide');
+});
+$btn_prior3.addEventListener('click', () => {
+$form4.classList.toggle('hide')&$form3.classList.toggle('hide');
 });
 
 

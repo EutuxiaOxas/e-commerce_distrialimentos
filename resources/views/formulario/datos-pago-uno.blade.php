@@ -4,8 +4,7 @@
   <section class="py-1">
     <!-- Number-->
     <div class="container">
-      <div class="row p-1">
-        <div class="col-2 pt-1 pr-0 col-md-1 col-lg-1">
+      <div class="row p-1" style="flex-wrap: inherit;">
           <div class="formularios__numberWidth pt-1 pr-0 d-block d-md-none">
             <button id=btn_clr1 class="formularios__btnNumber bg-blue">
               <p class="text-white small">1</p>
@@ -16,19 +15,18 @@
               <p class="text-white small">2</p>
             </button>
           </div>
-          <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
-            <button class="formularios__btnNumber bg-blue">
+          <div class="formularios__numberWidth pt-1 pr-0 d-md-none ">
+            <button id=btn_clr3 class="formularios__btnNumber bg-blue">
               <p class="text-white small">3</p>
             </button>
           </div>
           <div class="formularios__numberWidth pt-1 pr-0 col-md-1">
-            <button class="formularios__btnNumber bg-primary">
+            <button  class="formularios__btnNumber bg-primary">
               <p class="text-white small">4</p>
             </button>
           </div>
-        </div>
-        <div class="col-10 d-flex align-items-center pl-0 col-md-11 col-lg-11">
-          <p class="font-weight-bold texto-small">Datos de pago</p>
+        <div class="col-8 d-flex align-items-center pl-3 col-md-11">
+          <p class="font-weight-bold m-0 texto-small text-black">Datos de pago</p>
         </div>
       </div>
     </div>
