@@ -13,12 +13,12 @@ class VariableSeeder extends Seeder
     {
         DB::table('variables')->insert([
             'name' => 'IVA',
-            'value' => 11.50,
+            'value' => 16,
         ]);
 
         DB::table('variables')->insert([
             'name' => 'DOLAR',
-            'value' => 1500000,
+            'value' => 1800000,
         ]);
     }
 }

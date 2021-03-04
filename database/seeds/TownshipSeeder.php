@@ -14,27 +14,32 @@ class TownshipSeeder extends Seeder
          // Ciudad de Valencia 
          DB::table('townships')->insert([
         	'city_id' => '1',
-        	'township' => 'Valencia',
+        	'township' => 'Casco central',
         	'coverage' => '0'
         ]);
         DB::table('townships')->insert([
         	'city_id' => '1',
-        	'township' => 'San Diego',
+        	'township' => 'Prebo',
         	'coverage' => '0'
         ]);
         DB::table('townships')->insert([
         	'city_id' => '1',
-        	'township' => 'Naguanagua',
+        	'township' => 'Trigal',
         	'coverage' => '0'
         ]);
         DB::table('townships')->insert([
         	'city_id' => '1',
-        	'township' => 'Guacara',
+        	'township' => 'Avenida Bolivar',
         	'coverage' => '0'
         ]);
         DB::table('townships')->insert([
         	'city_id' => '1',
-        	'township' => 'Los Guayos',
+        	'township' => 'Santa rosa',
+        	'coverage' => '0'
+        ]);
+        DB::table('townships')->insert([
+        	'city_id' => '1',
+        	'township' => 'La candelaria',
         	'coverage' => '0'
         ]);
        

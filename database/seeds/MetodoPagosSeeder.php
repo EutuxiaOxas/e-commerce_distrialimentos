@@ -37,5 +37,12 @@ class MetodoPagosSeeder extends Seeder
             'titular' => 'Administrador',
             'number_account' => 'juan@gmail.com'
         ]);
+
+        DB::table('banks_user')->insert([
+            'title' => 'Pago movil',
+            'description' => 'Transferencia en Bolivares',
+            'titular' => 'Administrador',
+            'number_account' => 'juan@gmail.com'
+        ]);
     }
 }
