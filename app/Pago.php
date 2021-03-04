@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pago extends Model
 {
-    protected $fillable = ['user_id', 'monto', 'fecha', 'id_banco_receptor', 'referencia', 'titular_cuenta', 'documento_identidad_titular'];
+    protected $fillable = ['user_id', 'monto', 'fecha', 'id_banco_receptor', 'referencia', 'titular_cuenta', 'documento_identidad_titular', 'order_id'];
 
     // public function emisor()
     // {

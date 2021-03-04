@@ -51,7 +51,6 @@ class OrderController extends Controller
 			'discount' => 0,
 			'n-control' => 0,
 			'address_id' => $request->address_id,
-			'pago_id' => $request->pago_id,
     	]);
 
     	$id = $order->id;
@@ -71,7 +70,7 @@ class OrderController extends Controller
     	}
 
 
-    	return redirect("/gracias-por-su-pedido");
+    	return redirect("/pago?orden=".$id);
 
     }
 

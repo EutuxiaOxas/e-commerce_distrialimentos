@@ -17,6 +17,7 @@ class CreatePagosTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('monto');
+            $table->foreignId('order_id');
             $table->date('fecha')->nullable();
             $table->foreignId('id_banco_receptor');
             $table->text('referencia')->nullable();

@@ -13393,6 +13393,42 @@ nav {
   }
 }
 
+.formDireccion__pickupMain {
+  background-color: #FD6721;
+  display: flex;
+  width: 78%;
+  margin: 0 auto 0.9rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formDireccion__pickupBody {
+  color: #ffffff;
+  margin-left: 0.8rem;
+  text-align: center;
+}
+
+.formDireccion__pickupBody-title {
+  font-family: "Righteous", cursive;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.formDireccion__pickupBody-subtitle {
+  font-family: "Roboto", cursive;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (min-width: 940px) {
+  .formDireccion__pickupMain {
+    width: 43%;
+  }
+}
+
 .hideForm {
   display: none;
 }

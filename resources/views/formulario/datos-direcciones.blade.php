@@ -65,6 +65,15 @@
             <img src="{{asset('/images/void-03.svg')}}" alt="">
             <p class="perfil__cardListItem-content">Aun sin direcciones de envio...</p>
           </div>
+		  <div class="formDireccion__pickupMain">
+			<div class="formDireccion__pickupImage">
+				<img src="{{asset('images/almacen_icon.png')}}" alt="Almacen icono">
+			</div>
+			<div class="formDireccion__pickupBody">
+				<h3 class="formDireccion__pickupBody-title">Recojer en Almacen</h3>
+				<p class="formDireccion__pickupBody-subtitle">Valencia, Carabobo</p>
+			</div>
+		  </div>
           <div class="perfil__agregarDatos ">
             <a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
           </div>
@@ -82,7 +91,10 @@
             <button id="btn_prior2" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
           </div>
           <div class="col-7 pl-0">
-			<button id="btn_next3" class="btn btn-primary btn-sm btn-block formularios__btn-right" @if( !($user->documento_identidad && $user->phone) ) disabled @endif >Siguiente</button>
+		  <form action="{{route('order.store')}}" id="formFinalizarCompra">
+            <input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
+            <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" {{$direcciones[0]->id ? '' : 'disabled'}}>Finalizar Compra</button>
+          </form>
           </div>
         </div>
       </div>
@@ -270,12 +282,12 @@
 
 		function addNewAddress(address){
 			const mainContainer = document.getElementById('formAddressMain')
-
+			const buttonFinalizar = document.getElementById('btn_finish');
 			if(mainContainer) {
 				addLoaderInFormAddress(mainContainer)
 				setTimeout(()=> {
 					addNewAddressToView(mainContainer, address)
-					$btn_next3.removeAttribute('disabled')
+					buttonFinalizar.removeAttribute('disabled')
 				}, 1500)
 			}
 			

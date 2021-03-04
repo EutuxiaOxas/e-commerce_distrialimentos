@@ -1,5 +1,5 @@
-<section id="formulario4" class="formularios__sections show hide">
-
+<section id="formulario4" class="formularios__sections show">
+  <input type="hidden" value="{{$dolarPrice->value ?? ''}}" id="dolarPricePaymentForm">
   <!-- datos de usuario-->                                
   <section class="py-1">
     <!-- Number-->
@@ -74,9 +74,8 @@
         </div>
         <div class="col-7 pl-0">
           <form action="{{route('order.store')}}" id="formFinalizarCompra">
-            <input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
             <input type="hidden" value="" name="bank_id" id="finalizarCompraBankId">
-            <input type="hidden" value="" name="pago_id" id="finalizarCompraPagoId">
+            <input type="hidden" value="{{$orden->id ?? ''}}" name="orden_id" id="finalizarCompraOrdenId">
             <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" disabled>Finalizar Compra</button>
           </form>
         </div>
@@ -111,6 +110,9 @@
         //FORMULARIO
         const formPaymentFormContainer = document.getElementById('formPaymentFormContainer');
 
+        //ORDEN ID
+        const formPaymentOrdenId = document.getElementById('finalizarCompraOrdenId');
+
         // --------- ADDING DATA --------
 
         let templateAlert;
@@ -135,15 +137,14 @@
 
           templateFormulario = `
             <input type="hidden" name="bank_id" value="${bankId}"/>
+            <input type="hidden" name="order_id" value="${formPaymentOrdenId.value}"/>
             <div class="login__inputContainer">
               <input type="number" class="login__inputContainer-input" id="paymentEfectivo" required name="monto" placeholder="Monto a pagar" autocomplete="off">
             </div>
           `
-          apiCart.getTotalCartAmount()
+          axios.get(`/obtener/pago/${formPaymentOrdenId.value}`)
           .then(res => {
-            const {total} = res.data
-            totalAmount = total.toFixed(2);
-            formPaymentTotalAmount.textContent = totalAmount + '$'
+            verifyTotalAmount(res.data, 'efectivo')
           })
           .catch(err => {
             console.log(err)
@@ -167,7 +168,7 @@
 
           templateFormulario = `
             <input type="hidden" name="bank_id" value="${bankId}"/>
-
+            <input type="hidden" name="order_id" value="${formPaymentOrdenId.value}"/>
             <div class="login__inputContainer">
               <input type="text" class="login__inputContainer-input" id="paymentTitular" required name="titular_cuenta" placeholder="Titular de cuenta" autocomplete="off">
             </div>
@@ -185,11 +186,9 @@
             </div>
           `
 
-          apiCart.getTotalCartAmount()
+          axios.get(`/obtener/pago/${formPaymentOrdenId.value}`)
           .then(res => {
-            const {total} = res.data
-            totalAmount = total.toFixed(2);
-            formPaymentTotalAmount.textContent = totalAmount + '$'
+            verifyTotalAmount(res.data, 'zelle')
           })
           .catch(err => {
             console.log(err)
@@ -213,6 +212,7 @@
           templateFormulario = `
 
             <input type="hidden" name="bank_id" value="${bankId}"/>
+            <input type="hidden" name="order_id" value="${formPaymentOrdenId.value}"/>
             <div class="login__inputContainer">
               <input type="text" class="login__inputContainer-input" required id="paymentTitular" name="titular_cuenta" placeholder="Titular de cuenta" autocomplete="off">
             </div>
@@ -229,19 +229,14 @@
               <input type="number" class="login__inputContainer-input" min="1" required name="monto" placeholder="Monto pagado" autocomplete="off">
             </div>
           `
-          apiCart.getTotalCartAmount()
+          axios.get(`/obtener/pago/${formPaymentOrdenId.value}`)
           .then(res => {
-            const {total, totalBolivar} = res.data
-            totalAmount = total;
-            totalBolivares = `${new Intl.NumberFormat('es-ES').format(parseInt(totalBolivar))} Bs`
-            formPaymentTotalAmount.textContent = totalBolivares
+            verifyTotalAmount(res.data, 'banco')
           })
           .catch(err => {
             console.log(err)
-          })          
+          })        
         }
-
-
         formPaymentAlertContainer.innerHTML = templateAlert;
 
         formPaymentFormContainer.innerHTML = templateFormulario;
@@ -256,23 +251,81 @@
         formPaymentToFinish.classList.toggle('hideForm');
       }
 
-      function pagoRealizado(verify, formulario, pagoId) {
-        const buttonFinalizarOrden = document.getElementById('btn_finish');
-        const formPaymentFormContainer = document.getElementById('formPaymentFormContainer');
-        const formFinalizarCompraPagoId = document.getElementById('finalizarCompraPagoId');
+      function pagoRealizado(ordenId) {
 
-        if(verify) {
-          formFinalizarCompraPagoId.value = pagoId;
-          buttonFinalizarOrden.removeAttribute('disabled');
-          formulario.innerHTML = '<h3>Pago registrado con éxito';
+        axios.get(`/obtener/pago/${ordenId}`)
+          .then(res => {
+            verifyTotalAmount(res.data, 'verificar')
+          })
+          .catch(err => {
+            console.log(err)
+          })
 
-        }else{ 
-          formPaymentFormContainer.innerHTML += '<div>Ocurrió un error, intentelo nuevamente!</div>'
-        }
+      }
+
+      function verifyTotalAmount(data, type){
+          //Total amount and dolar value nad button finish
+          const formPaymentTotalAmount= document.getElementById('paymentForm__totalAmount');
+          const dolarValue = document.getElementById('dolarPricePaymentForm');
+          const buttonFinalizarOrden = document.getElementById('btn_finish');
+
+          //form container
+          const formPaymentFormContainer = document.getElementById('formPaymentFormContainer');
+          
+          // data api
+
+          const total_pago = data.total_pago;
+          const pagos = data.pagos;
+
+          if(pagos.length) {
+            let totalCuenta = total_pago;
+
+            for (let i = 0; i < pagos.length; i++) {
+
+              const pago = pagos[i];
+            
+              const bancoReceptor = pago.banco_receptor;
+              
+              if(bancoReceptor.toLowerCase() == 'zelle' || bancoReceptor.toLowerCase() == 'efectivo') {
+                totalCuenta = totalCuenta - pago.monto;
+                console.log(totalCuenta)
+              }else {
+                const bolivarToDolar = pago.monto / dolarValue.value
+                totalCuenta = totalCuenta - bolivarToDolar
+              }
+
+            }
+
+            if(type === 'verificar'){
 
 
-        return;
+              if(totalCuenta === 0) {
+                formPaymentTotalAmount.textContent = totalCuenta
+                buttonFinalizarOrden.removeAttribute('disabled');
+                formPaymentFormContainer.innerHTML = '<h3>Cuenta completada cón éxito, puede finalizar</h3>'
+                return;
+              }else{ 
+                toggleChooseMethodToPaymentForm();
+              }
 
+
+            }else {
+
+              if(type.toLowerCase() == 'banco') {
+              formPaymentTotalAmount.textContent = `${new Intl.NumberFormat('es-ES').format(parseInt(totalCuenta * dolarValue.value))} Bs`;
+              }else {
+                formPaymentTotalAmount.textContent = `${totalCuenta.toFixed(2)} $`;
+              }
+              
+            }
+
+          }else {
+            if(type.toLowerCase() == 'banco') {
+              formPaymentTotalAmount.textContent = `${new Intl.NumberFormat('es-ES').format(parseInt(total_pago * dolarValue.value))} Bs`;
+            }else {
+              formPaymentTotalAmount.textContent = `${total_pago} $`;
+            }
+          }
       }
 
       const metodoPago = document.querySelectorAll('.payment_type');
@@ -315,38 +368,40 @@
         const efectivoInput = document.getElementById('paymentEfectivo')
 
         if(efectivoInput) {
-          const [, bankId, monto] = e.target;
-
+          const [, bankId, ordenId ,monto] = e.target;
+          
           axios.post('/pago', {
             id_banco_receptor: parseInt(bankId.value),
-            monto: monto.value
+            monto: monto.value,
+            orden_id: ordenId.value
           })
           .then(res => {
-            pagoRealizado(true, e.target, res.data.id)
+            pagoRealizado(ordenId.value)
           })
           .catch(err => {
             console.log(err)
-            pagoRealizado(false, e.target)
+            pagoRealizado(ordenId.value)
           })
 
         }
 
         if(titularInput) { 
-          const [, bankId, titular, documentoIdentidad, referencia, monto] = e.target;
+          const [, bankId, ordenId, titular, documentoIdentidad, referencia, monto] = e.target;
 
           axios.post('/pago', {
             id_banco_receptor: bankId.value,
             titular_cuenta: titular.value,
             documento_identidad_titular: documentoIdentidad.value,
             referencia: referencia.value,
-            monto: monto.value
+            monto: monto.value,
+            orden_id: ordenId.value
           })
           .then(res => {
-            pagoRealizado(true, e.target, res.data.id)
+            pagoRealizado(ordenId.value)
           })
           .catch(err => {
             console.log(err)
-            pagoRealizado(false, e.target, res.data.id)
+            pagoRealizado(ordenId.value)
           })
         }
 
