@@ -229,7 +229,7 @@
 
 <script>
 	
-	// const $btn_next3 = document.getElementById('btn_next3');
+	const $btn_next3 = document.getElementById('btn_next3');
 	// const $btn_next3 = document.getElementById('btn_finish');
 
  

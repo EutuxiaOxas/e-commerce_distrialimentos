@@ -158,7 +158,7 @@
         
         <!-------------------------- Formulario IV ----------------------------->
         {{-- datos de pago --}}
-        @include('formulario.datos-pago-uno')
+        {{-- @include('formulario.datos-pago-uno') --}}
         {{-- @include('formulario.datos-pago-dos') --}}
         
         <!-------------------------- Formulario III ----------------------------->
@@ -181,21 +181,21 @@
 const $form1 = document.getElementById('formulario1');
 const $form2 = document.getElementById('formulario2');
 const $form3 = document.getElementById('formulario3');
-const $form4 = document.getElementById('formulario4');
+// const $form4 = document.getElementById('formulario4');
 
 // botones de siguiente
 const $btn_next1 = document.getElementById('btn_next1');
 const $btn_next2 = document.getElementById('btn_next2');
-const $btn_next3 = document.getElementById('btn_next3');
+// const $btn_next3 = document.getElementById('btn_next3');
 // botones de atras
 const $btn_prior1 = document.getElementById('btn_prior1');
 const $btn_prior2 = document.getElementById('btn_prior2');
-const $btn_prior3 = document.getElementById('btn_prior3');
+// const $btn_prior3 = document.getElementById('btn_prior3');
 //botones de circulos de pasos 
 const $btn_clr = document.getElementById('btn_clr');
 const $btn_clr1 = document.getElementById('btn_clr1');
 const $btn_clr2 = document.getElementById('btn_clr2');
-const $btn_clr3 = document.getElementById('btn_clr3');
+// const $btn_clr3 = document.getElementById('btn_clr3');
 
 const $mq = window.matchMedia("(min-width:768px)")
 
@@ -208,9 +208,9 @@ $btn_next2.addEventListener('click', () => {
 $form2.classList.toggle('hide')&$form3.classList.toggle('hide');
 });
 
-$btn_next3.addEventListener('click', () => {
-$form3.classList.toggle('hide')&$form4.classList.toggle('hide');
-});
+// $btn_next3.addEventListener('click', () => {
+// $form3.classList.toggle('hide')&$form4.classList.toggle('hide');
+// });
 
 
 /* prior */
@@ -234,12 +234,12 @@ $form3.classList.toggle('hide')&$form1.classList.toggle('hide');
 
 
 
-$btn_clr3.addEventListener('click', () => {
-$form4.classList.toggle('hide')&$form3.classList.toggle('hide');
-});
-$btn_prior3.addEventListener('click', () => {
-$form4.classList.toggle('hide')&$form3.classList.toggle('hide');
-});
+// $btn_clr3.addEventListener('click', () => {
+// $form4.classList.toggle('hide')&$form3.classList.toggle('hide');
+// });
+// $btn_prior3.addEventListener('click', () => {
+// $form4.classList.toggle('hide')&$form3.classList.toggle('hide');
+// });
 
 
 </script>
