@@ -29,17 +29,21 @@ class OrderController extends Controller
         $oldOrder = Order::where('status_id', '1')
                         ->where('user_id', $user->id)
                         ->first();
-    	
+
+		$cart = $user->cartVerify();
+		$total = $cart->cartAmount($iva);
+
+
+		if(sizeof($cart->cartDetails()->get()) == 0) 
+		{
+			return redirect('/almacen');
+		}
+
         if(isset($oldOrder))
         {
             $oldOrder->status_id = '5'; //cancelado
             $oldOrder->save();
         }
-
-    	$cart = $user->cartVerify();
-    	$total = $cart->cartAmount($iva);
-
-
 
     	$order = Order::create([
     		'user_id' => $user->id,

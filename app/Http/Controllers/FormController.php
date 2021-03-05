@@ -18,6 +18,7 @@ class FormController extends Controller
     function index() {
         //vars
         $user = auth()->user();
+        $carritoCompras = $user->cartVerify()->cartDetails()->get();
         $empresa =  Enterprise::where('user_id', $user->id)->first(); //empresa
         $direcciones = Address::where('user_id', $user->id)->get(); //direcciones
         $categorias = Category::all();
@@ -26,6 +27,11 @@ class FormController extends Controller
         $municipios = Township::all(); //municipios
         $rutaEntregas = DeliveryRoute::all(); //rutas de entrega
         $banks = Banks_User::all();
+
+        if(sizeof($carritoCompras) == 0) {
+            return redirect('/almacen');
+
+        }
 
         //result
         return view('formulario', compact('user','empresa','direcciones', 'categorias','estados', 'ciudades', 'municipios', 'rutaEntregas', 'banks'));
