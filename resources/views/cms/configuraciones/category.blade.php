@@ -71,7 +71,7 @@
     </div>
 </section>
 
-
+{{-- Modal de crear --}}
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -135,6 +135,7 @@
     </div>  
   </div>
 </div>
+
 {{-- modal de editar  --}}
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -185,7 +186,7 @@
     </div>
 </div>
 
-
+{{-- modal de eliminar --}}
 <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
