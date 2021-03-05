@@ -261,6 +261,17 @@ Route::middleware('tienda')->group(function () {
 	Route::post('/cms/tienda/actualizar/categoria/{id}', 'Cms\CategoryController@atualizarCategoria');
 	Route::post('/cms/tienda/eliminar/categoria/{id}', 'Cms\CategoryController@eliminarCategoria');
 
+	/* --------------------------- MARCAS DEL LOS PRODUCTOS ----------------------- */
+	Route::get('/cms/tienda/brand', 'Cms\BrandController@index')->name('tienda.brand.home');
+	Route::get('/cms/tienda/get/brand/{id}', 'Cms\BrandController@getBrand');
+	//metodos posts
+	Route::post('/cms/brand/verify/{slug}', 'Cms\BrandController@verifySlug');
+	Route::post('/cms/tienda/guardar/brand', 'Cms\BrandController@guardarMarca')->name('tienda.brand.store');
+	Route::post('/cms/tienda/actualizar/brand/{id}', 'Cms\BrandController@actualizarMarca');
+	Route::post('/cms/tienda/eliminar/brand/{id}', 'Cms\BrandController@eliminarMarca');
+
+
+
 
 		/*--------------- PRODUCTOS --------------*/
 	Route::get('/cms/tienda/productos', 'Cms\ProductController@index')->name('tienda.product.home');

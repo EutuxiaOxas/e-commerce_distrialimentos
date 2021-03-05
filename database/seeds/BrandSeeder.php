@@ -13,19 +13,19 @@ class BrandSeeder extends Seeder
     {
         DB::table('brands')->insert([
             'brand' => 'IBERIA',
-            'logo' => 'marca1.jpg',
+            'banner' => 'marca1.jpg',
             'status' => 'ACTIVA'
         ]);
 
         DB::table('brands')->insert([
             'brand' => 'BADU',
-            'logo' => 'marca2.jpg',
+            'banner' => 'marca2.jpg',
             'status' => 'ACTIVA'
         ]);
 
         DB::table('brands')->insert([
             'brand' => 'CARABOBO',
-            'logo' => 'marca3.jpg',
+            'banner' => 'marca3.jpg',
             'status' => 'ACTIVA'
         ]);
     }

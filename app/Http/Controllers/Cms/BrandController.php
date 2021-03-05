@@ -4,25 +4,23 @@ namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\Brand;
 
-use Storage;
-use Str;
-
-class CategoryController extends Controller
+class BrandController extends Controller
 {
-    //--------- PAGINA PRINCIPAL TIENDA/CATEGORIAS ------- 
-    public function index()
-    {
-    	$categorias = Category::all();
-        $secName = 'bancos';
-    	return view('cms.configuraciones.category', compact('categorias', 'secName'));
-    }
+        //--------- PAGINA PRINCIPAL TIENDA/Marcas ------- 
+        public function index()
+        {
+            $marcas = Brand::all();
+            $secName = 'bancos';
+            return view('cms.configuraciones.brand', compact('marcas', 'secName'));
+        }
 
-    //--------- VERIFICACIÓN SLUG DE TIENDA CATEGORIA A TAVÉS DE AJAX -------
+
+            //--------- VERIFICACIÓN SLUG DE TIENDA/MARCAs A TAVÉS DE AJAX -------
     public function verifySlug($slug)
     {
-        $slug = Category::where('slug', $slug)->first();
+        $slug = Brand::where('slug', $slug)->first();
         if(isset($slug))
         {
             return 'ocupado';
@@ -31,25 +29,25 @@ class CategoryController extends Controller
             return 'aceptado';
         }
     }
-    //--------- OBTENER CATEGORIA A TRAVÉS DE AJAX -------
-    public function getCategory($id)
+    //--------- OBTENER MARCA A TRAVÉS DE AJAX -------
+    public function getBrand($id)
     {
-        $category = Category::find($id);
+        $brand = Brand::find($id);
         $data = [
-            'slug' => $category->slug,
-            'categorias' => Category::where('padre_id', 0)->get(),
+            'slug' => $brand->slug,
+            'marcas' => Brand::where('padre_id', 0)->get(),
         ];
         return $data;
     }
     //--------- GUARDAR -------
-    public function guardarCategoria(Request $request)
+    public function guardarMarca(Request $request)
     {   $path1 = $request->file('icono')->store('public');
         $path2 = $request->file('image_main')->store('public');
         $file1 = Str::replaceFirst('public/', '',$path1);
         $file2 = Str::replaceFirst('public/', '',$path2);
 
 
-    	Category::create([
+    	Brand::create([
             'title' => $request->title,
             'description' => $request->description,
             'padre_id' => $request->padre_id,
@@ -58,35 +56,35 @@ class CategoryController extends Controller
             'image_main' => $file2,
         ]);
 
-    	return back()->with('message', 'Categoría creada con éxito');
+    	return back()->with('message', 'Marca creada con éxito');
     }
     //--------- ACTUALIZAR -------
-    public function atualizarCategoria(Request $request, $id)
+    public function atualizarMarca(Request $request, $id)
     {
-        $categoria = Category::find($id);
+        $marca = Brand::find($id);
         $band1 = false;
         $band2 = false;
         //se modifico el icono
         if($request->file('icono'))
         {
-            $deleted = Storage::disk('public')->delete($categoria->icono);
+            $deleted = Storage::disk('public')->delete($marca->icono);
 
-            if(isset($deleted) || $categoria->icono == null)
+            if(isset($deleted) || $marca->icono == null)
             {
                 $path1 = $request->file('icono')->store('public');
                 $file1 = Str::replaceFirst('public/', '',$path1);
                 $band1=true;
                
             } else {
-                return back()->with('message', 'No se pudo actualizar la categoria');
+                return back()->with('message', 'No se pudo actualizar la marca');
             }
         }
           //se modifico la imagen principal
           if($request->file('image_main'))
           {
-              $deleted = Storage::disk('public')->delete($categoria->image_main);
+              $deleted = Storage::disk('public')->delete($marca->image_main);
   
-              if(isset($deleted) || $categoria->image_main == null)
+              if(isset($deleted) || $marca->image_main == null)
               {
                   $path2 = $request->file('image_main')->store('public');
                   $file2 = Str::replaceFirst('public/', '',$path2);
@@ -94,12 +92,12 @@ class CategoryController extends Controller
 
                 
               } else {
-                  return back()->with('message', 'No se pudo actualizar la categoria');
+                  return back()->with('message', 'No se pudo actualizar la marca');
               }
           }
         //almacenar
         if ($band1 && $band2){ 
-            $categoria->update([
+            $marca->update([
                 'title' => $request->title,
                 'description' => $request->description,
                 'padre_id' => $request->padre_id,
@@ -109,7 +107,7 @@ class CategoryController extends Controller
             ]);
         }else{
             if ($band1){
-                $categoria->update([
+                $marca->update([
                     'title' => $request->title,
                     'description' => $request->description,
                     'padre_id' => $request->padre_id,
@@ -118,7 +116,7 @@ class CategoryController extends Controller
                 ]);
             }else{
                 if($band2){
-                    $categoria->update([
+                    $marca->update([
                         'title' => $request->title,
                         'description' => $request->description,
                         'padre_id' => $request->padre_id,
@@ -126,7 +124,7 @@ class CategoryController extends Controller
                         'image_main' => $file2,
                     ]);
                 }else{
-                    $categoria->update([
+                    $marca->update([
                         'title' => $request->title,
                         'description' => $request->description,
                         'padre_id' => $request->padre_id,
@@ -137,15 +135,16 @@ class CategoryController extends Controller
             }
         }
 
-    	return back()->with('message', 'Categoria actualizada con éxito');
+    	return back()->with('message', 'Marca actualizada con éxito');
     }
     //--------- ELIMINAR -------
-    public function eliminarCategoria($id)
+    public function eliminarMarca($id)
     {
-    	$categoria = Category::find($id);
+    	$marca = Brand::find($id);
 
-    	$categoria->delete();
+    	$marca->delete();
 
-    	return back()->with('error', 'Categoria Eliminada con éxito');
+    	return back()->with('error', 'Marca Eliminada con éxito');
     }
+    
 }

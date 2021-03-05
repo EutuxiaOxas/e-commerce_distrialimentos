@@ -1,13 +1,13 @@
 @extends('cms.layout.main')
 @section('title')
-    Tienda | Categorias
+    Tienda | Marcas
 @endsection
 
 @section('content')
 <div class="d-flex justify-content-between">
-  <h2>Categoria de productos</h2>
+  <h2>Marcas</h2>
   <div>
-    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCrear">Crear Categoria</a>
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalCrear">Crear Marca</a>
   </div>
 </div>
 <hr>
@@ -32,39 +32,34 @@
 
    
 
-    <h2 class="mt-4 mb-3">Categorias</h2>
+    <h2 class="mt-4 mb-3">Listado de marcas</h2>
     <div class="table-responsive">
       <table class="table table-striped table-sm">
         <thead>
           <tr>
           	<th>#</th>
-            <th>icono</th>
-            <th>Imagen main</th>
+            <th>Banner</th>
           	<th>Titulo</th>
-            <th>Categoria padre</th>
-            <th>estatus</th>
+            {{-- <th>estatus</th> --}}
           	<th>Descripción</th>
           	<th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          @foreach($categorias as $categoria)
+          @foreach($marcas as $marca)
           <tr>
-            <td>{{$categoria->id}}</td>
-            <td><img src="{{asset('storage/'.$categoria->icono)}}" style="width: 50px; height: 50px"></td>
-            <td><img src="{{asset('storage/'.$categoria->image_main)}}" style="width: 50px; height: 50px"></td>
-            <td>{{$categoria->title}}</td>
+            <td>{{$marca->id}}</td>
+            <td><img src="{{asset('storage/'.$marca->banner)}}" style="width: 50px; height: 50px"></td>
+            <td>{{$marca->brand}}</td>
+            {{-- <td>
+              @php $padre = $marca->getFatherName() @endphp 
+              {{$padre ? $padre->title : 'No tiene marca padre'}}
+            </td> --}}
+            {{-- <td>{{$marca->status}}</td> --}}
+            <td>{{$marca->description}}</td>
             <td>
-
-              @php $padre = $categoria->getFatherName() @endphp 
-              {{$padre ? $padre->title : 'No tiene categoria padre'}}
-
-            </td>
-            <td>{{$categoria->status}}</td>
-            <td>{{$categoria->description}}</td>
-            <td>
-            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_category">Editar</button>
-            	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_category">Eliminar</button>	
+            	<button type="button" id="{{$marca->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_brand">Editar</button>
+            	<button type="button" id="{{$marca->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_brand">Eliminar</button>	
             </td>
           </tr>
           @endforeach
@@ -78,71 +73,59 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Crear Categoria</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear Marca</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body m-2">
                 <div id="errors_container" style="display: none;" class="alert alert-danger" role="alert">
                 </div>
-
+                
                 <input type="hidden" id="url_access" name=""> 
                 <input type="hidden" id="url_access_modal" value="nada" name=""> 
-                <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off" enctype="multipart/form-data">
+                <form action="{{route('tienda.brand.store')}}" id="form_create_brand" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         
                         <div class="col-md-12 form-group px-1 mt-3">
-                            <h5>Nombre</h5>
-                            <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
+                            <h5>Nombre de Marca</h5>
+                            <input class="form-control" id="create_brand_title" type="text" name="title" placeholder="Ej: Iberia, Carabobo..." autocomplete="off" required>
                             <small id="slug_alert"></small>
                         </div>
-                        <div class="col-md-12 form-group px-1">
-                            <h5>Categoria padre <small>(opcional)</small></h5>
-                            <select class="form-control" name="padre_id">
-                              <option value="0">Seleccionar categoria padre</option>
-                              <option value="0">Principal</option>
-                              @foreach($categorias as $categoria)
-                                @if($categoria->padre_id == 0)
-                                  <option value="{{$categoria->id}}">{{$categoria->title}}</option>
-                                @endif
-                              @endforeach
-                            </select>
-                        </div>
+
                         <div class="col-md-12 form-group px-1">
                             <h5>Descripción</h5>
-                            <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
+                            <textarea class="form-control" id="create_brand_description" name="description" placeholder="Escribe una frase que describa la marca"></textarea>
                         </div>
-                        <div class="col-md-12 form-group px-1">
+                        {{-- <div class="col-md-12 form-group px-1">
                             <h5>Icono</h5>
-                            <input type="file" id="icono_category" required name="icono">
-                        </div>
+                            <input type="file" id="icono_brand" required name="icono">
+                        </div> --}}
                         <div class="col-md-12 form-group px-1">
-                          <h5>Imagen Principal</h5>
-                          <input type="file" id="image_main_category" required name="image_main">
+                          <h5>Imagen del banner</h5>
+                          <input type="file" id="image_main_brand" required name="image_main">
                       </div>
 
                     </div>
                     <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
                       <h5>URL</h5>
                       <input class="form-control" id="slug" type="text" name="slug">
-                    </div>
-                </form>
+                    </div> 
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                <button type="submit" id="crear_category_submit" class="btn btn-primary">Agregar Categoria</button>
+                <button type="submit" id="crear_brand_submit" class="btn btn-primary">Agregar marca</button>
             </div>
         </div>
     </div>  
   </div>
 </div>
-
+{{-- modal de editar  --}}
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar Categoria</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar marca</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -154,24 +137,17 @@
                     @csrf
                     <div class="form-group">
                         <h5>Nombre</h5>
-                        <input id="editar_title" class="form-control" type="text" name="title"  autocomplete="off">
+                        <input id="editar_title" class="form-control" type="text" name="title"  placeholder="Ej: Iberia, Carabobo..." autocomplete="off">
                         <small id="slug_alert_edit"></small>
-                    </div>
-
-                    <div class="form-group">
-                        <h5>Categoria padre <small>(opcional)</small></h5>
-                        <select id="cat_padre_editar" class="form-control" name="padre_id">
-                          <option value="0">Seleccionar categoria</option>
-                        </select>
                     </div>
                     
                     <div class="form-group">
-                        <h5>Descripcion</h5>
-                        <textarea class="form-control" id="editar_description" name="description"></textarea>
+                        <h5>Descripción</h5>
+                        <textarea class="form-control" id="editar_description" name="Escribe una frase que describa la marca"></textarea>
                     </div>
                     <div class="col-md-12 form-group px-1">
-                        <h5>Icono</h5>
-                        <input type="file" id="icono_category_editar" required name="icono">
+                        <h5>Imagen del banner</h5>
+                        <input type="file" id="icono_brand_editar" required name="icono">
                     </div>
                     <div class="form-group" style="visibility: hidden;position: absolute;">
                       <h5>URL</h5>
@@ -181,7 +157,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                <button type="button" id="editar_submit" class="btn btn-primary">Actualizar Categoria</button>
+                <button type="button" id="editar_submit" class="btn btn-primary">Actualizar marca</button>
             </div>
         </div>
     </div>
@@ -192,7 +168,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar Categoria</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar marca</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -205,24 +181,24 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar Categoria</button>
+                <button type="button" id="eliminar_submit" class="btn btn-danger">Eliminar marca</button>
             </div>
         </div>
     </div>
 </div>
 
 <script type="text/javascript">
-  let crearCategorySubmit = document.getElementById('crear_category_submit');
+  let crearbrandSubmit = document.getElementById('crear_brand_submit');
   let errors_container = document.getElementById('errors_container');
 
-  crearCategorySubmit.addEventListener('click', (e) => {
+  crearbrandSubmit.addEventListener('click', (e) => {
     e.preventDefault()
 
-    const title = document.getElementById('create_category_title'),
-          description = document.getElementById('create_category_description'),
-          icono = document.getElementById('icono_category'),
-          image_main = document.getElementById('image_main_category'),
-          form = document.getElementById('form_create_category');
+    const title = document.getElementById('create_brand_title'),
+          description = document.getElementById('create_brand_description'),
+          icono = document.getElementById('icono_brand'),
+          image_main = document.getElementById('image_main_brand'),
+          form = document.getElementById('form_create_brand');
 
     let verify_access = document.getElementById('url_access');
 
@@ -274,8 +250,8 @@
 
 
 <script type="text/javascript">
-  let editarButtons = document.querySelectorAll('.editar_category');
-  let eliminarButtons = document.querySelectorAll('.eliminar_category');
+  let editarButtons = document.querySelectorAll('.editar_brand');
+  let eliminarButtons = document.querySelectorAll('.eliminar_brand');
 
 
   let modalEditarSubmit = document.getElementById('editar_submit');
@@ -347,12 +323,12 @@
             description = e.target.parentNode.parentNode.children[5].textContent,
             id = e.target.id;
 
-            axios.get(`/cms/tienda/get/category/${id}`)
+            axios.get(`/cms/tienda/get/brand/${id}`)
               .then(res => {
                 let slug = res.data.slug,
-                    categorias = res.data.categorias;
+                    marcas = res.data.marcas;
 
-                modalEditar(id,title,description, slug, categorias, catPadre);
+                modalEditar(id,title,description, slug, marcas, catPadre);
               })
 
             
@@ -372,7 +348,7 @@
   }
 
 
-  function modalEditar(id, title, description, slug, categorias, padre){
+  function modalEditar(id, title, description, slug, marcas, padre){
     let input_title = document.getElementById('editar_title'),
         input_description = document.getElementById('editar_description'),
         edit_slug = document.getElementById('slug_edit'),
@@ -380,15 +356,15 @@
         form = document.getElementById('editar_form');
     
 
-    cat_padre.innerHTML = '<option value="0">Seleccionar categoria padre</option>'
+    cat_padre.innerHTML = '<option value="0">Seleccionar marca padre</option>'
 
-    categorias.forEach(categoria => {
+    marcas.forEach(marca => {
         cat_padre.innerHTML += `
-          <option value="${categoria.id}" ${categoria.title == padre ? 'selected' : ''}>${categoria.title}</option>
+          <option value="${marca.id}" ${marca.title == padre ? 'selected' : ''}>${marca.title}</option>
         `
     })
 
-    form.action = `/cms/tienda/actualizar/categoria/${id}`
+    form.action = `/cms/tienda/actualizar/brand/${id}`
     input_title.value = title
     input_description.value = description
     edit_slug.value = slug
@@ -398,10 +374,10 @@
     let form = document.getElementById('eliminar_form'),
         message_eliminar = document.getElementById('message_eliminar');
 
-    form.action = `/cms/tienda/eliminar/categoria/${id}`;
+    form.action = `/cms/tienda/eliminar/brand/${id}`;
     message_eliminar.innerHTML = `
-      Categoria: <strong>${message}</strong> <br>
-      ¿Seguro que desea eliminar esta categoria?
+      marca: <strong>${message}</strong> <br>
+      ¿Seguro que desea eliminar esta marca?
     `
   }
 
@@ -410,7 +386,7 @@
 
 <script type="text/javascript">
   let slug = document.getElementById('slug'),
-      name_category = document.getElementById('create_category_title');
+      name_brand = document.getElementById('create_brand_title');
 
 
   let title_edit = document.getElementById('editar_title'),
@@ -432,13 +408,13 @@
 
 
 
-  name_category.addEventListener('keyup', (e) => {  
+  name_brand.addEventListener('keyup', (e) => {  
 
     let value = string_to_slug(e.target.value)
     
     slug.value = value
     
-    if(name_category.value != ''){
+    if(name_brand.value != ''){
       verifySlug(value, 'normal');
     
     }else {
@@ -447,7 +423,7 @@
   });
 
   function verifySlug(value, option){
-    axios.post(`/cms/categoria/verify/${value}`)
+    axios.post(`/cms/brand/verify/${value}`)
       .then(res =>{
         if(res.data == 'aceptado'){
           slugAlert('aceptado', option)
