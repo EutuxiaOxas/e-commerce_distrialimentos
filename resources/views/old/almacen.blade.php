@@ -1,140 +1,320 @@
-@extends('common.main')
+@extends('layouts.main')
 
 @section('title')
-    <title>Productos</title>
+  Almacen
+@endsection
+
+@section('metas')
+<!-- Primary Meta Tags -->
+<title>Almacén de productos</title>
+<meta name="title" content="Almacén de productos">
+<meta name="description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://metatags.io/">
+<meta property="og:title" content="Almacén de productos">
+<meta property="og:description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+<meta property="og:image" content="{{asset('images/cta/Envios.jpg')}}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://metatags.io/">
+<meta property="twitter:title" content="Almacén de productos">
+<meta property="twitter:description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
+<meta property="twitter:image" content="{{asset('images/cta/Envios.jpg')}}">
 @endsection
 
 
+@section('menu-perfil')
+  {{-- header principal --}}
+  @include('perfil.perfil_navMobile')
+@endsection
+
 @section('content')
-    {{-- header principal --}}
-    @include('common.header')
  
-     <!-- cover -->
-     <section class="hero hero-with-header">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <h1 data-swiper-parallax="-100%" class="display-3"><b>Nuestros productos</b><br>Lo que tenemos para tí.</h1>
-            </div>
-          </div>
+  <style>
+  .colorG {
+    color: #999;
+  }
+  .smaller {
+    font-size: 11px;
+  }
+  .smaller-2 {
+    font-size: 10px;
+  }
+  .smaller-3 {
+    font-size: 12px;
+  }
+  .espaciado {
+    padding: 0 6px;
+  }
+  </style>
+
+
+   <!-- Almacen-->
+   <section>
+    <div class="container-fluid pt-5">
+      <div class="row my-1 px-2 py-0">
+        <div class="col mb-2">
+          <h3 class="mb-0 font-weight-bold text-primary">Pastas, harinas y azucares</h3>
+          <h5 class="font-weight-bold text-muted">Las mejores marcas nacionales e importadas</h5>
         </div>
-      </section>
-      <!-- / cover -->
-
-      
-
-    <!-- works -->
-    <div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="container">
-            <div class="row">
-              <div class="col d-none d-sm-block" style="cursor: pointer;">
-                <ul class="nav flex-column nav-tabs nav-vertical ">
-                  <li class="nav-item">
-                    <a class="nav-link active" data-filter="All">Todos</a>
-                  </li>
-                  @foreach($categories as $category)
-                  <li class="nav-item ">
-                    <a class="nav-item nav-link " data-filter="{{$category->id}}">{{$category->title}}</a>
-                  </li>
-                  @endforeach
-                </ul> 
-              </div>
-
-              {{-- smartphone    --}}
-              <div class="col d-sm-none p-1">
-                <div class="dropdown">
-                  <button class="btn  btn-with-ico  btn-lg btn-block btn-outline-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="icon-list"></i> Nuestras Lineas
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" data-filter="All">Todos</a>
-                    <div class="dropdown-divider"></div>
-                    @foreach($categories as $category)
-                      <a class="dropdown-item" data-filter="{{$category->id}}" >
-                        <span>{{$category->title}}</span>
-                        <p>Descripcion base de datos</p>
-                      </a>
-                      <div class="dropdown-divider"></div>
-                    @endforeach
-                  </div>
-                </div>
-             </div>
-              
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-9">
-          <div class="container-full">
-            <div class="row">
-              <div class="col">
-                <ul class="row gutter-0 gallery filtr-container ">
-                  @foreach($products as $product)
-                  <li class="col-6 col-md-4 col-lg-3 filtr-item" data-category="All, {{$product->category->id}}" data-sort="value">
-                    <figure class="photo equal">
-                      <a href="{{asset('images/'.$product->image)}}" 
-                        style="background-image: url({{asset('images/'.$product->image)}});">
-                        <figcaption class="photo-caption">
-                          <span>{{$product->title}}</span>
-                          <p>{{$product->description}}</p>
-                        </figcaption>
-                      </a>
-                    </figure>
-                  </li>
-                  @endforeach
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div> 
-      <!-- / works -->
-  
+      
+    <div class="row mb-3 px-2">
 
-      {{-- CTA --}}
-      <!-- bordered -->
-      <section id="default" class="">
-          <div class="tab-pane show active " id="component-1-1" role="tabpanel" aria-labelledby="component-1-1">
-            <div class="component-example">
-              <div class="container-fluid">
-                <div class="bordered p-4 bg-light">
-                  <div class="row justify-content-between align-items-center text-center text-md-left">
-                    <div class="col-md-2">
-                      <i class="svg-icon fs-60 text-blue">
+        <div class="col-6 col-md-2 espaciado d-flex">
+            <div class="card rising border">
+              <a href="#">
+                <img class="card-img-top" src="{{asset('images/lineas/linea-lacteos.jpg')}}" alt="Card image cap">
+              </a>
+             <!-- card-body-->
+              <div class="card-body pt-1 px-1 flex-fill">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                  <div class="row mb-0">
+                      <div class="col-12 pb-1">
+                        <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Leche Descremada</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Leche descremada mi Vaca 1L</h6>
+                      </div>
+                      <div class="col-12">
+                        <p class="card-text smaller">(100 Disponibles)</p>
+                      </div>
+                      <div class="col-12">
+                      <a href="#" class="smaller">Categoria</a>
+                      </div>
+                      <div class="col-12">
+                        <p class="smaller">IVA incluido</p>
+                      </div>
+                  </div>
+                  <div class="card-pricing text-center align-self-end">
+                    <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                    <p class="smaller">Caja de 20 unidades</p>
+                    {{-- boton de agregar  --}}
+                    <div class="agregar-01">
+                      <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                    </div>
+                    {{-- producto agregado --}}
+                    <div class="agregado-01">
+                      <div class="row">
+                        <div class="col-6">
+                          <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                        </div>
+                        <div class="col-6">
+                          <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                        </div>
+                      </div>
+                    </div>
 
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,12L32,32L41,41" style="stroke-dasharray: 33, 35; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M4,32L8,32" style="stroke-dasharray: 4, 6; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M56,32L60,32" style="stroke-dasharray: 4, 6; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,60L32,56" style="stroke-dasharray: 4, 6; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,8L32,4" style="stroke-dasharray: 4, 6; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,63c17.121,0,31-13.879,31-31S49.121,1,32,1" style="stroke-dasharray: 98, 100; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M32,63C14.879,63,1,49.121,1,32
-                            c0-6.713,2.134-12.926,5.759-18l5.62-5.621" style="stroke-dasharray: 76, 78; stroke-dashoffset: 0;"></path>
-                          <path fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M13,19L13,8L2,8" style="stroke-dasharray: 22, 24; stroke-dashoffset: 0;"></path>
-                          </svg>
-                      </i>
-                    </div>
-                    <div class="col-md-6">
-                      <h3 class="mb-1">Catalogo & Disponibilidad</h3>
-                      <p>No dudes en preguntar por nuestro catálogo de productos y disponibilidad.</p>
-                    </div>
-                    <div class="col-md-4 text-lg-right">
-                      <a href="https://api.whatsapp.com/send?phone=584244010776&text=Hola,%20Estoy%20interesado%20en%20saber%20la%20disponibilidad%20de%20sus%20productos.%20Gracias." class="btn btn-primary btn-rounded px-5">Preguntar <span class="d-none d-md-block">por Disponibilidad</span></a>
-                    </div>
                   </div>
                 </div>
               </div>
+              <!-- //card-body-->
             </div>
-          </div>
-  
-         
-      </section>
-      <!-- / bordered -->
-      {{-- / cta --}}
+        </div>
+
+        <div class="col-6 col-md-2 espaciado d-flex">
+            <div class="card rising border">
+              <a href="#">
+                <img class="card-img-top" src="{{asset('images/lineas/linea-enlatados.jpg')}}" alt="Card image cap">
+              </a>
+             <!-- card-body-->
+              <div class="card-body pt-1 px-1 flex-fill">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                  <div class="row mb-0">
+                      <div class="col-12 pb-1">
+                        <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="text-black mb-0 smaller-3 p-1">Descricion del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <p class="card-text smaller">(100 Disponibles)</p>
+                      </div>
+                      <div class="col-12">
+                      <a href="#" class="smaller">Categoria</a>
+                      </div>
+                      <div class="col-12">
+                        <p class="smaller">IVA incluido</p>
+                      </div>
+                  </div>
+                  <div class="card-pricing text-center align-self-end">
+                    <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                    <p class="smaller">Caja de 20 unidades</p>
+                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                  </div>
+                </div>
+              </div>
+              <!-- //card-body-->
+            </div>
+        </div>
+
+        <div class="col-6 col-md-2 espaciado d-flex">
+            <div class="card rising border">
+              <a href="#">
+                <img class="card-img-top" src="{{asset('images/lineas/linea-galletas.jpg')}}" alt="Card image cap">
+              </a>
+             <!-- card-body-->
+              <div class="card-body pt-1 px-1 flex-fill">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                  <div class="row mb-0">
+                      <div class="col-12 pb-1">
+                        <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <p class="card-text smaller">(100 Disponibles)</p>
+                      </div>
+                      <div class="col-12">
+                      <a href="#" class="smaller">Categoria</a>
+                      </div>
+                      <div class="col-12">
+                        <p class="smaller">IVA incluido</p>
+                      </div>
+                  </div>
+                  <div class="card-pricing text-center align-self-end">
+                    <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                    <p class="smaller">Caja de 20 unidades</p>
+                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                  </div>
+                </div>
+              </div>
+              <!-- //card-body-->
+            </div>
+        </div>
+
+        <div class="col-6 col-md-2 espaciado d-flex">
+            <div class="card rising border">
+              <a href="#">
+                <img class="card-img-top" src="{{asset('images/lineas/linea-pasta.jpg')}}" alt="Card image cap">
+              </a>
+             <!-- card-body-->
+              <div class="card-body pt-1 px-1 flex-fill">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                  <div class="row mb-0">
+                      <div class="col-12 pb-1">
+                        <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <p class="card-text smaller">(100 Disponibles)</p>
+                      </div>
+                      <div class="col-12">
+                      <a href="#" class="smaller">Categoria</a>
+                      </div>
+                      <div class="col-12">
+                        <p class="smaller">IVA incluido</p>
+                      </div>
+                  </div>
+                  <div class="card-pricing text-center align-self-end">
+                    <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                    <p class="smaller">Caja de 20 unidades</p>
+                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                  </div>
+                </div>
+              </div>
+              <!-- //card-body-->
+            </div>
+        </div>
+
+        <div class="col-6 col-md-2 espaciado d-flex">
+            <div class="card rising border">
+              <a href="#">
+                <img class="card-img-top" src="{{asset('images/lineas/linea-snacks.jpg')}}" alt="Card image cap">
+              </a>
+             <!-- card-body-->
+              <div class="card-body pt-1 px-1 flex-fill">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                  <div class="row mb-0">
+                      <div class="col-12 pb-1">
+                        <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Avena</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <p class="card-text smaller">(100 Disponibles)</p>
+                      </div>
+                      <div class="col-12">
+                      <a href="#" class="smaller">Categoria</a>
+                      </div>
+                      <div class="col-12">
+                        <p class="smaller">IVA incluido</p>
+                      </div>
+                  </div>
+                  <div class="card-pricing text-center align-self-end">
+                    <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                    <p class="smaller">Caja de 20 unidades</p>
+                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                  </div>
+                </div>
+              </div>
+              <!-- //card-body-->
+            </div>
+        </div>
+
+        <div class="col-6 col-md-2 espaciado d-flex">
+            <div class="card rising border">
+              <a href="#">
+                <img class="card-img-top" src="{{asset('images/lineas/linea-viveres.jpg')}}" alt="Card image cap">
+              </a>
+             <!-- card-body-->
+              <div class="card-body pt-1 px-1 flex-fill">
+                <div class="wrapper d-flex flex-wrap h-100 justify-content-center p-2">
+                  <div class="row mb-0">
+                      <div class="col-12 pb-1">
+                        <p class="text-muted text-right smaller-2"><strong class="text-muted">SKU:</strong>00005644545</p>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="card-title font-weight-bold mb-0 text-blue pb-1">Titulo del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <h6 class="text-black mb-0 smaller-3 pb-1">Descricion del producto</h6>
+                      </div>
+                      <div class="col-12">
+                        <p class="card-text smaller">(100 Disponibles)</p>
+                      </div>
+                      <div class="col-12">
+                      <a href="#" class="smaller">Categoria</a>
+                      </div>
+                      <div class="col-12">
+                        <p class="smaller">IVA incluido</p>
+                      </div>
+                  </div>
+                  <div class="card-pricing text-center align-self-end">
+                    <h4 class="font-weight-bold mb-0 mt-3">20,00 $</h4>
+                    <p class="smaller">Caja de 20 unidades</p>
+                    <a href="#" class="btn btn-primary px-3 py-1">Agregar</a>
+                  </div>
+                </div>
+              </div>
+              <!-- //card-body-->
+            </div>
+        </div>
+    </div>
+   </section>
+  <!-- / Almacen -->
+
 
 @endsection

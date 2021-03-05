@@ -17,7 +17,7 @@ class AlmacenController extends Controller
             $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
         }
         $categorias = Category::all(); // categorias de productos
-        return view('sketch.almacen', compact('productos', 'categorias'));
+        return view('almacen', compact('productos', 'categorias'));
     }
 
     public function showProduct($slug)
@@ -33,7 +33,7 @@ class AlmacenController extends Controller
 
         // dd($alGranMayorUnitPrice);
 
-        return view('sketch.detalle', compact('product', 'categorias', 'vipUnitPrice', 'alMayorUnitPrice', 'alGranMayorUnitPrice'));
+        return view('detalle', compact('product', 'categorias', 'vipUnitPrice', 'alMayorUnitPrice', 'alGranMayorUnitPrice'));
     }
 
     public function showProductsByCategory($slug)
@@ -41,7 +41,7 @@ class AlmacenController extends Controller
         $product_categorie = Category::where('slug', $slug)->first();
         $categorias = Category::all();
         $productos = $product_categorie->products()->paginate(25);
-        return view('sketch.almacen', compact('productos', 'categorias'));
+        return view('almacen', compact('productos', 'categorias', 'product_categorie' ));
     }
 
     public function showProductsByBrand($brand)
@@ -49,7 +49,7 @@ class AlmacenController extends Controller
         $product_brand = Brand::where('brand', $brand)->first();
         $categorias = Category::all();
         $productos = $product_brand->products()->paginate(25);
-        return view('sketch.almacen', compact('productos', 'categorias'));
+        return view('almacen', compact('productos', 'categorias'));
     }
     
 }

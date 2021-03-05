@@ -17,9 +17,9 @@ class CreateBrandsTable extends Migration
             $table->id();
             $table->string('brand');
             $table->string('banner'); //Banner que se muestra en el almacen de esa categoria.
-            $table->text('description');
+            // $table->text('description');
             $table->string('status')->default('activo');
-            $table->string('slug');
+            // $table->string('slug');
             // $table->timestamps();
         });
     }
