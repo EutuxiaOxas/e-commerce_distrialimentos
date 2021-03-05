@@ -164,9 +164,42 @@
   </div>
 </section>
 <!-------------------------- Javascript ----------------------------->
-
-
-
-</script>
-
+<div class="modal fade" id="pagosRealizadosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pagos realizados</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <table class="table table-striped table-sm" id="table1">
+        <thead>
+          <tr>
+          	<th>ID</th>
+          	<th>Titular</th>
+          	<th>identificacion</th>
+          	<th>monto</th>
+          	<th>Método pago</th>
+            <th>Opcion</th>
+          </tr>
+        </thead>
+        <tbody id="modalPagosRealizadosLoadTable">
+          <tr>
+            <td>1</td>
+            <td>Omega</td>
+            <td>25.985.506</td>
+            <td>40,00 $</td>
+            <td>Zelle</td>
+            <td>
+              <button class="btn btn-sm btn-danger delete-btn">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

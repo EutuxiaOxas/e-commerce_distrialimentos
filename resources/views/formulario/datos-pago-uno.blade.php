@@ -29,6 +29,10 @@
           <p class="font-weight-bold m-0 texto-small text-black">Datos de pago</p>
         </div>
       </div>
+      <div class="formPayment__pagosRegistradosMain my-3" data-toggle="modal" data-target="#pagosRealizadosModal" id="pagosRealizadosButton">
+        <h3 class="formPayment__pagosRegistradosMain-title">Listado de pago</h3>
+        <p class="formPayment__pagosRegistradosMain-subtitle">chequea aquí tus pagos registrados</p>
+      </div>
     </div>
     <!-- fin Number-->
       <!--  datos de usuario-->
@@ -73,7 +77,7 @@
           <button type="button" class="btn btn-sm btn-block formularios__btn-left" disabled><span></span></button>
         </div>
         <div class="col-7 pl-0">
-          <form action="{{route('order.store')}}" id="formFinalizarCompra">
+          <form action="{{route('pago.verify', $orden->id)}}" id="formFinalizarCompra">
             <input type="hidden" value="" name="bank_id" id="finalizarCompraBankId">
             <input type="hidden" value="{{$orden->id ?? ''}}" name="orden_id" id="finalizarCompraOrdenId">
             <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" disabled>Finalizar Compra</button>
@@ -91,6 +95,7 @@
 <script>
     function paymentMethodForm() {
 
+      //------ AGREGAR DATA AL FORMULARIO DE PAGO -----
       function addDataToPaymentForm({
         bankId,
         titular,
@@ -182,7 +187,7 @@
             </div>
 
             <div class="login__inputContainer">
-              <input type="number" class="login__inputContainer-input" min="1" required name="monto" placeholder="Monto pagado" autocomplete="off">
+              <input type="number" class="login__inputContainer-input" min="1" required name="monto" placeholder="Monto pagado" step="0.01" autocomplete="off">
             </div>
           `
 
@@ -242,6 +247,8 @@
         formPaymentFormContainer.innerHTML = templateFormulario;
       }
 
+
+      //------ CAMBIAR ENTRE METODO DE PAGO Y FORMULARIO DE PAGO -----
       function toggleChooseMethodToPaymentForm(){
         const selectPaymentForm = document.getElementById('selectPaymentMethodSection');
         const paymentForm = document.getElementById('formPaymentToFinish');
@@ -251,6 +258,7 @@
         formPaymentToFinish.classList.toggle('hideForm');
       }
 
+      //------ OBTIENE LOS PAGOS REALIZADOS Y LLAMA  A VERIFICAR -----
       function pagoRealizado(ordenId) {
 
         axios.get(`/obtener/pago/${ordenId}`)
@@ -263,7 +271,12 @@
 
       }
 
+      // VERIFICA LOS PAGOS REALIZADOS Y CALCULA EL RESTANTE POR PAGAR
       function verifyTotalAmount(data, type){
+
+          toggleModalPagos(data);
+
+
           //Total amount and dolar value nad button finish
           const formPaymentTotalAmount= document.getElementById('paymentForm__totalAmount');
           const dolarValue = document.getElementById('dolarPricePaymentForm');
@@ -272,12 +285,16 @@
           //form container
           const formPaymentFormContainer = document.getElementById('formPaymentFormContainer');
           
+        // boton mostrar pagos
+
           // data api
 
           const total_pago = data.total_pago;
           const pagos = data.pagos;
 
           if(pagos.length) {
+
+
             let totalCuenta = total_pago;
 
             for (let i = 0; i < pagos.length; i++) {
@@ -288,7 +305,6 @@
               
               if(bancoReceptor.toLowerCase() == 'zelle' || bancoReceptor.toLowerCase() == 'efectivo') {
                 totalCuenta = totalCuenta - pago.monto;
-                console.log(totalCuenta)
               }else {
                 const bolivarToDolar = pago.monto / dolarValue.value
                 totalCuenta = totalCuenta - bolivarToDolar
@@ -326,6 +342,72 @@
               formPaymentTotalAmount.textContent = `${total_pago} $`;
             }
           }
+      }
+
+
+      function toggleModalPagos(pagos) {
+        const buttonModalPagos = document.getElementById('pagosRealizadosButton');
+        const modalPagosTableMain = document.getElementById('modalPagosRealizadosLoadTable');
+
+        if(pagos.pagos.length) {
+          buttonModalPagos.classList.add('active');
+          modalPagosTableMain.innerHTML = '';
+
+          pagos.pagos.forEach(pago => {
+            let dolarValue = false;
+            
+            if(pago.banco_receptor.toLowerCase() == 'zelle' || pago.banco_receptor.toLowerCase() == 'efectivo' ){
+              dolarValue = true;
+            }
+
+            let template = `
+              <tr>
+                <td>${pago.numero}</td>
+                <td>${pago.titular}</td>
+                <td>${pago.identidad_titular}</td>
+                <td>${dolarValue ? pago.monto + '$' : new Intl.NumberFormat('es-ES').format(parseInt(pago.monto)) + 'Bs'}</td>
+                <td>${pago.banco_receptor}</td>
+                <td>
+                  <button class="btn btn-sm btn-danger delete-btn" data-orden="${pagos.orden_id}" data-id="${pago.id}">Eliminar</button>
+                </td>
+              </tr>
+            `
+
+
+            modalPagosTableMain.innerHTML += template;
+          })
+
+          loadEventsForModal()
+
+        }else {
+          buttonModalPagos.classList.remove('active');
+        }
+
+      }
+
+
+      function loadEventsForModal()
+      {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        if(deleteButtons){
+          deleteButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+              const pagoId = e.target.dataset.id
+              const ordenId = e.target.dataset.orden
+              $('#pagosRealizadosModal').modal('hide');
+
+              axios.post(`deletePago/${pagoId}/${ordenId}`)
+                .then(res => {
+                  pagoRealizado(ordenId);
+                })
+                .catch(err => {
+                  console.log(err);
+                })
+            })
+          })
+        }
+
       }
 
       const metodoPago = document.querySelectorAll('.payment_type');

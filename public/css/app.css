@@ -13433,6 +13433,29 @@ nav {
   display: none;
 }
 
+.formPayment__pagosRegistradosMain {
+  background-color: #FD6721;
+  padding: 0.9rem 1rem;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+.formPayment__pagosRegistradosMain.active {
+  display: block;
+}
+
+.formPayment__pagosRegistradosMain-title {
+  font-family: "Righteous", cursive;
+  margin: 0;
+}
+
+.formPayment__pagosRegistradosMain-subtitle {
+  font-family: "Roboto", cursive;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .fomularioMetodoPago__selectbBankCard {
   border-radius: 5px;
   border: 1px solid #FF661B;
@@ -13542,5 +13565,11 @@ nav {
 .formPayment__alertInformation-paymentData span {
   font-weight: 400;
   color: #ffffff;
+}
+
+@media (min-width: 950px) {
+  .formPayment__pagosRegistradosMain {
+    width: 48%;
+  }
 }
 

@@ -341,7 +341,8 @@ Route::get('/pago', 'PagosController@agregarPago');
 Route::get('/nuevo/pago', 'PagosController@agregarNuevoPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');
-
+Route::get('/verificarPago/{id}', 'Cms\OrderController@verifyPagosOrden')->name('pago.verify');
+Route::post('deletePago/{id}/{orden}', 'PagosController@eliminarPago');
 
 //-------------- OBTENER DIRECCIONES -----------
 Route::get('/user/address', 'AddressController@getAddress');

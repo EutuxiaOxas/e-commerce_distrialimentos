@@ -138,6 +138,38 @@ class OrderController extends Controller
     }
 
 
+	public function verifyPagosOrden($id)
+	{
+		$orden = Order::findOrFail($id);
+		$dolarPrice = Variable::where('name', 'dolar')->first();
+
+		$totalAmount = $orden->total_amount;
+		$pagos = $orden->pagos;
+
+		foreach($pagos as $pago) 
+		{
+			$dolarActive = false;
+
+			if(strtolower($pago->receptor->title) == 'zelle' || strtolower($pago->receptor->title) == 'efectivo')
+			{
+				$dolarActive = true;
+			}
+
+			$totalAmount = $totalAmount - ($dolarActive ? $pago->monto : $pago->monto * $dolarPrice->value);
+
+		}
+
+		if($totalAmount <= 0) {
+			$orden->update([
+				'status_id' => 2
+			]);
+			return redirect('/gracias-por-su-pedido');
+		}
+
+		return back();
+	}
+
+
     public function cancelarOrden($id)
     {
         $orden = Order::findOrFail($id);

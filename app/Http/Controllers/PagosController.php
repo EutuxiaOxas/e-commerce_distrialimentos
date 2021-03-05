@@ -133,6 +133,7 @@ class PagosController extends Controller
         foreach ($pagos as $pago) {
 
             $pagos_data[] = [
+                'id' => $pago->id,
                 'numero' => $contador,
                 'titular' => $pago->titular_cuenta,
                 'monto' => $pago->monto,
@@ -152,6 +153,23 @@ class PagosController extends Controller
         ];
 
         return response()->json($data, 200);
+
+    }
+
+
+    public function eliminarPago($id, $orden)
+    {
+        $user = auth()->user();
+        $orden = Order::findOrFail($orden);
+        $pago = Pago::findOrFail($id);
+
+        if($user->id == $orden->user_id )
+        {
+            $pago->delete();
+            return response()->json(null, 200);
+        }
+
+        return response()->json('No autorizado', 401);
 
     }
 }
