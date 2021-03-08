@@ -138,19 +138,19 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
 							</div>
 							<div class="col">
-								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionEstados" required name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
 										<option value="{{$estado->id}}">{{$estado->state}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders"  required name="city_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionCiudades"  required name="city_id" >
 									<option value="">Escoge una ciudad</option>
 									@foreach($ciudades as $ciudad)
 										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" required name="township_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionMunicipios" required name="township_id" >
 									<option value="">Escoge un municipio</option>
 									@foreach($municipios as $municipio)
 										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
@@ -340,10 +340,47 @@
 			reloadEvents();
 		}
 
+		function addCitiesToSelect(cities, container){
+		
+			if(cities.length) {
+				container.innerHTML = '<option>Escoge una ciudad</option>'
+				cities.forEach(city => {
+					template = `
+						<option value="${city.id}">
+							${city.city}
+						</option>
+					`
+
+					container.innerHTML += template;
+				})
+			}else {
+				container.innerHTML = '<option>No hay ciudades disponibles</option>'
+			}
+		}
+
+		function addTownshipToSelect(minicipios, container){
+		
+			if(minicipios.length) {
+				container.innerHTML = '<option>Escoge un municipio</option>'
+				minicipios.forEach(minicipio => {
+					template = `
+						<option value="${minicipio.id}">
+							${minicipio.township}
+						</option>
+					`
+
+					container.innerHTML += template;
+				})
+			}else {
+				container.innerHTML = '<option>No hay municipios disponibles</option>'
+			}
+		}
+
 		//------------------------- RECARGAR EVENTOS -------------------------
 		function reloadEvents(){
 			const changeAddress = document.getElementById('formChangeAddress')
 			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
+			const finalizarButton = document.getElementById('btn_finish')
 			direcciones = [];
 			if(changeAddress) {
 				changeAddress.addEventListener('click', () => {
@@ -352,7 +389,7 @@
 					.then(res => {
 						direcciones = res.data;
 						addTypeAddressToSelect(direcciones)
-						$btn_next3.removeAttribute('disabled')
+						$finalizarButton.removeAttribute('disabled')
 					})
 				})
 			}
@@ -365,6 +402,17 @@
 			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
 			const formCreate = document.getElementById('formCreateAddress');
 			direcciones = [];
+
+
+
+			//ESTADOS
+			const modalCrearDireccionEstados = document.getElementById('modalCrearDireccionEstados')
+
+			//CIUDADES
+			const modalCrearDireccionCiudades = document.getElementById('modalCrearDireccionCiudades')
+
+			//MUNICIPIOS
+			const modalCrearDireccionMunicipios = document.getElementById('modalCrearDireccionMunicipios')
 
 			//------------------------- EVENTOS VISTA -------------------------
 
@@ -420,6 +468,34 @@
 					console.log(err);
 				});
 			})
+			
+			// --------- AGREGAR CIUDADES ------
+
+			modalCrearDireccionEstados.addEventListener('change', (e) => {
+				const estadoId = e.target.value;
+
+				axios.get(`/cities/${estadoId}`)
+					.then(res => {
+						addCitiesToSelect(res.data, modalCrearDireccionCiudades)
+					})
+					.catch(err => {
+						console.log(err)
+					});
+			})
+
+			// --------- AGREGAR MUNICIPIOS ------
+		
+			modalCrearDireccionCiudades.addEventListener('change', (e) => {
+				const cityId = e.target.value;
+
+				axios.get(`/townships/${cityId}`)
+					.then(res => {
+						addTownshipToSelect(res.data, modalCrearDireccionMunicipios)
+					})
+					.catch(err => {
+						console.log(err)
+					});
+				})
 		}
 
 		//------------------- STARTING SCRIPT ---------------------

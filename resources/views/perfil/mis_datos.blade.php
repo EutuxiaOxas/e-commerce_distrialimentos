@@ -285,16 +285,16 @@
 							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->RIF ?? ''}}" required required name="RIF" placeholder="RIF/ C.I">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}" required required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->legal_address ?? ''}}"  required name="legal_address" placeholder="Direccion legal [ej: Avenida Bolivar, calle 132, local #23]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}" required required name="postal_code" placeholder="Código postal [ej: 2002]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->postal_code ?? ''}}"  required name="postal_code" placeholder="Código postal [ej: 2002]">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}" required required name="SADA" placeholder="SADA (Opcional)">
+							<input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}"  required name="SADA" placeholder="SADA (Opcional)">
 						</div>
 						<div class="col mb-3">
-							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
+							<select class="form-control-plaintext formularios__inputBorders" id="modalDatosEmpresa__estado"  required name="state_id" >
 								<option value="">Escoge un estado</option>
 								@foreach($estados as $estado)
 									<option value="{{$estado->id}}" 
@@ -304,7 +304,7 @@
 									>{{$estado->state}}</option>
 								@endforeach
 							</select>
-							<select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
+							<select class="form-control-plaintext formularios__inputBorders" id="modalDatosEmpresa__ciudad" required name="city_id" >
 								<option value="">Escoge una ciudad</option>
 								@foreach($ciudades as $ciudad)
 									<option value="{{$ciudad->id}}" 
@@ -367,22 +367,22 @@
 						@csrf
 						<div class="form">
 							<div class="col">
-							<input type="text" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
+							<input type="text" class="form-control-plaintext formularios__inputBorders"  name="type" placeholder="Tipo dirección [ej: Local principal]">
 							</div>
 							<div class="col">
-								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__estado"  name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
 										<option value="{{$estado->id}}">{{$estado->state}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders"  required name="city_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__ciudad" name="city_id" >
 									<option value="">Escoge una ciudad</option>
 									@foreach($ciudades as $ciudad)
 										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" required name="township_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__municipio"  name="township_id" >
 									<option value="">Escoge un municipio</option>
 									@foreach($municipios as $municipio)
 										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
@@ -584,9 +584,65 @@
 		form.action = `/perfil/userShippingAddreses/update/${id}`
 	}
 
+	// AGREGAR CIUDADES
+
+	function addCitiesToSelect(cities, container){
+		
+		if(cities.length) {
+			container.innerHTML = '<option>Escoge una ciudad</option>'
+			cities.forEach(city => {
+				template = `
+					<option value="${city.id}">
+						${city.city}
+					</option>
+				`
+
+				container.innerHTML += template;
+			})
+		}else {
+			container.innerHTML = '<option>No hay ciudades disponibles</option>'
+		}
+	}
+
+
+	// AGREGAR MINICIPIOS
+
+	function addTownshipToSelect(minicipios, container){
+		
+		if(minicipios.length) {
+			container.innerHTML = '<option>Escoge un municipio</option>'
+			minicipios.forEach(minicipio => {
+				template = `
+					<option value="${minicipio.id}">
+						${minicipio.township}
+					</option>
+				`
+
+				container.innerHTML += template;
+			})
+		}else {
+			container.innerHTML = '<option>No hay municipios disponibles</option>'
+		}
+	}
+
 	function misDatosInit() {
 		const editarDirecciones = document.querySelectorAll('.perfilDirectionsEdit');
+		
+		//select estados 
+		const modalEmpresaEstados = document.getElementById('modalDatosEmpresa__estado');
+		const modalCrearDireccionEstados = document.getElementById('modalDatosDirecciones__estado');
+		const modalEditarDireccionEstados = document.getElementById('directionEditState');
 
+
+		//select ciudades
+		const modalEmpresaCiudades = document.getElementById('modalDatosEmpresa__ciudad');
+		const modalCrearDireccionCiudades = document.getElementById('modalDatosDirecciones__ciudad'); 
+		const modalEditarDireccionCiudades = document.getElementById('directionEditCity');
+
+
+		//select minicipios
+		const modalCrearDireccionMunicipios = document.getElementById('modalDatosDirecciones__municipio');
+		const modalEditarDireccionMunicipios = document.getElementById('directionEditTownship');
 
 		if(editarDirecciones) {
 			editarDirecciones.forEach(direccion => {
@@ -601,9 +657,73 @@
 							console.log('Ha ocurrido un error: ', err)
 						}); 
 				})
-				
 			})
 		}
+
+		// -------------- AGREGAR CIUDADES -----------
+		modalEmpresaEstados.addEventListener('change', (e) => {
+			const estadoId = e.target.value;
+
+			axios.get(`/cities/${estadoId}`)
+				.then(res => {
+					addCitiesToSelect(res.data, modalEmpresaCiudades)
+				})
+				.catch(err => {
+					console.log(err)
+				});
+		});
+
+		modalCrearDireccionEstados.addEventListener('change', (e) => {
+			const estadoId = e.target.value;
+
+			axios.get(`/cities/${estadoId}`)
+				.then(res => {
+					addCitiesToSelect(res.data, modalCrearDireccionCiudades)
+				})
+				.catch(err => {
+					console.log(err)
+				});
+		})
+
+		modalEditarDireccionEstados.addEventListener('change', (e) => {
+			const estadoId = e.target.value;
+
+			axios.get(`/cities/${estadoId}`)
+				.then(res => {
+					addCitiesToSelect(res.data, modalEditarDireccionCiudades)
+				})
+				.catch(err => {
+					console.log(err)
+				});
+		})
+
+		// -------------- AGREGAR MUNICIPIOS -----------
+
+		modalCrearDireccionCiudades.addEventListener('change', (e) => {
+			const cityId = e.target.value;
+
+			axios.get(`/townships/${cityId}`)
+				.then(res => {
+					addTownshipToSelect(res.data, modalCrearDireccionMunicipios)
+				})
+				.catch(err => {
+					console.log(err)
+				});
+		})
+
+		modalEditarDireccionCiudades.addEventListener('change', (e) => {
+			const cityId = e.target.value;
+
+			axios.get(`/townships/${cityId}`)
+				.then(res => {
+					addTownshipToSelect(res.data, modalEditarDireccionMunicipios)
+				})
+				.catch(err => {
+					console.log(err)
+				});
+			
+		})
+
 	}
 
 	document.addEventListener('DOMContentLoaded', () => {

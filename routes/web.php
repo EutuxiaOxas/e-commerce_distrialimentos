@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Banks_User;
 use App\Logo_Banner;
 use App\Category;
+use App\State;
+use App\City;
 use App\Variable;
 use Illuminate\Http\Request;
 
@@ -362,4 +364,24 @@ Route::get('/get/iva-dolar-value', function (Request $request) {
 	];
 
 	return response()->json($data, 200);
+});
+
+//----------------- OBTENER CIUDADES ---------
+
+Route::get('cities/{id}', function ($id) {
+	$estado = State::findOrFail($id);
+	$ciudades = $estado->cities;
+
+	return response()->json($ciudades, 200);
+
+});
+
+//----------------- OBTENER MUNICIPIOS ---------
+
+Route::get('townships/{id}', function ($id) {
+	$ciudad = City::findOrFail($id);
+	$municipios = $ciudad->townships;
+
+	return response()->json($municipios, 200);
+
 });
