@@ -16,14 +16,13 @@ class CreatePagosTable extends Migration
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('orden_id');
             $table->integer('monto');
-            $table->date('fecha');
-            $table->foreignId('id_banco_emisor');
+            $table->foreignId('order_id');
+            $table->date('fecha')->nullable();
             $table->foreignId('id_banco_receptor');
-            $table->text('referencia');
-            $table->string('titular_cuenta');
-            $table->string('documento_identidad_titular');
+            $table->text('referencia')->nullable();
+            $table->string('titular_cuenta')->nullable();
+            $table->string('documento_identidad_titular')->nullable();
             $table->timestamps();
         });
     }

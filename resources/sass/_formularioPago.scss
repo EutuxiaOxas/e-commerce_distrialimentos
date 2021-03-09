@@ -3,6 +3,29 @@
 }
 
 
+.formPayment__pagosRegistradosMain { 
+    background-color: #FD6721;
+    padding: .9rem 1rem;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+.formPayment__pagosRegistradosMain.active {
+    display: block;
+}
+
+.formPayment__pagosRegistradosMain-title {
+    font-family: $principal_font;
+    margin: 0;
+}
+
+.formPayment__pagosRegistradosMain-subtitle{
+    font-family: $secondary_font;
+    color: rgba($color: #ffffff, $alpha: .7);
+}
+
 //----------------- FORMULARIO METODO DE PAGO ------------------
 
 
@@ -122,5 +145,12 @@
     span {
         font-weight: 400;
         color: #ffffff;
+    }
+}
+
+
+@media (min-width: 950px) {
+    .formPayment__pagosRegistradosMain {
+        width: 48%;
     }
 }

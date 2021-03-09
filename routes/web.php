@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Banks_User;
 use App\Logo_Banner;
 use App\Category;
+use App\State;
+use App\City;
 use App\Variable;
 use Illuminate\Http\Request;
 
@@ -41,6 +43,27 @@ Route::get('/currency/{type}', function($type) {
 
 	return back();
 })->name('active.curency');
+
+Route::get('/location/{type}', function($type) {
+	if($type === 'carabobo')
+	{
+
+		if(session()->has('location')) {
+			session()->forget('location');
+			session(['location' => 'Carabobo']);
+		}
+
+	}else 
+	{
+		if(session()->has('location')) {
+			session()->forget('location');
+			session(['location' => 'Aragua']);
+		}
+	}
+
+	return back();
+})->name('active.location');
+
 
 //home 
 Route::get('/', 'HomeController@index' )->name('home');
@@ -268,6 +291,8 @@ Route::middleware('tienda')->group(function () {
 
 	Route::get('/cms/tienda/editar/producto/{id}', 'Cms\ProductController@editarProducto')->name('tienda.product.show');
 
+	Route::get('/cms/featured-product/{id}', 'Cms\ProductController@changeProductFeadture')->name('tienda.product.featured');
+
 	Route::post('/cms/productos/verify/{slug}', 'Cms\ProductController@verifySlug');
 
 	Route::post('/cms/tienda/guardar/producto', 'Cms\ProductController@guardarProducto')->name('tienda.product.store');
@@ -320,10 +345,12 @@ Route::get('/pago', 'PagosController@agregarPago');
 Route::get('/nuevo/pago', 'PagosController@agregarNuevoPago');
 Route::post('/pago', 'PagosController@guardarPago')->name('pagos.store');
 Route::get('/obtener/pago/{id}', 'PagosController@obtenerPagos');
-
+Route::get('/verificarPago/{id}', 'Cms\OrderController@verifyPagosOrden')->name('pago.verify');
+Route::post('deletePago/{id}/{orden}', 'PagosController@eliminarPago');
 
 //-------------- OBTENER DIRECCIONES -----------
 Route::get('/user/address', 'AddressController@getAddress');
+Route::get('/get/address/{id}', 'AddressController@getPickUpAddress');
 
 // ------------ OBTENER PRODUCTO -----------------
 Route::get('/get/product/{id}', 'Cms\ProductController@getProductDetails');
@@ -340,4 +367,24 @@ Route::get('/get/iva-dolar-value', function (Request $request) {
 	];
 
 	return response()->json($data, 200);
+});
+
+//----------------- OBTENER CIUDADES ---------
+
+Route::get('cities/{id}', function ($id) {
+	$estado = State::findOrFail($id);
+	$ciudades = $estado->cities;
+
+	return response()->json($ciudades, 200);
+
+});
+
+//----------------- OBTENER MUNICIPIOS ---------
+
+Route::get('townships/{id}', function ($id) {
+	$ciudad = City::findOrFail($id);
+	$municipios = $ciudad->townships;
+
+	return response()->json($municipios, 200);
+
 });

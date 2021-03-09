@@ -148,22 +148,11 @@
         @include('formulario.saludo')
 
         
-        <!---------------------------------- Formulario I ----------------------------->
-        {{-- datos del comprador --}}
-        @include('formulario.datos-comprador')
-        
-        <!-------------------------- Formulario II ----------------------------->
-        {{-- datos de la empresa --}}
-        @include('formulario.datos-empresa')
-        
         <!-------------------------- Formulario IV ----------------------------->
         {{-- datos de pago --}}
-        {{-- @include('formulario.datos-pago-uno') --}}
-        {{-- @include('formulario.datos-pago-dos') --}}
+        @include('formulario.datos-pago-uno')
+    
         
-        <!-------------------------- Formulario III ----------------------------->
-        {{-- datos de la direccion  --}}
-        @include('formulario.datos-direcciones')
         
         <!-------------------------- Seccion de Total del camion ----------------------------->
         {{-- datos de la direccion  --}}
@@ -175,73 +164,42 @@
   </div>
 </section>
 <!-------------------------- Javascript ----------------------------->
-
-<script>
-// formularios
-const $form1 = document.getElementById('formulario1');
-const $form2 = document.getElementById('formulario2');
-const $form3 = document.getElementById('formulario3');
-// const $form4 = document.getElementById('formulario4');
-
-// botones de siguiente
-const $btn_next1 = document.getElementById('btn_next1');
-const $btn_next2 = document.getElementById('btn_next2');
-// const $btn_next3 = document.getElementById('btn_next3');
-// botones de atras
-const $btn_prior1 = document.getElementById('btn_prior1');
-const $btn_prior2 = document.getElementById('btn_prior2');
-// const $btn_prior3 = document.getElementById('btn_prior3');
-//botones de circulos de pasos 
-const $btn_clr = document.getElementById('btn_clr');
-const $btn_clr1 = document.getElementById('btn_clr1');
-const $btn_clr2 = document.getElementById('btn_clr2');
-// const $btn_clr3 = document.getElementById('btn_clr3');
-
-const $mq = window.matchMedia("(min-width:768px)")
-
-/* next */
-$btn_next1.addEventListener('click', () => {
-  $form1.classList.toggle('hide')&$form2.classList.toggle('hide');
-});
-
-$btn_next2.addEventListener('click', () => {
-$form2.classList.toggle('hide')&$form3.classList.toggle('hide');
-});
-
-// $btn_next3.addEventListener('click', () => {
-// $form3.classList.toggle('hide')&$form4.classList.toggle('hide');
-// });
-
-
-/* prior */
-
-$btn_prior1.addEventListener('click', () => {
-$form2.classList.toggle('hide')&$form1.classList.toggle('hide');
-});
-$btn_clr.addEventListener('click', () => {
-$form2.classList.toggle('hide')&$form1.classList.toggle('hide');
-});
-
-$btn_prior2.addEventListener('click', () => {
-$form3.classList.toggle('hide')&$form2.classList.toggle('hide');
-});
-$btn_clr2.addEventListener('click', () => {
-$form3.classList.toggle('hide')&$form2.classList.toggle('hide');
-});
-$btn_clr1.addEventListener('click', () => {
-$form3.classList.toggle('hide')&$form1.classList.toggle('hide');
-});
-
-
-
-// $btn_clr3.addEventListener('click', () => {
-// $form4.classList.toggle('hide')&$form3.classList.toggle('hide');
-// });
-// $btn_prior3.addEventListener('click', () => {
-// $form4.classList.toggle('hide')&$form3.classList.toggle('hide');
-// });
-
-
-</script>
-
+<div class="modal fade" id="pagosRealizadosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pagos realizados</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <table class="table table-striped table-sm" id="table1">
+        <thead>
+          <tr>
+          	<th>ID</th>
+          	<th>Titular</th>
+          	<th>identificacion</th>
+          	<th>monto</th>
+          	<th>Método pago</th>
+            <th>Opcion</th>
+          </tr>
+        </thead>
+        <tbody id="modalPagosRealizadosLoadTable">
+          <tr>
+            <td>1</td>
+            <td>Omega</td>
+            <td>25.985.506</td>
+            <td>40,00 $</td>
+            <td>Zelle</td>
+            <td>
+              <button class="btn btn-sm btn-danger delete-btn">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection

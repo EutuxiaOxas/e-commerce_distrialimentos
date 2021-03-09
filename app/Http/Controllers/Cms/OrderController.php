@@ -29,17 +29,21 @@ class OrderController extends Controller
         $oldOrder = Order::where('status_id', '1')
                         ->where('user_id', $user->id)
                         ->first();
-    	
+
+		$cart = $user->cartVerify();
+		$total = $cart->cartAmount($iva);
+
+
+		if(sizeof($cart->cartDetails()->get()) == 0) 
+		{
+			return redirect('/almacen');
+		}
+
         if(isset($oldOrder))
         {
             $oldOrder->status_id = '5'; //cancelado
             $oldOrder->save();
         }
-
-    	$cart = $user->cartVerify();
-    	$total = $cart->cartAmount($iva);
-
-
 
     	$order = Order::create([
     		'user_id' => $user->id,
@@ -70,7 +74,7 @@ class OrderController extends Controller
     	}
 
 
-    	return redirect("/gracias-por-su-pedido");
+    	return redirect("/pago?orden=".$id);
 
     }
 
@@ -136,6 +140,38 @@ class OrderController extends Controller
     	return redirect('/');
     	
     }
+
+
+	public function verifyPagosOrden($id)
+	{
+		$orden = Order::findOrFail($id);
+		$dolarPrice = Variable::where('name', 'dolar')->first();
+
+		$totalAmount = $orden->total_amount;
+		$pagos = $orden->pagos;
+
+		foreach($pagos as $pago) 
+		{
+			$dolarActive = false;
+
+			if(strtolower($pago->receptor->title) == 'zelle' || strtolower($pago->receptor->title) == 'efectivo')
+			{
+				$dolarActive = true;
+			}
+
+			$totalAmount = $totalAmount - ($dolarActive ? $pago->monto : $pago->monto * $dolarPrice->value);
+
+		}
+
+		if($totalAmount <= 0) {
+			$orden->update([
+				'status_id' => 2
+			]);
+			return redirect('/gracias-por-su-pedido');
+		}
+
+		return back();
+	}
 
 
     public function cancelarOrden($id)

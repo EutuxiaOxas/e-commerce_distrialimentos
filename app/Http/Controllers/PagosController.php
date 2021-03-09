@@ -7,6 +7,8 @@ use App\Order;
 use App\Bank;
 use App\Banks_User;
 use App\Pago;
+use Carbon\Carbon;
+use App\Variable;
 class PagosController extends Controller
 {
 
@@ -46,8 +48,6 @@ class PagosController extends Controller
     {	
     	$user = auth()->user();
 
-		   	
-
      		if($user)
      		{
 
@@ -56,13 +56,12 @@ class PagosController extends Controller
      				
      				$orden = Order::find($request->orden);
 
-     				if($user->id == $orden->user->id && $orden->status === 'ACTIVO')
+     				if($user->id == $orden->user->id)
      				{
-     	                $user_id = $user->id;
-     	                $banks = Bank::where('title', '!=', 'Otros')->get();
-     	                $banksUsers = Banks_User::where('title', '!=', 'PayPal')->get();
+     	                $banks = Banks_User::all();
+                        $dolarPrice = Variable::where('name', 'dolar')->first();
      					
-     	                return view('pagos', compact('user_id', 'orden', 'banks', 'banksUsers'));
+     	                return view('formulario_realizarPago', compact('user', 'orden', 'banks', 'dolarPrice'));
      				}
      			}
 
@@ -104,12 +103,21 @@ class PagosController extends Controller
 
     public function guardarPago(Request $request)
     {
-        $orden = Order::find($request->orden_id);
+        // return $request->all();
+        $user = auth()->user();
+    	$pagoRealizado = new Pago();
+        
+        $pagoRealizado->user_id = $user->id;
+        $pagoRealizado->monto = $request->monto;
+        $pagoRealizado->order_id = $request->orden_id;
+        $pagoRealizado->id_banco_receptor = $request->id_banco_receptor;
+        $pagoRealizado->referencia = $request->referencia;
+        $pagoRealizado->titular_cuenta = $request->titular_cuenta;
+        $pagoRealizado->documento_identidad_titular = $request->documento_identidad_titular;
 
-    	Pago::create($request->all());
-        $orden->status = 'REGISTRADO';
-        $orden->save();
-    	return redirect('/home')->with('message', 'Orden realizada con éxito y en proceso!');
+        $pagoRealizado->save();
+
+        return response()->json($pagoRealizado, 201);
     }
 
 
@@ -118,19 +126,17 @@ class PagosController extends Controller
         $orden = Order::find($id);
 
         $pagos = $orden->pagos;
-        $total_cuenta = $orden->total_amount;
 
         $pagos_data = [];
         $contador = 1;
         
         foreach ($pagos as $pago) {
-            $total_cuenta -= $pago->monto;
 
             $pagos_data[] = [
+                'id' => $pago->id,
                 'numero' => $contador,
                 'titular' => $pago->titular_cuenta,
                 'monto' => $pago->monto,
-                'banco_emisor' => $pago->emisor->title,
                 'banco_receptor' => $pago->receptor->title,
                 'referencia' => $pago->referencia,
                 'fecha' => $pago->fecha,
@@ -143,11 +149,27 @@ class PagosController extends Controller
         $data = [
             'orden_id' => $orden->id,
             'total_pago' => $orden->total_amount,
-            'restante' => $total_cuenta,
             'pagos' => $pagos_data,
         ];
 
         return response()->json($data, 200);
+
+    }
+
+
+    public function eliminarPago($id, $orden)
+    {
+        $user = auth()->user();
+        $orden = Order::findOrFail($orden);
+        $pago = Pago::findOrFail($id);
+
+        if($user->id == $orden->user_id )
+        {
+            $pago->delete();
+            return response()->json(null, 200);
+        }
+
+        return response()->json('No autorizado', 401);
 
     }
 }
