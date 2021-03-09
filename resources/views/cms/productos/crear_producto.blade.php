@@ -128,7 +128,7 @@
 			<select id="marca" class="form-control" name="brand_id">
 				<option value="0">Selecciona una marca</option>
 				@foreach($brands as $brand)
-					<option value="{{$brand->id}}">{{$brand->brand}}</option>
+					<option value="{{$brand->id}}">{{$brand->name}}</option>
 				@endforeach
 			</select>
 		</div>

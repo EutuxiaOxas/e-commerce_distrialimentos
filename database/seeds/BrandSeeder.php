@@ -12,20 +12,23 @@ class BrandSeeder extends Seeder
     public function run()
     {
         DB::table('brands')->insert([
-            'brand' => 'IBERIA',
-            'logo' => 'marca1.jpg',
+            'name' => 'IBERIA',
+            'description' => 'Las mejor marca de todos los tiempo.',
+            'banner' => 'marca1.jpg',
             'status' => 'ACTIVA'
         ]);
 
         DB::table('brands')->insert([
-            'brand' => 'BADU',
-            'logo' => 'marca2.jpg',
+            'name' => 'BADU',
+            'description' => 'Las mejor marca de todos los tiempo.',
+            'banner' => 'marca2.jpg',
             'status' => 'ACTIVA'
         ]);
 
         DB::table('brands')->insert([
-            'brand' => 'CARABOBO',
-            'logo' => 'marca3.jpg',
+            'name' => 'CARABOBO',
+            'description' => 'Las mejor marca de todos los tiempo.',
+            'banner' => 'marca3.jpg',
             'status' => 'ACTIVA'
         ]);
     }

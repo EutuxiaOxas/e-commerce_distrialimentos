@@ -180,8 +180,8 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('/productos', 'HomeController@products')->name('productos');
 Route::get('/producto/{slug}', 'AlmacenController@showProduct')->name('producto.show');
-Route::get('/categoria-productos/{slug}', 'AlmacenController@showProductsByCategory')->name('product.category.show');
-Route::get('/marca-producto/{brand}', 'AlmacenController@showProductsByBrand')->name('product.brand.show');
+Route::get('/almacen/categoria/{slug}', 'AlmacenController@showProductsByCategory')->name('product.category.show');
+Route::get('almacen/marca/{brand}', 'AlmacenController@showProductsByBrand')->name('product.brand.show');
 
 
 Route::get('/cart', 'CartController@getCart');
@@ -233,6 +233,9 @@ Route::middleware('cms')->group(function () {
 	Route::post('/cms/promociones/create', 'PromotionController@agregarPromocion')->name('promociones.store');
 	Route::post('/cms/promociones/update/{id}', 'PromotionController@actualizarPromocion')->name('promociones.update');
 	Route::post('/cms/promociones/eliminar/{id}', 'PromotionController@eliminarPromocion');
+	//ocultar/activar banners promocionales
+	Route::get('/cms/activar/promociones/{id}', 'PromotionController@activarBanner')->name('promociones.active');
+	Route::get('/cms/ocultar/promociones/{id}', 'PromotionController@ocultarBanner')->name('promociones.desactive');
 });
 
 /*---------------ADMINISTRADORES --------------*/
@@ -263,9 +266,7 @@ Route::middleware('landing')->group(function () {
 	//ocultar/activar banners principales
 	Route::get('/cms/activar/banner/{id}', 'Cms\LogoBannerController@activarBanner')->name('banners.active');
 	Route::get('/cms/ocultar/banner/{id}', 'Cms\LogoBannerController@ocultarBanner')->name('banners.desactive');
-	//ocultar/activar banners promocionales
-	Route::get('/cms/activar/promociones/{id}', 'Cms\PromotionController@activarBanner')->name('promociones.active');
-	Route::get('/cms/ocultar/promociones/{id}', 'Cms\PromotionController@ocultarBanner')->name('promociones.desactive');
+
 
 });
 
@@ -282,6 +283,17 @@ Route::middleware('tienda')->group(function () {
 	Route::post('/cms/tienda/guardar/categoria', 'Cms\CategoryController@guardarCategoria')->name('tienda.category.store');
 	Route::post('/cms/tienda/actualizar/categoria/{id}', 'Cms\CategoryController@atualizarCategoria');
 	Route::post('/cms/tienda/eliminar/categoria/{id}', 'Cms\CategoryController@eliminarCategoria');
+
+	/* --------------------------- MARCAS DEL LOS PRODUCTOS ----------------------- */
+	Route::get('/cms/tienda/brand', 'Cms\BrandController@index')->name('tienda.brand.home');
+	Route::get('/cms/tienda/get/brand/{id}', 'Cms\BrandController@getBrand');
+	//metodos posts
+	Route::post('/cms/brand/verify/{slug}', 'Cms\BrandController@verifySlug');
+	Route::post('/cms/tienda/guardar/brand', 'Cms\BrandController@guardarMarca')->name('tienda.brand.store');
+	Route::post('/cms/tienda/actualizar/brand/{id}', 'Cms\BrandController@actualizarMarca');
+	Route::post('/cms/tienda/eliminar/brand/{id}', 'Cms\BrandController@eliminarMarca');
+
+
 
 
 		/*--------------- PRODUCTOS --------------*/

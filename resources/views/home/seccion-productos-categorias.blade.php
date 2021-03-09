@@ -1,3 +1,4 @@
+ @if(count($dos_categorias)==2)
  <!----------------------  Productos mas vendidos Desktop ------------------>
  <section class="Productos_masVendidos px-3">
   <div class="tittle-section container d-block d-md-none">
@@ -18,10 +19,12 @@
   <div class="container-fluid">
     <div class="row">
       <div class="owl-carousel" id="productos2">
-          {{-- Agregando los productos --}}
+        @isset($productos_cat_uno)
+        {{-- Agregando los productos --}}
           @foreach ($productos_cat_uno as $p)
             @include('home.producto-home')
           @endforeach
+        @endisset
 
       </div>    
     </div>
@@ -51,12 +54,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="owl-carousel" id="productos2">
-          {{-- Agregando los productos --}}
+        @isset($productos_cat_uno) 
+        {{-- Agregando los productos --}}
           @foreach ($productos_cat_dos as $p)
             @include('home.producto-home')
           @endforeach
-
+          @endisset
       </div>    
     </div>
   </div>
 </section>
+@endif

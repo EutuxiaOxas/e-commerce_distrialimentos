@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    <title>Productos</title>
+  Productos
 @endsection
 
 @section('menu-perfil')

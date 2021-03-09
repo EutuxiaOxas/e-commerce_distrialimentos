@@ -17,13 +17,15 @@ class AlmacenController extends Controller
             $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
         }
         $categorias = Category::all(); // categorias de productos
-        return view('sketch.almacen', compact('productos', 'categorias'));
+        
+        return view('almacen', compact('productos', 'categorias'));
     }
 
     public function showProduct($slug)
     {
         $product = Product::where('slug', $slug)->with('images')->first();
         $categorias = Category::all();
+   
         
         //PRECIOS POR UNIDAD
 
@@ -41,15 +43,15 @@ class AlmacenController extends Controller
         $product_categorie = Category::where('slug', $slug)->first();
         $categorias = Category::all();
         $productos = $product_categorie->products()->paginate(25);
-        return view('sketch.almacen', compact('productos', 'categorias'));
+        return view('almacen', compact('productos', 'categorias', 'product_categorie' ));
     }
 
     public function showProductsByBrand($brand)
     {
-        $product_brand = Brand::where('brand', $brand)->first();
+        $product_brand = Brand::where('name', $brand)->first();
         $categorias = Category::all();
         $productos = $product_brand->products()->paginate(25);
-        return view('sketch.almacen', compact('productos', 'categorias'));
+        return view('almacen', compact('productos', 'categorias', 'product_brand'));
     }
     
 }

@@ -39,10 +39,8 @@
           <tr>
           	<th>#</th>
             <th>icono</th>
-            <th>Imagen main</th>
+            <th>Banner</th>
           	<th>Titulo</th>
-            <th>Categoria padre</th>
-            <th>estatus</th>
           	<th>Descripción</th>
           	<th>Acciones</th>
           </tr>
@@ -52,15 +50,8 @@
           <tr>
             <td>{{$categoria->id}}</td>
             <td><img src="{{asset('storage/'.$categoria->icono)}}" style="width: 50px; height: 50px"></td>
-            <td><img src="{{asset('storage/'.$categoria->image_main)}}" style="width: 50px; height: 50px"></td>
+            <td><img src="{{asset('storage/'.$categoria->image_main)}}" style="width: 50px; height: auto"></td>
             <td>{{$categoria->title}}</td>
-            <td>
-
-              @php $padre = $categoria->getFatherName() @endphp 
-              {{$padre ? $padre->title : 'No tiene categoria padre'}}
-
-            </td>
-            <td>{{$categoria->status}}</td>
             <td>{{$categoria->description}}</td>
             <td>
             	<button type="button" id="{{$categoria->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_category">Editar</button>
@@ -73,7 +64,7 @@
     </div>
 </section>
 
-
+{{-- Modal de crear --}}
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -83,26 +74,25 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body m-2">
                 <div id="errors_container" style="display: none;" class="alert alert-danger" role="alert">
                 </div>
-
-                <input type="hidden" id="url_access" name=""> 
-                <input type="hidden" id="url_access_modal" value="nada" name=""> 
                 <form action="{{route('tienda.category.store')}}" id="form_create_category" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        
-                        <div class="col-md-12 form-group px-1 mt-3">
-                            <h5>Nombre</h5>
-                            <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Nombre" autocomplete="off" required>
-                            <small id="slug_alert"></small>
-                        </div>
-                        <div class="col-md-12 form-group px-1">
+                      <div class="col-md-12 form-group px-1 mt-3">
+                          <h5>Nombre de Categoria</h5>
+                          <input class="form-control" id="create_category_title" type="text" name="title" placeholder="Ej: Lacteos, Harinas..." autocomplete="off" required>
+                          <small id="slug_alert"></small>
+                      </div>
+                      <input type="hidden" id="url_access" name=""> 
+                      <input type="hidden" id="url_access_modal" value="nada" name=""> 
+
+                        <div class="col-md-12 form-group px-1 d-none">
                             <h5>Categoria padre <small>(opcional)</small></h5>
                             <select class="form-control" name="padre_id">
                               <option value="0">Seleccionar categoria padre</option>
-                              <option value="0">Principal</option>
+                              <option value="0" selected>Principal</option>
                               @foreach($categorias as $categoria)
                                 @if($categoria->padre_id == 0)
                                   <option value="{{$categoria->id}}">{{$categoria->title}}</option>
@@ -112,23 +102,23 @@
                         </div>
                         <div class="col-md-12 form-group px-1">
                             <h5>Descripción</h5>
-                            <textarea class="form-control" id="create_category_description" name="description" placeholder="Descripción"></textarea>
+                            <textarea class="form-control" id="create_category_description" name="description" placeholder="Escribe una frase que describa la categoria"></textarea>
                         </div>
                         <div class="col-md-12 form-group px-1">
                             <h5>Icono</h5>
                             <input type="file" id="icono_category" required name="icono">
                         </div>
                         <div class="col-md-12 form-group px-1">
-                          <h5>Imagen Principal</h5>
+                          <h5>Imagen del banner</h5>
                           <input type="file" id="image_main_category" required name="image_main">
-                      </div>
+                        </div>
 
                     </div>
                     <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
                       <h5>URL</h5>
                       <input class="form-control" id="slug" type="text" name="slug">
-                    </div>
-                </form>
+                    </div> 
+                    </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                 <button type="submit" id="crear_category_submit" class="btn btn-primary">Agregar Categoria</button>
@@ -138,6 +128,7 @@
   </div>
 </div>
 
+{{-- modal de editar  --}}
 <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -154,24 +145,28 @@
                     @csrf
                     <div class="form-group">
                         <h5>Nombre</h5>
-                        <input id="editar_title" class="form-control" type="text" name="title"  autocomplete="off">
+                        <input id="editar_title" class="form-control" type="text" name="title"  placeholder="Ej: Lacteos, Harinas..." autocomplete="off">
                         <small id="slug_alert_edit"></small>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group d-none">
                         <h5>Categoria padre <small>(opcional)</small></h5>
                         <select id="cat_padre_editar" class="form-control" name="padre_id">
-                          <option value="0">Seleccionar categoria</option>
+                          <option value="0" selected>Seleccionar categoria</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
                         <h5>Descripcion</h5>
-                        <textarea class="form-control" id="editar_description" name="description"></textarea>
+                        <textarea class="form-control" id="editar_description" name="description" placeholder="Escribe una frase que describa la categoria"></textarea>
                     </div>
                     <div class="col-md-12 form-group px-1">
                         <h5>Icono</h5>
                         <input type="file" id="icono_category_editar" required name="icono">
+                    </div>
+                    <div class="col-md-12 form-group px-1">
+                      <h5>Imagen del banner</h5>
+                      <input type="file" id="image_main_category" required name="image_main">
                     </div>
                     <div class="form-group" style="visibility: hidden;position: absolute;">
                       <h5>URL</h5>
@@ -187,7 +182,7 @@
     </div>
 </div>
 
-
+{{-- modal de eliminar --}}
 <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -211,12 +206,13 @@
     </div>
 </div>
 
+{{-- JS Crear categoria --}}
 <script type="text/javascript">
   let crearCategorySubmit = document.getElementById('crear_category_submit');
   let errors_container = document.getElementById('errors_container');
 
   crearCategorySubmit.addEventListener('click', (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const title = document.getElementById('create_category_title'),
           description = document.getElementById('create_category_description'),
@@ -256,17 +252,14 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-      `
-
+      `;
       errors_container.appendChild(error_main)
       errors_container.style.display = 'block';
 
     } else {
+      // submit de formulario
       form.submit();
     }
-
-
-
 
   });
 </script>
@@ -342,15 +335,16 @@
   {
     editarButtons.forEach(button => {
       button.addEventListener('click', (e) => {
-        let title = e.target.parentNode.parentNode.children[2].textContent,
-            catPadre = e.target.parentNode.parentNode.children[3].innerText,
-            description = e.target.parentNode.parentNode.children[5].textContent,
+        let catPadre = e.target.parentNode.parentNode.children[3].innerText,
             id = e.target.id;
 
             axios.get(`/cms/tienda/get/category/${id}`)
               .then(res => {
                 let slug = res.data.slug,
+                    title =res.data.title,
+                    description =res.data.description,
                     categorias = res.data.categorias;
+                console.log(res);
 
                 modalEditar(id,title,description, slug, categorias, catPadre);
               })

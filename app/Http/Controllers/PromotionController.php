@@ -110,6 +110,7 @@ class PromotionController extends Controller
         $banner->save();
 
         return back()->with('message', 'Banner activado con éxito');
+        
 
     }
 

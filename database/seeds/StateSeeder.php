@@ -9,7 +9,7 @@ class StateSeeder extends Seeder
         'Amazonas',
         'Anzoátegui',
         'Apure',
-        'Aragua',
+        'Aragua', //4
         'Barinas',
         'Bolívar',
         'Carabobo', //7

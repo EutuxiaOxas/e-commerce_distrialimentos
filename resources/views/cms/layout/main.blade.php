@@ -194,7 +194,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('tienda.category.home')}}" class="nav-link">
+                <a href="{{route('tienda.brand.home')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Marcas</p>
                 </a>
