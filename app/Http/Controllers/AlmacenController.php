@@ -25,6 +25,7 @@ class AlmacenController extends Controller
     {
         $product = Product::where('slug', $slug)->with('images')->first();
         $categorias = Category::all();
+   
         
         //PRECIOS POR UNIDAD
 
@@ -34,7 +35,7 @@ class AlmacenController extends Controller
 
         // dd($alGranMayorUnitPrice);
 
-        return view('detalle', compact('product', 'categorias', 'vipUnitPrice', 'alMayorUnitPrice', 'alGranMayorUnitPrice'));
+        return view('sketch.detalle', compact('product', 'categorias', 'vipUnitPrice', 'alMayorUnitPrice', 'alGranMayorUnitPrice'));
     }
 
     public function showProductsByCategory($slug)
@@ -47,10 +48,10 @@ class AlmacenController extends Controller
 
     public function showProductsByBrand($brand)
     {
-        $product_brand = Brand::where('brand', $brand)->first();
+        $product_brand = Brand::where('name', $brand)->first();
         $categorias = Category::all();
         $productos = $product_brand->products()->paginate(25);
-        return view('almacen', compact('productos', 'categorias'));
+        return view('almacen', compact('productos', 'categorias', 'product_brand'));
     }
     
 }

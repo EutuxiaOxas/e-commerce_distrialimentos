@@ -55,28 +55,49 @@ $color_header='dark';
 
 
    <!-- Almacen-->
-   
-   @if (count($product_categorie)>0)
-   <!----- Banner de almacen------>
+   @isset($product_categorie)
+   <!----- Banner de categoria de almacen------>
    <section>
      <div class="container-fluid p-0">
        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
          <div class="carousel-inner">
            <div class="carousel-item active">
-             <img class="d-block w-100" src="{{asset('storage/'.$product_categorie->image)}}" alt="First slide">
-           </div>
-           <div class="carousel-item">
-           <img class="d-block w-100" src="{{asset('storage/'.$product_categorie->image)}}" alt="First slide">
+             <img class="d-block w-100" src="{{asset('storage/'.$product_categorie->image_main)}}" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="{{asset('storage/'.$product_categorie->image_main)}}" alt="First slide">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!----- FIN Banner de almacen------>
+    @endisset
+
+    @isset($product_brand)
+    <!----- Banner marca de almacen------>
+    <section>
+      <div class="container-fluid p-0">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="{{asset('storage/'.$product_brand->banner)}}" alt="First slide">
+             </div>
+             <div class="carousel-item">
+               <img class="d-block w-100" src="{{asset('storage/'.$product_brand->banner)}}" alt="First slide">
+             </div>
            </div>
          </div>
        </div>
-     </div>
-   </section>
-   <!----- FIN Banner de almacen------>
-   @endif
+     </section>
+     <!----- FIN Banner de almacen------>
+     @endisset
+
 
    <section>
     <div class="container-fluid pt-5">
+      {{-- titulo de categoria --}}
+      @isset($product_categorie)
       <div class="row my-1 px-2 py-0">
         <div class="col mb-2">
           <h3 class="mb-0 font-weight-bold text-primary">
@@ -91,7 +112,39 @@ $color_header='dark';
           </h5>
         </div>
       </div>
-      
+      @endisset
+
+      {{-- titulo de marca --}}
+      @isset($product_brand)
+      <div class="row my-1 px-2 py-0">
+        <div class="col mb-2">
+          <h3 class="mb-0 font-weight-bold text-primary">
+            @if ($product_brand)
+            {{$product_brand->name}}
+            @endif
+        </h3>
+          <h5 class="font-weight-bold text-muted">
+            @if ($product_brand)
+            {{$product_brand->description}}
+            @endif
+          </h5>
+        </div>
+      </div>
+      @endisset
+      {{-- Titulo de almacen --}}
+      @if ((!isset( $product_brand) && !isset( $product_categorie)))
+      <div class="row my-1 px-2 py-0">
+        <div class="col mb-2">
+          <h3 class="mb-0 font-weight-bold text-primary">
+            Nuestros productos
+          </h3>
+          <h5 class="font-weight-bold text-muted">
+            Los mejores productos nacionales e importados
+          </h5>
+        </div>
+      </div>
+      @endif
+
     <div class="row mb-3 px-2">
       @foreach($productos as $producto)
         <div class="col-6 col-md-2 espaciado d-flex">
@@ -99,10 +152,10 @@ $color_header='dark';
               <a class="almacen__cardImg" href="{{route('producto.show', $producto->slug)}}">
                 <img class="card-img-top" src="{{asset('storage/'.$producto->image)}}" alt="Card image cap">
                 <div class="almacen__textCard">
-                  <p class="almacen__textProduct">Disponible Al gran Mayor 18.00 $</p>
+                  <p class="almacen__textProduct">Más de {{$producto->amount_min_big_wholesale}} {{$producto->packaging->packaging}}  - {{$producto->big_wholesale_price}}.00 $</p>
                 </div>
                 <div class="almacen__textCard">
-                  <p class="almacen__textProduct almacen__productAdded">Más de 20 - 18.00 $ Al gran Mayor</p>
+                  <p class="almacen__textProduct almacen__productAdded">Más de {{$producto->big_wholesale_price}} - {{$producto->big_wholesale_price}}.00 $ Al gran Mayor</p>
                 </div>
               </a>
              <!-- card-body-->
@@ -130,7 +183,7 @@ $color_header='dark';
                         <p class="card-text smaller">({{$producto->available_stock}}) Disponibles</p>
                       </div>
                       <div class="col-12">
-                        <a href="{{route('product.brand.show', $producto->brand->brand)}}" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($producto->brand->brand))}}</span></a>
+                        <a href="{{route('product.brand.show', $producto->brand->name)}}" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($producto->brand->name))}}</span></a>
                         <a href="{{route('product.category.show', $producto->category->slug)}}" class="almacen__categoriaText smaller">Categoria: <span>{{ucfirst(strtolower($producto->category->title))}}</span></a>
                       </div>
                       <div class="col-12">
