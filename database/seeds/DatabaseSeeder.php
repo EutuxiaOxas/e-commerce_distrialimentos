@@ -31,5 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusOrderSeeder::class);
         //Cuentas bancarias
         $this->call(MetodoPagosSeeder::class);
+        //Dirección pickup
+        $this->call(AddressSeeder::class);
     }
 }

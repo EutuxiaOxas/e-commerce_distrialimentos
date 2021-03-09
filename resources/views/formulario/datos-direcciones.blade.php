@@ -65,7 +65,7 @@
             <img src="{{asset('/images/void-03.svg')}}" alt="">
             <p class="perfil__cardListItem-content">Aun sin direcciones de envio...</p>
           </div>
-		  <div class="formDireccion__pickupMain">
+		  <div class="formDireccion__pickupMain" id="formDirecciones_pickUpButton" data-id="1">
 			<div class="formDireccion__pickupImage">
 				<img src="{{asset('images/almacen_icon.png')}}" alt="Almacen icono">
 			</div>
@@ -92,8 +92,8 @@
           </div>
           <div class="col-7 pl-0">
 		  <form action="{{route('order.store')}}" id="formFinalizarCompra">
-            <input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
-            <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" {{$direcciones[0]->id ? '' : 'disabled'}}>Finalizar Compra</button>
+            <input type="hidden" value="{{isset($direcciones[0]->id) ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
+            <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" {{isset($direcciones[0]->id) ? '' : 'disabled'}}>Finalizar Compra</button>
           </form>
           </div>
         </div>
@@ -401,6 +401,9 @@
 			const changeAddress = document.getElementById('formChangeAddress')
 			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
 			const formCreate = document.getElementById('formCreateAddress');
+			const pickUpButton = document.getElementById('formDirecciones_pickUpButton');
+
+			console.log(pickUpButton)
 			direcciones = [];
 
 
@@ -424,6 +427,25 @@
 						direcciones = res.data;
 						addTypeAddressToSelect(direcciones)
 					})
+				})
+			}
+
+			if(pickUpButton) {
+				pickUpButton.addEventListener('click', (e) => {
+					const addressId = 1;
+					const formAddressValue = document.getElementById('finalizarCompraDireccionId');
+
+					axios.get(`/get/address/${addressId}`)
+						.then(res => {
+							delete res.data.user_id
+							const direccion = res.data
+							console.log(direccion)
+							formAddressValue.value = addressId;
+							addNewAddress(direccion)
+						})
+						.catch(err =>{ 
+							console.log(err)
+						})
 				})
 			}
 

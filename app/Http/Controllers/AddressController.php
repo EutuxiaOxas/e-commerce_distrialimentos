@@ -18,4 +18,18 @@ class AddressController extends Controller
 
         return response()->json("Unauthorized", 401);
     }
+
+
+    public function getPickUpAddress($id) 
+    {
+        $user = auth()->user();
+
+        if(isset($user))
+        {
+            $direccion = Address::with(['delivery_route', 'state', 'city'])->where('user_id', 1)->first();
+            return response()->json($direccion, 200);
+        }
+
+        return response()->json("Unauthorized", 401);
+    }
 }

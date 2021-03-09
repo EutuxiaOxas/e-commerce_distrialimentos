@@ -348,6 +348,7 @@ Route::post('deletePago/{id}/{orden}', 'PagosController@eliminarPago');
 
 //-------------- OBTENER DIRECCIONES -----------
 Route::get('/user/address', 'AddressController@getAddress');
+Route::get('/get/address/{id}', 'AddressController@getPickUpAddress');
 
 // ------------ OBTENER PRODUCTO -----------------
 Route::get('/get/product/{id}', 'Cms\ProductController@getProductDetails');
