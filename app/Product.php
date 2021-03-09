@@ -28,7 +28,8 @@ class Product extends Model
 		'amount_min_wholesale',
 		'amount_min_vip',
 		'unit_price',
-		'brand_id'
+		'brand_id',
+		'isfeatured'
     ];
 
 

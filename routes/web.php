@@ -291,6 +291,8 @@ Route::middleware('tienda')->group(function () {
 
 	Route::get('/cms/tienda/editar/producto/{id}', 'Cms\ProductController@editarProducto')->name('tienda.product.show');
 
+	Route::get('/cms/featured-product/{id}', 'Cms\ProductController@changeProductFeadture')->name('tienda.product.featured');
+
 	Route::post('/cms/productos/verify/{slug}', 'Cms\ProductController@verifySlug');
 
 	Route::post('/cms/tienda/guardar/producto', 'Cms\ProductController@guardarProducto')->name('tienda.product.store');
