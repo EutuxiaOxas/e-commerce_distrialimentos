@@ -1,12 +1,11 @@
 @extends('layouts.main')
 
 @section('title')
-    Almacén
+    Almacén de productos
 @endsection
 
 @section('metas')
 <!-- Primary Meta Tags -->
-<title>Almacén de productos</title>
 <meta name="title" content="Almacén de productos">
 <meta name="description" content="Entra y descubre la amplia gama de productos nacionales e importados que ofrecemos para ti. Contamos con los estándares más altos de calidad en la comercialización y distribución de productos de consumo masivo.">
 
