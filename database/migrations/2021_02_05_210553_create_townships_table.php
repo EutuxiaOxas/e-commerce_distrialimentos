@@ -17,6 +17,7 @@ class CreateTownshipsTable extends Migration
             $table->id();
             $table->foreignId('city_id');
             $table->string('township');
+            $table->double('delivery_price');
             $table->boolean('coverage');
             // $table->timestamps();
         });

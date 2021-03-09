@@ -28,8 +28,7 @@
       <!-- Fin Number-->
     @if ($direcciones->isNotEmpty())
 		@foreach ($direcciones->take(1) as $direccion)
-			
-		
+		<div class="container mt-1">
 			<!-- trj datos de envio-->
 			<div class="perfil__cardBody direccion" id="formAddressMain">
 				<div class="info-container p-3 mb-1">
@@ -55,6 +54,8 @@
 					</div>
 				</div>
 			</div>
+		</div>
+
 		<!-- Fin trj datos de envio-->
 		@endforeach
     @else 
@@ -64,15 +65,22 @@
             <img src="{{asset('/images/void-03.svg')}}" alt="">
             <p class="perfil__cardListItem-content">Aun sin direcciones de envio...</p>
           </div>
+		  <div class="formDireccion__pickupMain" id="formDirecciones_pickUpButton" data-id="1">
+			<div class="formDireccion__pickupImage">
+				<img src="{{asset('images/almacen_icon.png')}}" alt="Almacen icono">
+			</div>
+			<div class="formDireccion__pickupBody">
+				<h3 class="formDireccion__pickupBody-title">Recojer en Almacen</h3>
+				<p class="formDireccion__pickupBody-subtitle">Valencia, Carabobo</p>
+			</div>
+		  </div>
           <div class="perfil__agregarDatos ">
             <a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
           </div>
         </div>
     @endif
 
-     
-
-    </section>
+</section>
     <!-- Fin Datos de usuario-->
 
     <!-- Buttoms-->
@@ -83,10 +91,10 @@
             <button id="btn_prior2" class="btn btn-sm btn-block formularios__btn-left text-muted">Anterior</button>
           </div>
           <div class="col-7 pl-0">
-            <form action="{{route('order.store')}}" id="formFinalizarCompra">
-				<input type="hidden" value="{{$direcciones[0]->id ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
-				<button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" @if (!$direcciones->isNotEmpty()) disabled @endif>Finalizar Compra</button>
-			</form>
+		  <form action="{{route('order.store')}}" id="formFinalizarCompra">
+            <input type="hidden" value="{{isset($direcciones[0]->id) ?? ''}}" name="address_id" id="finalizarCompraDireccionId">
+            <button type="submit" class="btn btn-primary btn-sm btn-block formularios__btn-right" id="btn_finish" {{isset($direcciones[0]->id) ? '' : 'disabled'}}>Finalizar Compra</button>
+          </form>
           </div>
         </div>
       </div>
@@ -130,22 +138,22 @@
 								<input type="text" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
 							</div>
 							<div class="col">
-								<select class="form-control-plaintext formularios__inputBorders" required name="state_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionEstados" required name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
 										<option value="{{$estado->id}}">{{$estado->state}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders"  required name="city_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionCiudades"  required name="city_id" >
 									<option value="">Escoge una ciudad</option>
 									@foreach($ciudades as $ciudad)
 										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" required name="township_id" >
-									<option value="">Escoge un municipio</option>
+								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionMunicipios" required name="township_id" >
+									<option value="">Zona de reparto</option>
 									@foreach($municipios as $municipio)
-										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
+										<option value="{{$municipio->id}}">{{$municipio->township}} - {{$municipio->delivery_price}} $</option>
 									@endforeach
 								</select>
 							</div>
@@ -233,9 +241,10 @@
 
 <script>
 	
-	const $btn_next3 = document.getElementById('btn_finish');
+	const $btn_next3 = document.getElementById('btn_next3');
+	// const $btn_next3 = document.getElementById('btn_finish');
 
-
+ 
 	function compraFormDirection(){
 
 		//------------------- FUNCIONES SCOPE ---------------------
@@ -273,12 +282,12 @@
 
 		function addNewAddress(address){
 			const mainContainer = document.getElementById('formAddressMain')
-
+			const buttonFinalizar = document.getElementById('btn_finish');
 			if(mainContainer) {
 				addLoaderInFormAddress(mainContainer)
 				setTimeout(()=> {
 					addNewAddressToView(mainContainer, address)
-					$btn_next3.removeAttribute('disabled')
+					buttonFinalizar.removeAttribute('disabled')
 				}, 1500)
 			}
 			
@@ -331,10 +340,47 @@
 			reloadEvents();
 		}
 
+		function addCitiesToSelect(cities, container){
+		
+			if(cities.length) {
+				container.innerHTML = '<option value="">Escoge una ciudad</option>'
+				cities.forEach(city => {
+					template = `
+						<option value="${city.id}">
+							${city.city}
+						</option>
+					`
+
+					container.innerHTML += template;
+				})
+			}else {
+				container.innerHTML = '<option value="">No hay ciudades disponibles</option>'
+			}
+		}
+
+		function addTownshipToSelect(minicipios, container){
+		
+			if(minicipios.length) {
+				container.innerHTML = '<option value="">Zonas de reparto</option>'
+				minicipios.forEach(minicipio => {
+					template = `
+						<option value="${minicipio.id}">
+							${minicipio.township} - ${minicipio.delivery_price} $
+						</option>
+					`
+
+					container.innerHTML += template;
+				})
+			}else {
+				container.innerHTML = '<option value="">No hay zonas de reparto disponibles</option>'
+			}
+		}
+
 		//------------------------- RECARGAR EVENTOS -------------------------
 		function reloadEvents(){
 			const changeAddress = document.getElementById('formChangeAddress')
 			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
+			const finalizarButton = document.getElementById('btn_finish')
 			direcciones = [];
 			if(changeAddress) {
 				changeAddress.addEventListener('click', () => {
@@ -343,7 +389,7 @@
 					.then(res => {
 						direcciones = res.data;
 						addTypeAddressToSelect(direcciones)
-						$btn_next3.removeAttribute('disabled')
+						$finalizarButton.removeAttribute('disabled')
 					})
 				})
 			}
@@ -355,7 +401,21 @@
 			const changeAddress = document.getElementById('formChangeAddress')
 			const butonToSaveAddress = document.getElementById('formButonChangeAddress');
 			const formCreate = document.getElementById('formCreateAddress');
+			const pickUpButton = document.getElementById('formDirecciones_pickUpButton');
+
+			console.log(pickUpButton)
 			direcciones = [];
+
+
+
+			//ESTADOS
+			const modalCrearDireccionEstados = document.getElementById('modalCrearDireccionEstados')
+
+			//CIUDADES
+			const modalCrearDireccionCiudades = document.getElementById('modalCrearDireccionCiudades')
+
+			//MUNICIPIOS
+			const modalCrearDireccionMunicipios = document.getElementById('modalCrearDireccionMunicipios')
 
 			//------------------------- EVENTOS VISTA -------------------------
 
@@ -367,6 +427,25 @@
 						direcciones = res.data;
 						addTypeAddressToSelect(direcciones)
 					})
+				})
+			}
+
+			if(pickUpButton) {
+				pickUpButton.addEventListener('click', (e) => {
+					const addressId = 1;
+					const formAddressValue = document.getElementById('finalizarCompraDireccionId');
+
+					axios.get(`/get/address/${addressId}`)
+						.then(res => {
+							delete res.data.user_id
+							const direccion = res.data
+							console.log(direccion)
+							formAddressValue.value = addressId;
+							addNewAddress(direccion)
+						})
+						.catch(err =>{ 
+							console.log(err)
+						})
 				})
 			}
 
@@ -411,6 +490,34 @@
 					console.log(err);
 				});
 			})
+			
+			// --------- AGREGAR CIUDADES ------
+
+			modalCrearDireccionEstados.addEventListener('change', (e) => {
+				const estadoId = e.target.value;
+
+				axios.get(`/cities/${estadoId}`)
+					.then(res => {
+						addCitiesToSelect(res.data, modalCrearDireccionCiudades)
+					})
+					.catch(err => {
+						console.log(err)
+					});
+			})
+
+			// --------- AGREGAR MUNICIPIOS ------
+		
+			modalCrearDireccionCiudades.addEventListener('change', (e) => {
+				const cityId = e.target.value;
+
+				axios.get(`/townships/${cityId}`)
+					.then(res => {
+						addTownshipToSelect(res.data, modalCrearDireccionMunicipios)
+					})
+					.catch(err => {
+						console.log(err)
+					});
+				})
 		}
 
 		//------------------- STARTING SCRIPT ---------------------

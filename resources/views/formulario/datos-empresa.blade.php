@@ -153,8 +153,8 @@
               <input type="text" class="form-control-plaintext formularios__inputBorders" value="{{$empresa->SADA ?? ''}}"  required name="SADA" placeholder="SADA (Opcional)">
             </div>
             <div class="col mb-3">
-              <select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
-                <option value="">Escoge un estado</option>
+              <select class="form-control-plaintext formularios__inputBorders" id="modalEmpresaEstados"  required name="state_id" >
+                <option value="">Escoge un estadoss</option>
                 @foreach($estados as $estado)
                   <option value="{{$estado->id}}" 
                     @if(isset($empresa))
@@ -163,7 +163,7 @@
                     >{{$estado->state}}</option>
                 @endforeach
               </select>
-              <select class="form-control-plaintext formularios__inputBorders" required required name="city_id" >
+              <select class="form-control-plaintext formularios__inputBorders" id="modalEmpresaCiudades" required name="city_id" >
                 <option value="">Escoge una ciudad</option>
                 @foreach($ciudades as $ciudad)
                   <option value="{{$ciudad->id}}"
@@ -310,8 +310,8 @@
 							<input type="text" class="form-control-plaintext formularios__inputBorders" required required name="SADA" placeholder="SADA (Opcional)">
 						</div>
 						<div class="col mb-3">
-							<select class="form-control-plaintext formularios__inputBorders" required required name="state_id" >
-								<option value="">Escoge un estado</option>
+							<select class="form-control-plaintext formularios__inputBorders"  required required name="state_id" >
+								<option value="">Escoge un estados</option>
 								@foreach($estados as $estado)
 									<option value="{{$estado->id}}">{{$estado->state}}</option>
 								@endforeach
@@ -415,12 +415,37 @@
       }
 
 
+      function addCitiesToSelect(cities, container){
+		
+        if(cities.length) {
+          container.innerHTML = '<option>Escoge una ciudad</option>'
+          cities.forEach(city => {
+            template = `
+              <option value="${city.id}">
+                ${city.city}
+              </option>
+            `
+
+            container.innerHTML += template;
+          })
+        }else {
+          container.innerHTML = '<option>No hay ciudades disponibles</option>'
+        }
+      }
+
 
 
 
       const formEnterprise = document.getElementById('formEditOrCreateEnterprise');
       const enterpriseContainer = document.getElementById('formEnterpriseContainer');
       const $btn_next2 = document.getElementById('btn_next2');
+
+
+      //ESTADOS
+        const modalEmpresEstados = document.getElementById('modalEmpresaEstados');
+      //CIUDADES
+      const modalEmpresCiudades = document.getElementById('modalEmpresaCiudades');
+      
 
       formEnterprise.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -455,6 +480,18 @@
           console.log(err);
         }) 
 
+      })
+    
+      modalEmpresEstados.addEventListener('change', (e) => {
+        const estadoId = e.target.value
+
+        axios.get(`/cities/${estadoId}`)
+				.then(res => {
+					addCitiesToSelect(res.data, modalEmpresCiudades)
+				})
+				.catch(err => {
+					console.log(err)
+				});
       })
     }
 

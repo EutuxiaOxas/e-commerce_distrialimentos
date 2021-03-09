@@ -71,11 +71,11 @@
             <path d="M7.49996 0C3.35781 0 0 3.35785 0 7.50001C0 15 7.50001 24 7.50001 24C7.50001 24 15 15 15 7.50001C15 3.35785 11.6421 0 7.49996 0ZM7.49996 12C5.01466 12 2.99997 9.98531 2.99997 7.50001C2.99997 5.0147 5.01466 3.00001 7.49996 3.00001C9.98526 3.00001 12 5.0147 12 7.50001C12 9.98531 9.98526 12 7.49996 12Z" fill="white"/>
             </svg>
 
-            <a class="dropdown" href="#" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carabobo</a>
+            <a class="dropdown" href="#" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session('location')}}</a>
             
             <div class="dropdown-menu navbar__mobillocationList" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item navbar__locationMobilListItems" href="#">Carabobo</a>
-					<a class="dropdown-item navbar__locationMobilListItems" href="#">Aragua</a>
+					<a class="dropdown-item navbar__locationMobilListItems" href="{{route('active.location', 'carabobo')}}">Carabobo</a>
+					<a class="dropdown-item navbar__locationMobilListItems" href="{{route('active.location', 'aragua')}}">Aragua</a>
 				</div>
         </li>
         <li class="header__navList main header__navListCurrencyMain">

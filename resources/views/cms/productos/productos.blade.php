@@ -20,6 +20,15 @@
               </button>
         </div>
     @endif
+
+    @if(session('message'))
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+    @endif
     <div class="table-responsive">
       <table class="table table-striped table-sm" id="table1">
         <thead>
@@ -52,7 +61,12 @@
             <td>{{$producto->category->title}}</td>
             <td>
             	<a href="{{route('tienda.product.show', $producto->id)}}" class="btn btn-sm btn-outline-primary">Editar</a>
-            	<button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
+              @if($producto->isfeatured == 1)
+                <a href="{{route('tienda.product.featured', $producto->id)}}" class="btn btn-sm btn-outline-info">Ocultar</a>
+              @else
+                <a href="{{route('tienda.product.featured', $producto->id)}}" class="btn btn-sm btn-outline-info">Destacar</a>
+              @endif
+              <button type="button" id="{{$producto->id}}" data-toggle="modal" data-target="#modalEliminar" class="btn btn-sm btn-outline-danger eliminar_product">Eliminar</button>	
             </td>
           </tr>
           @endforeach

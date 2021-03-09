@@ -257,5 +257,15 @@ class ProductController extends Controller
         return redirect('/');
     }
     
+    public function changeProductFeadture($id)
+    {
+        $producto = Product::findOrFail($id);
+
+        $producto->update([
+            'isfeatured' => $producto->isfeatured == 0 ? 1 : 0,
+        ]);
+
+        return back()->with('message', 'Producto actualizado con èxito');
+    }
 
 }
