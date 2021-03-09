@@ -151,9 +151,9 @@
 									@endforeach
 								</select>
 								<select class="form-control-plaintext formularios__inputBorders" id="modalCrearDireccionMunicipios" required name="township_id" >
-									<option value="">Escoge un municipio</option>
+									<option value="">Zona de reparto</option>
 									@foreach($municipios as $municipio)
-										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
+										<option value="{{$municipio->id}}">{{$municipio->township}} - {{$municipio->delivery_price}} $</option>
 									@endforeach
 								</select>
 							</div>
@@ -343,7 +343,7 @@
 		function addCitiesToSelect(cities, container){
 		
 			if(cities.length) {
-				container.innerHTML = '<option>Escoge una ciudad</option>'
+				container.innerHTML = '<option value="">Escoge una ciudad</option>'
 				cities.forEach(city => {
 					template = `
 						<option value="${city.id}">
@@ -354,25 +354,25 @@
 					container.innerHTML += template;
 				})
 			}else {
-				container.innerHTML = '<option>No hay ciudades disponibles</option>'
+				container.innerHTML = '<option value="">No hay ciudades disponibles</option>'
 			}
 		}
 
 		function addTownshipToSelect(minicipios, container){
 		
 			if(minicipios.length) {
-				container.innerHTML = '<option>Escoge un municipio</option>'
+				container.innerHTML = '<option value="">Zonas de reparto</option>'
 				minicipios.forEach(minicipio => {
 					template = `
 						<option value="${minicipio.id}">
-							${minicipio.township}
+							${minicipio.township} - ${minicipio.delivery_price} $
 						</option>
 					`
 
 					container.innerHTML += template;
 				})
 			}else {
-				container.innerHTML = '<option>No hay municipios disponibles</option>'
+				container.innerHTML = '<option value="">No hay zonas de reparto disponibles</option>'
 			}
 		}
 

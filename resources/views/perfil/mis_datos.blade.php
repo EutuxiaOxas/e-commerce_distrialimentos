@@ -85,7 +85,7 @@
 					<div class="perfil__cardBody direccion">
 						<div class="container p-5 text-center">
 							<img src="{{asset('/images/void-01.svg')}}" alt="">
-							<p class="perfil__cardListItem-content" style="">Aun sin datos personales...</p>
+							<p class="perfil__cardListItem-content" >Aun sin datos personales...</p>
 						</div>
 						<div class="perfil__agregarDatos ">
 							<a href="#" data-toggle="modal" data-target="#modal_userEdit">Agregar los datos personales</a>
@@ -135,7 +135,7 @@
 				<div class="perfil__cardBody direccion">
 					<div class="container p-5 text-center">
 						<img src="{{asset('/images/void-02.svg')}}" alt="">
-						<p class="perfil__cardListItem-content pt-3" style="">Aun sin datos de facturación...</p>
+						<p class="perfil__cardListItem-content pt-3" >Aun sin datos de facturación...</p>
 					</div>
 					<div class="perfil__agregarDatos ">
 						<a href="#" data-toggle="modal" data-target="#modal_FacturationEdit">Agregar los datos de facturación</a>
@@ -173,7 +173,7 @@
 						<div class="perfil__cardBody direccion">
 							<div class="container p-5 text-center">
 								<img src="{{asset('/images/void-03.svg')}}" alt="">
-								<p class="perfil__cardListItem-content" style="">Aun sin direcciones de envio...</p>
+								<p class="perfil__cardListItem-content" >Aun sin direcciones de envio...</p>
 							</div>
 							<div class="perfil__agregarDatos ">
 								<a href="#" data-toggle="modal" data-target="#modal-directionEdit">Agregar nueva dirección</a>
@@ -370,22 +370,22 @@
 							<input type="text" class="form-control-plaintext formularios__inputBorders"  name="type" placeholder="Tipo dirección [ej: Local principal]">
 							</div>
 							<div class="col">
-								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__estado"  name="state_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__estado" required  name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
 										<option value="{{$estado->id}}">{{$estado->state}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__ciudad" name="city_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__ciudad" required name="city_id" >
 									<option value="">Escoge una ciudad</option>
 									@foreach($ciudades as $ciudad)
 										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__municipio"  name="township_id" >
-									<option value="">Escoge un municipio</option>
+								<select class="form-control-plaintext formularios__inputBorders" id="modalDatosDirecciones__municipio" required  name="township_id" >
+									<option value="">Zonas de reparto</option>
 									@foreach($municipios as $municipio)
-										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
+										<option value="{{$municipio->id}}">{{$municipio->township}} - {{$municipio->delivery_price}} $</option>
 									@endforeach
 								</select>
 							</div>
@@ -460,22 +460,22 @@
 								<input type="text" id="directionEditType" class="form-control-plaintext formularios__inputBorders" required name="type" placeholder="Tipo dirección [ej: Local principal]">
 							</div>
 							<div class="col">
-								<select class="form-control-plaintext formularios__inputBorders" id="directionEditState" required name="state_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditState" required  name="state_id" >
 									<option value="">Escoge un estado</option>
 									@foreach($estados as $estado)
 										<option value="{{$estado->id}}">{{$estado->state}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" id="directionEditCity"  required name="city_id" >
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditCity" required  name="city_id" >
 									<option value="">Escoge una ciudad</option>
 									@foreach($ciudades as $ciudad)
 										<option value="{{$ciudad->id}}">{{$ciudad->city}}</option>
 									@endforeach
 								</select>
-								<select class="form-control-plaintext formularios__inputBorders" id="directionEditTownship" required name="township_id" >
-									<option value="">Escoge un municipio</option>
+								<select class="form-control-plaintext formularios__inputBorders" id="directionEditTownship"  required name="township_id" >
+									<option value="">Zonas de reparto</option>
 									@foreach($municipios as $municipio)
-										<option value="{{$municipio->id}}">{{$municipio->township}}</option>
+										<option value="{{$municipio->id}}">{{$municipio->township}} - {{$municipio->delivery_price}} $</option>
 									@endforeach
 								</select>
 							</div>
@@ -589,7 +589,7 @@
 	function addCitiesToSelect(cities, container){
 		
 		if(cities.length) {
-			container.innerHTML = '<option>Escoge una ciudad</option>'
+			container.innerHTML = '<option value="">Escoge una ciudad</option>'
 			cities.forEach(city => {
 				template = `
 					<option value="${city.id}">
@@ -610,18 +610,18 @@
 	function addTownshipToSelect(minicipios, container){
 		
 		if(minicipios.length) {
-			container.innerHTML = '<option>Escoge un municipio</option>'
+			container.innerHTML = '<option value="">Zonas de reparto</option>'
 			minicipios.forEach(minicipio => {
 				template = `
 					<option value="${minicipio.id}">
-						${minicipio.township}
+						${minicipio.township} - ${minicipio.delivery_price} $
 					</option>
 				`
 
 				container.innerHTML += template;
 			})
 		}else {
-			container.innerHTML = '<option>No hay municipios disponibles</option>'
+			container.innerHTML = '<option value="">No hay zonas de reparto disponibles</option>'
 		}
 	}
 
