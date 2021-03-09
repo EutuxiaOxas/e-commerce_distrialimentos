@@ -15,12 +15,11 @@ class CreateBrandsTable extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
-            $table->string('brand');
+            $table->string('name');
             $table->string('banner'); //Banner que se muestra en el almacen de esa categoria.
-            // $table->text('description');
-            $table->string('status')->default('activo');
-            // $table->string('slug');
-            // $table->timestamps();
+            $table->text('description');
+            $table->string('status')->default('ACTIVA');
+            $table->timestamps();
         });
     }
 

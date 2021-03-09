@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Brand;
 
+use Storage;
+use Str;
+
+
 class BrandController extends Controller
 {
         //--------- PAGINA PRINCIPAL TIENDA/Marcas ------- 
@@ -41,21 +45,16 @@ class BrandController extends Controller
     }
     //--------- GUARDAR -------
     public function guardarMarca(Request $request)
-    {   $path1 = $request->file('icono')->store('public');
-        $path2 = $request->file('image_main')->store('public');
-        $file1 = Str::replaceFirst('public/', '',$path1);
+    {   
+        $path2 = $request->file('banner')->store('public');
         $file2 = Str::replaceFirst('public/', '',$path2);
-
-
-    	Brand::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'padre_id' => $request->padre_id,
-            'slug' => $request->slug,
-            'icono' => $file1,
-            'image_main' => $file2,
-        ]);
-
+        
+        $new_brand = new Brand();
+        $new_brand->name =  $request->name;
+        $new_brand->description =  $request->description;
+        $new_brand->banner =  $file2;
+        //guardar 
+        $new_brand->save();
     	return back()->with('message', 'Marca creada con éxito');
     }
     //--------- ACTUALIZAR -------

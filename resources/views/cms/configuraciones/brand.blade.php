@@ -37,10 +37,9 @@
       <table class="table table-striped table-sm">
         <thead>
           <tr>
-          	<th>#</th>
-            <th>Banner</th>
+          	{{-- <th>#</th> --}}
+            <th>Banner de marca</th>
           	<th>Titulo</th>
-            {{-- <th>estatus</th> --}}
           	<th>Descripción</th>
           	<th>Acciones</th>
           </tr>
@@ -48,14 +47,9 @@
         <tbody>
           @foreach($marcas as $marca)
           <tr>
-            <td>{{$marca->id}}</td>
-            <td><img src="{{asset('storage/'.$marca->banner)}}" style="width: 50px; height: 50px"></td>
-            <td>{{$marca->brand}}</td>
-            {{-- <td>
-              @php $padre = $marca->getFatherName() @endphp 
-              {{$padre ? $padre->title : 'No tiene marca padre'}}
-            </td> --}}
-            {{-- <td>{{$marca->status}}</td> --}}
+            {{-- <td>{{$marca->id}}</td> --}}
+            <td><img src="{{asset('storage/'.$marca->banner)}}" style="width: auto; height: 50px"></td>
+            <td>{{$marca->name}}</td>
             <td>{{$marca->description}}</td>
             <td>
             	<button type="button" id="{{$marca->id}}" data-toggle="modal" data-target="#modalEditar" class="btn btn-sm btn-outline-primary editar_brand">Editar</button>
@@ -67,8 +61,7 @@
       </table>
     </div>
 </section>
-
-
+{{-- modal de crear marca --}}
 <div class="modal fade" id="modalCrear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -87,10 +80,9 @@
                 <form action="{{route('tienda.brand.store')}}" id="form_create_brand" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        
                         <div class="col-md-12 form-group px-1 mt-3">
                             <h5>Nombre de Marca</h5>
-                            <input class="form-control" id="create_brand_title" type="text" name="title" placeholder="Ej: Iberia, Carabobo..." autocomplete="off" required>
+                            <input class="form-control" id="create_brand_title" type="text" name="name" placeholder="Ej: Iberia, Carabobo..." autocomplete="off" required>
                             <small id="slug_alert"></small>
                         </div>
 
@@ -98,21 +90,14 @@
                             <h5>Descripción</h5>
                             <textarea class="form-control" id="create_brand_description" name="description" placeholder="Escribe una frase que describa la marca"></textarea>
                         </div>
-                        {{-- <div class="col-md-12 form-group px-1">
-                            <h5>Icono</h5>
-                            <input type="file" id="icono_brand" required name="icono">
-                        </div> --}}
                         <div class="col-md-12 form-group px-1">
                           <h5>Imagen del banner</h5>
-                          <input type="file" id="image_main_brand" required name="image_main">
+                          <input type="file" id="image_main_brand" required name="banner">
                       </div>
-
                     </div>
-                    <div class="form-group px-1 col-md-12" style="visibility: hidden; position: absolute;">
-                      <h5>URL</h5>
-                      <input class="form-control" id="slug" type="text" name="slug">
-                    </div> 
-            <div class="modal-footer">
+                  </form>
+                  
+              <div class="modal-footer">
                 <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                 <button type="submit" id="crear_brand_submit" class="btn btn-primary">Agregar marca</button>
             </div>
@@ -137,21 +122,17 @@
                     @csrf
                     <div class="form-group">
                         <h5>Nombre</h5>
-                        <input id="editar_title" class="form-control" type="text" name="title"  placeholder="Ej: Iberia, Carabobo..." autocomplete="off">
+                        <input id="editar_title" class="form-control" type="text" name="name"  placeholder="Ej: Iberia, Carabobo..." autocomplete="off">
                         <small id="slug_alert_edit"></small>
                     </div>
                     
                     <div class="form-group">
                         <h5>Descripción</h5>
-                        <textarea class="form-control" id="editar_description" name="Escribe una frase que describa la marca"></textarea>
+                        <textarea class="form-control" id="editar_description" name="description" placeholder="Escribe una frase que describa la marca"></textarea>
                     </div>
                     <div class="col-md-12 form-group px-1">
                         <h5>Imagen del banner</h5>
-                        <input type="file" id="icono_brand_editar" required name="icono">
-                    </div>
-                    <div class="form-group" style="visibility: hidden;position: absolute;">
-                      <h5>URL</h5>
-                      <input class="form-control" id="slug_edit" type="text" name="slug">
+                        <input type="file" id="icono_brand_editar" required name="banner">
                     </div>
                 </form>
             </div>
@@ -211,11 +192,13 @@
       errors.push('Debe agregar un titulo')
     } if(description.value === ''){
       errors.push('Debe agregar una descripción');
-    }if(verify_access.value == 0){
-      errors.push('Debe agregar un titulo valido');
-    }if(icono.files.length <= 0) {
-      errors.push('Debe agregar un icono');
     }
+    // if(verify_access.value == 0){
+    //   errors.push('Debe agregar un titulo valido');
+    // }
+    // if(icono.files.length <= 0) {
+    //   errors.push('Debe agregar una imagen para el Banner');
+    // }
 
 
     if(errors.length > 0) {
@@ -232,7 +215,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-      `
+      `;
 
       errors_container.appendChild(error_main)
       errors_container.style.display = 'block';
@@ -281,11 +264,13 @@
         if(title.value === '')
         {
           errors.push('Debes colocar un titulo')
-        } if (description.value === ''){
-          errors.push('Debes colocar una description')
-        }if(verify_access_modal.value == 0){
-          errors.push('Debes colocar un titulo valido');
         }
+        if (description.value === ''){
+          errors.push('Debes colocar una description')
+        }
+        // if(verify_access_modal.value == 0){
+        //   errors.push('Debes colocar un titulo valido');
+        // }
 
 
         if(errors.length > 0){
@@ -408,30 +393,30 @@
 
 
 
-  name_brand.addEventListener('keyup', (e) => {  
+  // name_brand.addEventListener('keyup', (e) => {  
 
-    let value = string_to_slug(e.target.value)
+  //   let value = string_to_slug(e.target.value)
     
-    slug.value = value
+  //   slug.value = value
     
-    if(name_brand.value != ''){
-      verifySlug(value, 'normal');
+  //   if(name_brand.value != ''){
+  //     verifySlug(value, 'normal');
     
-    }else {
-      let alert = document.getElementById('slug_alert').textContent = '';
-    }
-  });
+  //   }else {
+  //     let alert = document.getElementById('slug_alert').textContent = '';
+  //   }
+  // });
 
-  function verifySlug(value, option){
-    axios.post(`/cms/brand/verify/${value}`)
-      .then(res =>{
-        if(res.data == 'aceptado'){
-          slugAlert('aceptado', option)
-        }else if(res.data == 'ocupado'){
-          slugAlert('ocupado', option)
-        }
-      })
-  }
+  // function verifySlug(value, option){
+  //   axios.post(`/cms/brand/verify/${value}`)
+  //     .then(res =>{
+  //       if(res.data == 'aceptado'){
+  //         slugAlert('aceptado', option)
+  //       }else if(res.data == 'ocupado'){
+  //         slugAlert('ocupado', option)
+  //       }
+  //     })
+  // }
 
 
   function slugAlert(value, option){

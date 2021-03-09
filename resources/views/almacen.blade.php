@@ -55,7 +55,8 @@ $color_header='dark';
 
 
    <!-- Almacen-->
-   @if ($product_categorie)
+   
+   @if (count($product_categorie)>0)
    <!----- Banner de almacen------>
    <section>
      <div class="container-fluid p-0">

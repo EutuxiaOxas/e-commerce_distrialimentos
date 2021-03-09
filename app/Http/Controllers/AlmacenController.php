@@ -17,6 +17,7 @@ class AlmacenController extends Controller
             $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
         }
         $categorias = Category::all(); // categorias de productos
+        
         return view('almacen', compact('productos', 'categorias'));
     }
 
