@@ -2,7 +2,7 @@
     <div class="categorie__mobileSelection" id="categoriesMenu_mobile">
         <div class="categorie__mobileHead">
             <h3 class="categorie__mobileHead-title">CATEGORIAS</h3>
-            <div id="botonClose_categorieMenu_mobile" class="categorie__mobileHead-close">
+            <div id="botonClose_categorieMenu_mobile" class="categorie__mobileHead-close text-white">
                 x
             </div>
         </div>

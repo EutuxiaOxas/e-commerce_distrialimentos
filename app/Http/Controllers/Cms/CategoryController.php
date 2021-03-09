@@ -38,12 +38,15 @@ class CategoryController extends Controller
         $data = [
             'slug' => $category->slug,
             'categorias' => Category::where('padre_id', 0)->get(),
+            'title'=> $category->title,
+            'description'=>$category->description
         ];
         return $data;
     }
     //--------- GUARDAR -------
     public function guardarCategoria(Request $request)
-    {   $path1 = $request->file('icono')->store('public');
+    { 
+        $path1 = $request->file('icono')->store('public');
         $path2 = $request->file('image_main')->store('public');
         $file1 = Str::replaceFirst('public/', '',$path1);
         $file2 = Str::replaceFirst('public/', '',$path2);
