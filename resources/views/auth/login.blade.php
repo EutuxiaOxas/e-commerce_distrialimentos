@@ -20,6 +20,15 @@ if(isset($_GET['message'])){
     <div class="login__container">
         <h1 class="login__container-title">Hola, bienvenido</h1>
         <p class="login__container-subtitle">Para continuar, por favor ingresa tus datos</p>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('login') }}" method="POST" class="login__form">
             @csrf
             <div class="login__inputContainer">
