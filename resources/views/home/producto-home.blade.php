@@ -58,14 +58,14 @@
                     <div class="almacen__productoAgregado">
                     <p class="almancen__agregarProducto-text d-none">Selecciona una cantidad </p>
                     @php $disponible = $p->available_stock; @endphp
-                    <select id="{{$p->id}}" class="form-control to_server productSelectStock">
+                    <select id="{{$p->id}}" class="form-control {{auth()->user() ? 'to_server' : 'to_storage'}} productSelectStock">
                         <option value="0">0</option>
                         @for($i = 1; $i <= $disponible; $i++)
                         <option value="{{$i}}">{{$i}}</option>
                         @endfor
                     </select>
                     </div>
-                    <button class="almacen__agregarProducto-button agregarButtons agregarButtons-server p-2" data-id="{{$p->id}}">
+                    <button class="almacen__agregarProducto-button agregarButtons {{auth()->user() ? 'agregarButtons-server': 'agregarButtons-storage'}}  p-2" data-id="{{$p->id}}">
                         Añadir al Camión
                     </button>
                 </div>
@@ -81,14 +81,14 @@
                     <div class="almacen__productoAgregado">
                     <p class="almancen__agregarProducto-text d-none">Selecciona una cantidad </p>
                     @php $disponible = $p->available_stock; @endphp
-                    <select id="{{$p->id}}" class="form-control to_server productSelectStock">
+                    <select id="{{$p->id}}" class="form-control {{auth()->user() ? 'to_server' : 'to_storage'}} productSelectStock">
                         <option value="0">0</option>
                         @for($i = 1; $i <= $disponible; $i++)
                         <option value="{{$i}}">{{$i}}</option>
                         @endfor
                     </select>
                     </div>
-                    <button class="almacen__agregarProducto-button agregarButtons agregarButtons-server" data-id="{{$p->id}}">
+                    <button class="almacen__agregarProducto-button agregarButtons {{auth()->user() ? 'agregarButtons-server' : 'agregarButtons-storage'}}" data-id="{{$p->id}}">
                     Añadir al camión 
                     </button>
                 </div>
