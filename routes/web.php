@@ -68,47 +68,17 @@ Route::get('/location/{type}', function($type) {
 //home 
 Route::get('/', 'HomeController@index' )->name('home');
 
-//nosotros 
-Route::get('/nosotros', function () {
-	return view('sketch.nosotros');
-});
-
 //Almacen
 Route::get('/almacen', 'AlmacenController@getAllProducts')->name('almacen.all');
 
-//detalle 
-Route::get('/detalle', function () {
-	return view('sketch.detalle');
-});
-
 //formulario 
 Route::get('/formulario', 'FormController@index')->middleware('auth')->name('formulario');
-Route::get('/gracias-por-su-pedido', 'FormController@thanks')->name('formulario.thanks');
-
-//perfil - home - datos 
-// Route::get('/perfil', function () {
-// 	return view('perfil');
-// })->name('perfil');
-
-//perfil - direcciones 
-Route::get('/perfil/direcciones', function () {
-	return view('sketch.perfil-direcciones');
-});
-
-//perfil - pedidos solicitados
-Route::get('/perfil/pedidos', function () {
-	return view('sketch.pedidos-pedidos');
-});
-
-//perfil - historial de pedidos
-Route::get('/perfil/historial', function () {
-	return view('sketch.pedidos-historial');
-});
+Route::get('/gracias-por-su-pedido', 'FormController@thanks')->middleware('auth')->name('formulario.thanks');
 
 //formularios usuarios sin datos
-Route::get('/formulario-sindatos', function () {
-	return view('sketch.formulario-sindatos');
-});
+// Route::get('/formulario-sindatos', function () {
+// 	return view('sketch.formulario-sindatos');
+// });
 
 
 //carrito de compras
@@ -141,7 +111,8 @@ Route::get('/politicas', function () {
 
 //Formulario nuevo usuario/Usuario no loggeado
 Route::get('/formulario_nuevo', function () {
-	return view('sketch.formulario_nuevo');
+	$categorias = Category::all();
+	return view('formulario_nuevo', compact('categorias'));
 });
 
 //FIN DE SOLO PARA MAQUETACION

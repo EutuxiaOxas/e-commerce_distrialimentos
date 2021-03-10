@@ -110,7 +110,7 @@
     }
    </style>
    <!-- Prdoduct -->
-    <section class="pb-3">
+    <section class="pb-3 bg-white">
       <div class="container px-3">
         <div class="row">
           <div class="col-12 col-md-6 pt-5 pb-0 px-5">

@@ -44,6 +44,7 @@ class FormController extends Controller
         $categorias = Category::all();
         //result
         return view('pedido-completado', compact('user', 'categorias'));
+            
     }
 
 }
