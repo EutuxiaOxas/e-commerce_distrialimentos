@@ -7,23 +7,38 @@
     <div class="login__container">
         <h1 class="login__container-title">Crear cuenta</h1>
         <p class="login__container-subtitle">Para continuar, por favor ingresa los datos</p>
-        <form action="{{ route('register') }}" method="POST" class="login__form">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="alert alert-danger" style="display: none;" id="alertContainer">
+
+        </div>
+
+        <form action="{{ route('register') }}" id="register_form" method="POST" class="login__form">
             @csrf
     
             <div class="login__inputContainer">
-                <input type="text" class="login__inputContainer-input" name="name" id="name" placeholder="Nombre y Apellido" autocomplete="off">
+                <input type="text" class="login__inputContainer-input" name="name"  value="{{ old('name') }}" required id="name" placeholder="Nombre y Apellido" autocomplete="off">
             </div>
     
             <div class="login__inputContainer">
-                <input type="email" class="login__inputContainer-input" name="email" id="email" placeholder="Correo" autocomplete="off">
+                <input type="email" class="login__inputContainer-input" name="email" value="{{ old('email') }}" required id="email" placeholder="Correo" autocomplete="off">
             </div>
     
             <div class="login__inputContainer">
-                <input id="password" type="password" class="login__inputContainer-input" name="password" placeholder="Contraseña">
+                <input id="password" type="password" class="login__inputContainer-input" required name="password" placeholder="Contraseña">
             </div>
     
             <div class="login__inputContainer last">
-                <input id="password_confirmation" type="password" class="login__inputContainer-input" name="password_confirmation" placeholder="Confirmar contraseña">
+                <input id="password_confirmation" type="password" class="login__inputContainer-input" required name="password_confirmation" placeholder="Confirmar contraseña">
             </div>
     
             <div class="register__messageContainer">
@@ -176,6 +191,47 @@
         </div>
     </div>
 </div> --> --}}
+
+<script>
+    function verifyPasswords(){
+       const password = document.getElementById('password');
+       const passwordConfirmation = document.getElementById('password_confirmation');
+       const alertContainer = document.getElementById('alertContainer');
+
+       if(password.value === passwordConfirmation.value) {
+           return true;
+       }
+
+       alertContainer.innerHTML = `
+        <ul>
+            <li>Las contraseñas no coinciden</li>
+        </ul>
+       `
+
+       alertContainer.style.display = 'block'
+
+       return false;
+
+    }
+
+    const formulario = document.getElementById('register_form');
+
+
+    formulario.addEventListener('submit', (e) =>{ 
+        e.preventDefault();
+
+        if(!verifyPasswords()) {
+            return ;
+        }
+
+        formulario.submit();
+    })
+</script>
+
+
+
+
+
 <!-- 
 <script type="text/javascript">
     let passChange = document.querySelectorAll('.pass_watcher');

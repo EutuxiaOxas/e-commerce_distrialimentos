@@ -198,7 +198,7 @@ $color_header='dark';
                     {{-- producto agregado --}}
                     <div class="almancen__agregarProducto pt-2">
                         <div class="almacen__productoAgregado">
-                          <p class="almancen__agregarProducto-text">Selecciona una cantidad </p>
+                          <p class="almancen__agregarProducto-text" style="display: none;">Selecciona una cantidad </p>
                           @php $disponible = $producto->available_stock; @endphp
                           <select id="{{$producto->id}}" class="form-control {{auth()->user() ? 'to_server' : 'to_storage'}} productSelectStock">
                             <option value="0">0</option>
