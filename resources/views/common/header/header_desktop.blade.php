@@ -138,10 +138,10 @@
 					<a href="{{route('almacen.all')}}">Almacen</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="{{route('almacen.all')}}">Más recientes</a>
+					<a href="{{route('product.recent')}}">Más recientes</a>
 				</li>
 				<li class="navbar__list-item">
-					<a href="{{route('almacen.all')}}">Destacados</a>
+					<a href="{{route('product.featured')}}">Destacados</a>
 				</li>
 				<li class="navbar__list-item">
 					<a href="{{route('ayuda')}}">Ayuda</a>

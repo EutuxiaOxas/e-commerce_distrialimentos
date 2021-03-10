@@ -153,7 +153,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/producto/{slug}', 'AlmacenController@showProduct')->name('producto.show');
 Route::get('/almacen/categoria/{slug}', 'AlmacenController@showProductsByCategory')->name('product.category.show');
 Route::get('almacen/marca/{brand}', 'AlmacenController@showProductsByBrand')->name('product.brand.show');
-
+Route::get('/almacen/destacados', 'AlmacenController@showFeaturedProduct')->name('product.featured');
+Route::get('/almacen/recientes', 'AlmacenController@showRecentProduct')->name('product.recent');
 
 Route::get('/cart', 'CartController@getCart');
 Route::get('/cart/ver', 'HomeController@verCarrito');

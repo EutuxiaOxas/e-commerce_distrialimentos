@@ -14,7 +14,7 @@ class AlmacenController extends Controller
         if($request->search){
             $productos = Product::with(['category', 'cartDetail'])->where('title', 'LIKE', '%'.$request->search.'%')->paginate(25);
         }else {
-            $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
+            $productos = Product::with(['category', 'cartDetail'])->inRandomOrder()->paginate(20);
         }
         $categorias = Category::all(); // categorias de productos
         
@@ -54,4 +54,21 @@ class AlmacenController extends Controller
         return view('almacen', compact('productos', 'categorias', 'product_brand'));
     }
     
+    public function showFeaturedProduct()
+    {
+        
+        $productos = Product::with(['category', 'cartDetail'])->where('isfeatured', 1)->orderBy('id', 'DESC')->paginate(20);
+
+        $categorias = Category::all(); // categorias de productos
+        
+        return view('almacen', compact('productos', 'categorias'));
+    }
+
+    public function showRecentProduct()
+    {
+        $productos = Product::with(['category', 'cartDetail'])->orderBy('id', 'DESC')->paginate(20);
+        $categorias = Category::all(); // categorias de productos
+        
+        return view('almacen', compact('productos', 'categorias'));
+    }
 }
