@@ -37,7 +37,7 @@
             <p class="text-small text-muted">({{$p->available_stock}} disponibles)</p>
             </div>
             <div class="col-md-12 p-0 d-none d-md-block categoria">
-                <a href="{{route('product.brand.show', $p->brand->brand)}}" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($p->brand->brand))}}</span></a>
+                <a href="{{route('product.brand.show', $p->brand->name)}}" class="almacen__marcaText smaller">Marca: <span>{{ucfirst(strtolower($p->brand->name))}}</span></a>
                 <a href="{{route('product.category.show', $p->category->slug)}}" class="almacen__categoriaText smaller">Categoria: <span>{{ucfirst(strtolower($p->category->title))}}</span></a>
             </div>
             <div class="col-5 p-0 iva">

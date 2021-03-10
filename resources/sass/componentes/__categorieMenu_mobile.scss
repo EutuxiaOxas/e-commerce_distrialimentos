@@ -42,7 +42,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: .1rem;
     grid-row-gap: .8rem;
-
+    grid-auto-rows: min-content;
     width: 90vw;
     height: 75%;
     overflow-y: scroll;
