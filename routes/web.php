@@ -68,22 +68,12 @@ Route::get('/location/{type}', function($type) {
 //home 
 Route::get('/', 'HomeController@index' )->name('home');
 
-//nosotros 
-Route::get('/nosotros', function () {
-	return view('sketch.nosotros');
-});
-
 //Almacen
 Route::get('/almacen', 'AlmacenController@getAllProducts')->name('almacen.all');
 
-//detalle 
-Route::get('/detalle', function () {
-	return view('sketch.detalle');
-});
-
 //formulario 
 Route::get('/formulario', 'FormController@index')->middleware('auth')->name('formulario');
-Route::get('/gracias-por-su-pedido', 'FormController@thanks')->name('formulario.thanks');
+Route::get('/gracias-por-su-pedido', 'FormController@thanks')->middleware('auth')->name('formulario.thanks');
 
 //perfil - home - datos 
 // Route::get('/perfil', function () {

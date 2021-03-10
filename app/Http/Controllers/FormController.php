@@ -41,9 +41,15 @@ class FormController extends Controller
     function thanks() {
         //vars
         $user = auth()->user();
+        //si el usuario no esta logeado retonar al home. 
+        if(!$user){
+            return redirect('/');
+        }
+
         $categorias = Category::all();
         //result
         return view('pedido-completado', compact('user', 'categorias'));
+            
     }
 
 }
