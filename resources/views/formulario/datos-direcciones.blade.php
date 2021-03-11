@@ -101,8 +101,6 @@
     </section>
     <!-- /Buttoms-->
   </section>
-</div>
-
 
 	<!-- Modal datos de Direccion -->
 	<div class="modal fade" id="modal-directionEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

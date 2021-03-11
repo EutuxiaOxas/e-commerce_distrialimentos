@@ -165,11 +165,14 @@
         {{-- datos de la direccion  --}}
         @include('formulario.datos-direcciones')
         
+        
+        
+      </div>
+      <div class="col-md-5 px-0">
         <!-------------------------- Seccion de Total del camion ----------------------------->
         {{-- datos de la direccion  --}}
         @include('formulario.total-compra')
-  
-  
+
       </div>
     </div>
   </div>

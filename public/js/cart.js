@@ -1997,7 +1997,7 @@ function _verifyProductInStorage() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Andres\Documents\coding\e-commerce_distrialimentos\resources\js\cart.js */"./resources/js/cart.js");
+module.exports = __webpack_require__(/*! C:\Users\Carlo\Projects\e-commerce_distrialimentos\resources\js\cart.js */"./resources/js/cart.js");
 
 
 /***/ })

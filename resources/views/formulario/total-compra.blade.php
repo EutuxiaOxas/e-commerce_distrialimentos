@@ -1,4 +1,4 @@
-<div id="formulario5" class=" col-md-5 formularios__Finalizarcompra noMostrar">
+<div id="formulario5" class="formularios__Finalizarcompra noMostrar">
     <section class="pt-4" >
       <div class="container">
         <div class="row container">
@@ -199,5 +199,3 @@
       </div>
     </section>
   </div>
-</div>
-</div>

@@ -143,22 +143,16 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-7 px-0">
-
         {{-- saludos al usuario --}}
         @include('formulario.saludo')
-
-        
         <!-------------------------- Formulario IV ----------------------------->
         {{-- datos de pago --}}
         @include('formulario.datos-pago-uno')
-    
-        
-        
+      </div>
+      <div class="col-md-5">
         <!-------------------------- Seccion de Total del camion ----------------------------->
         {{-- datos de la direccion  --}}
         @include('formulario.total-compra')
-  
-  
       </div>
     </div>
   </div>
